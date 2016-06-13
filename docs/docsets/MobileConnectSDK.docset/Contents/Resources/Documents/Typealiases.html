@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Typealiases  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Typealiases  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">MobileConnectSDK Docs</a> (72% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">MobileConnectSDK Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Typealiases  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C16MobileConnectSDK24BaseMobileConnectService">BaseMobileConnectService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BaseWebController.html">BaseWebController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DSService.html">DSService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DiscoveryService.html">DiscoveryService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MCService.html">MCService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MobileConnectButton.html">MobileConnectButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MobileConnectManager.html">MobileConnectManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MobileConnectSDK.html">MobileConnectSDK</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MobileConnectService.html">MobileConnectService</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/MCErrorCode.html">MCErrorCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MCLevelOfAssurance.html">MCLevelOfAssurance</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/MobileConnectManagerDelegate.html">MobileConnectManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16MobileConnectSDK21DiscoveryDataResponse">DiscoveryDataResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16MobileConnectSDK22DiscoveryResponseBlock">DiscoveryResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16MobileConnectSDK31MobileConnectControllerResponse">MobileConnectControllerResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16MobileConnectSDK25MobileConnectDataResponse">MobileConnectDataResponse</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Typealiases</h1>
+            <p>The following typealiases are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16MobileConnectSDK22DiscoveryResponseBlock"></a>
+                    <a name="//apple_ref/swift/Alias/DiscoveryResponseBlock" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16MobileConnectSDK22DiscoveryResponseBlock">DiscoveryResponseBlock</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Discovery response received in methods which required a presenter view controller. It is the responsability of the developer to dismiss the web controller.
+- Parameter controller: The Mobile Connect controller which contains the web view. Should be dismissed by the developer.
+- Parameter operatorsData: The data received from the Discovery service. Can be nil in case an error occured.
+- Parameter error: The error which is sent in case the operatorsData is nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">DiscoveryResponseBlock</span> <span class="o">=</span> <span class="p">(</span><span class="nv">controller</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseWebController.html">BaseWebController</a></span><span class="p">?,</span> <span class="nv">operatorsData</span> <span class="p">:</span> <span class="kt">DiscoveryResponse</span><span class="p">?,</span> <span class="nv">error</span> <span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Mobile Connect controller which contains the web view. Should be dismissed by the developer.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operatorsData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The data received from the Discovery service. Can be nil in case an error occured.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error which is sent in case the operatorsData is nil.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16MobileConnectSDK21DiscoveryDataResponse"></a>
+                    <a name="//apple_ref/swift/Alias/DiscoveryDataResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16MobileConnectSDK21DiscoveryDataResponse">DiscoveryDataResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Discovery response received in methods which do not require a presenter view controller
+- Parameter operatorsData: The data received from the Discovery service. Can be nil in case an error occured.
+- Parameter error: The error which is sent in case the operatorsData is nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">DiscoveryDataResponse</span> <span class="o">=</span> <span class="p">(</span><span class="nv">operatorsData</span> <span class="p">:</span> <span class="kt">DiscoveryResponse</span><span class="p">?,</span> <span class="nv">error</span> <span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operatorsData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The data received from the Discovery service. Can be nil in case an error occured.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error which is sent in case the operatorsData is nil.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16MobileConnectSDK25MobileConnectDataResponse"></a>
+                    <a name="//apple_ref/swift/Alias/MobileConnectDataResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16MobileConnectSDK25MobileConnectDataResponse">MobileConnectDataResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Mobile Connect response received in methods which do not require a presenter view controller
+- Parameter tokenModel: The data received from the Mobile Connect service. Can be nil in case an error occured.
+- Parameter error: The error which is sent in case the operatorsData is nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">MobileConnectDataResponse</span> <span class="o">=</span> <span class="p">(</span><span class="nv">tokenModel</span> <span class="p">:</span> <span class="kt">TokenModel</span><span class="p">?,</span> <span class="nv">error</span> <span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tokenModel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The data received from the Mobile Connect service. Can be nil in case an error occured.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error which is sent in case the operatorsData is nil.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16MobileConnectSDK31MobileConnectControllerResponse"></a>
+                    <a name="//apple_ref/swift/Alias/MobileConnectControllerResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16MobileConnectSDK31MobileConnectControllerResponse">MobileConnectControllerResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Mobile Connect response received in methods which require a presenter view controller
+- Parameter controller: The Mobile Connect controller which contains the web view. Should be dismissed by the developer.
+- Parameter tokenModel: The data received from the Mobile Connect service. Can be nil in case an error occured.
+- Parameter error: The error which is sent in case the operatorsData is nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">MobileConnectControllerResponse</span> <span class="o">=</span> <span class="p">(</span><span class="nv">controller</span> <span class="p">:</span> <span class="kt"><a href="Classes/BaseWebController.html">BaseWebController</a></span><span class="p">?,</span> <span class="nv">tokenModel</span> <span class="p">:</span> <span class="kt">TokenModel</span><span class="p">?,</span> <span class="nv">error</span> <span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Mobile Connect controller which contains the web view. Should be dismissed by the developer.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tokenModel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The data received from the Mobile Connect service. Can be nil in case an error occured.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error which is sent in case the operatorsData is nil.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://developer.mobileconnect.io" target="_blank" rel="external">Dan Andoni</a>. All rights reserved. (Last updated: 2016-06-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

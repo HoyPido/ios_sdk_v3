@@ -1,0 +1,4 @@
+github "icanzilb/JSONModel"
+github "Alamofire/Alamofire" ~> 3.4
+github "Quick/Quick"
+github "Quick/Nimble"

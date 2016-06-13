@@ -1,0 +1,1221 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C08363D1D057A6400848597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08363C1D057A6400848597 /* AppDelegate.swift */; };
+		3C08363F1D057A6400848597 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08363E1D057A6400848597 /* ViewController.swift */; };
+		3C0836421D057A6400848597 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836401D057A6400848597 /* Main.storyboard */; };
+		3C0836441D057A6400848597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836431D057A6400848597 /* Assets.xcassets */; };
+		3C0836471D057A6400848597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836451D057A6400848597 /* LaunchScreen.storyboard */; };
+		3C0836521D057A6400848597 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0836511D057A6400848597 /* DemoTests.swift */; };
+		3C24E7BB1D0C2A2600D7634A /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
+		3C24E7BC1D0C2A2600D7634A /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C24E7C11D0C2A4D00D7634A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; };
+		3C24E7C21D0C2A4D00D7634A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C24E7C41D0C2A6600D7634A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; };
+		3C24E7C51D0C2A6600D7634A /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7C61D0C2D5000D7634A /* MCService.swift */; };
+		3C24E7CA1D0C318E00D7634A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; };
+		3C24E7CB1D0C318E00D7634A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C24E7CD1D0C319400D7634A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; };
+		3C24E7CE1D0C319400D7634A /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C24E7CF1D0C31B000D7634A /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
+		3C24E7D01D0C31B000D7634A /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C24E7D41D0C323800D7634A /* DSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7D31D0C323800D7634A /* DSService.swift */; };
+		3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C36B85C1D05B99800A997E3 /* Images.xcassets */; };
+		3C36B85F1D05B9A600A997E3 /* WebController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C36B85E1D05B9A600A997E3 /* WebController.storyboard */; };
+		3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36B8651D05BFE000A997E3 /* MobileConnectManager.swift */; };
+		3C36EF001D09FC3100297A17 /* MobileConnectSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36EEFF1D09FC3100297A17 /* MobileConnectSDK.swift */; };
+		3C36EF021D0A177E00297A17 /* BaseMobileConnectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36EF011D0A177E00297A17 /* BaseMobileConnectService.swift */; };
+		3C36EF041D0A19D200297A17 /* MobileConnectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36EF031D0A19D200297A17 /* MobileConnectService.swift */; };
+		3C36EF061D0A3EFF00297A17 /* MCRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C36EF051D0A3EFF00297A17 /* MCRequestConstructor.swift */; };
+		3C3F82D61D04C7C8006EE8F4 /* MobileConnectSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C3F82DD1D04C7C8006EE8F4 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
+		3C3F82E21D04C7C8006EE8F4 /* MobileConnectSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F82E11D04C7C8006EE8F4 /* MobileConnectSDKTests.swift */; };
+		3C72CEEA1D05D48300A095ED /* APISModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CED41D05D48300A095ED /* APISModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEEB1D05D48300A095ED /* APISModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CED51D05D48300A095ED /* APISModel.m */; };
+		3C72CEEC1D05D48300A095ED /* AuthorizationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CED61D05D48300A095ED /* AuthorizationModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEED1D05D48300A095ED /* AuthorizationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CED71D05D48300A095ED /* AuthorizationModel.m */; };
+		3C72CEEE1D05D48300A095ED /* DiscoveryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CED81D05D48300A095ED /* DiscoveryResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEEF1D05D48300A095ED /* DiscoveryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CED91D05D48300A095ED /* DiscoveryResponse.m */; };
+		3C72CEF01D05D48300A095ED /* LinkModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEDA1D05D48300A095ED /* LinkModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEF11D05D48300A095ED /* LinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEDB1D05D48300A095ED /* LinkModel.m */; };
+		3C72CEF21D05D48300A095ED /* MCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEDC1D05D48300A095ED /* MCError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEF31D05D48300A095ED /* MCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEDD1D05D48300A095ED /* MCError.m */; };
+		3C72CEF41D05D48300A095ED /* MCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEDE1D05D48300A095ED /* MCModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEF51D05D48300A095ED /* MCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEDF1D05D48300A095ED /* MCModel.m */; };
+		3C72CEF61D05D48300A095ED /* OperatorDataRedirectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE01D05D48300A095ED /* OperatorDataRedirectModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEF71D05D48300A095ED /* OperatorDataRedirectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE11D05D48300A095ED /* OperatorDataRedirectModel.m */; };
+		3C72CEF81D05D48300A095ED /* OperatorDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE21D05D48300A095ED /* OperatorDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEF91D05D48300A095ED /* OperatorDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE31D05D48300A095ED /* OperatorDataResponse.m */; };
+		3C72CEFA1D05D48300A095ED /* OperatorIdModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE41D05D48300A095ED /* OperatorIdModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEFB1D05D48300A095ED /* OperatorIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE51D05D48300A095ED /* OperatorIdModel.m */; };
+		3C72CEFC1D05D48300A095ED /* TokenModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE61D05D48300A095ED /* TokenModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEFD1D05D48300A095ED /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE71D05D48300A095ED /* TokenModel.m */; };
+		3C72CEFE1D05D48300A095ED /* TokenResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE81D05D48300A095ED /* TokenResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CEFF1D05D48300A095ED /* TokenResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE91D05D48300A095ED /* TokenResponseModel.m */; };
+		3C72CF021D05D60300A095ED /* MCJWTDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CF001D05D60300A095ED /* MCJWTDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C72CF031D05D60300A095ED /* MCJWTDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF011D05D60300A095ED /* MCJWTDecoder.m */; };
+		3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */; };
+		3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72CF0C1D0606EC00A095ED /* WebKit.framework */; };
+		3C72CF121D0649B700A095ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF111D0649B700A095ED /* Constants.swift */; };
+		3C72CF151D064B7500A095ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF141D064B7500A095ED /* Localizable.strings */; };
+		3C72CF171D064BF100A095ED /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF161D064BF100A095ED /* Localizator.swift */; };
+		3C72CF241D0664A700A095ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF231D0664A700A095ED /* main.m */; };
+		3C72CF271D0664A700A095ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF261D0664A700A095ED /* AppDelegate.m */; };
+		3C72CF2A1D0664A700A095ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF291D0664A700A095ED /* ViewController.m */; };
+		3C72CF2D1D0664A700A095ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF2B1D0664A700A095ED /* Main.storyboard */; };
+		3C72CF2F1D0664A700A095ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF2E1D0664A700A095ED /* Assets.xcassets */; };
+		3C72CF321D0664A700A095ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF301D0664A700A095ED /* LaunchScreen.storyboard */; };
+		3C72CF391D0667C800A095ED /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72CF381D0667C800A095ED /* Alamofire.framework */; };
+		3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */; };
+		3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */; };
+		3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */; };
+		3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38101D0868ED0051BBB1 /* Resources.swift */; };
+		3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38141D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift */; };
+		3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */; };
+		3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38181D086FE00051BBB1 /* Authorizer.swift */; };
+		3CD791551D04D0430023FD0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD791541D04D0430023FD0A /* Quick.framework */; };
+		3CD791571D04D04B0023FD0A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD791561D04D04B0023FD0A /* Nimble.framework */; };
+		3CD7915B1D04D0B20023FD0A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD7915A1D04D0B20023FD0A /* JSONModel.framework */; };
+		3CD791721D0571250023FD0A /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791711D0571250023FD0A /* WebController.swift */; };
+		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C08364E1D057A6400848597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C0836391D057A6400848597;
+			remoteInfo = Demo;
+		};
+		3C24E7BD1D0C2A2600D7634A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C3F82D11D04C7C8006EE8F4;
+			remoteInfo = MobileConnectSDK;
+		};
+		3C24E7D11D0C31B000D7634A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C3F82D11D04C7C8006EE8F4;
+			remoteInfo = MobileConnectSDK;
+		};
+		3C3F82DE1D04C7C8006EE8F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C3F82D11D04C7C8006EE8F4;
+			remoteInfo = MobileConnectSDK;
+		};
+		3C72CF0E1D06078200A095ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C0836391D057A6400848597;
+			remoteInfo = Demo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C24E7BF1D0C2A2600D7634A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3C24E7C51D0C2A6600D7634A /* JSONModel.framework in Embed Frameworks */,
+				3C24E7BC1D0C2A2600D7634A /* MobileConnectSDK.framework in Embed Frameworks */,
+				3C24E7C21D0C2A4D00D7634A /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C24E7CC1D0C318E00D7634A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3C24E7D01D0C31B000D7634A /* MobileConnectSDK.framework in Embed Frameworks */,
+				3C24E7CE1D0C319400D7634A /* JSONModel.framework in Embed Frameworks */,
+				3C24E7CB1D0C318E00D7634A /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3C08363A1D057A6400848597 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C08363C1D057A6400848597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3C08363E1D057A6400848597 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3C0836411D057A6400848597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3C0836431D057A6400848597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C0836461D057A6400848597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3C0836481D057A6400848597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C08364D1D057A6400848597 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C0836511D057A6400848597 /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
+		3C0836531D057A6400848597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/Fawkes/Desktop/MobileConnectSDK/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
+		3C24E7C31D0C2A6600D7634A /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = JSONModel.framework; path = "/Users/Fawkes/Desktop/MobileConnectSDK/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel.framework"; sourceTree = "<absolute>"; };
+		3C24E7C61D0C2D5000D7634A /* MCService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCService.swift; sourceTree = "<group>"; };
+		3C24E7D31D0C323800D7634A /* DSService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSService.swift; sourceTree = "<group>"; };
+		3C36B85C1D05B99800A997E3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3C36B85E1D05B9A600A997E3 /* WebController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebController.storyboard; sourceTree = "<group>"; };
+		3C36B8651D05BFE000A997E3 /* MobileConnectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectManager.swift; sourceTree = "<group>"; };
+		3C36EEFF1D09FC3100297A17 /* MobileConnectSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectSDK.swift; sourceTree = "<group>"; };
+		3C36EF011D0A177E00297A17 /* BaseMobileConnectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectService.swift; sourceTree = "<group>"; };
+		3C36EF031D0A19D200297A17 /* MobileConnectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectService.swift; sourceTree = "<group>"; };
+		3C36EF051D0A3EFF00297A17 /* MCRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCRequestConstructor.swift; sourceTree = "<group>"; };
+		3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MobileConnectSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileConnectSDK.h; sourceTree = "<group>"; };
+		3C3F82D71D04C7C8006EE8F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C3F82DC1D04C7C8006EE8F4 /* MobileConnectSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileConnectSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C3F82E11D04C7C8006EE8F4 /* MobileConnectSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileConnectSDKTests.swift; sourceTree = "<group>"; };
+		3C3F82E31D04C7C8006EE8F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C72CEB31D05CDA600A095ED /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel.framework"; sourceTree = "<group>"; };
+		3C72CED41D05D48300A095ED /* APISModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APISModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/APISModel.h; sourceTree = "<group>"; };
+		3C72CED51D05D48300A095ED /* APISModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APISModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/APISModel.m; sourceTree = "<group>"; };
+		3C72CED61D05D48300A095ED /* AuthorizationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/AuthorizationModel.h; sourceTree = "<group>"; };
+		3C72CED71D05D48300A095ED /* AuthorizationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/AuthorizationModel.m; sourceTree = "<group>"; };
+		3C72CED81D05D48300A095ED /* DiscoveryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryResponse.h; path = ../../../Old/MobileConnectSDK/Sources/Models/DiscoveryResponse.h; sourceTree = "<group>"; };
+		3C72CED91D05D48300A095ED /* DiscoveryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryResponse.m; path = ../../../Old/MobileConnectSDK/Sources/Models/DiscoveryResponse.m; sourceTree = "<group>"; };
+		3C72CEDA1D05D48300A095ED /* LinkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinkModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/LinkModel.h; sourceTree = "<group>"; };
+		3C72CEDB1D05D48300A095ED /* LinkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/LinkModel.m; sourceTree = "<group>"; };
+		3C72CEDC1D05D48300A095ED /* MCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCError.h; path = ../../../Old/MobileConnectSDK/Sources/Models/MCError.h; sourceTree = "<group>"; };
+		3C72CEDD1D05D48300A095ED /* MCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCError.m; path = ../../../Old/MobileConnectSDK/Sources/Models/MCError.m; sourceTree = "<group>"; };
+		3C72CEDE1D05D48300A095ED /* MCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/MCModel.h; sourceTree = "<group>"; };
+		3C72CEDF1D05D48300A095ED /* MCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/MCModel.m; sourceTree = "<group>"; };
+		3C72CEE01D05D48300A095ED /* OperatorDataRedirectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorDataRedirectModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataRedirectModel.h; sourceTree = "<group>"; };
+		3C72CEE11D05D48300A095ED /* OperatorDataRedirectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorDataRedirectModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataRedirectModel.m; sourceTree = "<group>"; };
+		3C72CEE21D05D48300A095ED /* OperatorDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorDataResponse.h; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataResponse.h; sourceTree = "<group>"; };
+		3C72CEE31D05D48300A095ED /* OperatorDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorDataResponse.m; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataResponse.m; sourceTree = "<group>"; };
+		3C72CEE41D05D48300A095ED /* OperatorIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorIdModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorIdModel.h; sourceTree = "<group>"; };
+		3C72CEE51D05D48300A095ED /* OperatorIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorIdModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorIdModel.m; sourceTree = "<group>"; };
+		3C72CEE61D05D48300A095ED /* TokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenModel.h; sourceTree = "<group>"; };
+		3C72CEE71D05D48300A095ED /* TokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenModel.m; sourceTree = "<group>"; };
+		3C72CEE81D05D48300A095ED /* TokenResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenResponseModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenResponseModel.h; sourceTree = "<group>"; };
+		3C72CEE91D05D48300A095ED /* TokenResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenResponseModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenResponseModel.m; sourceTree = "<group>"; };
+		3C72CF001D05D60300A095ED /* MCJWTDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCJWTDecoder.h; path = ../../../Old/MobileConnectSDK/Sources/MobileConnectUtilities/MCJWTDecoder.h; sourceTree = "<group>"; };
+		3C72CF011D05D60300A095ED /* MCJWTDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCJWTDecoder.m; path = ../../../Old/MobileConnectSDK/Sources/MobileConnectUtilities/MCJWTDecoder.m; sourceTree = "<group>"; };
+		3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerProtocol.swift; sourceTree = "<group>"; };
+		3C72CF0C1D0606EC00A095ED /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3C72CF111D0649B700A095ED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3C72CF141D064B7500A095ED /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		3C72CF161D064BF100A095ED /* Localizator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
+		3C72CF201D0664A700A095ED /* Demo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C72CF231D0664A700A095ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C72CF251D0664A700A095ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3C72CF261D0664A700A095ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3C72CF281D0664A700A095ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3C72CF291D0664A700A095ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3C72CF2C1D0664A700A095ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3C72CF2E1D0664A700A095ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C72CF311D0664A700A095ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3C72CF331D0664A700A095ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C72CF381D0667C800A095ED /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
+		3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryService.swift; sourceTree = "<group>"; };
+		3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNSException.swift; sourceTree = "<group>"; };
+		3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDictionary.swift; sourceTree = "<group>"; };
+		3C8F38101D0868ED0051BBB1 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		3C8F38141D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryRequestConstructor.swift; sourceTree = "<group>"; };
+		3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestConstructor.swift; sourceTree = "<group>"; };
+		3C8F38181D086FE00051BBB1 /* Authorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorizer.swift; sourceTree = "<group>"; };
+		3CD791541D04D0430023FD0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
+		3CD791561D04D04B0023FD0A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
+		3CD791581D04D0A60023FD0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		3CD7915A1D04D0B20023FD0A /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "Carthage/Checkouts/JSONModel/build/Debug-iphoneos/JSONModel.framework"; sourceTree = "<group>"; };
+		3CD791711D0571250023FD0A /* WebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
+		3CD791731D0571450023FD0A /* MobileConnectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C0836371D057A6400848597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C24E7C41D0C2A6600D7634A /* JSONModel.framework in Frameworks */,
+				3C24E7BB1D0C2A2600D7634A /* MobileConnectSDK.framework in Frameworks */,
+				3C24E7C11D0C2A4D00D7634A /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C08364A1D057A6400848597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3F82CE1D04C7C8006EE8F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C72CF391D0667C800A095ED /* Alamofire.framework in Frameworks */,
+				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,
+				3CD7915B1D04D0B20023FD0A /* JSONModel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3F82D91D04C7C8006EE8F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CD791571D04D04B0023FD0A /* Nimble.framework in Frameworks */,
+				3CD791551D04D0430023FD0A /* Quick.framework in Frameworks */,
+				3C3F82DD1D04C7C8006EE8F4 /* MobileConnectSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C72CF1D1D0664A700A095ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C24E7CF1D0C31B000D7634A /* MobileConnectSDK.framework in Frameworks */,
+				3C24E7CD1D0C319400D7634A /* JSONModel.framework in Frameworks */,
+				3C24E7CA1D0C318E00D7634A /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C08363B1D057A6400848597 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3C08363C1D057A6400848597 /* AppDelegate.swift */,
+				3C08363E1D057A6400848597 /* ViewController.swift */,
+				3C0836401D057A6400848597 /* Main.storyboard */,
+				3C0836431D057A6400848597 /* Assets.xcassets */,
+				3C0836451D057A6400848597 /* LaunchScreen.storyboard */,
+				3C0836481D057A6400848597 /* Info.plist */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		3C0836501D057A6400848597 /* DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C0836511D057A6400848597 /* DemoTests.swift */,
+				3C0836531D057A6400848597 /* Info.plist */,
+			);
+			path = DemoTests;
+			sourceTree = "<group>";
+		};
+		3C36B85B1D05B96C00A997E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C36B85C1D05B99800A997E3 /* Images.xcassets */,
+				3C36B85E1D05B9A600A997E3 /* WebController.storyboard */,
+				3C72CF141D064B7500A095ED /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C36B8641D05BFBC00A997E3 /* MobileConnectManager */ = {
+			isa = PBXGroup;
+			children = (
+				3C36B8651D05BFE000A997E3 /* MobileConnectManager.swift */,
+			);
+			path = MobileConnectManager;
+			sourceTree = "<group>";
+		};
+		3C36B8671D05C15E00A997E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF001D05D60300A095ED /* MCJWTDecoder.h */,
+				3C72CF011D05D60300A095ED /* MCJWTDecoder.m */,
+				3C72CED41D05D48300A095ED /* APISModel.h */,
+				3C72CED51D05D48300A095ED /* APISModel.m */,
+				3C72CED61D05D48300A095ED /* AuthorizationModel.h */,
+				3C72CED71D05D48300A095ED /* AuthorizationModel.m */,
+				3C72CED81D05D48300A095ED /* DiscoveryResponse.h */,
+				3C72CED91D05D48300A095ED /* DiscoveryResponse.m */,
+				3C72CEDA1D05D48300A095ED /* LinkModel.h */,
+				3C72CEDB1D05D48300A095ED /* LinkModel.m */,
+				3C72CEDC1D05D48300A095ED /* MCError.h */,
+				3C72CEDD1D05D48300A095ED /* MCError.m */,
+				3C72CEDE1D05D48300A095ED /* MCModel.h */,
+				3C72CEDF1D05D48300A095ED /* MCModel.m */,
+				3C72CEE01D05D48300A095ED /* OperatorDataRedirectModel.h */,
+				3C72CEE11D05D48300A095ED /* OperatorDataRedirectModel.m */,
+				3C72CEE21D05D48300A095ED /* OperatorDataResponse.h */,
+				3C72CEE31D05D48300A095ED /* OperatorDataResponse.m */,
+				3C72CEE41D05D48300A095ED /* OperatorIdModel.h */,
+				3C72CEE51D05D48300A095ED /* OperatorIdModel.m */,
+				3C72CEE61D05D48300A095ED /* TokenModel.h */,
+				3C72CEE71D05D48300A095ED /* TokenModel.m */,
+				3C72CEE81D05D48300A095ED /* TokenResponseModel.h */,
+				3C72CEE91D05D48300A095ED /* TokenResponseModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3C3F82C81D04C7C8006EE8F4 = {
+			isa = PBXGroup;
+			children = (
+				3C24E7C31D0C2A6600D7634A /* JSONModel.framework */,
+				3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */,
+				3C08363B1D057A6400848597 /* Demo */,
+				3C0836501D057A6400848597 /* DemoTests */,
+				3C72CF211D0664A700A095ED /* Demo2 */,
+				3CD7915C1D04D0E80023FD0A /* Frameworks */,
+				3C3F82D41D04C7C8006EE8F4 /* MobileConnectSDK */,
+				3C3F82E01D04C7C8006EE8F4 /* MobileConnectSDKTests */,
+				3C3F82D31D04C7C8006EE8F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3C3F82D31D04C7C8006EE8F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */,
+				3C3F82DC1D04C7C8006EE8F4 /* MobileConnectSDKTests.xctest */,
+				3C08363A1D057A6400848597 /* Demo.app */,
+				3C08364D1D057A6400848597 /* DemoTests.xctest */,
+				3C72CF201D0664A700A095ED /* Demo2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C3F82D41D04C7C8006EE8F4 /* MobileConnectSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF3E1D06ACF600A095ED /* Extensions */,
+				3C72CF051D05E7A500A095ED /* Services */,
+				3C36B8671D05C15E00A997E3 /* Models */,
+				3C36B8641D05BFBC00A997E3 /* MobileConnectManager */,
+				3C36B85B1D05B96C00A997E3 /* Resources */,
+				3CD791701D0570920023FD0A /* Controllers */,
+				3CD7916F1D05706B0023FD0A /* Views */,
+				3CD791691D056F2E0023FD0A /* Utilities */,
+				3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */,
+				3C3F82D71D04C7C8006EE8F4 /* Info.plist */,
+				3C72CF111D0649B700A095ED /* Constants.swift */,
+			);
+			path = MobileConnectSDK;
+			sourceTree = "<group>";
+		};
+		3C3F82E01D04C7C8006EE8F4 /* MobileConnectSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C3F82E11D04C7C8006EE8F4 /* MobileConnectSDKTests.swift */,
+				3C3F82E31D04C7C8006EE8F4 /* Info.plist */,
+			);
+			path = MobileConnectSDKTests;
+			sourceTree = "<group>";
+		};
+		3C72CF051D05E7A500A095ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF091D05E7D900A095ED /* MobileConnect */,
+				3C72CF081D05E7CC00A095ED /* Discovery */,
+				3C36EF011D0A177E00297A17 /* BaseMobileConnectService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3C72CF081D05E7CC00A095ED /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */,
+				3C24E7D31D0C323800D7634A /* DSService.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		3C72CF091D05E7D900A095ED /* MobileConnect */ = {
+			isa = PBXGroup;
+			children = (
+				3C36EF031D0A19D200297A17 /* MobileConnectService.swift */,
+				3C24E7C61D0C2D5000D7634A /* MCService.swift */,
+			);
+			path = MobileConnect;
+			sourceTree = "<group>";
+		};
+		3C72CF211D0664A700A095ED /* Demo2 */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF251D0664A700A095ED /* AppDelegate.h */,
+				3C72CF261D0664A700A095ED /* AppDelegate.m */,
+				3C72CF281D0664A700A095ED /* ViewController.h */,
+				3C72CF291D0664A700A095ED /* ViewController.m */,
+				3C72CF2B1D0664A700A095ED /* Main.storyboard */,
+				3C72CF2E1D0664A700A095ED /* Assets.xcassets */,
+				3C72CF301D0664A700A095ED /* LaunchScreen.storyboard */,
+				3C72CF331D0664A700A095ED /* Info.plist */,
+				3C72CF221D0664A700A095ED /* Supporting Files */,
+			);
+			path = Demo2;
+			sourceTree = "<group>";
+		};
+		3C72CF221D0664A700A095ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF231D0664A700A095ED /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C72CF3E1D06ACF600A095ED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */,
+				3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3C8F38121D086F6F0051BBB1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3C8F38131D086F8D0051BBB1 /* RequestConstructor */,
+				3C8F38181D086FE00051BBB1 /* Authorizer.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		3C8F38131D086F8D0051BBB1 /* RequestConstructor */ = {
+			isa = PBXGroup;
+			children = (
+				3C8F38141D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift */,
+				3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */,
+				3C36EF051D0A3EFF00297A17 /* MCRequestConstructor.swift */,
+			);
+			path = RequestConstructor;
+			sourceTree = "<group>";
+		};
+		3CD7915C1D04D0E80023FD0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C72CF381D0667C800A095ED /* Alamofire.framework */,
+				3C72CF0C1D0606EC00A095ED /* WebKit.framework */,
+				3C72CEB31D05CDA600A095ED /* JSONModel.framework */,
+				3CD7915A1D04D0B20023FD0A /* JSONModel.framework */,
+				3CD791581D04D0A60023FD0A /* Alamofire.framework */,
+				3CD791561D04D04B0023FD0A /* Nimble.framework */,
+				3CD791541D04D0430023FD0A /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CD791691D056F2E0023FD0A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3C8F38121D086F6F0051BBB1 /* Networking */,
+				3C8F38101D0868ED0051BBB1 /* Resources.swift */,
+				3C72CF161D064BF100A095ED /* Localizator.swift */,
+				3C36EEFF1D09FC3100297A17 /* MobileConnectSDK.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3CD7916F1D05706B0023FD0A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CD791731D0571450023FD0A /* MobileConnectButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3CD791701D0570920023FD0A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3CD791711D0571250023FD0A /* WebController.swift */,
+				3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3C3F82CF1D04C7C8006EE8F4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C72CEF01D05D48300A095ED /* LinkModel.h in Headers */,
+				3C72CEEE1D05D48300A095ED /* DiscoveryResponse.h in Headers */,
+				3C72CEF61D05D48300A095ED /* OperatorDataRedirectModel.h in Headers */,
+				3C72CF021D05D60300A095ED /* MCJWTDecoder.h in Headers */,
+				3C72CEEC1D05D48300A095ED /* AuthorizationModel.h in Headers */,
+				3C72CEF41D05D48300A095ED /* MCModel.h in Headers */,
+				3C3F82D61D04C7C8006EE8F4 /* MobileConnectSDK.h in Headers */,
+				3C72CEEA1D05D48300A095ED /* APISModel.h in Headers */,
+				3C72CEFA1D05D48300A095ED /* OperatorIdModel.h in Headers */,
+				3C72CEF21D05D48300A095ED /* MCError.h in Headers */,
+				3C72CEFC1D05D48300A095ED /* TokenModel.h in Headers */,
+				3C72CEF81D05D48300A095ED /* OperatorDataResponse.h in Headers */,
+				3C72CEFE1D05D48300A095ED /* TokenResponseModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3C0836391D057A6400848597 /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C0836581D057A6400848597 /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				3C0836361D057A6400848597 /* Sources */,
+				3C0836371D057A6400848597 /* Frameworks */,
+				3C0836381D057A6400848597 /* Resources */,
+				3C24E7BF1D0C2A2600D7634A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C24E7BE1D0C2A2600D7634A /* PBXTargetDependency */,
+			);
+			name = Demo;
+			productName = Demo;
+			productReference = 3C08363A1D057A6400848597 /* Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3C08364C1D057A6400848597 /* DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C0836591D057A6400848597 /* Build configuration list for PBXNativeTarget "DemoTests" */;
+			buildPhases = (
+				3C0836491D057A6400848597 /* Sources */,
+				3C08364A1D057A6400848597 /* Frameworks */,
+				3C08364B1D057A6400848597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C08364F1D057A6400848597 /* PBXTargetDependency */,
+			);
+			name = DemoTests;
+			productName = DemoTests;
+			productReference = 3C08364D1D057A6400848597 /* DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C3F82E61D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDK" */;
+			buildPhases = (
+				3C3F82CD1D04C7C8006EE8F4 /* Sources */,
+				3C3F82CE1D04C7C8006EE8F4 /* Frameworks */,
+				3C3F82CF1D04C7C8006EE8F4 /* Headers */,
+				3C3F82D01D04C7C8006EE8F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobileConnectSDK;
+			productName = MobileConnectSDK;
+			productReference = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3C3F82DB1D04C7C8006EE8F4 /* MobileConnectSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C3F82E91D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDKTests" */;
+			buildPhases = (
+				3C3F82D81D04C7C8006EE8F4 /* Sources */,
+				3C3F82D91D04C7C8006EE8F4 /* Frameworks */,
+				3C3F82DA1D04C7C8006EE8F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C3F82DF1D04C7C8006EE8F4 /* PBXTargetDependency */,
+				3C72CF0F1D06078200A095ED /* PBXTargetDependency */,
+			);
+			name = MobileConnectSDKTests;
+			productName = MobileConnectSDKTests;
+			productReference = 3C3F82DC1D04C7C8006EE8F4 /* MobileConnectSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3C72CF1F1D0664A700A095ED /* Demo2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C72CF341D0664A700A095ED /* Build configuration list for PBXNativeTarget "Demo2" */;
+			buildPhases = (
+				3C72CF1C1D0664A700A095ED /* Sources */,
+				3C72CF1D1D0664A700A095ED /* Frameworks */,
+				3C72CF1E1D0664A700A095ED /* Resources */,
+				3C24E7CC1D0C318E00D7634A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C24E7D21D0C31B000D7634A /* PBXTargetDependency */,
+			);
+			name = Demo2;
+			productName = Demo2;
+			productReference = 3C72CF201D0664A700A095ED /* Demo2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C3F82C91D04C7C8006EE8F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = GSMA;
+				TargetAttributes = {
+					3C0836391D057A6400848597 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					3C08364C1D057A6400848597 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 3C0836391D057A6400848597;
+					};
+					3C3F82D11D04C7C8006EE8F4 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					3C3F82DB1D04C7C8006EE8F4 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					3C72CF1F1D0664A700A095ED = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 3C3F82CC1D04C7C8006EE8F4 /* Build configuration list for PBXProject "MobileConnectSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3C3F82C81D04C7C8006EE8F4;
+			productRefGroup = 3C3F82D31D04C7C8006EE8F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */,
+				3C3F82DB1D04C7C8006EE8F4 /* MobileConnectSDKTests */,
+				3C0836391D057A6400848597 /* Demo */,
+				3C08364C1D057A6400848597 /* DemoTests */,
+				3C72CF1F1D0664A700A095ED /* Demo2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C0836381D057A6400848597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C0836471D057A6400848597 /* LaunchScreen.storyboard in Resources */,
+				3C0836441D057A6400848597 /* Assets.xcassets in Resources */,
+				3C0836421D057A6400848597 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C08364B1D057A6400848597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3F82D01D04C7C8006EE8F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */,
+				3C72CF151D064B7500A095ED /* Localizable.strings in Resources */,
+				3C36B85F1D05B9A600A997E3 /* WebController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3F82DA1D04C7C8006EE8F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C72CF1E1D0664A700A095ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C72CF321D0664A700A095ED /* LaunchScreen.storyboard in Resources */,
+				3C72CF2F1D0664A700A095ED /* Assets.xcassets in Resources */,
+				3C72CF2D1D0664A700A095ED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C0836361D057A6400848597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C08363F1D057A6400848597 /* ViewController.swift in Sources */,
+				3C08363D1D057A6400848597 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C0836491D057A6400848597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C0836521D057A6400848597 /* DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3F82CD1D04C7C8006EE8F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C72CF121D0649B700A095ED /* Constants.swift in Sources */,
+				3C72CEFD1D05D48300A095ED /* TokenModel.m in Sources */,
+				3C72CEEF1D05D48300A095ED /* DiscoveryResponse.m in Sources */,
+				3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */,
+				3C72CF171D064BF100A095ED /* Localizator.swift in Sources */,
+				3C72CEFB1D05D48300A095ED /* OperatorIdModel.m in Sources */,
+				3C24E7D41D0C323800D7634A /* DSService.swift in Sources */,
+				3C72CF031D05D60300A095ED /* MCJWTDecoder.m in Sources */,
+				3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */,
+				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
+				3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */,
+				3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */,
+				3C72CEED1D05D48300A095ED /* AuthorizationModel.m in Sources */,
+				3C72CEF51D05D48300A095ED /* MCModel.m in Sources */,
+				3C72CEFF1D05D48300A095ED /* TokenResponseModel.m in Sources */,
+				3C72CEF71D05D48300A095ED /* OperatorDataRedirectModel.m in Sources */,
+				3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */,
+				3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */,
+				3C36EF001D09FC3100297A17 /* MobileConnectSDK.swift in Sources */,
+				3C36EF041D0A19D200297A17 /* MobileConnectService.swift in Sources */,
+				3C72CEEB1D05D48300A095ED /* APISModel.m in Sources */,
+				3C72CEF91D05D48300A095ED /* OperatorDataResponse.m in Sources */,
+				3C36EF061D0A3EFF00297A17 /* MCRequestConstructor.swift in Sources */,
+				3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */,
+				3C72CEF31D05D48300A095ED /* MCError.m in Sources */,
+				3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */,
+				3C72CEF11D05D48300A095ED /* LinkModel.m in Sources */,
+				3C36EF021D0A177E00297A17 /* BaseMobileConnectService.swift in Sources */,
+				3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */,
+				3CD791721D0571250023FD0A /* WebController.swift in Sources */,
+				3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3F82D81D04C7C8006EE8F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C3F82E21D04C7C8006EE8F4 /* MobileConnectSDKTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C72CF1C1D0664A700A095ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C72CF2A1D0664A700A095ED /* ViewController.m in Sources */,
+				3C72CF271D0664A700A095ED /* AppDelegate.m in Sources */,
+				3C72CF241D0664A700A095ED /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C08364F1D057A6400848597 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C0836391D057A6400848597 /* Demo */;
+			targetProxy = 3C08364E1D057A6400848597 /* PBXContainerItemProxy */;
+		};
+		3C24E7BE1D0C2A2600D7634A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */;
+			targetProxy = 3C24E7BD1D0C2A2600D7634A /* PBXContainerItemProxy */;
+		};
+		3C24E7D21D0C31B000D7634A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */;
+			targetProxy = 3C24E7D11D0C31B000D7634A /* PBXContainerItemProxy */;
+		};
+		3C3F82DF1D04C7C8006EE8F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */;
+			targetProxy = 3C3F82DE1D04C7C8006EE8F4 /* PBXContainerItemProxy */;
+		};
+		3C72CF0F1D06078200A095ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C0836391D057A6400848597 /* Demo */;
+			targetProxy = 3C72CF0E1D06078200A095ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3C0836401D057A6400848597 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C0836411D057A6400848597 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3C0836451D057A6400848597 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C0836461D057A6400848597 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3C72CF2B1D0664A700A095ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C72CF2C1D0664A700A095ED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3C72CF301D0664A700A095ED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C72CF311D0664A700A095ED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3C0836541D057A6400848597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = Demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3C0836551D057A6400848597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = Demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3C0836561D057A6400848597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.DemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Debug;
+		};
+		3C0836571D057A6400848597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.DemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Release;
+		};
+		3C3F82E41D04C7C8006EE8F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3C3F82E51D04C7C8006EE8F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3C3F82E71D04C7C8006EE8F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator",
+				);
+				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3C3F82E81D04C7C8006EE8F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator",
+				);
+				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Release;
+		};
+		3C3F82EA1D04C7C8006EE8F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MobileConnectSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3C3F82EB1D04C7C8006EE8F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MobileConnectSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3C72CF351D0664A700A095ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = Demo2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.Demo2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		3C72CF361D0664A700A095ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = Demo2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.Demo2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C0836581D057A6400848597 /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C0836541D057A6400848597 /* Debug */,
+				3C0836551D057A6400848597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C0836591D057A6400848597 /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C0836561D057A6400848597 /* Debug */,
+				3C0836571D057A6400848597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C3F82CC1D04C7C8006EE8F4 /* Build configuration list for PBXProject "MobileConnectSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C3F82E41D04C7C8006EE8F4 /* Debug */,
+				3C3F82E51D04C7C8006EE8F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C3F82E61D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C3F82E71D04C7C8006EE8F4 /* Debug */,
+				3C3F82E81D04C7C8006EE8F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C3F82E91D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C3F82EA1D04C7C8006EE8F4 /* Debug */,
+				3C3F82EB1D04C7C8006EE8F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C72CF341D0664A700A095ED /* Build configuration list for PBXNativeTarget "Demo2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C72CF351D0664A700A095ED /* Debug */,
+				3C72CF361D0664A700A095ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MCService Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MCService" class="dashAnchor"></a>
+    <a title="MCService Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">MobileConnectSDK Docs</a> (72% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">MobileConnectSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MCService Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C16MobileConnectSDK24BaseMobileConnectService">BaseMobileConnectService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BaseWebController.html">BaseWebController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DSService.html">DSService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DiscoveryService.html">DiscoveryService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MCService.html">MCService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileConnectButton.html">MobileConnectButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileConnectManager.html">MobileConnectManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileConnectSDK.html">MobileConnectSDK</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileConnectService.html">MobileConnectService</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MCErrorCode.html">MCErrorCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MCLevelOfAssurance.html">MCLevelOfAssurance</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MobileConnectManagerDelegate.html">MobileConnectManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16MobileConnectSDK21DiscoveryDataResponse">DiscoveryDataResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16MobileConnectSDK22DiscoveryResponseBlock">DiscoveryResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16MobileConnectSDK31MobileConnectControllerResponse">MobileConnectControllerResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16MobileConnectSDK25MobileConnectDataResponse">MobileConnectDataResponse</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MCService</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MCService</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides access to all needed Mobile Connect services.
+Allows getting token data by providing a subscriber id, in which case only the loading web view will be presented.
+Allows getting token data by providing a subscriber id in which case a web view will be presented.
+The webview will require client&rsquo;s phone number.</p>
+
+<p>Objective C Wrapper class around MobileConnectService
+It is needed because objective c cannot access generic classes or classes which inherit from generic classes</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/init"></a>
+                <a name="//apple_ref/swift/Section/init" class="dashAnchor"></a>
+                <a href="#/init">
+                  <h3 class="section-name">init</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16MobileConnectSDK9MCServicecFT16levelOfAssuranceOS_18MCLevelOfAssurance8clientIdSS16authorizationURLSS8tokenURLSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(levelOfAssurance:clientId:authorizationURL:tokenURL:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16MobileConnectSDK9MCServicecFT16levelOfAssuranceOS_18MCLevelOfAssurance8clientIdSS16authorizationURLSS8tokenURLSS_S0_">init(levelOfAssurance:clientId:authorizationURL:tokenURL:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The constructor to be used in case a specific level of assurance is needed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">levelOfAssurance</span> <span class="p">:</span> <span class="kt"><a href="../Enums/MCLevelOfAssurance.html">MCLevelOfAssurance</a></span><span class="p">,</span>
+                            <span class="nv">clientId</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">authorizationURL</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                            <span class="nv">tokenURL</span> <span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16MobileConnectSDK9MCServicecFT8clientIdSS16authorizationURLSS8tokenURLSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(clientId:authorizationURL:tokenURL:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16MobileConnectSDK9MCServicecFT8clientIdSS16authorizationURLSS8tokenURLSS_S0_">init(clientId:authorizationURL:tokenURL:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This constructor will default the levelOfAssurance to Level 2.
+- Parameter clientId: the client id received from the discovery OperatorData model
+- Parameter authorizationURL: the authorization url received from the discovery OperatorData model
+- Parameter tokenURL: the token url received from the discovery OperatorData model</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">clientId</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">authorizationURL</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">tokenURL</span> <span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the client id received from the discovery OperatorData model</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>authorizationURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the authorization url received from the discovery OperatorData model</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tokenURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the token url received from the discovery OperatorData model</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Main%20mobile%20connect%20service%20method"></a>
+                <a name="//apple_ref/swift/Section/Main mobile connect service method" class="dashAnchor"></a>
+                <a href="#/Main%20mobile%20connect%20service%20method">
+                  <h3 class="section-name">Main mobile connect service method</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16MobileConnectSDK9MCService20getTokenInControllerFTCSo16UIViewController12subscriberIdGSqSS_19completitionHandlerFT10controllerGSqCS_17BaseWebController_10tokenModelGSqCSo10TokenModel_5errorGSqCSo7NSError__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/getTokenInController(_:subscriberId:completitionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16MobileConnectSDK9MCService20getTokenInControllerFTCSo16UIViewController12subscriberIdGSqSS_19completitionHandlerFT10controllerGSqCS_17BaseWebController_10tokenModelGSqCSo10TokenModel_5errorGSqCSo7NSError__T__T_">getTokenInController(_:subscriberId:completitionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
+- Parameter controller: the controller in which the Mobile Connect should present the web view controller
+- Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
+- Parameter completitionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getTokenInController</span><span class="p">(</span><span class="nv">controller</span> <span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">subscriberId</span> <span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completitionHandler</span> <span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:16MobileConnectSDK31MobileConnectControllerResponse">MobileConnectControllerResponse</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the controller in which the Mobile Connect should present the web view controller</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriberId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the subscriber id received from the Discovery service operatorData model</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completitionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://developer.mobileconnect.io" target="_blank" rel="external">Dan Andoni</a>. All rights reserved. (Last updated: 2016-06-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

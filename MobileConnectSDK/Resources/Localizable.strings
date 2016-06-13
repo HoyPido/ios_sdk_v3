@@ -5,3 +5,38 @@
   Created by Andoni Dan on 07/06/16.
   Copyright © 2016 GSMA. All rights reserved.
 */
+
+"Webview could not load nil request" = "Webview could not load nil request";
+"User cancelled action" = "User cancelled action";
+"NoCredentials" = "NoCredentials";
+"Please provide client secret and client key for accessing Mobile Connect SDK" = "Please provide client secret and client key for accessing Mobile Connect SDK";
+
+"NillEndpoint" = "NillEndpoint";
+"A nil application endpoint is not allowed" = "A nil application endpoint is not allowed";
+
+"Could not deserialize object" = "Could not deserialize object";
+
+"Web controller could not be instantiated" = "Web controller could not be instantiated";
+
+"The provided country code was nil" = "The provided country code was nil";
+"The provided network code was nil" = "The provided network code was nil";
+"The provided phone number was nil" = "The provided phone number was nil";
+
+"Unknown error" = "Unknown error";
+
+"Concurrent requests are not supported" = "Concurrent requests are not supported";
+
+"One or more of the passed parameters were nil" = "One or more of the passed parameters were nil";
+
+"No redirect parameter" = "No redirect parameter";
+
+"The provided level of assurance is nil" = "The provided level of assurance is nil";
+"The provided client id was nil" = "The provided client id was nil";
+"The provided authorization url was nil" = "The provided authorization url was nil";
+"The provided token url was nil" = "The provided token url was nil";
+"The provided subcriber id was nil" = "The provided subcriber id was nil";
+
+"Received code was nil" = "Received code was nil";
+
+"MobileConnectManager delegate should conform to protocol MobileConnectManagerDelegate" = "MobileConnectManager delegate should conform to protocol MobileConnectManagerDelegate";
+"The buttons container controller cant be found. Please use the MobileConnectManager." = "The buttons container controller cant be found. Please use the MobileConnectManager.";

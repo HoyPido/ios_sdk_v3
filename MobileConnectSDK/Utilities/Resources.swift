@@ -12,14 +12,14 @@ import Foundation
 private let kResourceBundleIdentifier : String = "com.GSMA.MobileConnectSDK"
 private let kImageName : String = "mobileConnectButtonImage"
 
-public class Resources
+class Resources
 {
-    public class var bundle : NSBundle?
+    class var bundle : NSBundle?
     {
         return NSBundle(identifier: kResourceBundleIdentifier)
     }
     
-    public class var mobileConnectImage : UIImage?
+    class var mobileConnectImage : UIImage?
     {
         guard let bundle = bundle else
         {

@@ -7,29 +7,82 @@
 //
 
 import UIKit
+import WebKit
 
-class WebController: UIViewController {
+protocol WebControllerDelegate
+{
+    func webControllerDidCancel(controller : BaseWebController)
+    func webController(controller : BaseWebController, shouldRedirectToURL url : NSURL) -> Bool
+    func webController(controller : BaseWebController, failedLoadingRequestWithError error : NSError?)
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+///The mobile connect controller which is responsible for presenting and manipulating the web view.
+public class BaseWebController : UIViewController, WebControllerProtocol {
+    var delegate: WebControllerDelegate?
+    var requestToLoad: NSURLRequest?
+    
+    //unfortunately this cannot be provided in the protocol extension, as protocol extensions can't be accessed by obj c runtime at the time of writing [Swift 2.2]
+    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.TopAttached
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+class WebController: BaseWebController {
+
+    //MARK: Outlets
+    @IBOutlet weak var webViewContainer: UIView!
+    
+    //MARK: iVars
+    lazy var webView : WKWebView = {
+        
+        [weak self] in
+        
+        let configuration : WKWebViewConfiguration = WKWebViewConfiguration()
+        
+        configuration.preferences = WKPreferences()
+        
+        let localWebView : WKWebView = WKWebView(frame: self?.webViewContainer.bounds ?? CGRectMake(0, 0, 0, 0), configuration: configuration)
+        
+        localWebView.navigationDelegate = self
+        
+        self?.webViewContainer?.addSubview(localWebView)
+        
+        return localWebView
+    }()
+    
+    //MARK: View life cycle methods
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let request = requestToLoad
+        {
+            webView.loadRequest(request)
+        }
+        else
+        {
+            delegate?.webController(self, failedLoadingRequestWithError: MCErrorCode.NoRequestToLoad.error)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: Web view delegate methods
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void)
+    {
+        if let url = navigationAction.request.URL, delegate = delegate
+        {
+            decisionHandler(delegate.webController(self, shouldRedirectToURL: url) ? WKNavigationActionPolicy.Allow : WKNavigationActionPolicy.Cancel)
+        }
+        else
+        {
+            decisionHandler(WKNavigationActionPolicy.Allow)
+        }
     }
-    */
-
+    
+    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+        delegate?.webController(self, failedLoadingRequestWithError: error)
+    }
+    
+    //MARK: Events
+    @IBAction func cancelAction(sender: AnyObject) {
+        delegate?.webControllerDidCancel(self)
+    }
 }

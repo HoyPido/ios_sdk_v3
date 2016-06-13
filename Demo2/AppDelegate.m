@@ -7,6 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import <MobileConnectSDK/MobileConnectSDK-Swift.h>
+
+#define kClientKey @"a25e91c5-ab1e-4f9e-9fd9-4cd1482c0a48"
+
+#define kClientSecret @"1d95d440-49fe-455e-8fd4-b5903b8c78ec"
+
+#define kSandboxEndpoint @"http://discovery.sandbox2.mobileconnect.io/v2/discovery"
+
+#define kRedirectURL @"http://test.test.com"
 
 @interface AppDelegate ()
 
@@ -17,6 +26,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [MobileConnectSDK setRedirect:[NSURL URLWithString:kRedirectURL]];
+    [MobileConnectSDK setClientKey:kClientKey];
+    [MobileConnectSDK setClientSecret:kClientSecret];
+    [MobileConnectSDK setApplicationEndpoint:kSandboxEndpoint];
+    
     return YES;
 }
 

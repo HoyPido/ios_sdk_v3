@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileConnectSDK/MobileConnectSDK-Swift.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<MobileConnectManagerDelegate>
 
 
 @end

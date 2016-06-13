@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+func + <K, V>(left: [K:V], right: [K:V]) -> [K:V] { // 1
+    var leftCopy = left
+    
+    for (k, v) in right {
+        leftCopy.updateValue(v, forKey: k)
+    }
+    return leftCopy
+}

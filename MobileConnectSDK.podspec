@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
   spec.name = "MobileConnectSDK"
-  spec.version = "1.0.3"
+  spec.version = "1.0.4"
   spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
   spec.homepage = "https://developer.mobileconnect.io"
-  spec.license = { type: 'MIT', file: 'LICENSE' }
+  spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
   spec.authors = { "Dan Andoni" => 'dan.andoni@bjss.com' }
   spec.social_media_url = "https://developer.mobileconnect.io"
 

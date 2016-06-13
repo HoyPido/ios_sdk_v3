@@ -37,30 +37,30 @@
 		3C3F82D61D04C7C8006EE8F4 /* MobileConnectSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C3F82DD1D04C7C8006EE8F4 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		3C3F82E21D04C7C8006EE8F4 /* MobileConnectSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F82E11D04C7C8006EE8F4 /* MobileConnectSDKTests.swift */; };
-		3C72CEEA1D05D48300A095ED /* APISModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CED41D05D48300A095ED /* APISModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEEB1D05D48300A095ED /* APISModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CED51D05D48300A095ED /* APISModel.m */; };
-		3C72CEEC1D05D48300A095ED /* AuthorizationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CED61D05D48300A095ED /* AuthorizationModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEED1D05D48300A095ED /* AuthorizationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CED71D05D48300A095ED /* AuthorizationModel.m */; };
-		3C72CEEE1D05D48300A095ED /* DiscoveryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CED81D05D48300A095ED /* DiscoveryResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEEF1D05D48300A095ED /* DiscoveryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CED91D05D48300A095ED /* DiscoveryResponse.m */; };
-		3C72CEF01D05D48300A095ED /* LinkModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEDA1D05D48300A095ED /* LinkModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEF11D05D48300A095ED /* LinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEDB1D05D48300A095ED /* LinkModel.m */; };
-		3C72CEF21D05D48300A095ED /* MCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEDC1D05D48300A095ED /* MCError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEF31D05D48300A095ED /* MCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEDD1D05D48300A095ED /* MCError.m */; };
-		3C72CEF41D05D48300A095ED /* MCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEDE1D05D48300A095ED /* MCModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEF51D05D48300A095ED /* MCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEDF1D05D48300A095ED /* MCModel.m */; };
-		3C72CEF61D05D48300A095ED /* OperatorDataRedirectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE01D05D48300A095ED /* OperatorDataRedirectModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEF71D05D48300A095ED /* OperatorDataRedirectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE11D05D48300A095ED /* OperatorDataRedirectModel.m */; };
-		3C72CEF81D05D48300A095ED /* OperatorDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE21D05D48300A095ED /* OperatorDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEF91D05D48300A095ED /* OperatorDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE31D05D48300A095ED /* OperatorDataResponse.m */; };
-		3C72CEFA1D05D48300A095ED /* OperatorIdModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE41D05D48300A095ED /* OperatorIdModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEFB1D05D48300A095ED /* OperatorIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE51D05D48300A095ED /* OperatorIdModel.m */; };
-		3C72CEFC1D05D48300A095ED /* TokenModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE61D05D48300A095ED /* TokenModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEFD1D05D48300A095ED /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE71D05D48300A095ED /* TokenModel.m */; };
-		3C72CEFE1D05D48300A095ED /* TokenResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CEE81D05D48300A095ED /* TokenResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CEFF1D05D48300A095ED /* TokenResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CEE91D05D48300A095ED /* TokenResponseModel.m */; };
-		3C72CF021D05D60300A095ED /* MCJWTDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C72CF001D05D60300A095ED /* MCJWTDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C72CF031D05D60300A095ED /* MCJWTDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF011D05D60300A095ED /* MCJWTDecoder.m */; };
+		3C401A1F1D0EB36700F73EA5 /* APISModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A091D0EB36700F73EA5 /* APISModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A201D0EB36700F73EA5 /* APISModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A0A1D0EB36700F73EA5 /* APISModel.m */; };
+		3C401A211D0EB36700F73EA5 /* AuthorizationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A0B1D0EB36700F73EA5 /* AuthorizationModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A221D0EB36700F73EA5 /* AuthorizationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A0C1D0EB36700F73EA5 /* AuthorizationModel.m */; };
+		3C401A231D0EB36700F73EA5 /* DiscoveryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A0D1D0EB36700F73EA5 /* DiscoveryResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A241D0EB36700F73EA5 /* DiscoveryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A0E1D0EB36700F73EA5 /* DiscoveryResponse.m */; };
+		3C401A251D0EB36700F73EA5 /* LinkModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A0F1D0EB36700F73EA5 /* LinkModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A261D0EB36700F73EA5 /* LinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A101D0EB36700F73EA5 /* LinkModel.m */; };
+		3C401A271D0EB36700F73EA5 /* MCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A111D0EB36700F73EA5 /* MCError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A281D0EB36700F73EA5 /* MCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A121D0EB36700F73EA5 /* MCError.m */; };
+		3C401A291D0EB36700F73EA5 /* MCJWTDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A131D0EB36700F73EA5 /* MCJWTDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A2A1D0EB36700F73EA5 /* MCJWTDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A141D0EB36700F73EA5 /* MCJWTDecoder.m */; };
+		3C401A2B1D0EB36700F73EA5 /* MCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A151D0EB36700F73EA5 /* MCModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A2C1D0EB36700F73EA5 /* MCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A161D0EB36700F73EA5 /* MCModel.m */; };
+		3C401A2D1D0EB36700F73EA5 /* OperatorDataRedirectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A171D0EB36700F73EA5 /* OperatorDataRedirectModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A2E1D0EB36700F73EA5 /* OperatorDataRedirectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A181D0EB36700F73EA5 /* OperatorDataRedirectModel.m */; };
+		3C401A2F1D0EB36700F73EA5 /* OperatorDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A191D0EB36700F73EA5 /* OperatorDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A301D0EB36700F73EA5 /* OperatorDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A1A1D0EB36700F73EA5 /* OperatorDataResponse.m */; };
+		3C401A311D0EB36700F73EA5 /* OperatorIdModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A1B1D0EB36700F73EA5 /* OperatorIdModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A321D0EB36700F73EA5 /* OperatorIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A1C1D0EB36700F73EA5 /* OperatorIdModel.m */; };
+		3C401A331D0EB36700F73EA5 /* TokenModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A1D1D0EB36700F73EA5 /* TokenModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A1E1D0EB36700F73EA5 /* TokenModel.m */; };
+		3C401A371D0EB43600F73EA5 /* TokenResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C401A381D0EB43600F73EA5 /* TokenResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */; };
 		3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */; };
 		3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72CF0C1D0606EC00A095ED /* WebKit.framework */; };
 		3C72CF121D0649B700A095ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF111D0649B700A095ED /* Constants.swift */; };
@@ -189,31 +189,31 @@
 		3C3F82DC1D04C7C8006EE8F4 /* MobileConnectSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileConnectSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3F82E11D04C7C8006EE8F4 /* MobileConnectSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileConnectSDKTests.swift; sourceTree = "<group>"; };
 		3C3F82E31D04C7C8006EE8F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C401A091D0EB36700F73EA5 /* APISModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APISModel.h; sourceTree = "<group>"; };
+		3C401A0A1D0EB36700F73EA5 /* APISModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APISModel.m; sourceTree = "<group>"; };
+		3C401A0B1D0EB36700F73EA5 /* AuthorizationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationModel.h; sourceTree = "<group>"; };
+		3C401A0C1D0EB36700F73EA5 /* AuthorizationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationModel.m; sourceTree = "<group>"; };
+		3C401A0D1D0EB36700F73EA5 /* DiscoveryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryResponse.h; sourceTree = "<group>"; };
+		3C401A0E1D0EB36700F73EA5 /* DiscoveryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryResponse.m; sourceTree = "<group>"; };
+		3C401A0F1D0EB36700F73EA5 /* LinkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkModel.h; sourceTree = "<group>"; };
+		3C401A101D0EB36700F73EA5 /* LinkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkModel.m; sourceTree = "<group>"; };
+		3C401A111D0EB36700F73EA5 /* MCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCError.h; sourceTree = "<group>"; };
+		3C401A121D0EB36700F73EA5 /* MCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCError.m; sourceTree = "<group>"; };
+		3C401A131D0EB36700F73EA5 /* MCJWTDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCJWTDecoder.h; sourceTree = "<group>"; };
+		3C401A141D0EB36700F73EA5 /* MCJWTDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCJWTDecoder.m; sourceTree = "<group>"; };
+		3C401A151D0EB36700F73EA5 /* MCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCModel.h; sourceTree = "<group>"; };
+		3C401A161D0EB36700F73EA5 /* MCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCModel.m; sourceTree = "<group>"; };
+		3C401A171D0EB36700F73EA5 /* OperatorDataRedirectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorDataRedirectModel.h; sourceTree = "<group>"; };
+		3C401A181D0EB36700F73EA5 /* OperatorDataRedirectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorDataRedirectModel.m; sourceTree = "<group>"; };
+		3C401A191D0EB36700F73EA5 /* OperatorDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorDataResponse.h; sourceTree = "<group>"; };
+		3C401A1A1D0EB36700F73EA5 /* OperatorDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorDataResponse.m; sourceTree = "<group>"; };
+		3C401A1B1D0EB36700F73EA5 /* OperatorIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorIdModel.h; sourceTree = "<group>"; };
+		3C401A1C1D0EB36700F73EA5 /* OperatorIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorIdModel.m; sourceTree = "<group>"; };
+		3C401A1D1D0EB36700F73EA5 /* TokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenModel.h; sourceTree = "<group>"; };
+		3C401A1E1D0EB36700F73EA5 /* TokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenModel.m; sourceTree = "<group>"; };
+		3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenResponseModel.h; sourceTree = "<group>"; };
+		3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenResponseModel.m; sourceTree = "<group>"; };
 		3C72CEB31D05CDA600A095ED /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel.framework"; sourceTree = "<group>"; };
-		3C72CED41D05D48300A095ED /* APISModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APISModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/APISModel.h; sourceTree = "<group>"; };
-		3C72CED51D05D48300A095ED /* APISModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APISModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/APISModel.m; sourceTree = "<group>"; };
-		3C72CED61D05D48300A095ED /* AuthorizationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/AuthorizationModel.h; sourceTree = "<group>"; };
-		3C72CED71D05D48300A095ED /* AuthorizationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/AuthorizationModel.m; sourceTree = "<group>"; };
-		3C72CED81D05D48300A095ED /* DiscoveryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryResponse.h; path = ../../../Old/MobileConnectSDK/Sources/Models/DiscoveryResponse.h; sourceTree = "<group>"; };
-		3C72CED91D05D48300A095ED /* DiscoveryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryResponse.m; path = ../../../Old/MobileConnectSDK/Sources/Models/DiscoveryResponse.m; sourceTree = "<group>"; };
-		3C72CEDA1D05D48300A095ED /* LinkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinkModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/LinkModel.h; sourceTree = "<group>"; };
-		3C72CEDB1D05D48300A095ED /* LinkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/LinkModel.m; sourceTree = "<group>"; };
-		3C72CEDC1D05D48300A095ED /* MCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCError.h; path = ../../../Old/MobileConnectSDK/Sources/Models/MCError.h; sourceTree = "<group>"; };
-		3C72CEDD1D05D48300A095ED /* MCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCError.m; path = ../../../Old/MobileConnectSDK/Sources/Models/MCError.m; sourceTree = "<group>"; };
-		3C72CEDE1D05D48300A095ED /* MCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/MCModel.h; sourceTree = "<group>"; };
-		3C72CEDF1D05D48300A095ED /* MCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/MCModel.m; sourceTree = "<group>"; };
-		3C72CEE01D05D48300A095ED /* OperatorDataRedirectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorDataRedirectModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataRedirectModel.h; sourceTree = "<group>"; };
-		3C72CEE11D05D48300A095ED /* OperatorDataRedirectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorDataRedirectModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataRedirectModel.m; sourceTree = "<group>"; };
-		3C72CEE21D05D48300A095ED /* OperatorDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorDataResponse.h; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataResponse.h; sourceTree = "<group>"; };
-		3C72CEE31D05D48300A095ED /* OperatorDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorDataResponse.m; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorDataResponse.m; sourceTree = "<group>"; };
-		3C72CEE41D05D48300A095ED /* OperatorIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorIdModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorIdModel.h; sourceTree = "<group>"; };
-		3C72CEE51D05D48300A095ED /* OperatorIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorIdModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/OperatorIdModel.m; sourceTree = "<group>"; };
-		3C72CEE61D05D48300A095ED /* TokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenModel.h; sourceTree = "<group>"; };
-		3C72CEE71D05D48300A095ED /* TokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenModel.m; sourceTree = "<group>"; };
-		3C72CEE81D05D48300A095ED /* TokenResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenResponseModel.h; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenResponseModel.h; sourceTree = "<group>"; };
-		3C72CEE91D05D48300A095ED /* TokenResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenResponseModel.m; path = ../../../Old/MobileConnectSDK/Sources/Models/TokenResponseModel.m; sourceTree = "<group>"; };
-		3C72CF001D05D60300A095ED /* MCJWTDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCJWTDecoder.h; path = ../../../Old/MobileConnectSDK/Sources/MobileConnectUtilities/MCJWTDecoder.h; sourceTree = "<group>"; };
-		3C72CF011D05D60300A095ED /* MCJWTDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCJWTDecoder.m; path = ../../../Old/MobileConnectSDK/Sources/MobileConnectUtilities/MCJWTDecoder.m; sourceTree = "<group>"; };
 		3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerProtocol.swift; sourceTree = "<group>"; };
 		3C72CF0C1D0606EC00A095ED /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3C72CF111D0649B700A095ED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -351,30 +351,30 @@
 		3C36B8671D05C15E00A997E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3C72CF001D05D60300A095ED /* MCJWTDecoder.h */,
-				3C72CF011D05D60300A095ED /* MCJWTDecoder.m */,
-				3C72CED41D05D48300A095ED /* APISModel.h */,
-				3C72CED51D05D48300A095ED /* APISModel.m */,
-				3C72CED61D05D48300A095ED /* AuthorizationModel.h */,
-				3C72CED71D05D48300A095ED /* AuthorizationModel.m */,
-				3C72CED81D05D48300A095ED /* DiscoveryResponse.h */,
-				3C72CED91D05D48300A095ED /* DiscoveryResponse.m */,
-				3C72CEDA1D05D48300A095ED /* LinkModel.h */,
-				3C72CEDB1D05D48300A095ED /* LinkModel.m */,
-				3C72CEDC1D05D48300A095ED /* MCError.h */,
-				3C72CEDD1D05D48300A095ED /* MCError.m */,
-				3C72CEDE1D05D48300A095ED /* MCModel.h */,
-				3C72CEDF1D05D48300A095ED /* MCModel.m */,
-				3C72CEE01D05D48300A095ED /* OperatorDataRedirectModel.h */,
-				3C72CEE11D05D48300A095ED /* OperatorDataRedirectModel.m */,
-				3C72CEE21D05D48300A095ED /* OperatorDataResponse.h */,
-				3C72CEE31D05D48300A095ED /* OperatorDataResponse.m */,
-				3C72CEE41D05D48300A095ED /* OperatorIdModel.h */,
-				3C72CEE51D05D48300A095ED /* OperatorIdModel.m */,
-				3C72CEE61D05D48300A095ED /* TokenModel.h */,
-				3C72CEE71D05D48300A095ED /* TokenModel.m */,
-				3C72CEE81D05D48300A095ED /* TokenResponseModel.h */,
-				3C72CEE91D05D48300A095ED /* TokenResponseModel.m */,
+				3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */,
+				3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */,
+				3C401A091D0EB36700F73EA5 /* APISModel.h */,
+				3C401A0A1D0EB36700F73EA5 /* APISModel.m */,
+				3C401A0B1D0EB36700F73EA5 /* AuthorizationModel.h */,
+				3C401A0C1D0EB36700F73EA5 /* AuthorizationModel.m */,
+				3C401A0D1D0EB36700F73EA5 /* DiscoveryResponse.h */,
+				3C401A0E1D0EB36700F73EA5 /* DiscoveryResponse.m */,
+				3C401A0F1D0EB36700F73EA5 /* LinkModel.h */,
+				3C401A101D0EB36700F73EA5 /* LinkModel.m */,
+				3C401A111D0EB36700F73EA5 /* MCError.h */,
+				3C401A121D0EB36700F73EA5 /* MCError.m */,
+				3C401A131D0EB36700F73EA5 /* MCJWTDecoder.h */,
+				3C401A141D0EB36700F73EA5 /* MCJWTDecoder.m */,
+				3C401A151D0EB36700F73EA5 /* MCModel.h */,
+				3C401A161D0EB36700F73EA5 /* MCModel.m */,
+				3C401A171D0EB36700F73EA5 /* OperatorDataRedirectModel.h */,
+				3C401A181D0EB36700F73EA5 /* OperatorDataRedirectModel.m */,
+				3C401A191D0EB36700F73EA5 /* OperatorDataResponse.h */,
+				3C401A1A1D0EB36700F73EA5 /* OperatorDataResponse.m */,
+				3C401A1B1D0EB36700F73EA5 /* OperatorIdModel.h */,
+				3C401A1C1D0EB36700F73EA5 /* OperatorIdModel.m */,
+				3C401A1D1D0EB36700F73EA5 /* TokenModel.h */,
+				3C401A1E1D0EB36700F73EA5 /* TokenModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -585,19 +585,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C72CEF01D05D48300A095ED /* LinkModel.h in Headers */,
-				3C72CEEE1D05D48300A095ED /* DiscoveryResponse.h in Headers */,
-				3C72CEF61D05D48300A095ED /* OperatorDataRedirectModel.h in Headers */,
-				3C72CF021D05D60300A095ED /* MCJWTDecoder.h in Headers */,
-				3C72CEEC1D05D48300A095ED /* AuthorizationModel.h in Headers */,
-				3C72CEF41D05D48300A095ED /* MCModel.h in Headers */,
+				3C401A331D0EB36700F73EA5 /* TokenModel.h in Headers */,
+				3C401A2B1D0EB36700F73EA5 /* MCModel.h in Headers */,
+				3C401A2F1D0EB36700F73EA5 /* OperatorDataResponse.h in Headers */,
+				3C401A371D0EB43600F73EA5 /* TokenResponseModel.h in Headers */,
+				3C401A311D0EB36700F73EA5 /* OperatorIdModel.h in Headers */,
+				3C401A251D0EB36700F73EA5 /* LinkModel.h in Headers */,
+				3C401A231D0EB36700F73EA5 /* DiscoveryResponse.h in Headers */,
+				3C401A2D1D0EB36700F73EA5 /* OperatorDataRedirectModel.h in Headers */,
+				3C401A211D0EB36700F73EA5 /* AuthorizationModel.h in Headers */,
 				3C3F82D61D04C7C8006EE8F4 /* MobileConnectSDK.h in Headers */,
-				3C72CEEA1D05D48300A095ED /* APISModel.h in Headers */,
-				3C72CEFA1D05D48300A095ED /* OperatorIdModel.h in Headers */,
-				3C72CEF21D05D48300A095ED /* MCError.h in Headers */,
-				3C72CEFC1D05D48300A095ED /* TokenModel.h in Headers */,
-				3C72CEF81D05D48300A095ED /* OperatorDataResponse.h in Headers */,
-				3C72CEFE1D05D48300A095ED /* TokenResponseModel.h in Headers */,
+				3C401A1F1D0EB36700F73EA5 /* APISModel.h in Headers */,
+				3C401A291D0EB36700F73EA5 /* MCJWTDecoder.h in Headers */,
+				3C401A271D0EB36700F73EA5 /* MCError.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,36 +817,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C72CF121D0649B700A095ED /* Constants.swift in Sources */,
-				3C72CEFD1D05D48300A095ED /* TokenModel.m in Sources */,
-				3C72CEEF1D05D48300A095ED /* DiscoveryResponse.m in Sources */,
+				3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */,
 				3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */,
+				3C401A261D0EB36700F73EA5 /* LinkModel.m in Sources */,
 				3C72CF171D064BF100A095ED /* Localizator.swift in Sources */,
-				3C72CEFB1D05D48300A095ED /* OperatorIdModel.m in Sources */,
 				3C24E7D41D0C323800D7634A /* DSService.swift in Sources */,
-				3C72CF031D05D60300A095ED /* MCJWTDecoder.m in Sources */,
+				3C401A221D0EB36700F73EA5 /* AuthorizationModel.m in Sources */,
+				3C401A241D0EB36700F73EA5 /* DiscoveryResponse.m in Sources */,
 				3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */,
+				3C401A321D0EB36700F73EA5 /* OperatorIdModel.m in Sources */,
 				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
 				3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */,
 				3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */,
-				3C72CEED1D05D48300A095ED /* AuthorizationModel.m in Sources */,
-				3C72CEF51D05D48300A095ED /* MCModel.m in Sources */,
-				3C72CEFF1D05D48300A095ED /* TokenResponseModel.m in Sources */,
-				3C72CEF71D05D48300A095ED /* OperatorDataRedirectModel.m in Sources */,
+				3C401A381D0EB43600F73EA5 /* TokenResponseModel.m in Sources */,
 				3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */,
+				3C401A2E1D0EB36700F73EA5 /* OperatorDataRedirectModel.m in Sources */,
+				3C401A2A1D0EB36700F73EA5 /* MCJWTDecoder.m in Sources */,
+				3C401A301D0EB36700F73EA5 /* OperatorDataResponse.m in Sources */,
 				3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */,
 				3C36EF001D09FC3100297A17 /* MobileConnectSDK.swift in Sources */,
+				3C401A281D0EB36700F73EA5 /* MCError.m in Sources */,
 				3C36EF041D0A19D200297A17 /* MobileConnectService.swift in Sources */,
-				3C72CEEB1D05D48300A095ED /* APISModel.m in Sources */,
-				3C72CEF91D05D48300A095ED /* OperatorDataResponse.m in Sources */,
 				3C36EF061D0A3EFF00297A17 /* MCRequestConstructor.swift in Sources */,
 				3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */,
-				3C72CEF31D05D48300A095ED /* MCError.m in Sources */,
 				3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */,
-				3C72CEF11D05D48300A095ED /* LinkModel.m in Sources */,
 				3C36EF021D0A177E00297A17 /* BaseMobileConnectService.swift in Sources */,
+				3C401A201D0EB36700F73EA5 /* APISModel.m in Sources */,
 				3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */,
 				3CD791721D0571250023FD0A /* WebController.swift in Sources */,
 				3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */,
+				3C401A2C1D0EB36700F73EA5 /* MCModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

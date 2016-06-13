@@ -16,9 +16,9 @@ FOUNDATION_EXPORT const unsigned char MobileConnectSDKVersionString[];
 
 #pragma mark - Models
 
-#import "TokenResponseModel.h"
 #import "DiscoveryResponse.h"
 #import "OperatorDataRedirectModel.h"
 #import "AuthorizationModel.h"
 #import "TokenModel.h"
-#import "MCModel.h"
+#import "TokenResponseModel.h"
+

@@ -12,7 +12,6 @@
 		3C0836421D057A6400848597 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836401D057A6400848597 /* Main.storyboard */; };
 		3C0836441D057A6400848597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836431D057A6400848597 /* Assets.xcassets */; };
 		3C0836471D057A6400848597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836451D057A6400848597 /* LaunchScreen.storyboard */; };
-		3C0836521D057A6400848597 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0836511D057A6400848597 /* DemoTests.swift */; };
 		3C24E7BB1D0C2A2600D7634A /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		3C24E7BC1D0C2A2600D7634A /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C24E7C11D0C2A4D00D7634A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; };
@@ -85,18 +84,10 @@
 		3CD7915B1D04D0B20023FD0A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD7915A1D04D0B20023FD0A /* JSONModel.framework */; };
 		3CD791721D0571250023FD0A /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791711D0571250023FD0A /* WebController.swift */; };
 		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
-		B473EDA5BBB62E2DA869E0B7 /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A387913249ACF589ED603DD /* Pods_DemoTests.framework */; };
 		FD1DE73404FA84FB3C16B8C7 /* Pods_MobileConnectSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1BE0EC3BBAD567B925D216 /* Pods_MobileConnectSDKTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3C08364E1D057A6400848597 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3C0836391D057A6400848597;
-			remoteInfo = Demo;
-		};
 		3C24E7BD1D0C2A2600D7634A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3C3F82C91D04C7C8006EE8F4 /* Project object */;
@@ -169,7 +160,6 @@
 		3C0836431D057A6400848597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C0836461D057A6400848597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C0836481D057A6400848597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C08364D1D057A6400848597 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C0836511D057A6400848597 /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
 		3C0836531D057A6400848597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/Fawkes/Desktop/MobileConnectSDK/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
@@ -263,14 +253,6 @@
 				3C24E7C41D0C2A6600D7634A /* JSONModel.framework in Frameworks */,
 				3C24E7BB1D0C2A2600D7634A /* MobileConnectSDK.framework in Frameworks */,
 				3C24E7C11D0C2A4D00D7634A /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C08364A1D057A6400848597 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B473EDA5BBB62E2DA869E0B7 /* Pods_DemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +383,6 @@
 				3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */,
 				3C3F82DC1D04C7C8006EE8F4 /* MobileConnectSDKTests.xctest */,
 				3C08363A1D057A6400848597 /* Demo.app */,
-				3C08364D1D057A6400848597 /* DemoTests.xctest */,
 				3C72CF201D0664A700A095ED /* Demo2.app */,
 			);
 			name = Products;
@@ -623,24 +604,6 @@
 			productReference = 3C08363A1D057A6400848597 /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3C08364C1D057A6400848597 /* DemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3C0836591D057A6400848597 /* Build configuration list for PBXNativeTarget "DemoTests" */;
-			buildPhases = (
-				3C0836491D057A6400848597 /* Sources */,
-				3C08364A1D057A6400848597 /* Frameworks */,
-				3C08364B1D057A6400848597 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3C08364F1D057A6400848597 /* PBXTargetDependency */,
-			);
-			name = DemoTests;
-			productName = DemoTests;
-			productReference = 3C08364D1D057A6400848597 /* DemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C3F82E61D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDK" */;
@@ -710,10 +673,6 @@
 					3C0836391D057A6400848597 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
-					3C08364C1D057A6400848597 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 3C0836391D057A6400848597;
-					};
 					3C3F82D11D04C7C8006EE8F4 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -741,7 +700,6 @@
 				3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */,
 				3C3F82DB1D04C7C8006EE8F4 /* MobileConnectSDKTests */,
 				3C0836391D057A6400848597 /* Demo */,
-				3C08364C1D057A6400848597 /* DemoTests */,
 				3C72CF1F1D0664A700A095ED /* Demo2 */,
 			);
 		};
@@ -755,13 +713,6 @@
 				3C0836471D057A6400848597 /* LaunchScreen.storyboard in Resources */,
 				3C0836441D057A6400848597 /* Assets.xcassets in Resources */,
 				3C0836421D057A6400848597 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C08364B1D057A6400848597 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,14 +752,6 @@
 			files = (
 				3C08363F1D057A6400848597 /* ViewController.swift in Sources */,
 				3C08363D1D057A6400848597 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C0836491D057A6400848597 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3C0836521D057A6400848597 /* DemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,11 +814,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3C08364F1D057A6400848597 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3C0836391D057A6400848597 /* Demo */;
-			targetProxy = 3C08364E1D057A6400848597 /* PBXContainerItemProxy */;
-		};
 		3C24E7BE1D0C2A2600D7634A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */;
@@ -965,32 +903,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		3C0836561D057A6400848597 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2098210B0070AB58B0E0839 /* Pods-DemoTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.DemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-			};
-			name = Debug;
-		};
-		3C0836571D057A6400848597 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D524F7B82C688C79BEFB2EB7 /* Pods-DemoTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.DemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Release;
 		};
@@ -1212,15 +1124,6 @@
 			buildConfigurations = (
 				3C0836541D057A6400848597 /* Debug */,
 				3C0836551D057A6400848597 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3C0836591D057A6400848597 /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3C0836561D057A6400848597 /* Debug */,
-				3C0836571D057A6400848597 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

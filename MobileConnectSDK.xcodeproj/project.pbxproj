@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A719FB4AD44236BDF47D23 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6FFFEA2FB51166158272D3 /* Pods_Demo.framework */; };
 		3C08363D1D057A6400848597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08363C1D057A6400848597 /* AppDelegate.swift */; };
 		3C08363F1D057A6400848597 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C08363E1D057A6400848597 /* ViewController.swift */; };
 		3C0836421D057A6400848597 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836401D057A6400848597 /* Main.storyboard */; };
@@ -14,15 +15,7 @@
 		3C0836471D057A6400848597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0836451D057A6400848597 /* LaunchScreen.storyboard */; };
 		3C24E7BB1D0C2A2600D7634A /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		3C24E7BC1D0C2A2600D7634A /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C24E7C11D0C2A4D00D7634A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; };
-		3C24E7C21D0C2A4D00D7634A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C24E7C41D0C2A6600D7634A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; };
-		3C24E7C51D0C2A6600D7634A /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7C61D0C2D5000D7634A /* MCService.swift */; };
-		3C24E7CA1D0C318E00D7634A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; };
-		3C24E7CB1D0C318E00D7634A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C24E7CD1D0C319400D7634A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; };
-		3C24E7CE1D0C319400D7634A /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C24E7C31D0C2A6600D7634A /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C24E7CF1D0C31B000D7634A /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		3C24E7D01D0C31B000D7634A /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C24E7D41D0C323800D7634A /* DSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7D31D0C323800D7634A /* DSService.swift */; };
@@ -60,6 +53,14 @@
 		3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A1E1D0EB36700F73EA5 /* TokenModel.m */; };
 		3C401A371D0EB43600F73EA5 /* TokenResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C401A381D0EB43600F73EA5 /* TokenResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */; };
+		3C401A3A1D0EBAAC00F73EA5 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A391D0EBAAC00F73EA5 /* JSONModel.framework */; };
+		3C401A3C1D0EBAB900F73EA5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A3B1D0EBAB900F73EA5 /* Alamofire.framework */; };
+		3C401A421D0EBB7200F73EA5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A3B1D0EBAB900F73EA5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C401A441D0EBB7600F73EA5 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A391D0EBAAC00F73EA5 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C401A451D0EBB9700F73EA5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A3B1D0EBAB900F73EA5 /* Alamofire.framework */; };
+		3C401A461D0EBB9700F73EA5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A3B1D0EBAB900F73EA5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C401A471D0EBB9E00F73EA5 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A391D0EBAAC00F73EA5 /* JSONModel.framework */; };
+		3C401A481D0EBB9E00F73EA5 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A391D0EBAAC00F73EA5 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */; };
 		3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72CF0C1D0606EC00A095ED /* WebKit.framework */; };
 		3C72CF121D0649B700A095ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF111D0649B700A095ED /* Constants.swift */; };
@@ -71,7 +72,6 @@
 		3C72CF2D1D0664A700A095ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF2B1D0664A700A095ED /* Main.storyboard */; };
 		3C72CF2F1D0664A700A095ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF2E1D0664A700A095ED /* Assets.xcassets */; };
 		3C72CF321D0664A700A095ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C72CF301D0664A700A095ED /* LaunchScreen.storyboard */; };
-		3C72CF391D0667C800A095ED /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72CF381D0667C800A095ED /* Alamofire.framework */; };
 		3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */; };
 		3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */; };
 		3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */; };
@@ -81,9 +81,10 @@
 		3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38181D086FE00051BBB1 /* Authorizer.swift */; };
 		3CD791551D04D0430023FD0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD791541D04D0430023FD0A /* Quick.framework */; };
 		3CD791571D04D04B0023FD0A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD791561D04D04B0023FD0A /* Nimble.framework */; };
-		3CD7915B1D04D0B20023FD0A /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD7915A1D04D0B20023FD0A /* JSONModel.framework */; };
 		3CD791721D0571250023FD0A /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791711D0571250023FD0A /* WebController.swift */; };
 		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
+		B387C80F2DD60A6B1D08A4CD /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B59B50A86388D57AEDC22A5 /* Pods_MobileConnectSDK.framework */; };
+		D3AECD85495B1F081F68F8AF /* Pods_Demo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09336EBF0DD466BFC73CBEE /* Pods_Demo2.framework */; };
 		FD1DE73404FA84FB3C16B8C7 /* Pods_MobileConnectSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1BE0EC3BBAD567B925D216 /* Pods_MobileConnectSDKTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,9 +126,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3C24E7C51D0C2A6600D7634A /* JSONModel.framework in Embed Frameworks */,
+				3C401A481D0EBB9E00F73EA5 /* JSONModel.framework in Embed Frameworks */,
 				3C24E7BC1D0C2A2600D7634A /* MobileConnectSDK.framework in Embed Frameworks */,
-				3C24E7C21D0C2A4D00D7634A /* Alamofire.framework in Embed Frameworks */,
+				3C401A461D0EBB9700F73EA5 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +139,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3C401A441D0EBB7600F73EA5 /* JSONModel.framework in Embed Frameworks */,
 				3C24E7D01D0C31B000D7634A /* MobileConnectSDK.framework in Embed Frameworks */,
-				3C24E7CE1D0C319400D7634A /* JSONModel.framework in Embed Frameworks */,
-				3C24E7CB1D0C318E00D7634A /* Alamofire.framework in Embed Frameworks */,
+				3C401A421D0EBB7200F73EA5 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,8 +163,6 @@
 		3C0836481D057A6400848597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C0836511D057A6400848597 /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
 		3C0836531D057A6400848597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/Fawkes/Desktop/MobileConnectSDK/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
-		3C24E7C31D0C2A6600D7634A /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = JSONModel.framework; path = "/Users/Fawkes/Desktop/MobileConnectSDK/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel.framework"; sourceTree = "<absolute>"; };
 		3C24E7C61D0C2D5000D7634A /* MCService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCService.swift; sourceTree = "<group>"; };
 		3C24E7D31D0C323800D7634A /* DSService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSService.swift; sourceTree = "<group>"; };
 		3C36B85C1D05B99800A997E3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -203,6 +202,8 @@
 		3C401A1E1D0EB36700F73EA5 /* TokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenModel.m; sourceTree = "<group>"; };
 		3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenResponseModel.h; sourceTree = "<group>"; };
 		3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenResponseModel.m; sourceTree = "<group>"; };
+		3C401A391D0EBAAC00F73EA5 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
+		3C401A3B1D0EBAB900F73EA5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		3C72CEB31D05CDA600A095ED /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel.framework"; sourceTree = "<group>"; };
 		3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerProtocol.swift; sourceTree = "<group>"; };
 		3C72CF0C1D0606EC00A095ED /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -250,9 +251,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C24E7C41D0C2A6600D7634A /* JSONModel.framework in Frameworks */,
 				3C24E7BB1D0C2A2600D7634A /* MobileConnectSDK.framework in Frameworks */,
-				3C24E7C11D0C2A4D00D7634A /* Alamofire.framework in Frameworks */,
+				3C401A451D0EBB9700F73EA5 /* Alamofire.framework in Frameworks */,
+				3C401A471D0EBB9E00F73EA5 /* JSONModel.framework in Frameworks */,
+				32A719FB4AD44236BDF47D23 /* Pods_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,9 +262,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C72CF391D0667C800A095ED /* Alamofire.framework in Frameworks */,
+				3C401A3C1D0EBAB900F73EA5 /* Alamofire.framework in Frameworks */,
+				3C401A3A1D0EBAAC00F73EA5 /* JSONModel.framework in Frameworks */,
 				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,
-				3CD7915B1D04D0B20023FD0A /* JSONModel.framework in Frameworks */,
+				B387C80F2DD60A6B1D08A4CD /* Pods_MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C24E7CF1D0C31B000D7634A /* MobileConnectSDK.framework in Frameworks */,
-				3C24E7CD1D0C319400D7634A /* JSONModel.framework in Frameworks */,
-				3C24E7CA1D0C318E00D7634A /* Alamofire.framework in Frameworks */,
+				D3AECD85495B1F081F68F8AF /* Pods_Demo2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,8 +366,6 @@
 		3C3F82C81D04C7C8006EE8F4 = {
 			isa = PBXGroup;
 			children = (
-				3C24E7C31D0C2A6600D7634A /* JSONModel.framework */,
-				3C24E7C01D0C2A4D00D7634A /* Alamofire.framework */,
 				3C08363B1D057A6400848597 /* Demo */,
 				3C0836501D057A6400848597 /* DemoTests */,
 				3C72CF211D0664A700A095ED /* Demo2 */,
@@ -498,6 +498,8 @@
 		3CD7915C1D04D0E80023FD0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C401A3B1D0EBAB900F73EA5 /* Alamofire.framework */,
+				3C401A391D0EBAAC00F73EA5 /* JSONModel.framework */,
 				3C72CF381D0667C800A095ED /* Alamofire.framework */,
 				3C72CF0C1D0606EC00A095ED /* WebKit.framework */,
 				3C72CEB31D05CDA600A095ED /* JSONModel.framework */,
@@ -589,10 +591,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C0836581D057A6400848597 /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
+				C5F68552EC2FBCEF11CFFEC5 /* 📦 Check Pods Manifest.lock */,
 				3C0836361D057A6400848597 /* Sources */,
 				3C0836371D057A6400848597 /* Frameworks */,
 				3C0836381D057A6400848597 /* Resources */,
 				3C24E7BF1D0C2A2600D7634A /* Embed Frameworks */,
+				6B8E97E16CE6A1E82C680660 /* 📦 Embed Pods Frameworks */,
+				284BE4DE87B4C04CDC5FBEE5 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -608,10 +613,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C3F82E61D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDK" */;
 			buildPhases = (
+				0562095C454E3F6F69E8ABBE /* 📦 Check Pods Manifest.lock */,
 				3C3F82CD1D04C7C8006EE8F4 /* Sources */,
 				3C3F82CE1D04C7C8006EE8F4 /* Frameworks */,
 				3C3F82CF1D04C7C8006EE8F4 /* Headers */,
 				3C3F82D01D04C7C8006EE8F4 /* Resources */,
+				DE6E3B6228431D8D8874D78C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -626,9 +633,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C3F82E91D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDKTests" */;
 			buildPhases = (
+				FD8237BBBEA52725AF594865 /* 📦 Check Pods Manifest.lock */,
 				3C3F82D81D04C7C8006EE8F4 /* Sources */,
 				3C3F82D91D04C7C8006EE8F4 /* Frameworks */,
 				3C3F82DA1D04C7C8006EE8F4 /* Resources */,
+				46F5180AD4A783316A9F66C4 /* 📦 Embed Pods Frameworks */,
+				FC9C09353E33E3E01C4F3BFC /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -645,10 +655,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C72CF341D0664A700A095ED /* Build configuration list for PBXNativeTarget "Demo2" */;
 			buildPhases = (
+				7D3D59ADB55150521B63C77F /* 📦 Check Pods Manifest.lock */,
 				3C72CF1C1D0664A700A095ED /* Sources */,
 				3C72CF1D1D0664A700A095ED /* Frameworks */,
 				3C72CF1E1D0664A700A095ED /* Resources */,
 				3C24E7CC1D0C318E00D7634A /* Embed Frameworks */,
+				6D421B0DE5C71C45CA7E630A /* 📦 Embed Pods Frameworks */,
+				4EA9E4796A4F7166719C560C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -744,6 +757,174 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0562095C454E3F6F69E8ABBE /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		284BE4DE87B4C04CDC5FBEE5 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46F5180AD4A783316A9F66C4 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EA9E4796A4F7166719C560C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo2/Pods-Demo2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B8E97E16CE6A1E82C680660 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D421B0DE5C71C45CA7E630A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo2/Pods-Demo2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D3D59ADB55150521B63C77F /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5F68552EC2FBCEF11CFFEC5 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE6E3B6228431D8D8874D78C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC9C09353E33E3E01C4F3BFC /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD8237BBBEA52725AF594865 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C0836361D057A6400848597 /* Sources */ = {
@@ -881,6 +1062,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -898,6 +1081,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1017,7 +1202,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1040,7 +1228,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1084,6 +1275,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 				);
 				INFOPLIST_FILE = Demo2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1106,6 +1299,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 				);
 				INFOPLIST_FILE = Demo2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C8205024B8FFBE2310D0890 /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61616CDEFAD11397F463C2D8 /* Pods_MobileConnectSDK.framework */; };
 		3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7C61D0C2D5000D7634A /* MCService.swift */; };
 		3C24E7D41D0C323800D7634A /* DSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7D31D0C323800D7634A /* DSService.swift */; };
 		3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C36B85C1D05B99800A997E3 /* Images.xcassets */; };
@@ -139,6 +140,7 @@
 				3C401A4D1D0EC46100F73EA5 /* JSONModel.framework in Frameworks */,
 				3C401A4B1D0EC45600F73EA5 /* Alamofire.framework in Frameworks */,
 				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,
+				1C8205024B8FFBE2310D0890 /* Pods_MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,12 +385,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C3F82E61D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDK" */;
 			buildPhases = (
-				0562095C454E3F6F69E8ABBE /* 📦 Check Pods Manifest.lock */,
+				0562095C454E3F6F69E8ABBE /* [CP] Check Pods Manifest.lock */,
 				3C3F82CD1D04C7C8006EE8F4 /* Sources */,
 				3C3F82CE1D04C7C8006EE8F4 /* Frameworks */,
 				3C3F82CF1D04C7C8006EE8F4 /* Headers */,
 				3C3F82D01D04C7C8006EE8F4 /* Resources */,
-				DE6E3B6228431D8D8874D78C /* 📦 Copy Pods Resources */,
+				DE6E3B6228431D8D8874D78C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -446,14 +448,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0562095C454E3F6F69E8ABBE /* 📦 Check Pods Manifest.lock */ = {
+		0562095C454E3F6F69E8ABBE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,14 +463,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DE6E3B6228431D8D8874D78C /* 📦 Copy Pods Resources */ = {
+		DE6E3B6228431D8D8874D78C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

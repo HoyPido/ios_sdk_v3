@@ -43,7 +43,8 @@
 		3C401A381D0EB43600F73EA5 /* TokenResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */; };
 		3C401A4B1D0EC45600F73EA5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A4A1D0EC45600F73EA5 /* Alamofire.framework */; };
 		3C401A4D1D0EC46100F73EA5 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A4C1D0EC46100F73EA5 /* JSONModel.framework */; };
-		3C401A4F1D0EC46700F73EA5 /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A4E1D0EC46700F73EA5 /* Pods_MobileConnectSDK.framework */; };
+		3C401A501D0EC77C00F73EA5 /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C401A4E1D0EC46700F73EA5 /* Pods_MobileConnectSDK.framework */; };
+		3C401A511D0EC8E400F73EA5 /* MobileConnectSDK.h in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */; };
 		3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */; };
 		3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72CF0C1D0606EC00A095ED /* WebKit.framework */; };
 		3C72CF121D0649B700A095ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF111D0649B700A095ED /* Constants.swift */; };
@@ -58,7 +59,6 @@
 		3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38181D086FE00051BBB1 /* Authorizer.swift */; };
 		3CD791721D0571250023FD0A /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791711D0571250023FD0A /* WebController.swift */; };
 		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
-		8304B0C9DBE601D41B401960 /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61616CDEFAD11397F463C2D8 /* Pods_MobileConnectSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,11 +135,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C401A4F1D0EC46700F73EA5 /* Pods_MobileConnectSDK.framework in Frameworks */,
+				3C401A501D0EC77C00F73EA5 /* Pods_MobileConnectSDK.framework in Frameworks */,
 				3C401A4D1D0EC46100F73EA5 /* JSONModel.framework in Frameworks */,
 				3C401A4B1D0EC45600F73EA5 /* Alamofire.framework in Frameworks */,
 				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,
-				8304B0C9DBE601D41B401960 /* Pods_MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C401A511D0EC8E400F73EA5 /* MobileConnectSDK.h in Sources */,
 				3C72CF121D0649B700A095ED /* Constants.swift in Sources */,
 				3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */,
 				3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */,

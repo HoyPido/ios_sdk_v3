@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
 
   spec.platform = :ios, "8.0"
   spec.requires_arc = true
-spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/GSMA-iOS-Swift.git", :branch => 'master', :tag=>  "#{spec.version}"}
+spec.source = { :git => "https://github.com/Mobile-Connect/ios-sdk-v2", :branch => 'master', :tag=>  "#{spec.version}"}
   spec.source_files = "MobileConnectSDK/**/*.{h,swift,m}"
   spec.public_header_files = "MobileConnectSDK/**/*.h"
 

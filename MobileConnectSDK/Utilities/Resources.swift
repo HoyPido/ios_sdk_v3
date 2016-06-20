@@ -16,7 +16,7 @@ class Resources
 {
     class var bundle : NSBundle?
     {
-        return NSBundle(identifier: kResourceBundleIdentifier)
+        return NSBundle(forClass: WebController.classForCoder())
     }
     
     class var mobileConnectImage : UIImage?

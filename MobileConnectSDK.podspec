@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name = "MobileConnectSDK"
-spec.version = "1.2.2"
+spec.version = "1.2.3"
 spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
 spec.homepage = "https://developer.mobileconnect.io"
 spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
@@ -13,7 +13,7 @@ spec.source = { :git => "https://github.com/Mobile-Connect/ios-sdk-v2.git", :bra
 spec.source_files = "MobileConnectSDK/**/*.{h,swift,m}"
 spec.public_header_files = "MobileConnectSDK/**/*.h"
 
-spec.resources = "**/*.{png,jpeg,jpg,storyboard,xib}"
+spec.resources = "**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
 
 spec.dependency 'JSONModel', '~> 1.2.0'
 spec.dependency 'Alamofire', '~> 3.4'

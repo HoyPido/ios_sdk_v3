@@ -1,71 +1,211 @@
-///Instalation
-In order to use it with cocoa pods just add the following to your pods file:
+### MobileConnectSDK - MobileConnect framework for iOS 
 
-pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios-sdk-v2', :branch => ’master’
+###### The library is written in swift with full support for Objective C code base.
 
+## Requirements
+
+- iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 7.3+
+
+## Dependency Libraries
+The library uses Alamofire and JSONModel libraries for rest service calls and deserialization. And you'll get them preconfigured if you follow the cocoa pods installation procedure described below.
+
+
+## Configuration
+
+#### 1) You'll have to have CocoaPods installed. In case you already installed it please pass to step 2
+
+1.1) Open Terminal.
+
+1.2) Enter $ sudo gem install cocoapods command in terminal.
+
+1.3) Navigate to directory containing your Xcode project inside the terminal window by using cd “../directory-location/..” or cd [drag-and-drop project folder]
+
+1.4) Pod install.
+
+#### 2) Configure pods file and install the framework itself
+
+2.1) After running the "Pod Install" or "pod init" command in the terminal in the directory where your project resides open the newly created Podfile or the existing one and find your target specified. Right below your target specification please add the following lines 
+
+```
 use_frameworks!
-
-In case you decide to add the framework directly in your project, you'll have to also add Alamofire and JSONModel libraries.
-
-After adding the framework to your project, add the framework in Link libraries section of your target.
+  pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios-sdk-v2', :branch => ’master’
+```
 
 
-///Configuration
-In order to configure it you have to provide the client key, client secret, redirect url, application endpoint.
+Ex: In my case I have the target of the application is named "Test2" and the podfile after modification will look like below:
 
-[MobileConnectSDK setRedirect:[NSURL URLWithString:kRedirectURL]];
+```
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Test2' do
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+  use_frameworks!
+  pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios-sdk-v2', :branch => ’master’
+
+
+  # Pods for Test2
+
+end
+```
+
+2.2) Save the pods file and in the terminal window navigate to your xcode project directory. After that type 
+
+```
+pod update
+```
+
+#### 3) Configure the framework inside your project
+
+3.1) Add the framework in your targets app Linked Frameworks and Libraries
+
+![Add the framework in your targets app Linked Frameworks and Libraries](https://cloud.githubusercontent.com/assets/19551956/16231365/d0c06eb4-37bd-11e6-80fa-eb6ce027aed9.png)
+
+Press the pluss and in the list select the MobileConnectSDK.framework and then press add
+![select the MobileConnectSDK.framework and then press add](https://cloud.githubusercontent.com/assets/19551956/16231442/2365a97c-37be-11e6-99e1-f3ca275a581b.png)
+
+As a result you'll have it added in the Linked Frameworks and Libraries section
+
+![result](https://cloud.githubusercontent.com/assets/19551956/16231449/291b197e-37be-11e6-9a6c-93ab706f2c06.png)
+
+
+###### In case you are having an Objective C code based project please set the "Allow Non-modular Includes in Framework Modules" flag to YES. (You can find this flag in your Projects Build Settings as shown in the image below)
+
+
+![Objective C flag](https://cloud.githubusercontent.com/assets/19551956/16231582/bfa3486c-37be-11e6-86c3-890ab9032c33.png)
+
+
+### Objective C:
+
+At the beginning of the .m file where you intend to use the framework add 
+
+```Objective C
+@import MobileConnectSDK;
+```
+
+### Swift
+In the .swift file you intend to use the framework just add
+
+```Objective C
+import MobileConnectSDK;
+```
+
+#### Before being able to use the library in code you'll have to provide the main developer information in your code (Redirect URI, Integration endpoint [aka application endpoint], Integration key [aka client key], Integration secret: [aka client secret] ) like below:
+
+```Objective C
 [MobileConnectSDK setClientKey:kClientKey];
 [MobileConnectSDK setClientSecret:kClientSecret];
-[MobileConnectSDK setApplicationEndpoint:kSandboxEndpoint];
+[MobileConnectSDK setApplicationEndpoint:kApplicationEndpoint];
+[MobileConnectSDK setRedirect:[NSURL URLWithString:kRedirectURL]];
+```
 
-///Usage
-1. You can use it similar to facebook login button, which means that you can just drop a view in the storyboards and declare it's class as MobileConnectButton.
-In order for you to receive the feedback from the Mobile Connect authentication make sure that you set the MobileConnectManagerDelegate like this:
-
-[MobileConnectSDK setDelegate:self];
-
-And then receive the responses in the MobileConnectManagerDelegate methods.
-- (void)mobileConnectWillStart
-- (void)mobileConnectWillPresentWebController
-- (void)mobileConnectWillDismissWebController
-- (void)mobileConnectDidGetTokenResponse:(TokenResponseModel *)tokenResponse
-- (void)mobileConnectFailedGettingTokenResponseWithError:(NSError *)error
-
-2. In case you need more control you can use the MobileConnectManager class
-
-self.manager = [MobileConnectManager new];
-
-** And get the token in the following ways:
-[self.manager getTokenInPresenterController:self withCompletitionHandler:nil];
-
-Or
-
-[self.manager getTokenForPhoneNumber:@"clientPhoneNumber" inPresenterController:self withCompletitionHandler:nil];
-
-You'll receive the response in the completition handler you'll provide or in the delegate methods in case you provide a delegate or in both if you provide a completitionHandler and a delegte.
-
-3. If you need to access the Discovery service and Mobile Connect service separately you can use the MobileConnectService or DiscoveryService classes in Swift or DSService and MCService for Objective C respectively.
-
-DSService and MCService are just wrappers around the equivalent Swift classes. This is due to the fact that Objective C does not support generics.
-
-**In order to use Discovery Service:
-//create instance
-let discovery : DiscoveryService = DiscoveryService()
-
-//call the method which will return the operator data response in completition handler
-discovery.startOperatorDiscoveryInController(self) { (controller, operatorsData, error) in  }
-
-**In order to use Mobile Connect Service:
-//create instance with data received from the DiscoveryService
-let mobileConnect : MobileConnectService =
-            MobileConnectService(clientId: operatorsData.response?.client_id ?? "",
-                                 authorizationURL: operatorsData.response?.apis?.operatorid?.authorizationLink() ?? "", 
-                                 tokenURL: operatorsData.response?.apis?.operatorid?.tokenLink() ?? "")
-                                 
-//call the method with completition handler which will return the tokenModel
-mobileConnect.getTokenInController(controller) { (controller, tokenModel, error) in }
-
-For more detailed info regarding the response and other available usage methods please check the docs.
+And that's it!
 
 
 
+## Usage
+
+
+### In case you just want to get the token there are several ways:
+
+* #### By providing a delegate which will receive the main MobileConnectSDK events and dropping a button in the storyboards where you intend to use it
+
+
+1) Make sure the delegate conforms to protocol MobileConnectManagerDelegate
+
+
+```Objective C
+@interface ViewController ()<MobileConnectManagerDelegate>
+```
+
+2) Implement the MobileConnectManagerDelegate in that class
+
+```Objective C
+- (void)mobileConnectWillStart;
+- (void)mobileConnectWillPresentWebController;
+- (void)mobileConnectWillDismissWebController;
+- (void)mobileConnectDidGetTokenResponse:(TokenResponseModel * _Nonnull)tokenResponse;
+- (void)mobileConnectFailedGettingTokenResponseWithError:(NSError * _Nonnull)error;
+```
+
+3) Drag and drop a view in your storyboards and set it's class to MobileConnectManagerButton
+
+![Dropping the button and setting it's class](https://cloud.githubusercontent.com/assets/19551956/16233183/6234cc76-37c5-11e6-8c0a-1100fe0d850f.png)
+
+You'll receive the token response or the error in the above specified delegate methods.
+
+* #### By using MobileConnectManager
+
+1) Create the MobileConnectManager instance
+```Objective C
+MobileConnectManager *manager = [MobileConnectManager new];
+```
+2) Call one of the below methods.
+
+If you don't have the client's phone number then just call the below method in which you have to provide a controller from which the framework will be able to present it's own web controller.
+```Objective C
+[manager getTokenInPresenterController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
+        
+}];
+```
+
+If you have the client's phone number just provide it as a parameter as shown in the code below. But you'll still have to provide a controller which the framework will use for presenting it's own web controller.
+    
+    
+```Objective C
+[manager getTokenForPhoneNumber:@"<clientPhoneNumberInsertHere>" inPresenterController:self withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
+        
+}];
+```
+
+
+### In case you need to specifically use the Discovery service:
+
+Create an instance of the DiscoveryService or DSService in Objective C code and use on of the the below methods. 
+
+```Objective C
+DSService *discovery = [DSService new];
+```
+
+##### If you don't have client's phone number:
+
+```Objective C
+[discovery startOperatorDiscoveryInController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> completitionHandler:^(BaseWebController * _Nullable controller, DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
+        
+}];
+```
+
+##### If you have client's phone number:
+
+You don't need to offer a view controller because there is no need for a web page to be displayed to the client. And you can call the following method:
+
+```Objective C
+[discovery startOperatorDiscoveryForPhoneNumber:@"<clientPhoneNumberInsertHere>" completitionHandler:^(DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
+        
+}];
+```
+
+##### If you have the mobile operators country code and network code:
+
+```Objective C
+[discovery startOperatorDiscoveryWithCountryCode:@"<insertCountryCodeHere>" networkCode:@"<insertNetworkCodeHere>" completitionHandler:^(DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
+        
+}];
+```
+
+### In case you need to specifically use the Mobile Connect service:
+
+Create an instance of the MobileConnectService or MCService in Objective C. You'll have to provide the operator data which you would tipically get from the DiscoveryService class
+
+```Objective C
+MCService *mobileConnectService = [[MCService alloc] initWithClientId:@"<clientIdFromDiscoveryServiceGoesHere>" authorizationURL:@"<authorizationURLFromDiscoveryGoesHere>" tokenURL:@"<tokenURLFromDiscoveryGoesHere>"];
+```
+
+After creating the MobileConnect or MCService instance you can get the token by providing a subcriberId if you have it from the Discovery stage or just provide nil for subscriber id. You'll also have to offer a view controller which will be used by the framework to present the web view.
+
+```Objective C
+[mobileConnectService getTokenInController:self subscriberId:@"<inCaseYouReceivedASubscriberIDFromDiscoveryIfNotLeaveNil>" completitionHandler:^(BaseWebController * _Nullable controller, TokenModel * _Nullable tokenModel, NSError * _Nullable error) {
+        
+}];
+```

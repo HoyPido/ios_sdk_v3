@@ -2,6 +2,7 @@
 In order to use it with cocoa pods just add the following to your pods file:
 
 pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios-sdk-v2', :branch => ’master’
+
 use_frameworks!
 
 In case you decide to add the framework directly in your project, you'll have to also add Alamofire and JSONModel libraries.

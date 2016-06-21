@@ -80,20 +80,20 @@ As a result you'll have it added in the Linked Frameworks and Libraries section
 
 At the beginning of the .m file where you intend to use the framework add 
 
-```Objective C
+```
 @import MobileConnectSDK;
 ```
 
 ### Swift
 In the .swift file you intend to use the framework just add
 
-```Objective C
+```
 import MobileConnectSDK;
 ```
 
 #### Before being able to use the library in code you'll have to provide the main developer information in your code (Redirect URI, Integration endpoint [aka application endpoint], Integration key [aka client key], Integration secret: [aka client secret] ) like below:
 
-```Objective C
+```
 [MobileConnectSDK setClientKey:kClientKey];
 [MobileConnectSDK setClientSecret:kClientSecret];
 [MobileConnectSDK setApplicationEndpoint:kApplicationEndpoint];
@@ -115,13 +115,13 @@ And that's it!
 1) Make sure the delegate conforms to protocol MobileConnectManagerDelegate
 
 
-```Objective C
+```
 @interface ViewController ()<MobileConnectManagerDelegate>
 ```
 
 2) Implement the MobileConnectManagerDelegate in that class
 
-```Objective C
+```
 - (void)mobileConnectWillStart;
 - (void)mobileConnectWillPresentWebController;
 - (void)mobileConnectWillDismissWebController;
@@ -138,13 +138,13 @@ You'll receive the token response or the error in the above specified delegate m
 * #### By using MobileConnectManager
 
 1) Create the MobileConnectManager instance
-```Objective C
+```
 MobileConnectManager *manager = [MobileConnectManager new];
 ```
 2) Call one of the below methods.
 
 If you don't have the client's phone number then just call the below method in which you have to provide a controller from which the framework will be able to present it's own web controller.
-```Objective C
+```
 [manager getTokenInPresenterController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
         
 }];
@@ -153,7 +153,7 @@ If you don't have the client's phone number then just call the below method in w
 If you have the client's phone number just provide it as a parameter as shown in the code below. But you'll still have to provide a controller which the framework will use for presenting it's own web controller.
     
     
-```Objective C
+```
 [manager getTokenForPhoneNumber:@"<clientPhoneNumberInsertHere>" inPresenterController:self withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
         
 }];
@@ -164,13 +164,13 @@ If you have the client's phone number just provide it as a parameter as shown in
 
 Create an instance of the DiscoveryService or DSService in Objective C code and use on of the the below methods. 
 
-```Objective C
+```
 DSService *discovery = [DSService new];
 ```
 
 ##### If you don't have client's phone number:
 
-```Objective C
+```
 [discovery startOperatorDiscoveryInController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> completitionHandler:^(BaseWebController * _Nullable controller, DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
         
 }];
@@ -180,7 +180,7 @@ DSService *discovery = [DSService new];
 
 You don't need to offer a view controller because there is no need for a web page to be displayed to the client. And you can call the following method:
 
-```Objective C
+```
 [discovery startOperatorDiscoveryForPhoneNumber:@"<clientPhoneNumberInsertHere>" completitionHandler:^(DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
         
 }];
@@ -188,7 +188,7 @@ You don't need to offer a view controller because there is no need for a web pag
 
 ##### If you have the mobile operators country code and network code:
 
-```Objective C
+```
 [discovery startOperatorDiscoveryWithCountryCode:@"<insertCountryCodeHere>" networkCode:@"<insertNetworkCodeHere>" completitionHandler:^(DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
         
 }];
@@ -198,13 +198,13 @@ You don't need to offer a view controller because there is no need for a web pag
 
 Create an instance of the MobileConnectService or MCService in Objective C. You'll have to provide the operator data which you would tipically get from the DiscoveryService class
 
-```Objective C
+```
 MCService *mobileConnectService = [[MCService alloc] initWithClientId:@"<clientIdFromDiscoveryServiceGoesHere>" authorizationURL:@"<authorizationURLFromDiscoveryGoesHere>" tokenURL:@"<tokenURLFromDiscoveryGoesHere>"];
 ```
 
 After creating the MobileConnect or MCService instance you can get the token by providing a subcriberId if you have it from the Discovery stage or just provide nil for subscriber id. You'll also have to offer a view controller which will be used by the framework to present the web view.
 
-```Objective C
+```
 [mobileConnectService getTokenInController:self subscriberId:@"<inCaseYouReceivedASubscriberIDFromDiscoveryIfNotLeaveNil>" completitionHandler:^(BaseWebController * _Nullable controller, TokenModel * _Nullable tokenModel, NSError * _Nullable error) {
         
 }];

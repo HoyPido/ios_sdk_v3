@@ -109,7 +109,7 @@ And that's it!
 
 ### In case you just want to get the token there are several ways:
 
-* #### By providing a delegate which will receive the main MobileConnectSDK events and dropping a button in the storyboards where you intend to use it
+* By providing a delegate which will receive the main MobileConnectSDK events and dropping a button in the storyboards where you intend to use it
 
 
 1) Make sure the delegate conforms to protocol MobileConnectManagerDelegate
@@ -135,7 +135,7 @@ And that's it!
 
 You'll receive the token response or the error in the above specified delegate methods.
 
-* #### By using MobileConnectManager
+* By using MobileConnectManager
 
 1) Create the MobileConnectManager instance
 ```

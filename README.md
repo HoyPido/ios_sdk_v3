@@ -153,7 +153,7 @@ MobileConnectManager *manager = [MobileConnectManager new];
 ```
 2) Call one of the below methods.
 
-If you don't have the client's phone number then just call the below method in which you have to provide a controller from which the framework will be able to present it's own web controller.
+If you don't have the client's phone number then just call the below method in which you have to provide a controller from which the framework will be able to present it's own web controller. 
 ```
 [manager getTokenInPresenterController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
         
@@ -179,6 +179,8 @@ DSService *discovery = [DSService new];
 ```
 
 ##### If you don't have client's phone number:
+
+Don't forget to dismiss the controller which you receive in the callback method otherwise the web view will remain on the screen.
 
 ```
 [discovery startOperatorDiscoveryInController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> completitionHandler:^(BaseWebController * _Nullable controller, DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
@@ -212,7 +214,7 @@ Create an instance of the MobileConnectService or MCService in Objective C. You'
 MCService *mobileConnectService = [[MCService alloc] initWithClientId:@"<clientIdFromDiscoveryServiceGoesHere>" authorizationURL:@"<authorizationURLFromDiscoveryGoesHere>" tokenURL:@"<tokenURLFromDiscoveryGoesHere>"];
 ```
 
-After creating the MobileConnect or MCService instance you can get the token by providing a subcriberId if you have it from the Discovery stage or just provide nil for subscriber id. You'll also have to offer a view controller which will be used by the framework to present the web view.
+After creating the MobileConnect or MCService instance you can get the token by providing a subcriberId if you have it from the Discovery stage or just provide nil for subscriber id. You'll also have to offer a view controller which will be used by the framework to present the web view. Don't forget to dismiss the controller which you receive in the callback method otherwise the web view will remain on the screen.
 
 ```
 [mobileConnectService getTokenInController:self subscriberId:@"<inCaseYouReceivedASubscriberIDFromDiscoveryIfNotLeaveNil>" completitionHandler:^(BaseWebController * _Nullable controller, TokenModel * _Nullable tokenModel, NSError * _Nullable error) {

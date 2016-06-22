@@ -36,8 +36,8 @@ spec.source = { :git => "https://github.com/Mobile-Connect/ios-sdk-v2.git", :bra
   mobileConnectManager.source_files = 'MobileConnectSDK/MobileConnectManager/*.swift'
  end
  
- spec.subspec 'Resources' do |resources|
-  resources.source_files = "MobileConnectSDK/Resources/*.{xcassets, storyboard, strings}"
+ spec.subspec 'Resources' do |additionalFiles|
+  additionalFiles.source_files = "MobileConnectSDK/Resources/*.{xcassets, storyboard, strings}"
  end
  
  spec.subspec 'Controllers' do |controllers|

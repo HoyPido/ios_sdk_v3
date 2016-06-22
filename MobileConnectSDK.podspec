@@ -36,11 +36,7 @@ spec.subspec 'MobileConnectManager' do |mobileConnectManager|
 mobileConnectManager.source_files = 'MobileConnectSDK/MobileConnectManager/*.swift'
 end
 
-spec.subspec 'AdditionalFiles' do |additionalFiles|
-additionalFiles.source_files = "MobileConnectSDK/AdditionalFiles/**/*.{xcassets,storyboard,strings}"
-end
-
-spec.resources = "MobileConnectSDK/AdditionalFiles/*.xcassets"
+spec.resources = "MobileConnectSDK/AdditionalFiles/*.{xcassets,storyboard,strings}"
 
 spec.subspec 'Controllers' do |controllers|
 controllers.source_files = "MobileConnectSDK/Controllers/*.swift"

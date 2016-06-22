@@ -147,14 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C36B85B1D05B96C00A997E3 /* Resources */ = {
+		3C36B85B1D05B96C00A997E3 /* AdditionalFiles */ = {
 			isa = PBXGroup;
 			children = (
 				3C36B85C1D05B99800A997E3 /* Images.xcassets */,
 				3C36B85E1D05B9A600A997E3 /* WebController.storyboard */,
 				3C72CF141D064B7500A095ED /* Localizable.strings */,
 			);
-			path = Resources;
+			path = AdditionalFiles;
 			sourceTree = "<group>";
 		};
 		3C36B8641D05BFBC00A997E3 /* MobileConnectManager */ = {
@@ -222,7 +222,7 @@
 				3C72CF051D05E7A500A095ED /* Services */,
 				3C36B8671D05C15E00A997E3 /* Models */,
 				3C36B8641D05BFBC00A997E3 /* MobileConnectManager */,
-				3C36B85B1D05B96C00A997E3 /* Resources */,
+				3C36B85B1D05B96C00A997E3 /* AdditionalFiles */,
 				3CD791701D0570920023FD0A /* Controllers */,
 				3CD7916F1D05706B0023FD0A /* Views */,
 				3CD791691D056F2E0023FD0A /* Utilities */,

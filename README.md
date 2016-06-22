@@ -76,6 +76,16 @@ As a result you'll have it added in the Linked Frameworks and Libraries section
 ![Objective C flag](https://cloud.githubusercontent.com/assets/19551956/16231582/bfa3486c-37be-11e6-86c3-890ab9032c33.png)
 
 
+#### In case your target builds against iOS 9+ please make sure you have added App Transport Security Settings to your target Info.plist. You can do that by opening the Info.plist as source code and pasting the below key inside the plist.
+
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+<key>NSAllowsArbitraryLoads</key><true/>
+</dict>
+```
+
+
 ### Objective C:
 
 At the beginning of the .m file where you intend to use the framework add 

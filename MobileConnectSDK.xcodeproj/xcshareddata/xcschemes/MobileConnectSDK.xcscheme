@@ -26,13 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C3F82DB1D04C7C8006EE8F4"
+               BlueprintIdentifier = "A636539F1D20366700A8A6E2"
                BuildableName = "MobileConnectSDKTests.xctest"
                BlueprintName = "MobileConnectSDKTests"
                ReferencedContainer = "container:MobileConnectSDK.xcodeproj">

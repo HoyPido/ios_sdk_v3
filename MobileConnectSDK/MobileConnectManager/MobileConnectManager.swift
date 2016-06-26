@@ -45,7 +45,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
         }
     }
     
-    lazy var discovery : DiscoveryService = DiscoveryService()
+    let discovery : DiscoveryService
     var currentResponse : MobileConnectResponse?
     var currentPresenter : UIViewController?
     
@@ -58,10 +58,12 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
         self.init(delegate: MobileConnectSDK.getDelegate())
     }
     
-    private init(delegate : MobileConnectManagerDelegate? = nil) {
+    private init(delegate : MobileConnectManagerDelegate? = nil, discoveryService : DiscoveryService = DiscoveryService()) {
         NSException.checkDelegate(delegate)
         
         self.delegate = delegate
+        discovery = discoveryService
+        
         super.init()
     }
     
@@ -118,14 +120,19 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
         
         let mobileConnect : MobileConnectService = MobileConnectService(clientId: operatorsData.response?.client_id ?? "", authorizationURL: operatorsData.response?.apis?.operatorid?.authorizationLink() ?? "", tokenURL: operatorsData.response?.apis?.operatorid?.tokenLink() ?? "")
         
+        getTokenWithMobileConnectService(mobileConnect, inWebController: controller, withOperatorsData: operatorsData)
+    }
+    
+    func getTokenWithMobileConnectService(mobileConnectService : MobileConnectService, inWebController webController : BaseWebController?, withOperatorsData operatorsData : DiscoveryResponse)
+    {
         if let presenter = currentPresenter
         {
             delegate?.mobileConnectWillPresentWebController()
-            mobileConnect.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id, completitionHandler: checkMobileConnectResponse)
+            mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id, completitionHandler: checkMobileConnectResponse)
         }
         else
         {
-            finishWithResponse(controller, model: nil, error: MCErrorCode.Unknown.error)
+            finishWithResponse(webController, model: nil, error: MCErrorCode.Unknown.error)
         }
     }
     

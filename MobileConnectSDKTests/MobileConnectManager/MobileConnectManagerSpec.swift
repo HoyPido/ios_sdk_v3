@@ -12,5 +12,9 @@ import Nimble
 
 class MobileConnectManagerSpec : QuickSpec
 {
-    
+    override func spec() {
+        
+        
+        
+    }
 }

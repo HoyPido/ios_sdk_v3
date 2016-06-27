@@ -23,3 +23,5 @@ class ViewController: UIViewController {
 
 }
 
+@IBAction func getAction(sender: AnyObject) {
+}

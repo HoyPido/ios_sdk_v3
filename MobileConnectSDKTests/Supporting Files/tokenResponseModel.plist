@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>decodedToken</key>
+	<dict>
+		<key>acr</key>
+		<string>2</string>
+		<key>amr</key>
+		<array>
+			<string>SIM_PIN</string>
+		</array>
+		<key>aud</key>
+		<array>
+			<string>a25e91c5-ab1e-4f9e-9fd9-4cd1482c0a48</string>
+		</array>
+		<key>auth_time</key>
+		<integer>1466981836</integer>
+		<key>azp</key>
+		<string>a25e91c5-ab1e-4f9e-9fd9-4cd1482c0a48</string>
+		<key>exp</key>
+		<integer>1466985435</integer>
+		<key>iat</key>
+		<integer>1466981835</integer>
+		<key>iss</key>
+		<string>http://operator_a.sandbox2.mobileconnect.io/oidc/accesstoken</string>
+		<key>nonce</key>
+		<string>83CC726D7518463C9D4680950908A3A7</string>
+		<key>sub</key>
+		<string>5e4787db521a40370c5b20d67b90f7a8</string>
+	</dict>
+	<key>tokenData</key>
+	<dict>
+		<key>access_token</key>
+		<string>53865b10-3bf1-11e6-972a-d5e4ad642096</string>
+		<key>expires_in</key>
+		<string>3600</string>
+		<key>id_token</key>
+		<string>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJub25jZSI6IjgzQ0M3MjZENzUxODQ2M0M5RDQ2ODA5NTA5MDhBM0E3Iiwic3ViIjoiNWU0Nzg3ZGI1MjFhNDAzNzBjNWIyMGQ2N2I5MGY3YTgiLCJhbXIiOlsiU0lNX1BJTiJdLCJhdXRoX3RpbWUiOjE0NjY5ODE4MzYsImFjciI6IjIiLCJhenAiOiJhMjVlOTFjNS1hYjFlLTRmOWUtOWZkOS00Y2QxNDgyYzBhNDgiLCJpYXQiOjE0NjY5ODE4MzUsImV4cCI6MTQ2Njk4NTQzNSwiYXVkIjpbImEyNWU5MWM1LWFiMWUtNGY5ZS05ZmQ5LTRjZDE0ODJjMGE0OCJdLCJpc3MiOiJodHRwOi8vb3BlcmF0b3JfYS5zYW5kYm94Mi5tb2JpbGVjb25uZWN0LmlvL29pZGMvYWNjZXNzdG9rZW4ifQ.IBQlUE4o1uUatHMcNKcx6n1uT2ltJ0s6XHXdrXLgzrM</string>
+		<key>token_type</key>
+		<string>Bearer</string>
+	</dict>
+</dict>
+</plist>

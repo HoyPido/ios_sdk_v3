@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>response</key>
+	<dict>
+		<key>apis</key>
+		<dict>
+			<key>operatorid</key>
+			<dict>
+				<key>link</key>
+				<array>
+					<dict>
+						<key>href</key>
+						<string>http://operator_a.sandbox2.mobileconnect.io/oidc/authorize</string>
+						<key>rel</key>
+						<string>authorization</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>http://operator_a.sandbox2.mobileconnect.io/oidc/accesstoken</string>
+						<key>rel</key>
+						<string>token</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>http://operator_a.sandbox2.mobileconnect.io/oidc/userinfo</string>
+						<key>rel</key>
+						<string>userinfo</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>openid profile email</string>
+						<key>rel</key>
+						<string>scope</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<key>client_id</key>
+		<string>a25e91c5-ab1e-4f9e-9fd9-4cd1482c0a48</string>
+		<key>client_secret</key>
+		<string>1d95d440-49fe-455e-8fd4-b5903b8c78ec</string>
+		<key>country</key>
+		<string>US</string>
+		<key>currency</key>
+		<string>USD</string>
+		<key>serving_operator</key>
+		<string>Example Operator A</string>
+		<key>subscriber_id</key>
+		<string>4ccfa4cef4db619e12feaa7f4fe41368f2ba5d533b317c920beabc72189a00a0643b89f0902e8e20e44c6dd2d43c9c11cfa6ab5a5f3f96ee9316763dbb849bd10d3df33759e702565260b19bfd2f90a4d9c8119b36af527aa7607b5d9198ac4f4ad3a5fd034fe454817c50c5e90f7c28644faf28b227788cf4af45a958ee368cbc6709e1c660dbb4d69c9d544e0fb26465175932e0e5a2370854614da3dea86ca304fd43016b2d25e6e907e4d3708b7930da2a1cfa810c546437d1a1414b49b253dfdb08971e800aca26e41d52453babb080e311daa3deb19ef5ce62f43209116430ae531625c8c81dcb6054d54e9f166a2d8caea6cac255abfdaca83fedd2f8</string>
+	</dict>
+	<key>subscriber_id</key>
+	<string>4ccfa4cef4db619e12feaa7f4fe41368f2ba5d533b317c920beabc72189a00a0643b89f0902e8e20e44c6dd2d43c9c11cfa6ab5a5f3f96ee9316763dbb849bd10d3df33759e702565260b19bfd2f90a4d9c8119b36af527aa7607b5d9198ac4f4ad3a5fd034fe454817c50c5e90f7c28644faf28b227788cf4af45a958ee368cbc6709e1c660dbb4d69c9d544e0fb26465175932e0e5a2370854614da3dea86ca304fd43016b2d25e6e907e4d3708b7930da2a1cfa810c546437d1a1414b49b253dfdb08971e800aca26e41d52453babb080e311daa3deb19ef5ce62f43209116430ae531625c8c81dcb6054d54e9f166a2d8caea6cac255abfdaca83fedd2f8</string>
+	<key>ttl</key>
+	<integer>1466985125817</integer>
+</dict>
+</plist>

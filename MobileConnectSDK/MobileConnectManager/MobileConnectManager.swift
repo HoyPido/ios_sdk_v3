@@ -12,12 +12,11 @@ public typealias MobileConnectResponse = (tokenResponseModel : TokenResponseMode
 
 ///This protocol allows catching events which occur while using the MobileConnectButton or MobileConnectManager class
 @objc public protocol MobileConnectManagerDelegate {
-    
-     func mobileConnectWillStart()
-     func mobileConnectWillPresentWebController()
-     func mobileConnectWillDismissWebController()
-     func mobileConnectDidGetTokenResponse(tokenResponse : TokenResponseModel)
-     func mobileConnectFailedGettingTokenResponseWithError(error : NSError)
+    optional func mobileConnectWillStart()
+    optional func mobileConnectWillPresentWebController()
+    optional func mobileConnectWillDismissWebController()
+    optional func mobileConnectDidGetTokenResponse(tokenResponse : TokenResponseModel)
+    optional func mobileConnectFailedGettingTokenResponseWithError(error : NSError)
 }
 
 protocol MobileConnectManagerProtocol
@@ -34,8 +33,8 @@ protocol MobileConnectManagerProtocol
 /**
     Abstracts the Discovery and Mobile Connect services by offering 2 convenience methods for directly getting the token. The token will be delivered in the supplied callbacks or delegate methods if set.
 */
-public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
-    
+    public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
+
     ///The delegate responsible for receiving MobileConnectManager events
     public var delegate : MobileConnectManagerDelegate?
     {
@@ -51,14 +50,8 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
     
     var isRunning : Bool = false
     
-    //private var discoveryService : DiscoveryService
-    
     //MARK: init
-    public convenience override init() {
-        self.init(delegate: MobileConnectSDK.getDelegate())
-    }
-    
-    private init(delegate : MobileConnectManagerDelegate? = nil, discoveryService : DiscoveryService = DiscoveryService()) {
+    public init(delegate : MobileConnectManagerDelegate? = MobileConnectSDK.getDelegate(), discoveryService : DiscoveryService = DiscoveryService()) {
         NSException.checkDelegate(delegate)
         
         self.delegate = delegate
@@ -77,7 +70,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
     {
         startDiscoveryInHandler({ 
             
-            self.delegate?.mobileConnectWillPresentWebController()
+            self.delegate?.mobileConnectWillPresentWebController?()
             self.discovery.startOperatorDiscoveryInController(presenterController, completitionHandler: self.checkDiscoveryResponse)
             
         },presenter: presenterController, withCompletition: completitionHandler)
@@ -114,7 +107,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
         
         if let controller = controller
         {
-            delegate?.mobileConnectWillDismissWebController()
+            delegate?.mobileConnectWillDismissWebController?()
             controller.dismissViewControllerAnimated(true, completion: nil)
         }
         
@@ -127,7 +120,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
     {
         if let presenter = currentPresenter
         {
-            delegate?.mobileConnectWillPresentWebController()
+            delegate?.mobileConnectWillPresentWebController?()
             mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id, completitionHandler: checkMobileConnectResponse)
         }
         else
@@ -149,7 +142,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
         {
             isRunning = true
             
-            delegate?.mobileConnectWillStart()
+            delegate?.mobileConnectWillStart?()
             
             currentResponse = completitionHandler
             currentPresenter = presenter
@@ -168,15 +161,15 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
         
         if let error = error
         {
-            delegate?.mobileConnectFailedGettingTokenResponseWithError(error)
+            delegate?.mobileConnectFailedGettingTokenResponseWithError?(error)
         }
         
         if let model = model
         {
-            delegate?.mobileConnectDidGetTokenResponse(model)
+            delegate?.mobileConnectDidGetTokenResponse?(model)
         }
         
-        delegate?.mobileConnectWillDismissWebController()
+        delegate?.mobileConnectWillDismissWebController?()
         controller?.dismissViewControllerAnimated(true, completion: nil)
         
         currentResponse?( tokenResponseModel: model, error: error)

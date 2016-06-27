@@ -29,7 +29,7 @@ The library uses Alamofire and JSONModel libraries for rest service calls and de
 
 ```
 use_frameworks!
-  pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/r2-ios-sdk', :branch => ’master’
+  pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios-sdk-v2', :branch => ’master’
 ```
 
 

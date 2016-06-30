@@ -145,7 +145,10 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
         //if server responds with error, create an NSError instance and send in compl handler
         if dictionary.keys.contains({$0 == "error"}) {
             
-            completitionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : (dictionary["error_description"] as? String) ?? "" ]))
+            let errorDescription : String = (dictionary["error_description"] as? String) ?? (dictionary["description"] as? String) ?? ""
+            
+            completitionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : errorDescription ]))
+            
             return
         }
         

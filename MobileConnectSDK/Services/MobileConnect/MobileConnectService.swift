@@ -53,7 +53,7 @@ public class MobileConnectService: BaseMobileConnectService<TokenModel, Authoriz
     }
     
     ///The constructor to be used in case a specific level of assurance is needed.
-    public convenience init(levelOfAssurance : MCLevelOfAssurance,
+    convenience init(levelOfAssurance : MCLevelOfAssurance,
                             clientId : String, authorizationURL : String,
                             tokenURL : String)
     {

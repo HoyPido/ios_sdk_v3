@@ -83,7 +83,7 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     case ServerResponse
 }
 
-@objc public enum MCLevelOfAssurance : Int
+@objc enum MCLevelOfAssurance : Int
 {
     case Level2 = 2
     case Level3 = 3

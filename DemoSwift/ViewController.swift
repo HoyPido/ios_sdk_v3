@@ -17,60 +17,24 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
         MobileConnectSDK.setDelegate(self)
     }
     
-    func writeDictionary(dictionary : NSDictionary, withName name : String)
-    {
-        let documentsDirectory : String = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        
-        let plistPath : NSURL = NSURL(fileURLWithPath: documentsDirectory).URLByAppendingPathComponent(name)
-        
-        print(plistPath)
-        
-        dictionary.writeToURL(plistPath, atomically: true)
-    }
-    
     //MARK: Events
     @IBAction func getAction(sender: AnyObject) {
         
         let discoveryService : DiscoveryService = DiscoveryService()
         
         discoveryService.startOperatorDiscoveryForPhoneNumber("+447403830781") { (operatorsData, error) in
+        
+            let clientId : String = operatorsData?.response?.client_id ?? ""
+            let authorizationURL : String = operatorsData?.response?.apis?.operatorid?.authorizationLink() ?? ""
+            let tokenURL : String = operatorsData?.response?.apis?.operatorid?.tokenLink() ?? ""
             
-            let viewController : UIViewController = UIViewController()
             
-            discoveryService.response = nil
-            discoveryService.error = nil
-            mockDelegate.error = nil
-            mockDelegate.response = nil
+            let mobileService : MobileConnectService = MobileConnectService(clientId: clientId, authorizationURL: authorizationURL, tokenURL: tokenURL)
             
-            //concurrent call
-            context("mobile connect is called again before finishing", closure: {
+            mobileService.getTokenInController(self, subscriberId: "asdas", completitionHandler: { (controller, tokenModel, error) in
                 
-                mockDelegate.resetFlags()
-                
-                discoveryService.response = nil
-                discoveryService.error = nil
-                mockDelegate.error = nil
-                mockDelegate.response = nil
-                
-                discoveryService.error = MCErrorCode.Unknown.error
-                discoveryService.withDelay = true
-                
-                manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
-                    
-                })
-                
-                manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
-                    
-                    it("has a concurrency error", closure: {
-                        expect(error?.code).to(be(MCErrorCode.Concurrency.error.code))
-                    })
-                    
-                    it("has a nil model", closure: {
-                        expect(tokenResponseModel).to(beNil())
-                    })
-                })
+                print(error)
             })
-
         }
     }
 }

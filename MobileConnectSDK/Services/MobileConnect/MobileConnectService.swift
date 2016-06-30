@@ -33,7 +33,7 @@ public class MobileConnectService: BaseMobileConnectService<TokenModel, Authoriz
     
     lazy var requestConstructor : MCRequestConstructor =
     {
-            return MCRequestConstructor(clientKey : self.clientKey, clientSecret: self.clientSecret, redirectURL : self.redirectURL)
+        return MCRequestConstructor(clientKey : self.clientKey, clientSecret: self.clientSecret, redirectURL : self.redirectURL)
     }()
     
     //MARK: init
@@ -53,7 +53,7 @@ public class MobileConnectService: BaseMobileConnectService<TokenModel, Authoriz
     }
     
     ///The constructor to be used in case a specific level of assurance is needed.
-    convenience init(levelOfAssurance : MCLevelOfAssurance,
+    public convenience init(levelOfAssurance : MCLevelOfAssurance,
                             clientId : String, authorizationURL : String,
                             tokenURL : String)
     {

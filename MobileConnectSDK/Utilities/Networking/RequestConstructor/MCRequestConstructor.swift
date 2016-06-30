@@ -34,7 +34,7 @@ class MCRequestConstructor: RequestConstructor {
         let nonce : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
         let state : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
         
-        var parameters : [String : String] = [kClientId : clientId, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : kScopeValue, kAcreditationValue : "\(MCLevelOfAssurance.Level2.rawValue)", kState : state, kNonce : nonce]
+        var parameters : [String : String] = [kClientId : clientId, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : kScopeValue, kAcreditationValue : "\(acreditationValue.rawValue)", kState : state, kNonce : nonce]
         
         if let subscriberId = subscriberId {
             parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)

@@ -20,19 +20,14 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
     
     var controllerResponse : ((controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void)?
     
-    lazy var webController : BaseWebController? = {
-        
-        [weak self] in
-        
-        return WebController.controllerWithDelegate(self)
-        }()
+    var webController : BaseWebController?
     
     //MARK: init
     convenience override init() {
         self.init(redirectURL : MobileConnectSDK.getRedirectURL(), clientKey:  MobileConnectSDK.getClientKey(), clientSecret: MobileConnectSDK.getClientSecret())
     }
     
-    init(redirectURL : NSURL, clientKey : String, clientSecret : String) {
+    init(redirectURL : NSURL, clientKey : String, clientSecret : String, webController : BaseWebController? = WebController.existingTemplate) {
         
         NSException.checkClientKey(clientKey)
         NSException.checkClientSecret(clientSecret)
@@ -42,7 +37,11 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
         self.clientKey = clientKey
         self.clientSecret = clientSecret
         
+        self.webController = webController
+        
         super.init()
+        
+        self.webController?.delegate = self
     }
     
     //MARK: Web controller delegate
@@ -105,6 +104,9 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
         
         if isTheSameHost && parameters.count > 0 {
             isAwaitingResponse = false
+            
+            print(url)
+            
             didReceiveResponseWithParameters(parameters, fromController: controller)
             
             return true
@@ -117,10 +119,10 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
     {
         isAwaitingResponse = false
         
-        treatWebRedirectParameters(parameters, withCompletitionHandler: didReceiveResponseFromController)
+        treatWebRedirectParameters(parameters, withCompletionHandler: didReceiveResponseFromController)
     }
     
-    func treatWebRedirectParameters(parameters : [NSObject : AnyObject], withCompletitionHandler completitionHandler : (controller : BaseWebController?, model : RedirectModel?, error : NSError?) -> Void)
+    func treatWebRedirectParameters(parameters : [NSObject : AnyObject], withCompletionHandler completionHandler : (controller : BaseWebController?, model : RedirectModel?, error : NSError?) -> Void)
     {
         deserializeModel(parameters) { (model : RedirectModel?, error : NSError?) in
             guard let model = model else
@@ -129,23 +131,23 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
                 return
             }
             
-            completitionHandler( controller: self.webController, model: model, error: nil)
+            completionHandler( controller: self.webController, model: model, error: nil)
         }
     }
     
     //MARK: Deserialization methods
-    func deserializeModel<T : MCModel>(modelDictionary : AnyObject?, completitionHandler : (model : T? , error : NSError?) -> Void)
+    func deserializeModel<T : MCModel>(modelDictionary : AnyObject?, completionHandler : (model : T? , error : NSError?) -> Void)
     {
         guard let dictionary = modelDictionary as? [NSObject : AnyObject] else
         {
-            completitionHandler(model: nil, error: MCErrorCode.SerializationError.error)
+            completionHandler(model: nil, error: MCErrorCode.SerializationError.error)
             return
         }
         
         //if server responds with error, create an NSError instance and send in compl handler
         if dictionary.keys.contains({$0 == "error"}) {
             
-            completitionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : (dictionary["description"] as? String) ?? "" ]))
+            completionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : (dictionary["description"] as? String) ?? "" ]))
             return
         }
         
@@ -157,10 +159,10 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
         }
         catch
         {
-            completitionHandler(model: nil, error: MCErrorCode.SerializationError.error)
+            completionHandler(model: nil, error: MCErrorCode.SerializationError.error)
         }
         
-        completitionHandler(model: model, error: nil)
+        completionHandler(model: model, error: nil)
     }
     
     func keyValuesFromString(string : String?) -> [NSObject : AnyObject]
@@ -184,13 +186,13 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
     }
     
     //MARK: Pre-request stage
-    func startServiceInController(controller : UIViewController, withRequest request : Request, completitionHandler : (controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void)
+    func startServiceInController(controller : UIViewController, withRequest request : Request, completionHandler : (controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void)
     {
         //start in handler basically checks for concurrency error in this case, but with reusing the same logic as for other requests
         startInHandler({
             
             //saving completition block for later when the server response comes
-            self.controllerResponse = completitionHandler
+            self.controllerResponse = completionHandler
             
             self.presentWebControllerWithRequest(request.request, inController: controller, errorHandler: { (error) in
                 self.isAwaitingResponse = false
@@ -198,13 +200,13 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
             })
             
         }, withParameters: []) { (error) in
-            completitionHandler(controller: nil, model: nil, error: error)
+            completionHandler(controller: nil, model: nil, error: error)
         }
     }
     
-    func startInHandler(handler : () -> Void, withParameters parameters : [(String?, MCErrorCode)], completitionHandler: (error : NSError) -> Void)
+    func startInHandler(handler : () -> Void, withParameters parameters : [(String?, MCErrorCode)], completionHandler: (error : NSError) -> Void)
     {
-        guard parametersAreValid(parameters, completitionHandler: completitionHandler) else
+        guard parametersAreValid(parameters, completionHandler: completionHandler) else
         {
             return
         }
@@ -215,30 +217,46 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
         }
         else
         {
-            completitionHandler(error: MCErrorCode.Concurrency.error)
+            completionHandler(error: MCErrorCode.Concurrency.error)
         }
     }
     
     //MARK: Generic request treatment method
     func processRequest(request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : (model : ResponseModel?, error : NSError?) -> Void)
     {
-        startInHandler({ 
-            
-            request.responseJSON(completionHandler: { (response : Response<AnyObject, NSError>) in
-                self.isAwaitingResponse = false
+        processSpecificRequest(request, withParameters: parameters, inHandler: localHandler)
+    }
     
-                if response.result.isSuccess
-                {
-                    self.deserializeModel(response.result.value, completitionHandler: localHandler)
-                }
-                else
-                {
-                    localHandler(model: nil, error: response.result.error)
-                }
-            })
+    func processSpecificRequest<T : MCModel>(request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : (model : T?, error : NSError?) -> Void)
+    {
+        startInHandler({
             
-            }, withParameters: parameters) { (error) in
+            self.callRequest(request, forCompletionHandler: localHandler)
+            
+        }, withParameters: parameters) { (error) in
             localHandler(model : nil, error: error)
+        }
+    }
+    
+    func callRequest<T : MCModel>(request : Request, forCompletionHandler completionHandler : (model : T?, error : NSError?) -> Void)
+    {
+        request.responseJSON { (response : Response<AnyObject, NSError>) in
+            
+            self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
+        }
+    }
+    
+    func treatResponseCompletionHandler<T : MCModel>(response : Response<AnyObject, NSError>, withClientResponseHandler clientResponseHandler : (model : T?, error : NSError?) -> Void)
+    {
+        self.isAwaitingResponse = false
+        
+        if response.result.isSuccess
+        {
+            self.deserializeModel(response.result.value, completionHandler: clientResponseHandler)
+        }
+        else
+        {
+            clientResponseHandler(model: nil, error: response.result.error)
         }
     }
     
@@ -252,11 +270,11 @@ public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : M
         return localCanStartRequesting
     }
     
-    func parametersAreValid(parameters : [(String?, MCErrorCode)], completitionHandler : (error : NSError) -> Void) -> Bool
+    func parametersAreValid(parameters : [(String?, MCErrorCode)], completionHandler : (error : NSError) -> Void) -> Bool
     {
         if let firstError = parameters.filter({$0.0 == .None || ($0.0?.characters.count ?? 0) == 0}).map({$0.1}).first
         {
-            completitionHandler(error: firstError.error)
+            completionHandler(error: firstError.error)
             
             return false
         }

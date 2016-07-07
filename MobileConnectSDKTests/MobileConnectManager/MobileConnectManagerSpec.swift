@@ -9,79 +9,169 @@
 import Foundation
 import Quick
 import Nimble
-import MobileConnectSDK
+
+@testable import MobileConnectSDK
 
 class MobileConnectManagerSpec : QuickSpec
 {
-    override func spec() {
-        
+    //MARK: iVars
+    lazy var discoveryService : DiscoveryServiceMock = {
         MobileConnectSDK.setClientKey(kClientKey)
         MobileConnectSDK.setClientSecret(kClientSecret)
         MobileConnectSDK.setRedirect(kRedirectURL)
         MobileConnectSDK.setApplicationEndpoint(kApplicationEndpoint)
         
-        describe("mobile connect manager") {
+        return DiscoveryServiceMock()
+    }()
+    
+    let mockDelegate : MobileConnectManagerDelegateMock = MobileConnectManagerDelegateMock()
+    var manager : MobileConnectManagerMock!
+    let viewController : UIViewController = UIViewController()
+    
+    //MARK: Quick template functions
+    override func spec() {
+        
+        manager = MobileConnectManagerMock(delegate: mockDelegate, discoveryService: discoveryService)
+    
+        startTesting()
+    }
+    
+    func startTesting()
+    {
+        describe("mobile connect manager")
+        {
+            describe("gets token without client details")
+            {
+                self.startTesting(){ (completionHandler) in
+                    self.manager.getTokenInPresenterController(self.viewController, withCompletionHandler: completionHandler)
+                }
+            }
             
-            let mockDelegate : MobileConnectManagerDelegateMock = MobileConnectManagerDelegateMock()
-            let discoveryService : DiscoveryServiceMock = DiscoveryServiceMock()
-            
-            let manager : MobileConnectManagerMock = MobileConnectManagerMock(delegate: mockDelegate, discoveryService: discoveryService)
-            
-            let viewController : UIViewController = UIViewController()
-            
-            describe("when gets token without client details", closure: {
-                
-                discoveryService.response = nil
-                discoveryService.error = nil
-                mockDelegate.error = nil
-                mockDelegate.response = nil
-                
-                //user cancelled action or discovery returns error use case
-                context("user cancelled action", closure: {
-                    
-                    mockDelegate.resetFlags()
-                    
-                    discoveryService.error = MCErrorCode.UserCancelled.error
-                    
-                    manager.getTokenInPresenterController(viewController, withCompletitionHandler:
-                    { (tokenResponseModel, error) in
-                        
-                        self.tryResponse(tokenResponseModel, error: error, withDiscoveryService: discoveryService, mockDelegate: mockDelegate)
-                    })
+            describe("gets token with phone number", closure: {
+                self.startTesting({ (completionHandler) in
+                    self.manager.getTokenForPhoneNumber("", inPresenterController: self.viewController, withCompletionHandler: completionHandler)
                 })
             })
         }
     }
     
-    func tryResponse(tokenResponseModel : TokenResponseModel?, error : NSError?, withDiscoveryService discoveryService : DiscoveryServiceMock, mockDelegate : MobileConnectManagerDelegateMock)
+    func startTesting(action : (completionHandler : (tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void) -> Void)
     {
-        it("has a nil response model", closure: {
-            expect(tokenResponseModel).to(beNil())
+        context("is called before finishing", closure: {
+            
+            self.resetBeforeEach()
+            
+            self.discoveryService.error = MCErrorCode.Unknown.error
+            self.discoveryService.withDelay = true
+            
+            action(completionHandler: { (tokenResponseModel, error) in
+                
+            })
+            
+            action(completionHandler: { (tokenResponseModel, error) in
+                it("has concurrency error", closure: {
+                    expect(error?.code).to(be(MCErrorCode.Concurrency.error.code))
+                })
+            })
+        })
+        //-----------------
+        //user cancelled action or discovery returns error use case
+        context("user cancelled action", closure: {
+            
+            waitUntil(action: { (done : () -> Void) in
+                
+                self.resetBeforeEach()
+                self.discoveryService.error = MCErrorCode.UserCancelled.error
+                
+                action(completionHandler: { (tokenResponseModel, error) in
+                    
+                    self.tryResponse(tokenResponseModel, expectedResponseModel: nil, error: error, withExpectedError: self.discoveryService.error, mockDelegate: self.mockDelegate)
+                    
+                    done()
+                })
+            })
         })
         
-        it("has the same error as the one set in mock", closure: {
-            expect(error).to(be(discoveryService.error))
+        //-----------------
+        context("good discovery and bad mobile connect response", closure:
+            {
+                waitUntil(action: { (done : () -> Void) in
+                    
+                    self.resetBeforeEach()
+                    self.discoveryService.response = Mocker.discoveryResponse
+                    self.manager.error = MCErrorCode.Unknown.error
+                    
+                    action(completionHandler: { (tokenResponseModel, error) in
+                        self.tryResponse(tokenResponseModel, expectedResponseModel: nil, error: error, withExpectedError: self.manager.error, mockDelegate: self.mockDelegate)
+                        
+                        done()
+                    })
+                })
         })
         
-        it("called will start on delegate", closure: {
-            expect(mockDelegate.mobileConnectWillStartWasCalled).to(beTrue())
+        //-------------------
+        context("good discovery and mobile connect response", closure: {
+            
+            waitUntil(action: { (done : () -> Void) in
+                
+                self.resetBeforeEach()
+                self.discoveryService.response = Mocker.discoveryResponse
+                
+                action(completionHandler: { (tokenResponseModel, error) in
+                    
+                    self.tryResponse(tokenResponseModel, expectedResponseModel: Mocker.tokenResponseModel, error: error, withExpectedError: nil, mockDelegate: self.mockDelegate)
+                    
+                    done()
+                })
+            })
         })
+    }
+    
+    //MARK: Helpers
+    func tryResponse(tokenResponseModel : TokenResponseModel?, expectedResponseModel : TokenResponseModel?, error : NSError?, withExpectedError expectedError : NSError?, mockDelegate : MobileConnectManagerDelegateMock?)
+    {
+        itBehavesLike(kNameDefaultMobileConnectManagerConfiguration) { () -> (NSDictionary) in
+            
+            let dictionary : NSMutableDictionary = NSMutableDictionary()
+            
+            if let response = tokenResponseModel
+            {
+                dictionary[kKeyTokenResponse] = response
+            }
+            
+            if let error = error
+            {
+                dictionary[kKeyError] = error
+            }
+            
+            if let expectedError = expectedError
+            {
+                dictionary[kKeyExpectedError] = expectedError
+            }
+            
+            if let mockDelegate = mockDelegate
+            {
+                dictionary[kKeyMockDelegate] = mockDelegate
+            }
+            
+            if let expectedResponseModel  = expectedResponseModel
+            {
+                dictionary[kKeyExpectedResponse] = expectedResponseModel
+            }
+            
+            return dictionary.copy() as! NSDictionary
+        }
+    }
+    
+    func resetBeforeEach()
+    {
+        mockDelegate.resetFlags()
         
-        it("called will present on delegate", closure: {
-            expect(mockDelegate.mobileConnectWillPresentWebControllerWasCalled).to(beTrue())
-        })
-        
-        it("called will dismiss on delegate", closure: {
-            expect(mockDelegate.mobileConnectWillDismissWebControllerWasCalled).to(beTrue())
-        })
-        
-        it("called did fail on delegate", closure: {
-            expect(mockDelegate.mobileConnectFailedGettingTokenResponseWasCalled).to(beTrue())
-        })
-        
-        it("passed the error to the delegate", closure: {
-            expect(mockDelegate.error).to(be(discoveryService.error))
-        })
-
+        discoveryService.withDelay = false
+        discoveryService.response = nil
+        discoveryService.error = nil
+        mockDelegate.error = nil
+        mockDelegate.response = nil
+        manager.error = nil
     }
 }

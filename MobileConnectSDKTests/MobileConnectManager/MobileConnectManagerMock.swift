@@ -12,21 +12,28 @@ import UIKit
 
 class MobileConnectManagerMock: MobileConnectManager {
     
-    var willProvideGoodMobileConnectResponse : Bool = false
-    
+    var error : NSError?
+
     override func getTokenWithMobileConnectService(mobileConnectService: MobileConnectService, inWebController webController: BaseWebController?, withOperatorsData operatorsData: DiscoveryResponse)
     {
         let mobileConnectServiceMock : MobileConnectServiceMock = MobileConnectServiceMock(clientId: operatorsData.response?.client_id ?? "", authorizationURL: operatorsData.response?.apis?.operatorid?.authorizationLink() ?? "", tokenURL: operatorsData.response?.apis?.operatorid?.tokenLink() ?? "")
      
-        if willProvideGoodMobileConnectResponse
+        if let error = error
         {
-            mobileConnectServiceMock.response = Mocker.tokenResponseModel.tokenData
+            mobileConnectServiceMock.error = error
         }
         else
         {
-            mobileConnectServiceMock.error = MCErrorCode.Unknown.error
+            mobileConnectServiceMock.response = Mocker.tokenResponseModel.tokenData
         }
         
         super.getTokenWithMobileConnectService(mobileConnectServiceMock, inWebController: webController, withOperatorsData: operatorsData)
+    }
+    
+    override var tokenResponseModel : (tokenModel : TokenModel?) -> TokenResponseModel?
+    {
+        return { (tokenModel : TokenModel?) -> TokenResponseModel? in
+            return self.error == .None ? Mocker.tokenResponseModel : nil
+        }
     }
 }

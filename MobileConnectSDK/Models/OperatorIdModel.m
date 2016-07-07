@@ -12,7 +12,11 @@
 #define kAuthorizationLink @"authorization"
 #define kTokenLink @"token"
 #define kUserInfoLink @"userinfo"
-#define kScopeLink @"scope"
+#define kOpenIdConfiguration @"openid-configuration"
+#define kPremiumInfo @"premiuminfo"
+#define kTokenRevoke @"tokenrevoke"
+#define kJSONValidation @"jwks"
+#define kApplicationShortName @"applicationShortName"
 
 @implementation OperatorIdModel
 
@@ -36,9 +40,29 @@
     return [self linkForParameter:kUserInfoLink];
 }
 
-- (nullable NSString*)scopeLink
+- (nullable NSString*)openIdConfiguration
 {
-    return [self linkForParameter:kScopeLink];
+    return [self linkForParameter:kOpenIdConfiguration];
+}
+
+- (nullable NSString*)premiumInfo
+{
+    return [self linkForParameter:kPremiumInfo];
+}
+
+- (nullable NSString*)tokenRevocation
+{
+    return [self linkForParameter:kTokenRevoke];
+}
+
+- (nullable NSString*)JSONWebTokenValidation
+{
+    return [self linkForParameter:kJSONValidation];
+}
+
+- (nullable NSString*)applicationShortName
+{
+    return [self linkForParameter:kApplicationShortName];
 }
 
 - (nullable NSString*)linkForParameter:(NSString*)parameter

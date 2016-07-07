@@ -23,3 +23,5 @@ FOUNDATION_EXPORT const unsigned char MobileConnectSDKVersionString[];
 #import "TokenResponseModel.h"
 #import "MCError.h"
 #import "MCJWTDecoder.h"
+#import "MetadataModel.h"
+#import "MobileConnectProduct.h"

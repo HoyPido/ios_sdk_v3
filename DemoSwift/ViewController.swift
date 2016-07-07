@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileConnectSDK
+import Alamofire
 
 class ViewController: UIViewController, MobileConnectManagerDelegate {
 
@@ -31,47 +32,35 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
     //MARK: Events
     @IBAction func getAction(sender: AnyObject) {
         
-        let discoveryService : DiscoveryService = DiscoveryService()
+        let discoveryService : DSService = DSService()
         
-        discoveryService.startOperatorDiscoveryForPhoneNumber("+447403830781") { (operatorsData, error) in
+        
+        
+        discoveryService.startOperatorDiscoveryForPhoneNumber("+447700200200") { (operatorsData, error) in
             
-            let viewController : UIViewController = UIViewController()
-            
-            discoveryService.response = nil
-            discoveryService.error = nil
-            mockDelegate.error = nil
-            mockDelegate.response = nil
-            
-            //concurrent call
-            context("mobile connect is called again before finishing", closure: {
-                
-                mockDelegate.resetFlags()
-                
-                discoveryService.response = nil
-                discoveryService.error = nil
-                mockDelegate.error = nil
-                mockDelegate.response = nil
-                
-                discoveryService.error = MCErrorCode.Unknown.error
-                discoveryService.withDelay = true
-                
-                manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
-                    
-                })
-                
-                manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
-                    
-                    it("has a concurrency error", closure: {
-                        expect(error?.code).to(be(MCErrorCode.Concurrency.error.code))
-                    })
-                    
-                    it("has a nil model", closure: {
-                        expect(tokenResponseModel).to(beNil())
-                    })
-                })
-            })
-
+            print(operatorsData)
         }
+        
+//        discoveryService.startOperatorDiscoveryInController(self) { (controller, operatorsData, error) in
+//            
+//        }
+        
+//        discoveryService.startOperatorDiscoveryForPhoneNumber("+447700200200") { (operatorsData, error) in
+//            
+//            print(operatorsData?.metadata)
+//            
+//            if let dictionary = operatorsData?.metadata?.toDictionary()
+//            {
+//                self.writeDictionary(dictionary, withName: "metadata")
+//            }
+//            
+//            
+////            print(operatorsData?.linksInformation?.openIdConfiguration() )
+////            
+////            request(.GET, operatorsData?.linksInformation?.openIdConfiguration() ?? "").responseJSON(completionHandler: { (response : Response<AnyObject, NSError>) in
+////                print(response.result.value)
+////            })
+//        }
     }
 }
 

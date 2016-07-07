@@ -51,7 +51,7 @@ class DiscoveryRequestConstructor : RequestConstructor
         let isPhoneNumberRequest : Bool = parameters.contains({$0.0 == kKeyPhone})
         
         let method : Alamofire.Method = isPhoneNumberRequest  ? .POST : .GET
-        let encoding : ParameterEncoding = isPhoneNumberRequest ? ParameterEncoding.JSON : ParameterEncoding.URLEncodedInURL
+        let encoding : ParameterEncoding = isPhoneNumberRequest ? ParameterEncoding.URL : ParameterEncoding.URLEncodedInURL
         
         return requestWithMethod(method, url: applicationEndpoint, parameters: [kRedirectURL : redirectURL.URLString] + parameters, encoding: encoding)
     }

@@ -13,7 +13,7 @@
 
 - (instancetype)initWithTokenModel:(TokenModel*)tokenModel
 {
-    if (self = [super init]) {
+    if ((self = [super init]) && tokenModel) {
         
         self.tokenData = tokenModel;
         
@@ -29,9 +29,13 @@
         {
             NSLog(@"the provided token model had no encoded jwt");
         }
+        
+        return self;
     }
-    
-    return self;
+    else
+    {
+        return nil;
+    }
 }
 
 @end

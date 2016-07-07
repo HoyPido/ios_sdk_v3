@@ -16,6 +16,11 @@
 - (nullable NSString*)authorizationLink;
 - (nullable NSString*)tokenLink;
 - (nullable NSString*)userInfoLink;
-- (nullable NSString*)scopeLink;
+- (nullable NSString*)openIdConfiguration;
+- (nullable NSString*)linkForParameter:(nonnull NSString*)parameter;
+- (nullable NSString*)premiumInfo;
+- (nullable NSString*)tokenRevocation;
+- (nullable NSString*)JSONWebTokenValidation;
+- (nullable NSString*)applicationShortName;
 
 @end

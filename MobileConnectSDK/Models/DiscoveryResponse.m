@@ -10,6 +10,11 @@
 
 @implementation DiscoveryResponse
 
+- (nullable OperatorIdModel*)linksInformation
+{
+    return self.response.apis.operatorid;
+}
+
 + (BOOL)propertyIsOptional:(NSString *)propertyName
 {
     return YES;

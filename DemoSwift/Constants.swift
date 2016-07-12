@@ -16,5 +16,5 @@ let kApplicationEndpoint : String = "http://discovery.sandbox2.mobileconnect.io/
 let kReferenceEndpoint : String = "https://reference.mobileconnect.io/discovery/"
 let kReferenceRedirect : NSURL =  NSURL(string: "http://complete/")!
 
-let kReferenceClientId : String = "YjJjNzhhMWVmMjRjNjlj"
-let kReferenceClientSecret : String = "NmJkM2Y2NmNkZmY3YWU0"
+let kReferenceClientId : String = "ZWRhNjU3OWI3MGIwYTRh" //"YjJjNzhhMWVmMjRjNjlj"
+let kReferenceClientSecret : String = "NjQzZTBhZWM0YmQ4ZDQ5" //"NmJkM2Y2NmNkZmY3YWU0"

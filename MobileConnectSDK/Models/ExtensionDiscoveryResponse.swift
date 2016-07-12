@@ -11,10 +11,16 @@ import Alamofire
 
 extension DiscoveryResponse {
     
-    func isMobileConnectServiceSupported(services : String) -> Bool
+    ///In case the passed services argument contains scopes which are not contained in the metadata, the function will return nil
+    func isMobileConnectServiceSupported(services : String) -> Bool?
     {
-        let searchedServices : [String] = services.componentsSeparatedByString(" ")
-        let existingServices : [String] = metadata?.scopes_supported ?? []
+        guard services.characters.count > 0 else
+        {
+            return nil
+        }
+        
+        let searchedServices : [String] = services.componentsSeparatedByString(" ").map({$0.lowercaseString})
+        let existingServices : [String] = (metadata?.scopes_supported ?? []).map({$0.lowercaseString})
         
         return searchedServices.filter({existingServices.contains($0)}).count == searchedServices.count
     }

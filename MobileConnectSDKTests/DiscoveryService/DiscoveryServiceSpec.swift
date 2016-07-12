@@ -137,9 +137,7 @@ class DiscoveryServiceSpec: QuickSpec {
                         
                         done()
                     })
-                
                 })
-                
             })
         }
     }
@@ -177,7 +175,7 @@ class DiscoveryServiceSpec: QuickSpec {
     
     var mockedService : DiscoveryServiceMock
     {
-        let service : DiscoveryServiceMock = DiscoveryServiceMock(clientKey: kClientKey, clientSecret: kClientSecret, redirectURL: kRedirectURL, applicationEndpoint: kApplicationEndpoint, webController: webControllerMock)
+        let service : DiscoveryServiceMock = DiscoveryServiceMock(configuration: DiscoveryServiceConfiguration(), webController: webControllerMock)
         
         service.isAwaitingResponse = false
         

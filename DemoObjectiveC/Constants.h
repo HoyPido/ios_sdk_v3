@@ -18,5 +18,5 @@
 #define kClientSecret @"1d95d440-49fe-455e-8fd4-b5903b8c78ec"
 #define kApplicationEndpoint @"http://discovery.sandbox2.mobileconnect.io/v2/discovery"
 #define kReferenceEndpoint @"https://reference.mobileconnect.io/discovery/"
-#define kReferenceClientId @"YjJjNzhhMWVmMjRjNjlj"
-#define kReferenceClientSecret @"NmJkM2Y2NmNkZmY3YWU0"
+#define kReferenceClientId @"ZWRhNjU3OWI3MGIwYTRh"
+#define kReferenceClientSecret @"NjQzZTBhZWM0YmQ4ZDQ5"

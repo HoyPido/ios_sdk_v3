@@ -81,6 +81,9 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     
     ///In case an error from the server was received
     case ServerResponse
+    
+    ///In case the discovery does not return a metadata URL
+    case NilMetadataURL
 }
 
 @objc public enum MCLevelOfAssurance : Int
@@ -112,11 +115,11 @@ extension MCErrorCode
     
     static private var messages : [String]
     {
-        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, ""]
+        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL]
     }
     
     static private var errors : [MCErrorCode]
     {
-        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown]
+        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown, NilMetadataURL]
     }
 }

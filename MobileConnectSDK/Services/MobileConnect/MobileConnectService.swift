@@ -11,49 +11,24 @@ import Alamofire
 
 class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationModel> {
     
-    let levelOfAssurance : MCLevelOfAssurance
-    let clientId : String
-    let authorizationURL : String
-    let tokenURL : String
-    
-    lazy var requestConstructor : MCRequestConstructor =
-    {
-            return MCRequestConstructor(clientKey : self.clientKey, clientSecret: self.clientSecret, redirectURL : self.redirectURL)
-    }()
+    let configuration : MobileConnectServiceConfiguration
+    let requestConstructor : MCRequestConstructor
     
     //MARK: init
-    init(levelOfAssurance : MCLevelOfAssurance,clientId : String,
-         authorizationURL : String,
-         tokenURL : String,
-         redirectURL : NSURL,
-         clientKey : String,
-         clientSecret : String)
+    required init(configuration : MobileConnectServiceConfiguration, requestConstructor : MCRequestConstructor? = nil)
     {
-        self.levelOfAssurance = levelOfAssurance
-        self.clientId = clientId
-        self.authorizationURL = authorizationURL
-        self.tokenURL = tokenURL
+        self.configuration = configuration
         
-        super.init(redirectURL: redirectURL, clientKey: clientKey, clientSecret: clientSecret)
-    }
-    
-    ///The constructor to be used in case a specific level of assurance is needed.
-    convenience init(levelOfAssurance : MCLevelOfAssurance,
-                            clientId : String, authorizationURL : String,
-                            tokenURL : String)
-    {
-        self.init(levelOfAssurance: levelOfAssurance, clientId: clientId, authorizationURL: authorizationURL, tokenURL:  tokenURL, redirectURL: MobileConnectSDK.getRedirectURL(), clientKey: MobileConnectSDK.getClientKey(), clientSecret: MobileConnectSDK.getClientSecret())
-    }
-    
-    /**
-        This constructor will default the levelOfAssurance to Level 2.
-        - Parameter clientId: the client id received from the discovery OperatorData model
-        - Parameter authorizationURL: the authorization url received from the discovery OperatorData model
-        - Parameter tokenURL: the token url received from the discovery OperatorData model
-    */
-    convenience init(clientId : String, authorizationURL : String, tokenURL : String)
-    {
-        self.init(levelOfAssurance: MCLevelOfAssurance.Level2, clientId: clientId, authorizationURL:  authorizationURL, tokenURL:  tokenURL)
+        if let requestConstructor = requestConstructor
+        {
+            self.requestConstructor = requestConstructor
+        }
+        else
+        {
+            self.requestConstructor = MCRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, scopeValidator: ScopeValidator(metadata: configuration.metadata))
+        }
+        
+        super.init()
     }
     
     //MARK: Main mobile connect service method
@@ -65,16 +40,21 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      */
     func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithClientId(self.clientId, acreditationValue: self.levelOfAssurance, subscriberId: subscriberId, atURL: self.authorizationURL), completionHandler: completionHandler)
+        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
     }
     
     //MARK: Secondary methods
     func getTokenWithCode(code : String, completionHandler : MobileConnectDataResponse)
     {
-        processRequest(requestConstructor.tokenRequestAtURL(tokenURL, withCode: code), withParameters: [(code, MCErrorCode.NilCode)], inHandler: completionHandler)
+        processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.NilCode)], inHandler: completionHandler)
     }
     
     //MARK: WebController methods
+    override var redirectURL : NSURL
+    {
+        return configuration.redirectURL
+    }
+    
     override func didReceiveResponseFromController(webController: BaseWebController?, withRedirectModel redirectModel: AuthorizationModel?, error: NSError?)
     {
         //the server causes redirect with code parameter even after sending the token, which causes the relaunch of this method
@@ -86,7 +66,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     //MARK: Helper
     override func startInHandler(handler: () -> Void, withParameters parameters: [(String?, MCErrorCode)], completionHandler: (error: NSError) -> Void)
     {
-        let localParameters : [(String?, MCErrorCode)] = parameters + [(clientId, MCErrorCode.NilClientId), (authorizationURL, MCErrorCode.NilAuthorizationURL), (tokenURL, MCErrorCode.NilTokenURL)]
+        let localParameters : [(String?, MCErrorCode)] = parameters + [(configuration.clientKey, MCErrorCode.NilClientId), (configuration.authorizationURLString, MCErrorCode.NilAuthorizationURL), (configuration.tokenURLString, MCErrorCode.NilTokenURL)]
         
         super.startInHandler(handler, withParameters: localParameters, completionHandler: completionHandler)
     }

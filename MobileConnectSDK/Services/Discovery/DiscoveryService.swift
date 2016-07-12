@@ -19,25 +19,32 @@ import Alamofire
 class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorDataRedirectModel> {
     
     //MARK: iVars
-    let applicationEndpoint : String
+    let configuration : DiscoveryServiceConfiguration
     
-    lazy var requestConstructor : DiscoveryRequestConstructor =
-    {
-        return DiscoveryRequestConstructor(clientKey: self.clientKey, clientSecret: self.clientSecret, redirectURL: self.redirectURL, applicationEndpoint: self.applicationEndpoint)
-    }()
+    let requestConstructor : DiscoveryRequestConstructor
     
     //MARK: init
     ///This initializer will take all the needed discovery service data from the MobileConnectSDK data that is required to be provided by the developer
-    convenience init(){
-        self.init(clientKey: MobileConnectSDK.getClientKey(), clientSecret: MobileConnectSDK.getClientSecret(), redirectURL: MobileConnectSDK.getRedirectURL(), applicationEndpoint:  MobileConnectSDK.getApplicationEndpoint(), webController: WebController.existingTemplate)
+    init(configuration : DiscoveryServiceConfiguration = DiscoveryServiceConfiguration(), webController : BaseWebController? = WebController.existingTemplate, requestConstructor : DiscoveryRequestConstructor? = nil)
+    {
+        self.configuration = configuration
+        
+        if let requestConstructor = requestConstructor
+        {
+            self.requestConstructor = requestConstructor
+        }
+        else
+        {
+            self.requestConstructor = DiscoveryRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, applicationEndpoint: configuration.applicationEndpoint)
+        }
+        
+        super.init(webController: webController)
     }
     
-    init(clientKey : String, clientSecret : String, redirectURL : NSURL, applicationEndpoint : String, webController : BaseWebController?)
+    //MARK: Inherited
+    override var redirectURL: NSURL
     {
-        NSException.checkEndpoint(applicationEndpoint)
-        self.applicationEndpoint = applicationEndpoint
-        
-        super.init(redirectURL: redirectURL, clientKey: clientKey, clientSecret: clientSecret, webController: webController)
+        return configuration.redirectURL
     }
     
     //MARK: Discovery service with no client data

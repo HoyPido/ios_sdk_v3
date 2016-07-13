@@ -19,32 +19,25 @@ import Alamofire
 class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorDataRedirectModel> {
     
     //MARK: iVars
-    let configuration : DiscoveryServiceConfiguration
+    let applicationEndpoint : String
     
-    let requestConstructor : DiscoveryRequestConstructor
+    lazy var requestConstructor : DiscoveryRequestConstructor =
+    {
+        return DiscoveryRequestConstructor(clientKey: self.clientKey, clientSecret: self.clientSecret, redirectURL: self.redirectURL, applicationEndpoint: self.applicationEndpoint)
+    }()
     
     //MARK: init
     ///This initializer will take all the needed discovery service data from the MobileConnectSDK data that is required to be provided by the developer
-    init(configuration : DiscoveryServiceConfiguration = DiscoveryServiceConfiguration(), webController : BaseWebController? = WebController.existingTemplate, requestConstructor : DiscoveryRequestConstructor? = nil)
-    {
-        self.configuration = configuration
-        
-        if let requestConstructor = requestConstructor
-        {
-            self.requestConstructor = requestConstructor
-        }
-        else
-        {
-            self.requestConstructor = DiscoveryRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, applicationEndpoint: configuration.applicationEndpoint)
-        }
-        
-        super.init(webController: webController)
+    convenience init(){
+        self.init(clientKey: MobileConnectSDK.getClientKey(), clientSecret: MobileConnectSDK.getClientSecret(), redirectURL: MobileConnectSDK.getRedirectURL(), applicationEndpoint:  MobileConnectSDK.getApplicationEndpoint(), webController: WebController.existingTemplate)
     }
     
-    //MARK: Inherited
-    override var redirectURL: NSURL
+    init(clientKey : String, clientSecret : String, redirectURL : NSURL, applicationEndpoint : String, webController : BaseWebController?)
     {
-        return configuration.redirectURL
+        NSException.checkEndpoint(applicationEndpoint)
+        self.applicationEndpoint = applicationEndpoint
+        
+        super.init(redirectURL: redirectURL, clientKey: clientKey, clientSecret: clientSecret, webController: webController)
     }
     
     //MARK: Discovery service with no client data

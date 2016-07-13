@@ -12,8 +12,8 @@ import Alamofire
 //MARK: Local constants
 private let kRedirectURL : String = "Redirect_URL"
 private let kKeyPhone : String = "MSISDN"
-private let kKeyCountryCode : String = "Selected-MCC"
-private let kKeyNetworkCode : String = "Selected-MNC"
+private let kKeyCountryCode : String = "Identified-MCC"
+private let kKeyNetworkCode : String = "Identified-MNC"
 
 class DiscoveryRequestConstructor : RequestConstructor
 {
@@ -38,7 +38,7 @@ class DiscoveryRequestConstructor : RequestConstructor
     
     func requestWithCountryCode(countryCode : String, networkCode : String) -> Request
     {
-        return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode, kKeyNetworkCode : networkCode], additionalHeaders: ["Accept":"application/json"])
+        return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode, kKeyNetworkCode : networkCode])
     }
     
     func requestWithPhoneNumber(phoneNumber : String) -> Request
@@ -46,13 +46,13 @@ class DiscoveryRequestConstructor : RequestConstructor
         return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber])
     }
     
-    private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject], additionalHeaders : [String : String]? = nil) -> Request
+    private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject]) -> Request
     {
         let isPhoneNumberRequest : Bool = parameters.contains({$0.0 == kKeyPhone})
         
         let method : Alamofire.Method = isPhoneNumberRequest  ? .POST : .GET
         let encoding : ParameterEncoding = isPhoneNumberRequest ? ParameterEncoding.URL : ParameterEncoding.URLEncodedInURL
         
-        return requestWithMethod(method, url: applicationEndpoint, parameters: [kRedirectURL : redirectURL.URLString] + parameters, encoding: encoding, additionalHeaders: additionalHeaders)
+        return requestWithMethod(method, url: applicationEndpoint, parameters: [kRedirectURL : redirectURL.URLString] + parameters, encoding: encoding)
     }
 }

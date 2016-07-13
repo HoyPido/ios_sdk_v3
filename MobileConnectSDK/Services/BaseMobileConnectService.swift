@@ -10,9 +10,12 @@ import UIKit
 import Alamofire
 
 ///Parent class of Mobile Connect and Discovery service. Deals with web view delegate methods, deserialization tasks and redirects.
-class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>: NSObject, WebControllerDelegate {
+public class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>: NSObject, WebControllerDelegate {
     
     //MARK: iVars
+    let redirectURL : NSURL
+    let clientKey : String
+    let clientSecret : String
     var isAwaitingResponse : Bool = false
     
     var controllerResponse : ((controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void)?
@@ -20,7 +23,19 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     var webController : BaseWebController?
     
     //MARK: init
-    required init(webController : BaseWebController? = WebController.existingTemplate) {
+    convenience override init() {
+        self.init(redirectURL : MobileConnectSDK.getRedirectURL(), clientKey:  MobileConnectSDK.getClientKey(), clientSecret: MobileConnectSDK.getClientSecret())
+    }
+    
+    init(redirectURL : NSURL, clientKey : String, clientSecret : String, webController : BaseWebController? = WebController.existingTemplate) {
+        
+        NSException.checkClientKey(clientKey)
+        NSException.checkClientSecret(clientSecret)
+        NSException.checkRedirect(redirectURL)
+        
+        self.redirectURL = redirectURL
+        self.clientKey = clientKey
+        self.clientSecret = clientSecret
         
         self.webController = webController
         
@@ -48,15 +63,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     }
     
     //to be inherited by underlying services
-    var redirectURL : NSURL
-    {
-        let reason : String = "The subclasses should override redirectURL var"
-        
-        NSException(name: "NoWebControllerRedirectURLProvided", reason: reason, userInfo: [NSLocalizedDescriptionKey : reason]).raise()
-        
-        return NSURL()
-    }
-    
     func didReceiveResponseFromController(webController : BaseWebController?, withRedirectModel redirectModel : RedirectModel?, error : NSError?)
     {
         
@@ -87,8 +93,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     //MARK: Web view helpers
     func isValidRedirectURL(url : NSURL, inController controller : BaseWebController) -> Bool
     {
-        print(url)
-        
         var isTheSameHost : Bool = false
         
         if let urlHost = url.host, redirectHost = redirectURL.host
@@ -100,6 +104,8 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         
         if isTheSameHost && parameters.count > 0 {
             isAwaitingResponse = false
+            
+            print(url)
             
             didReceiveResponseWithParameters(parameters, fromController: controller)
             
@@ -141,9 +147,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         //if server responds with error, create an NSError instance and send in compl handler
         if dictionary.keys.contains({$0 == "error"}) {
             
-            let errorDescription : String = (dictionary["error_description"] as? String) ?? (dictionary["description"] as? String) ?? ""
-            
-            completionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : errorDescription]))
+            completionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : (dictionary["description"] as? String) ?? "" ]))
             return
         }
         
@@ -235,24 +239,10 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     }
     
     func callRequest<T : MCModel>(request : Request, forCompletionHandler completionHandler : (model : T?, error : NSError?) -> Void)
-    {        
+    {
         request.responseJSON { (response : Response<AnyObject, NSError>) in
             
-            self.isAwaitingResponse = false
-            
-            if response.result.isSuccess
-            {
-                self.deserializeModel(response.result.value, completionHandler: completionHandler)
-            }
-            else
-            {
-                print(response.result.error)
-                print(response.request?.URL)
-                
-                print(String(data: response.data!, encoding: NSUTF8StringEncoding))
-                
-                completionHandler(model: nil, error: response.result.error)
-            }
+            self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
         }
     }
     
@@ -266,11 +256,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         }
         else
         {
-            print(response.request?.allHTTPHeaderFields)
-            
-            print(response.result.error)
-            print(response.request?.URL)
-            
             clientResponseHandler(model: nil, error: response.result.error)
         }
     }

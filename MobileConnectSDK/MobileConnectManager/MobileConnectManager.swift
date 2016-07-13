@@ -51,18 +51,15 @@ protocol MobileConnectManagerProtocol
     var isRunning : Bool = false
     
     //MARK: init
-    override public convenience init() {
-        self.init(delegate: nil)
+    public convenience override init() {
+        self.init(delegate: MobileConnectSDK.getDelegate())
     }
         
-    public convenience init(delegate : MobileConnectManagerDelegate?)
-    {
-        NSException.checkDelegate(delegate)
-    
+    public convenience init(delegate : MobileConnectManagerDelegate?) {
         self.init(delegate: delegate, discoveryService: DiscoveryService())
     }
         
-    init(delegate : MobileConnectManagerDelegate?, discoveryService : DiscoveryService) {
+    init(delegate : MobileConnectManagerDelegate? = MobileConnectSDK.getDelegate(), discoveryService : DiscoveryService) {
         NSException.checkDelegate(delegate)
         
         self.delegate = delegate
@@ -105,6 +102,8 @@ protocol MobileConnectManagerProtocol
         }, presenter: controller, withCompletition: completionHandler)
     }
     
+    
+    
     //MARK: Discovery methods
     func checkDiscoveryResponse(controller : BaseWebController?, operatorsData : DiscoveryResponse?, error : NSError?)
     {
@@ -121,7 +120,7 @@ protocol MobileConnectManagerProtocol
             controller.dismissViewControllerAnimated(true, completion: nil)
         }
         
-        let mobileConnect : MobileConnectService = MobileConnectService(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData))
+        let mobileConnect : MobileConnectService = MobileConnectService(clientId: operatorsData.response?.client_id ?? "", authorizationURL: operatorsData.authorizationEndpoint ?? "", tokenURL: operatorsData.tokenEndpoint ?? "")
         
         getTokenWithMobileConnectService(mobileConnect, inWebController: controller, withOperatorsData: operatorsData)
     }
@@ -132,7 +131,7 @@ protocol MobileConnectManagerProtocol
         {
             delegate?.mobileConnectWillPresentWebController?()
             
-            mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id ?? "", completionHandler: checkMobileConnectResponse)
+            mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id, completionHandler: checkMobileConnectResponse)
         }
         else
         {

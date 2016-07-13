@@ -31,26 +31,16 @@ class RequestConstructor: NSObject {
         super.init()
     }
     
-    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible , parameters : [String : AnyObject]?, encoding : ParameterEncoding, additionalHeaders : [String : String]? = nil) -> Request
+    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible , parameters : [String : AnyObject]?, encoding : ParameterEncoding) -> Request
     {
-        var headers : [String : String] = authorizer.headers
-        
-        if let additionalHeaders = additionalHeaders
-        {
-            headers = headers + additionalHeaders
-        }
-        
         if let localManager = manager
         {
-            //in case there was a manager provided in the method withManager, nullify it in order to avoid using it next time
             manager = nil
             
-            return localManager.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            return localManager.request(method, url, parameters: parameters, encoding: encoding, headers: authorizer.headers)
         }
         
-        let requestTest = request(method, url, parameters: parameters, encoding: encoding, headers: headers)
-        
-        return requestTest
+        return request(method, url, parameters: parameters, encoding: encoding, headers: authorizer.headers)
     }
     
     func withManager(manager : Manager) -> Self

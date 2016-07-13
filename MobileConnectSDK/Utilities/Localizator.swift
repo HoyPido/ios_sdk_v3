@@ -51,16 +51,9 @@ private let kIncorrectDelegateMessage = "MobileConnectManager delegate should co
 private let kNilPresentereName : String = "MobileConnectException.NilPresenterController"
 private let kNilPresenterMessage : String = "The buttons container controller cant be found. Please use the MobileConnectManager."
 
-private let kNilMetadataURL : String = "There was no metadata URL"
-
 class Localizator: NSObject {
     
     //MARK: Exception related strings
-    class var nilMetadataURL : String
-    {
-        return localized(kNilMetadataURL)
-    }
-    
     class var nilPresenterName : String
     {
         return localized(kNilPresentereName)

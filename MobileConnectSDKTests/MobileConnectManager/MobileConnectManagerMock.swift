@@ -14,10 +14,9 @@ class MobileConnectManagerMock: MobileConnectManager {
     
     var error : NSError?
 
-    
     override func getTokenWithMobileConnectService(mobileConnectService: MobileConnectService, inWebController webController: BaseWebController?, withOperatorsData operatorsData: DiscoveryResponse)
     {
-        let mobileConnectServiceMock : MobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData))
+        let mobileConnectServiceMock : MobileConnectServiceMock = MobileConnectServiceMock(clientId: operatorsData.response?.client_id ?? "", authorizationURL: operatorsData.response?.apis?.operatorid?.authorizationLink() ?? "", tokenURL: operatorsData.response?.apis?.operatorid?.tokenLink() ?? "")
      
         if let error = error
         {

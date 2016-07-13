@@ -38,19 +38,35 @@ public class MCService: NSObject {
     let service : MobileConnectService
     
     //MARK: init
+    init(levelOfAssurance : MCLevelOfAssurance,clientId : String,
+         authorizationURL : String,
+         tokenURL : String,
+         redirectURL : NSURL,
+         clientKey : String,
+         clientSecret : String)
+    {
+        service = MobileConnectService(levelOfAssurance: levelOfAssurance, clientId: clientId, authorizationURL: authorizationURL, tokenURL: tokenURL, redirectURL: redirectURL, clientKey: clientKey, clientSecret: clientSecret)
+    }
+    
+    ///The constructor to be used in case a specific level of assurance is needed.
+    public convenience init(levelOfAssurance : MCLevelOfAssurance,
+                            clientId : String, authorizationURL : String,
+                            tokenURL : String)
+    {
+        self.init(levelOfAssurance: levelOfAssurance, clientId: clientId, authorizationURL: authorizationURL, tokenURL:  tokenURL, redirectURL: MobileConnectSDK.getRedirectURL(), clientKey: MobileConnectSDK.getClientKey(), clientSecret: MobileConnectSDK.getClientSecret())
+    }
+    
     /**
      This constructor will default the levelOfAssurance to Level 2.
-     - Parameter levelOfAssurance: The required level of assurance.
      - Parameter clientId: the client id received from the discovery OperatorData model
-     - Parameter clientSecret: the client secret received from the discovery OperatorData model
      - Parameter authorizationURL: the authorization url received from the discovery OperatorData model
      - Parameter tokenURL: the token url received from the discovery OperatorData model
      */
-    public init(configuration : MobileConnectServiceConfiguration) {
-        
-        service = MobileConnectService(configuration: configuration)
+    public convenience init(clientId : String, authorizationURL : String, tokenURL : String)
+    {
+        self.init(levelOfAssurance: MCLevelOfAssurance.Level2, clientId: clientId, authorizationURL:  authorizationURL, tokenURL:  tokenURL)
     }
-    
+
     //MARK: Main mobile connect service method
     /**
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.

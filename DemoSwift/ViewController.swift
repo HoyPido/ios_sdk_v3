@@ -11,6 +11,12 @@ import MobileConnectSDK
 import Alamofire
 
 class ViewController: UIViewController, MobileConnectManagerDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MobileConnectSDK.setDelegate(self)
+    }
     
     func writeDictionary(dictionary : NSDictionary, withName name : String)
     {
@@ -26,20 +32,14 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
     //MARK: Events
     @IBAction func getAction(sender: AnyObject) {
         
-        let manager : MobileConnectManager = MobileConnectManager()
-        manager.delegate = self
+        let discoveryService : DSService = DSService()
         
-        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
-//            print(tokenResponseModel)
-//            print(error)
+        
+        
+        discoveryService.startOperatorDiscoveryForPhoneNumber("+447700200200") { (operatorsData, error) in
+            
+            print(operatorsData)
         }
-        
-//        let discoveryService : DSService = DSService()
-//        
-//        discoveryService.startOperatorDiscoveryForPhoneNumber("+447700200200") { (operatorsData, error) in
-//            
-//            
-//        }
         
 //        discoveryService.startOperatorDiscoveryInController(self) { (controller, operatorsData, error) in
 //            

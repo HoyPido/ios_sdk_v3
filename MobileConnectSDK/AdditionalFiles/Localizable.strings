@@ -40,4 +40,3 @@
 
 "MobileConnectManager delegate should conform to protocol MobileConnectManagerDelegate" = "MobileConnectManager delegate should conform to protocol MobileConnectManagerDelegate";
 "The buttons container controller cant be found. Please use the MobileConnectManager." = "The buttons container controller cant be found. Please use the MobileConnectManager.";
-"There was no metadata URL" = "There was no metadata URL";

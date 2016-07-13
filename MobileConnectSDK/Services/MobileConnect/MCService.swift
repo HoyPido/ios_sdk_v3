@@ -58,7 +58,7 @@ public class MCService: NSObject {
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
+    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, clientName : String, context : String, completionHandler : MobileConnectControllerResponse)
     {
         service.getTokenInController(controller, subscriberId: subscriberId, completionHandler: completionHandler)
     }

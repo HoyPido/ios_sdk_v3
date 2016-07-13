@@ -41,7 +41,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      */
     @available(*, deprecated=1.0) func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
+        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, clientName : clientName, context : context, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
     }
     
     //MARK: Secondary methods

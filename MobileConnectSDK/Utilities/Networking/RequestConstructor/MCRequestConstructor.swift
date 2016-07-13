@@ -38,7 +38,7 @@ class MCRequestConstructor: RequestConstructor {
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], atURL url : String) -> Request
+    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], clientName : String? = nil, context : String? = nil, atURL url : String) -> Request
     {
         let nonce : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
         let state : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
@@ -54,7 +54,7 @@ class MCRequestConstructor: RequestConstructor {
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
     
-    func authorizationRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, atURL url : String, withScopes scopes : [String]) -> Request
+    func authorizationRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, clientName : String? = nil, context : String? = nil, atURL url : String, withScopes scopes : [String]) -> Request
     {
         return mobileConnectRequestWithAssuranceLevel(assuranceLevel, subscriberId: subscriberId, scopes: scopes, atURL: url)
     }

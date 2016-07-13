@@ -57,6 +57,12 @@ class ScopeValidator: NSObject {
     //returns the scope with the highest supported version
     func scopeForStringValue(stringValue : String) -> String
     {
+        //if passed values is openid, change to openid mc_authn if supported by metadata
+        if stringValue == MobileConnect
+        {
+            return (metadata?.supportedVersionsPairs.contains({$0.key == MobileConnectAuthentication}) ?? false) ? MobileConnectAuthentication : MobileConnect
+        }
+        
         //create a product from the passed scope
         let productType : ProductType = ProductType(stringValue: stringValue)
         
@@ -80,9 +86,7 @@ class ScopeValidator: NSObject {
     //checks the metadata for passed scopes and extracts pairs of scope : version
     func versionPairsForStringValues(productScopes : [String]) -> [ProductVersion]
     {
-        let metadataPairs : [ProductVersion] = metadata?.mobile_connect_version_supported?.flatMap({ProductVersion(dictionary: $0)}) ?? []
-        
-        return metadataPairs.filter({productScopes.contains($0.key)})
+        return metadata?.supportedVersionsPairs.filter({productScopes.contains($0.key)}) ?? []
     }
     
     func validatedScopes(scopes : [String]) -> String

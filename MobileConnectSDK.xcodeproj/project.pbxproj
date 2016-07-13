@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EF526CF1D367272008C50CC /* ExtensionNSUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */; };
 		3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7C61D0C2D5000D7634A /* MCService.swift */; };
 		3C24E7D41D0C323800D7634A /* DSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7D31D0C323800D7634A /* DSService.swift */; };
 		3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C36B85C1D05B99800A997E3 /* Images.xcassets */; };
@@ -162,6 +163,7 @@
 
 /* Begin PBXFileReference section */
 		0BD31996F4CF30D63D4ED8E4 /* Pods-MobileConnectSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNSUUID.swift; sourceTree = "<group>"; };
 		211C8A7172843FE2D8B52F50 /* Pods-MobileConnectSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		346A209DC19B57780E63DDE5 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C24E7C61D0C2D5000D7634A /* MCService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCService.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			children = (
 				3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */,
 				3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */,
+				1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C72CF121D0649B700A095ED /* Constants.swift in Sources */,
+				1EF526CF1D367272008C50CC /* ExtensionNSUUID.swift in Sources */,
 				3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */,
 				3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */,
 				A6F8D9671D33AD96000F1312 /* ScopeValidator.swift in Sources */,

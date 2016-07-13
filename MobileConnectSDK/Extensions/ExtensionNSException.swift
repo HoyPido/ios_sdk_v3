@@ -10,6 +10,24 @@ import Foundation
 
 extension NSException
 {
+    class func checkContext(context : String?, forProducts products : [String])
+    {
+        checkAuthorizationProperty(context, forProducts: products, withErrorName: Localizator.nilContext, andErrorMessage: Localizator.nilContextMessage)
+    }
+    
+    class func checkClientName(clientName : String?, forProducts products : [String])
+    {
+        checkAuthorizationProperty(clientName, forProducts: products, withErrorName: Localizator.nilClientName, andErrorMessage: Localizator.nilClientNameMessage)
+    }
+    
+    private class func checkAuthorizationProperty(property : String?, forProducts products : [String], withErrorName errorName : String, andErrorMessage errorMessage : String)
+    {
+        if products.map({ProductType(stringValue: $0)}).contains({$0 == ProductType.Authorization}) && property == .None
+        {
+            NSException(name: errorName, reason: errorMessage, userInfo: [NSLocalizedDescriptionKey : errorMessage]).raise()
+        }
+    }
+    
     class func checkController(controller : UIViewController?)
     {
         if controller == .None

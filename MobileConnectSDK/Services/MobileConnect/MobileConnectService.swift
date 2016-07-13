@@ -36,12 +36,23 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      This method is deprecated. Please use specific getAuthorization or getAuthenticationToken methods
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
-     - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    @available(*, deprecated=1.0) func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
+    func getAuthenticationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, clientName : clientName, context : context, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
+        let request : Request = requestConstructor.authenticationRequestWithConfiguration(configuration)
+        
+        startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
+    }
+    
+    func getAuthorizationTokenInController(controller : UIViewController, scopes : [String], context : String, clientName : String, subscriberID : String? = nil, completionHandler : MobileConnectControllerResponse)
+    {
+        
+    }
+    
+    func getTokenInController(controller : UIViewController, withRequest request : Request, inCompletionHandler completionHandler : MobileConnectControllerResponse)
+    {
+        
     }
     
     //MARK: Secondary methods

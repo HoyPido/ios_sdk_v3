@@ -132,7 +132,7 @@ protocol MobileConnectManagerProtocol
         {
             delegate?.mobileConnectWillPresentWebController?()
             
-            mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id ?? "", completionHandler: checkMobileConnectResponse)
+            mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponse)
         }
         else
         {

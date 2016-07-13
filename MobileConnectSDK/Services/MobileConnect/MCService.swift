@@ -28,26 +28,14 @@ public typealias MobileConnectControllerResponse = (controller : BaseWebControll
  Allows getting token data by providing a subscriber id, in which case only the loading web view will be presented.
  Allows getting token data by providing a subscriber id in which case a web view will be presented.
  The webview will require client's phone number.
- 
- Objective C Wrapper class around MobileConnectService
- It is needed because objective c cannot access generic classes or classes which inherit from generic classes
  */
 public class MCService: NSObject {
     
-    //MARK: iVar
+    //MARK: iVars
     let service : MobileConnectService
     
     //MARK: init
-    /**
-     This constructor will default the levelOfAssurance to Level 2.
-     - Parameter levelOfAssurance: The required level of assurance.
-     - Parameter clientId: the client id received from the discovery OperatorData model
-     - Parameter clientSecret: the client secret received from the discovery OperatorData model
-     - Parameter authorizationURL: the authorization url received from the discovery OperatorData model
-     - Parameter tokenURL: the token url received from the discovery OperatorData model
-     */
     public init(configuration : MobileConnectServiceConfiguration) {
-        
         service = MobileConnectService(configuration: configuration)
     }
     
@@ -60,6 +48,6 @@ public class MCService: NSObject {
      */
     public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, clientName : String, context : String, completionHandler : MobileConnectControllerResponse)
     {
-        service.getTokenInController(controller, subscriberId: subscriberId, completionHandler: completionHandler)
+        service.getAuthenticationTokenInController(controller, completionHandler: completionHandler)
     }
 }

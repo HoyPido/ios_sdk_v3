@@ -38,12 +38,12 @@ class MCRequestConstructor: RequestConstructor {
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], clientName : String? = nil, context : String? = nil, atURL url : String) -> Request
+    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil) -> Request
     {
-        let nonce : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
-        let state : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
+        let nonce : String = NSUUID.randomUUID
+        let state : String = NSUUID.randomUUID
         
-        print(scopeValidator.validatedScopes(scopes))
+        print("the current scopes are \(scopeValidator.validatedScopes(scopes))")
         
         var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : nonce]
         
@@ -54,10 +54,19 @@ class MCRequestConstructor: RequestConstructor {
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
     
-    func authorizationRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, clientName : String? = nil, context : String? = nil, atURL url : String, withScopes scopes : [String]) -> Request
+    func authenticationRequestWithConfiguration(configuration : MobileConnectServiceConfiguration) -> Request
     {
-        return mobileConnectRequestWithAssuranceLevel(assuranceLevel, subscriberId: subscriberId, scopes: scopes, atURL: url)
+        return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: [MobileConnectAuthentication], url: configuration.authorizationURLString)
     }
+    
+    func authorizationRequestWithConfiguration(configuration : MobileConnectServiceConfiguration)
+    {
+        
+    }
+//    func authorizationRequest(assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, subscriberId : String? = nil, clientName : String , context : String , atURL url : String, withScopes scopes : [String] = [MobileConnectAuthorization]) -> Request
+//    {
+//        return mobileConnectRequestWithAssuranceLevel(assuranceLevel, subscriberId: subscriberId, scopes: scopes, atURL: url)
+//    }
     
     func tokenRequestAtURL(url : String, withCode code : String) -> Request
     {

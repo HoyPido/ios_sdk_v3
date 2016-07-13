@@ -98,10 +98,11 @@
 		A6DD33A11D2FC49B0041FBD9 /* MobileConnectProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */; };
 		A6F8D9671D33AD96000F1312 /* ScopeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */; };
-		A6F8D9691D33AE74000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9681D33AE74000F1312 /* MobileConnectServiceConfiguration.swift */; };
 		A6F8D96B1D33C5F7000F1312 /* BaseServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D96A1D33C5F7000F1312 /* BaseServiceConfiguration.swift */; };
 		A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */; };
 		A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9901D34D56A000F1312 /* ProductType.swift */; };
+		A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */; };
+		A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,10 +255,11 @@
 		A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileConnectProduct.h; sourceTree = "<group>"; };
 		A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileConnectProduct.m; sourceTree = "<group>"; };
 		A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScopeValidator.swift; sourceTree = "<group>"; };
-		A6F8D9681D33AE74000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D96A1D33C5F7000F1312 /* BaseServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D9901D34D56A000F1312 /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
+		A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
+		A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationConfiguration.swift; sourceTree = "<group>"; };
 		AC0AB763998CB98C24645121 /* Pods-MobileConnectSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1305E53A72908350D045A3 /* Pods-MobileConnectSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK.release.xcconfig"; sourceTree = "<group>"; };
 		D524F7B82C688C79BEFB2EB7 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -417,10 +419,10 @@
 		3C72CF091D05E7D900A095ED /* MobileConnect */ = {
 			isa = PBXGroup;
 			children = (
+				A6F8D99A1D36DD3E000F1312 /* Configurations */,
 				3C36EF031D0A19D200297A17 /* MobileConnectService.swift */,
 				3C24E7C61D0C2D5000D7634A /* MCService.swift */,
 				A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */,
-				A6F8D9681D33AE74000F1312 /* MobileConnectServiceConfiguration.swift */,
 			);
 			path = MobileConnect;
 			sourceTree = "<group>";
@@ -597,6 +599,15 @@
 				A6F8D9901D34D56A000F1312 /* ProductType.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		A6F8D99A1D36DD3E000F1312 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */,
+				A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -852,6 +863,7 @@
 				3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */,
 				A6F8D9671D33AD96000F1312 /* ScopeValidator.swift in Sources */,
 				3C401A261D0EB36700F73EA5 /* LinkModel.m in Sources */,
+				A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */,
 				3C72CF171D064BF100A095ED /* Localizator.swift in Sources */,
 				3C7B07F81D3626DA009225AC /* ExtensionMetadataModel.swift in Sources */,
 				3C24E7D41D0C323800D7634A /* DSService.swift in Sources */,
@@ -861,7 +873,6 @@
 				3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */,
 				3C401A321D0EB36700F73EA5 /* OperatorIdModel.m in Sources */,
 				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
-				A6F8D9691D33AE74000F1312 /* MobileConnectServiceConfiguration.swift in Sources */,
 				A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */,
 				3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */,
 				A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */,
@@ -883,6 +894,7 @@
 				3C401A201D0EB36700F73EA5 /* APISModel.m in Sources */,
 				3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */,
 				A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */,
+				A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */,
 				3CD791721D0571250023FD0A /* WebController.swift in Sources */,
 				3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */,
 				A6B5803A1D241E5700640E17 /* ExtensionDiscoveryResponse.swift in Sources */,

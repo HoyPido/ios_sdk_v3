@@ -15,10 +15,8 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let tokenURLString : String
     let assuranceLevel : MCLevelOfAssurance
     let metadata : MetadataModel?
-    let scopes : [String]
+   
     let subscriberId : String?
-    let clientName : String? //aka application short name from discovery response
-    let context : String? //context value required while authorizing
     
     /**
      This constructor may change with addition of new features in future versions.
@@ -28,28 +26,22 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
      - Parameter authorizationURLString: the authorization url received from the discovery OperatorData model
      - Parameter tokenURLString: the token url received from the discovery OperatorData model
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
-    */
+     */
     public required init(clientKey : String,
                          clientSecret : String,
                          authorizationURLString : String,
                          tokenURLString : String,
                          assuranceLevel : MCLevelOfAssurance,
                          subscriberId : String?,
-                         metadata : MetadataModel?,
-                         clientName : String?,
-                         context : String?,
-                         scopes : [String] = [MobileConnectAuthentication])
+                         metadata : MetadataModel?)
     {
-        NSException.checkClientName(clientName, forProducts: scopes)
-        NSException.checkContext(context, forProducts: scopes)
         
-        self.scopes = scopes
+        
+        
         self.authorizationURLString = authorizationURLString
         self.tokenURLString = tokenURLString
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
-        self.clientName = clientName
-        self.context = context
         self.metadata = metadata
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())

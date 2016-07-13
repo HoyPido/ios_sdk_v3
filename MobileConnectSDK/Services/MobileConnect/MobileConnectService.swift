@@ -38,9 +38,9 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
+    func getTokenInController(controller : UIViewController, subscriberId : String? = nil, clientName : String? = nil, context : String? = nil, completionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
+        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, clientName : clientName, context : context, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
     }
     
     //MARK: Secondary methods

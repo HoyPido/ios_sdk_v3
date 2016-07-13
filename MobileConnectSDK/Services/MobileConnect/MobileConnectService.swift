@@ -33,12 +33,13 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     
     //MARK: Main mobile connect service method
     /**
+     This method is deprecated. Please use specific getAuthorization or getAuthenticationToken methods
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
+    @available(*, deprecated=1.0) func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
     {
         startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
     }

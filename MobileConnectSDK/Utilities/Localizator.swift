@@ -59,9 +59,29 @@ private let kNilClientNameMessage : String = "Authorization request requires a c
 private let kNilContext : String = "NilContext"
 private let kNilContextMessage : String = "Authorization request requires a context value"
 
+private let kNoScopes : String = "NoScopes"
+private let kNoScopesMessage : String = "Authorization requests require scopes specified"
+
+private let kRequiresAuthorizationConfiguration : String = "Using authorization requires initializing mobile connect services with MCAuthorizationConfiguration instead of MobileConnectConfiguration"
+
 class Localizator: NSObject {
     
     //MARK: Exception related strings
+    class var requiresAuthorizationConfiguration : String
+    {
+        return localized(kRequiresAuthorizationConfiguration)
+    }
+    
+    class var noScopesMessage : String
+    {
+        return localized(kNoScopesMessage)
+    }
+    
+    class var noScopes : String
+    {
+        return localized(kNoScopes)
+    }
+    
     class var nilContextMessage : String
     {
         return localized(kNilContextMessage)

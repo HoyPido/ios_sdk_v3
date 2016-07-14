@@ -28,6 +28,10 @@ protocol MobileConnectManagerProtocol
     func getTokenInPresenterController(presenterController : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
     
     func getTokenForPhoneNumber(phoneNumber : String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
+    
+    func getAuthorizationTokenForScopes(scopes : [String], withContext context : String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
+    
+    func getAuthorizationTokenForScopes(scopes : [String], withContext context : String, phoneNumber : String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
 }
 
 /**
@@ -80,12 +84,7 @@ protocol MobileConnectManagerProtocol
     */
     public func getTokenInPresenterController(presenterController: UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
-        startDiscoveryInHandler({ 
-            
-            self.delegate?.mobileConnectWillPresentWebController?()
-            self.discovery.startOperatorDiscoveryInController(presenterController, completionHandler: self.checkDiscoveryResponse)
-            
-        },presenter: presenterController, withCompletition: completionHandler)
+        getToken(presenterController, withCompletionHandler: completionHandler, context: nil)
     }
     
     /**
@@ -96,34 +95,76 @@ protocol MobileConnectManagerProtocol
      */
     public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?) {
         
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: controller, withCompletionHandler: completionHandler, context: nil)
+    }
+        
+    public func getAuthorizationTokenForScopes(scopes : [String], withContext context : String, inPresenterController presenterController : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
+    {
+        getToken(presenterController, withCompletionHandler: completionHandler, context: context, scopes: scopes)
+    }
+        
+    public func getAuthorizationTokenForScopes(scopes : [String], withContext context : String, phoneNumber : String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
+    {
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: controller, withCompletionHandler: completionHandler, context: context, scopes: scopes)
+    }
+    
+    func getToken(presenterController: UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?, context : String?, scopes : [String] = [MobileConnectAuthentication])
+    {
+        startDiscoveryInHandler({
+            
+            self.delegate?.mobileConnectWillPresentWebController?()
+            self.discovery.startOperatorDiscoveryInController(presenterController, completionHandler: { (controller, operatorsData, error) in
+                self.checkDiscoveryResponse(controller, operatorsData: operatorsData, error: error)(context: context, scopes : scopes)
+        })
+            
+        },presenter: presenterController, withCompletition: completionHandler)
+    }
+    
+    func getTokenForPhoneNumber(phoneNumber: String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?, context : String?, scopes : [String] = [MobileConnectAuthentication])
+    {
         startDiscoveryInHandler({
             
             self.discovery.startOperatorDiscoveryForPhoneNumber(phoneNumber, completionHandler: { (operatorsData, error) in
-                self.checkDiscoveryResponse(nil, operatorsData: operatorsData, error: error)
+                
+                self.checkDiscoveryResponse(nil, operatorsData: operatorsData, error: error)(context: context, scopes : scopes)
             })
             
-        }, presenter: controller, withCompletition: completionHandler)
+            }, presenter: controller, withCompletition: completionHandler)
     }
     
     //MARK: Discovery methods
-    func checkDiscoveryResponse(controller : BaseWebController?, operatorsData : DiscoveryResponse?, error : NSError?)
+        func checkDiscoveryResponse(controller : BaseWebController?, operatorsData : DiscoveryResponse?, error : NSError?) -> (context : String?, scopes : [String]) -> Void
     {
-        guard let operatorsData = operatorsData else
-        {
-            finishWithResponse(controller, model: nil, error: error ?? MCErrorCode.Unknown.error)
+        return { (context : String?, scopes : [String]) -> Void in
             
-            return
+            guard let operatorsData = operatorsData else
+            {
+                self.finishWithResponse(controller, model: nil, error: error ?? MCErrorCode.Unknown.error)
+                
+                return
+            }
+            
+            if let controller = controller
+            {
+                self.delegate?.mobileConnectWillDismissWebController?()
+                controller.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            var configuration : MobileConnectServiceConfiguration
+            
+            if let context = context
+            {
+                configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, scopes: scopes)
+            }
+            else
+            {
+                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
+            }
+            
+            let mobileConnect : MobileConnectService = MobileConnectService(configuration: configuration)
+            
+            self.getTokenWithMobileConnectService(mobileConnect, inWebController: controller, withOperatorsData: operatorsData)
         }
-        
-        if let controller = controller
-        {
-            delegate?.mobileConnectWillDismissWebController?()
-            controller.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-        let mobileConnect : MobileConnectService = MobileConnectService(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData))
-        
-        getTokenWithMobileConnectService(mobileConnect, inWebController: controller, withOperatorsData: operatorsData)
     }
     
     func getTokenWithMobileConnectService(mobileConnectService : MobileConnectService, inWebController webController : BaseWebController?, withOperatorsData operatorsData : DiscoveryResponse)

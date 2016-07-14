@@ -8,6 +8,7 @@
 
 import UIKit
 
+//In the future the Objective C available new and init constructors should be disallowed
 ///Configuration needed for instantiating the MCService instance
 public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     
@@ -15,9 +16,8 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let tokenURLString : String
     let assuranceLevel : MCLevelOfAssurance
     let metadata : MetadataModel?
-   
     let subscriberId : String?
-    
+    let scopes : [String]
     /**
      This constructor may change with addition of new features in future versions.
      It is recommended to use the init with discovery response if possible.
@@ -27,28 +27,27 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
      - Parameter tokenURLString: the token url received from the discovery OperatorData model
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      */
-    public required init(clientKey : String,
+    public init(clientKey : String,
                          clientSecret : String,
                          authorizationURLString : String,
                          tokenURLString : String,
                          assuranceLevel : MCLevelOfAssurance,
                          subscriberId : String?,
-                         metadata : MetadataModel?)
+                         metadata : MetadataModel?,
+                         scopes : [String] = [MobileConnectAuthentication])
     {
-        
-        
-        
         self.authorizationURLString = authorizationURLString
         self.tokenURLString = tokenURLString
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
         self.metadata = metadata
+        self.scopes = scopes
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     
-    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, scopes : [String] = [MobileConnectAuthorization, MobileConnectIdentityPhone]) {
-        
+    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, scopes : [String] = [MobileConnectAuthentication])
+    {
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         
         let localClientSecret : String = discoveryResponse.response?.client_secret ?? ""
@@ -59,21 +58,15 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         
         let localSubscriberId : String? = discoveryResponse.subscriber_id
         
-        let clientName : String? = discoveryResponse.applicationShortName ?? ""
-        
-        let localAssuranceLevel : MCLevelOfAssurance = assuranceLevel
-        
         let localMetadata : MetadataModel? = discoveryResponse.metadata
         
         self.init(clientKey: localClientKey,
                   clientSecret: localClientSecret,
                   authorizationURLString: localAuthorizationURLString,
                   tokenURLString: localTokenURLString,
-                  assuranceLevel: localAssuranceLevel,
+                  assuranceLevel: assuranceLevel,
                   subscriberId : localSubscriberId,
                   metadata: localMetadata,
-                  clientName: clientName,
-                  context: "",
                   scopes: scopes)
     }
 }

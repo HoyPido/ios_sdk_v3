@@ -25,7 +25,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         }
         else
         {
-            self.requestConstructor = MCRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, scopeValidator: ScopeValidator(metadata: configuration.metadata))
+            self.requestConstructor = MCRequestConstructor(configuration: configuration, scopeValidator: ScopeValidator(metadata: configuration.metadata))
         }
         
         super.init()
@@ -40,19 +40,21 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      */
     func getAuthenticationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
     {
-        let request : Request = requestConstructor.authenticationRequestWithConfiguration(configuration)
+        let request : Request = requestConstructor.authenticationRequest
         
         startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
     }
     
-    func getAuthorizationTokenInController(controller : UIViewController, scopes : [String], context : String, clientName : String, subscriberID : String? = nil, completionHandler : MobileConnectControllerResponse)
+    func getAuthorizationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
     {
-        
-    }
-    
-    func getTokenInController(controller : UIViewController, withRequest request : Request, inCompletionHandler completionHandler : MobileConnectControllerResponse)
-    {
-        
+        if let request = requestConstructor.authorizationRequest
+        {
+            startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
+        }
+        else
+        {
+            completionHandler(controller: nil, tokenModel: nil, error: MCErrorCode.RequiresAuthorizationConfiguration.error)
+        }
     }
     
     //MARK: Secondary methods

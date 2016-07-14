@@ -10,6 +10,14 @@ import Foundation
 
 extension NSException
 {
+    class func checkScopes(scopes : [String])
+    {
+        if scopes.count == 0
+        {
+            NSException(name: Localizator.noScopes, reason: Localizator.noScopesMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.noScopesMessage]).raise()
+        }
+    }
+    
     class func checkContext(context : String?, forProducts products : [String])
     {
         checkAuthorizationProperty(context, forProducts: products, withErrorName: Localizator.nilContext, andErrorMessage: Localizator.nilContextMessage)

@@ -30,12 +30,15 @@ private let kRedirectUri : String = "redirect_uri"
 class MCRequestConstructor: RequestConstructor {
     
     let scopeValidator : ScopeValidator
+    let configuration : MobileConnectServiceConfiguration
     
-    init(clientKey: String, clientSecret: String, redirectURL: URLStringConvertible, scopeValidator : ScopeValidator) {
+    //Pass a MCAuthorizationConfiguration if an authorization behavior is required
+    init(configuration : MobileConnectServiceConfiguration, scopeValidator : ScopeValidator) {
         
+        self.configuration = configuration
         self.scopeValidator = scopeValidator
         
-        super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: redirectURL)
+        super.init(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL)
     }
     
     func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil) -> Request
@@ -54,14 +57,20 @@ class MCRequestConstructor: RequestConstructor {
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
     
-    func authenticationRequestWithConfiguration(configuration : MobileConnectServiceConfiguration) -> Request
+    var authenticationRequest : Request
     {
         return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: [MobileConnectAuthentication], url: configuration.authorizationURLString)
     }
     
-    func authorizationRequestWithConfiguration(configuration : MobileConnectServiceConfiguration)
+    ///Will return nil if the configuration used to initialize the Request Constructor is not of type MCAuthorizationConfiguration
+    var authorizationRequest : Request?
     {
+        if let configuration = configuration as? MCAuthorizationConfiguration
+        {
+            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context)
+        }
         
+        return nil
     }
 //    func authorizationRequest(assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, subscriberId : String? = nil, clientName : String , context : String , atURL url : String, withScopes scopes : [String] = [MobileConnectAuthorization]) -> Request
 //    {

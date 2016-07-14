@@ -2,7 +2,7 @@
 
 ###### The library is written in swift with full support for Objective C code base.
 
-## Requirements
+## Recommended setup
 
 - iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
 - Xcode 7.3+
@@ -11,7 +11,7 @@
 The library uses Alamofire and JSONModel libraries for rest service calls and deserialization. And you'll get them preconfigured if you follow the cocoa pods installation procedure described below.
 
 
-## Configuration
+## Installation
 
 #### 1) You'll have to have CocoaPods installed. In case you already installed it please pass to step 2
 

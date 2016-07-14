@@ -14,6 +14,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
 {
     let clientName : String //aka application short name from discovery response
     let context : String //context value required while authorizing
+    let bindingMessage : String?
     
     init(clientKey: String,
          clientSecret: String,
@@ -22,16 +23,19 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          assuranceLevel: MCLevelOfAssurance,
          subscriberId: String?,
          metadata: MetadataModel?,
-         scopes : [String],
+         authorizationScopes : [OpenIdProductType],
          clientName : String,
-         context : String)
+         context : String,
+         bindingMessage : String?)
     {
-        NSException.checkClientName(clientName, forProducts: scopes)
-        NSException.checkContext(context, forProducts: scopes)
-        NSException.checkScopes(scopes)
+        NSException.checkClientName(clientName)
+        NSException.checkContext(context)
         
+        self.bindingMessage = bindingMessage
         self.clientName = clientName
         self.context = context
+        
+        let stringValuedScopes : [String] = authorizationScopes.map({$0.stringValue}) + [MobileConnectAuthorization]
         
         super.init(clientKey: clientKey,
                    clientSecret: clientSecret,
@@ -40,13 +44,14 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                    assuranceLevel: assuranceLevel,
                    subscriberId: subscriberId,
                    metadata: metadata,
-                   scopes: scopes)
+                   authorizationScopes: stringValuedScopes)
     }
     
     convenience init(discoveryResponse : DiscoveryResponse,
          assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
          context : String,
-         scopes : [String])
+         bindingMessage : String?,
+         authorizationScopes : [OpenIdProductType])
     {
         let localClientName : String = discoveryResponse.applicationShortName ?? ""
         
@@ -62,7 +67,6 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         
         let localMetadata : MetadataModel? = discoveryResponse.metadata
         
-        
         self.init(clientKey: localClientKey,
                   clientSecret: localClientSecret,
                   authorizationURLString: localAuthorizationURLString,
@@ -70,8 +74,9 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   assuranceLevel: assuranceLevel,
                   subscriberId: localSubscriberId,
                   metadata: localMetadata,
-                  scopes : scopes,
+                  authorizationScopes : authorizationScopes,
                   clientName : localClientName,
-                  context : context)
+                  context : context,
+                  bindingMessage: bindingMessage)
     }
 }

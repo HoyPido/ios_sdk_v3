@@ -72,6 +72,12 @@ class ScopeValidator: NSObject {
         //check the equivalent scopes against metadata
         let versionPairs : [ProductVersion] = versionPairsForStringValues(productScopes)
         
+        //if they are not in metadata return as is
+        if versionPairs.count == 0
+        {
+            return stringValue
+        }
+        
         //check if there are both openid and openid mc_auth
         let authenticationKeySet : [String] = ProductType.Authentication.keySet
         

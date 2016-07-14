@@ -43,14 +43,34 @@ class MobileConnectManagerSpec : QuickSpec
             describe("gets token without client details")
             {
                 self.startTesting(){ (completionHandler) in
+                    
                     self.manager.getTokenInPresenterController(self.viewController, withCompletionHandler: completionHandler)
                 }
             }
             
             describe("gets token with phone number", closure: {
                 self.startTesting({ (completionHandler) in
+                    
                     self.manager.getTokenForPhoneNumber("", inPresenterController: self.viewController, withCompletionHandler: completionHandler)
                 })
+            })
+            
+            describe("gets authorization token without client details", closure: { 
+                
+                self.startTesting({ (completionHandler) in
+                    
+                    self.manager.getAuthorizationTokenInPresenterController(self.viewController, withContext: "asdasd", scopes: [OpenIdProductType.Address], bindingMessage: "test", completionHandler: completionHandler)
+                })
+                
+            })
+            
+            describe("gets authorization token with phone number", closure: { 
+                
+                self.startTesting({ (completionHandler) in
+                    
+                    self.manager.getAuthorizationTokenForPhoneNumber("", inPresenterController: self.viewController, withScopes: [OpenIdProductType.Address], context: "test", bindingMessage: nil, completionHandler: completionHandler)
+                })
+                
             })
         }
     }

@@ -10,27 +10,19 @@ import Foundation
 
 extension NSException
 {
-    class func checkScopes(scopes : [String])
+    class func checkContext(context : String?)
     {
-        if scopes.count == 0
-        {
-            NSException(name: Localizator.noScopes, reason: Localizator.noScopesMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.noScopesMessage]).raise()
-        }
+        checkParameters([context], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
     }
     
-    class func checkContext(context : String?, forProducts products : [String])
+    class func checkClientName(clientName : String?)
     {
-        checkAuthorizationProperty(context, forProducts: products, withErrorName: Localizator.nilContext, andErrorMessage: Localizator.nilContextMessage)
+        checkParameters([clientName], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
     }
     
-    class func checkClientName(clientName : String?, forProducts products : [String])
+    private class func checkAuthorizationProperty(property : String?, withErrorName errorName : String, andErrorMessage errorMessage : String)
     {
-        checkAuthorizationProperty(clientName, forProducts: products, withErrorName: Localizator.nilClientName, andErrorMessage: Localizator.nilClientNameMessage)
-    }
-    
-    private class func checkAuthorizationProperty(property : String?, forProducts products : [String], withErrorName errorName : String, andErrorMessage errorMessage : String)
-    {
-        if products.map({ProductType(stringValue: $0)}).contains({$0 == ProductType.Authorization}) && property == .None
+        if property == .None
         {
             NSException(name: errorName, reason: errorMessage, userInfo: [NSLocalizedDescriptionKey : errorMessage]).raise()
         }

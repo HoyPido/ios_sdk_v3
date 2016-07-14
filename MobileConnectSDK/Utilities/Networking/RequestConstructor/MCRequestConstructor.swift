@@ -27,6 +27,9 @@ private let kGrantTypeKey : String = "grant_type"
 private let kGrantTypeValue : String = "authorization_code"
 private let kRedirectUri : String = "redirect_uri"
 
+private let kContextKey : String = "context"
+private let kClientNameKey : String = "client_name"
+
 class MCRequestConstructor: RequestConstructor {
     
     let scopeValidator : ScopeValidator
@@ -54,6 +57,16 @@ class MCRequestConstructor: RequestConstructor {
             parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
         }
         
+        if let clientName = clientName
+        {
+            parameters[kClientNameKey] = clientName
+        }
+        
+        if let context = context
+        {
+            parameters[kContextKey] = context
+        }
+        
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
     
@@ -72,10 +85,6 @@ class MCRequestConstructor: RequestConstructor {
         
         return nil
     }
-//    func authorizationRequest(assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, subscriberId : String? = nil, clientName : String , context : String , atURL url : String, withScopes scopes : [String] = [MobileConnectAuthorization]) -> Request
-//    {
-//        return mobileConnectRequestWithAssuranceLevel(assuranceLevel, subscriberId: subscriberId, scopes: scopes, atURL: url)
-//    }
     
     func tokenRequestAtURL(url : String, withCode code : String) -> Request
     {

@@ -29,10 +29,28 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
         let manager : MobileConnectManager = MobileConnectManager()
         manager.delegate = self
         
-        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
-//            print(tokenResponseModel)
-//            print(error)
-        }
+//        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
+//            
+//        }
+        
+//        manager.getAuthorizationTokenForScopes([OpenIdProductType.Address, OpenIdProductType.Email, OpenIdProductType.Phone, OpenIdProductType.Profile], withContext: "bla bla", inPresenterController: self) { (tokenResponseModel, error) in
+//            
+//        }
+        
+//        manager.getTokenForPhoneNumber("+447964197453", inPresenterController: self) { (tokenResponseModel, error) in
+//            
+//        }
+        
+        //manager.getAuthorizationTokenForScopes([OpenIdProductType.Phone], withContext: "my context", inPresenterController: self) { (tokenResponseModel, error) in
+            
+            //print(tokenResponseModel)
+            //print(error)
+        //}
+        
+//        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
+////            print(tokenResponseModel)
+////            print(error)
+//        }
         
 //        let discoveryService : DSService = DSService()
 //        

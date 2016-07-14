@@ -43,7 +43,7 @@ class DiscoveryRequestConstructor : RequestConstructor
     
     func requestWithPhoneNumber(phoneNumber : String) -> Request
     {
-        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber])
+        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.stringByReplacingOccurrencesOfString("+", withString: "")])
     }
     
     private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject], additionalHeaders : [String : String]? = nil) -> Request

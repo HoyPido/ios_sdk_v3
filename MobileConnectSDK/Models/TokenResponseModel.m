@@ -7,31 +7,28 @@
 //
 
 #import "TokenResponseModel.h"
-#import "MCJWTDecoder.h"
+#import <MobileConnectSDK/MobileConnectSDK-Swift.h>
 
 @implementation TokenResponseModel
 
 - (instancetype)initWithTokenModel:(TokenModel*)tokenModel
 {
-    if (self = [super init]) {
+    if ((self = [super init]) && tokenModel) {
         
         self.tokenData = tokenModel;
         
         if (tokenModel.id_token) {
-            
-            MCJWTDecoder *decoder = [[MCJWTDecoder alloc] initWithJWT:tokenModel.id_token];
-            
-            NSError *mappingToJSONError;
-            
-            self.decodedToken = [NSJSONSerialization JSONObjectWithData:[decoder decodedValue] options:NSJSONReadingAllowFragments error:&mappingToJSONError];
+            self.decodedToken = [[[JWTDecoder alloc] initWithTokenString:tokenModel.id_token] decodedDictionary];
         }
         else
         {
             NSLog(@"the provided token model had no encoded jwt");
         }
+        
+        return self;
     }
     
-    return self;
+    return nil;
 }
 
 @end

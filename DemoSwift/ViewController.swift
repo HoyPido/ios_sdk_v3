@@ -22,7 +22,7 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
         
         let discoveryService : DiscoveryService = DiscoveryService()
         
-        discoveryService.startOperatorDiscoveryForPhoneNumber("ClientsPhoneNumberHere") { (operatorsData, error) in
+        discoveryService.startOperatorDiscoveryForPhoneNumber("Client's number here") { (operatorsData, error) in
         
             let clientId : String = operatorsData?.response?.client_id ?? ""
             let authorizationURL : String = operatorsData?.response?.apis?.operatorid?.authorizationLink() ?? ""
@@ -31,8 +31,13 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
             
             let mobileService : MobileConnectService = MobileConnectService(clientId: clientId, authorizationURL: authorizationURL, tokenURL: tokenURL)
             
-            mobileService.getTokenInController(self, subscriberId: "asdas", completitionHandler: { (controller, tokenModel, error) in
+            mobileService.getTokenInController(self, subscriberId: operatorsData?.subscriber_id ?? "", completitionHandler: { (controller, tokenModel, error) in
                 
+                controller?.dismissViewControllerAnimated(true, completion: nil)
+                
+                let tokenResponse : TokenResponseModel? = TokenResponseModel(tokenModel: tokenModel)
+                
+                print(tokenResponse)
                 print(error)
             })
         }

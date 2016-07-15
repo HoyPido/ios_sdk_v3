@@ -22,7 +22,7 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
         
         let discoveryService : DiscoveryService = DiscoveryService()
         
-        discoveryService.startOperatorDiscoveryForPhoneNumber("+<YourNumberHere>") { (operatorsData, error) in
+        discoveryService.startOperatorDiscoveryForPhoneNumber("<YourNumberHere>") { (operatorsData, error) in
         
             let clientId : String = operatorsData?.response?.client_id ?? ""
             let authorizationURL : String = operatorsData?.response?.apis?.operatorid?.authorizationLink() ?? ""

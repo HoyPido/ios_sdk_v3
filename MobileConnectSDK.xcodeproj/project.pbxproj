@@ -1001,8 +1001,6 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Quick",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Nimble",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1032,8 +1030,6 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Quick",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Nimble",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

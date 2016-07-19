@@ -29,7 +29,7 @@ private let kRedirectUri : String = "redirect_uri"
 
 class MCRequestConstructor: RequestConstructor {
     
-    func authorizationRequestWithClientId(clientId : String, acreditationValue : MCLevelOfAssurance, subscriberId : String?, atURL url : String) -> Request
+    func authorizationRequestWithClientId(clientId : String, acreditationValue : MCLevelOfAssurance, subscriberId : String?, atURL url : String, shouldNotStartImmediately : Bool = false) -> Request
     {
         let nonce : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
         let state : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
@@ -40,7 +40,7 @@ class MCRequestConstructor: RequestConstructor {
             parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
         }
         
-        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URL)
+        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URL, shouldNotStartImmediately: shouldNotStartImmediately)
     }
     
     func tokenRequestAtURL(url : String, withCode code : String) -> Request

@@ -83,8 +83,6 @@
 		A6A980AD1D20C8AD00E8C664 /* MobileConnectManagerWrongMCResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980AC1D20C8AD00E8C664 /* MobileConnectManagerWrongMCResponse.swift */; };
 		A6A980AF1D20CADE00E8C664 /* MobileConnectManagerSpecGoodMCResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980AE1D20CADE00E8C664 /* MobileConnectManagerSpecGoodMCResponse.swift */; };
 		A6F34ABB1D39332600ADF8CF /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F34ABA1D39332600ADF8CF /* JWTDecoder.swift */; };
-		A6F34ABC1D39352000ADF8CF /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A980871D206DCE00E8C664 /* Nimble.framework */; };
-		A6F34ABD1D39352300ADF8CF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A980811D206DA900E8C664 /* Quick.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,8 +234,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F34ABD1D39352300ADF8CF /* Quick.framework in Frameworks */,
-				A6F34ABC1D39352000ADF8CF /* Nimble.framework in Frameworks */,
 				A6A9804C1D203E8F00E8C664 /* JSONModel.framework in Frameworks */,
 				A6A9804A1D203E8C00E8C664 /* Alamofire.framework in Frameworks */,
 				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,

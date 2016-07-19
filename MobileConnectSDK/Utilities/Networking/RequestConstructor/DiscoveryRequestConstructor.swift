@@ -33,7 +33,7 @@ class DiscoveryRequestConstructor : RequestConstructor
     //MARK: Request factory
     var noOperatorDataRequest : Request
     {
-        return genericDiscoveryRequestWithParameters([:])
+        return genericDiscoveryRequestWithParameters([:], shouldNotStartImmediately: true)
     }
     
     func requestWithCountryCode(countryCode : String, networkCode : String) -> Request
@@ -46,13 +46,13 @@ class DiscoveryRequestConstructor : RequestConstructor
         return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber])
     }
     
-    private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject]) -> Request
+    private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject],shouldNotStartImmediately : Bool = false) -> Request
     {
         let isPhoneNumberRequest : Bool = parameters.contains({$0.0 == kKeyPhone})
         
         let method : Alamofire.Method = isPhoneNumberRequest  ? .POST : .GET
         let encoding : ParameterEncoding = isPhoneNumberRequest ? ParameterEncoding.JSON : ParameterEncoding.URLEncodedInURL
         
-        return requestWithMethod(method, url: applicationEndpoint, parameters: [kRedirectURL : redirectURL.URLString] + parameters, encoding: encoding)
+        return requestWithMethod(method, url: applicationEndpoint, parameters: [kRedirectURL : redirectURL.URLString] + parameters, encoding: encoding, shouldNotStartImmediately: shouldNotStartImmediately)
     }
 }

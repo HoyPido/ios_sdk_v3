@@ -80,7 +80,7 @@ public class MobileConnectService: BaseMobileConnectService<TokenModel, Authoriz
      */
     public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completitionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithClientId(self.clientId, acreditationValue: self.levelOfAssurance, subscriberId: subscriberId, atURL: self.authorizationURL), completitionHandler: completitionHandler)
+        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithClientId(self.clientId, acreditationValue: self.levelOfAssurance, subscriberId: subscriberId, atURL: self.authorizationURL, shouldNotStartImmediately: true), completitionHandler: completitionHandler)
     }
     
     //MARK: Secondary methods

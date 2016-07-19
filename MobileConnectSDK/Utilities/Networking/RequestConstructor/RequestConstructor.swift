@@ -17,6 +17,17 @@ class RequestConstructor: NSObject {
     
     var manager : Manager?
     
+    lazy var lazyManager : Manager = {
+        
+        let configuration : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        
+        let manager : Manager = Manager(configuration: configuration)
+        
+        manager.startRequestsImmediately = false
+        
+        return manager
+    }()
+    
     lazy var authorizer : Authorizer =
     {
         return Authorizer(clientKey: self.clientKey, clientSecret: self.clientSecret)
@@ -31,13 +42,19 @@ class RequestConstructor: NSObject {
         super.init()
     }
     
-    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible , parameters : [String : AnyObject]?, encoding : ParameterEncoding) -> Request
+    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible , parameters : [String : AnyObject]?, encoding : ParameterEncoding, shouldNotStartImmediately : Bool = false) -> Request
     {
         if let localManager = manager
         {
             manager = nil
             
             return localManager.request(method, url, parameters: parameters, encoding: encoding, headers: authorizer.headers)
+        }
+        
+        //the requests loaded in a webview should not be launched at creation
+        if shouldNotStartImmediately
+        {
+            return lazyManager.request(method, url, parameters: parameters, encoding: encoding, headers: authorizer.headers)
         }
         
         return request(method, url, parameters: parameters, encoding: encoding, headers: authorizer.headers)

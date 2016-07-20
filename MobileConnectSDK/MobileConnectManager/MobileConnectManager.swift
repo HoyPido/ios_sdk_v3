@@ -126,7 +126,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
      */
     public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [OpenIdProductType], context : String, bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage,  completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes,  completionHandler: completionHandler)
     }
     
     func getToken(presenterController: UIViewController, context : String? = nil, scopes : [OpenIdProductType]? = nil, bindingMessage : String? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)

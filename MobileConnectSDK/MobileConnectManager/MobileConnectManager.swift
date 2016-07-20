@@ -196,11 +196,11 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
             
             if isAuthorization
             {
-                mobileConnectService.getAuthorizationTokenInController(presenter, completionHandler: checkMobileConnectResponse)
+                mobileConnectService.getAuthorizationTokenInController(presenter, completionHandler: checkMobileConnectResponse(operatorsData))
             }
             else
             {
-                mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponse)
+                mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponse(operatorsData))
             }
         }
         else
@@ -210,15 +210,20 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
     }
     
     //MARK: Mobile connect methods
-    func checkMobileConnectResponse(controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?)
+    func checkMobileConnectResponse(operatorData : DiscoveryResponse?) -> (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void
     {
-        finishWithResponse(controller, model: tokenResponseModel(tokenModel: tokenModel), error: error)
+        return {[weak self]
+            (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void in
+            
+            self?.finishWithResponse(controller, model: self?.tokenResponseModel(tokenModel: tokenModel, operatorsData: operatorData), error: error)
+        }
     }
     
-    var tokenResponseModel : (tokenModel : TokenModel?) -> TokenResponseModel?
+    var tokenResponseModel : (tokenModel : TokenModel?, operatorsData : DiscoveryResponse?) -> TokenResponseModel?
     {
-        return { (tokenModel : TokenModel?) -> TokenResponseModel? in
-            return TokenResponseModel(tokenModel: tokenModel)
+        return { (tokenModel : TokenModel?, operatorsData : DiscoveryResponse?) -> TokenResponseModel? in
+            
+            return TokenResponseModel(tokenModel: tokenModel, discoveryResponse: operatorsData)
         }
     }
     

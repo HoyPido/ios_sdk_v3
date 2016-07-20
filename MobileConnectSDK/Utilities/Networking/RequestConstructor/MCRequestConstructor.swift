@@ -44,7 +44,7 @@ class MCRequestConstructor: RequestConstructor {
         super.init(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil) -> Request
+    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
         let nonce : String = NSUUID.randomUUID
         let state : String = NSUUID.randomUUID
@@ -67,12 +67,12 @@ class MCRequestConstructor: RequestConstructor {
             parameters[kContextKey] = context
         }
         
-        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
+        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
     }
     
     var authenticationRequest : Request
     {
-        return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: [MobileConnectAuthentication], url: configuration.authorizationURLString)
+        return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: [MobileConnectAuthentication], url: configuration.authorizationURLString, shouldNotStartImmediately : true)
     }
     
     ///Will return nil if the configuration used to initialize the Request Constructor is not of type MCAuthorizationConfiguration
@@ -80,7 +80,7 @@ class MCRequestConstructor: RequestConstructor {
     {
         if let configuration = configuration as? MCAuthorizationConfiguration
         {
-            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context)
+            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, shouldNotStartImmediately : true)
         }
         
         return nil

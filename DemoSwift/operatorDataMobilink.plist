@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>response</key>
+	<dict>
+		<key>apis</key>
+		<dict>
+			<key>operatorid</key>
+			<dict>
+				<key>link</key>
+				<array>
+					<dict>
+						<key>href</key>
+						<string>http://mconnect.mobilink.com.pk/mobilink/oauth2/authorize</string>
+						<key>rel</key>
+						<string>authorization</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>https://mconnect.mobilink.com.pk/oauth2/token</string>
+						<key>rel</key>
+						<string>token</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>https://mconnect.mobilink.com.pk/oauth2/userinfo</string>
+						<key>rel</key>
+						<string>userinfo</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<key>client_id</key>
+		<string>x-NTQwOGM4MmY1MzlmNWUyZTYw</string>
+		<key>client_secret</key>
+		<string>x-ZmIzMTlmNDQ5MzlmODcxMmI</string>
+		<key>country</key>
+		<string>Pakistan</string>
+		<key>currency</key>
+		<string>Pakistani Rupee</string>
+		<key>serving_operator</key>
+		<string>mobilink</string>
+	</dict>
+	<key>subscriber_id</key>
+	<string>6c4cee8b416385307e17014f0dfb4174a9b639106959fef7238367e86519b81a0eef9a32459823eb273032bebc7f5f803d5d8128a6bf04a4ef76749657505553e21413e5542596acf76e236b0a17d3da76e236592620adb7a008705a44263e41b3dad210b4bd4b90014683d1103100d31682045155aaa23bc8059c5dd440ec6ae11abb0b1a08ce19ab146bf947356b06248d37cb55456a46897537c1e2ea3b7e9223344a56137aae3986e3b3a73d4e89cee82e8a251757d636b9078419a4337b70a385a795a31c224098902a9e2ef8e1ef54e612f7ff657bd0f92f61bc687174ac2074cda292a404f2672443f32b4935c004c42aef19ba27c5beabe60170f294</string>
+	<key>ttl</key>
+	<integer>1480586270</integer>
+</dict>
+</plist>

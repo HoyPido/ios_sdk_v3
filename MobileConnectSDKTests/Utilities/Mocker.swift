@@ -15,16 +15,16 @@ private let kMetadataModelPlistName : String = "metadata"
 
 class Mocker: NSObject {
     
+    static var authenticationCodeResponse : [NSObject : AnyObject] = ["code" : "test", "state" : "test"]
+    
+    static var errorRedirect : [NSObject : AnyObject] = ["error" : "error sample"]
+    
     static var tokenResponseModel : TokenResponseModel = {
         return Mocker.modelWithName(kTokenResponseModelPlistName)
-        
-//        let bundle : NSBundle = NSBundle(forClass: Mocker.classForCoder())
-//        
-//        let url : NSURL = bundle.URLForResource(kTokenResponseModelPlistName, withExtension: kPlistExtension)!
-//        
-//        let dictionary : NSDictionary = NSDictionary(contentsOfURL: url)!
-//        
-//        return try! TokenResponseModel(dictionary: dictionary as [NSObject : AnyObject])
+    }()
+
+    static var mobileConnectConfiguration : MobileConnectServiceConfiguration = {
+       return MobileConnectServiceConfiguration(discoveryResponse: discoveryResponse)
     }()
     
     class var metadata : MetadataModel

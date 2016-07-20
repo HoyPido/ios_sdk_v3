@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        MobileConnectSDK.setClientKey(kReferenceClientId)
-        MobileConnectSDK.setClientSecret(kReferenceClientSecret)
-        MobileConnectSDK.setRedirect(kReferenceRedirect)
-        MobileConnectSDK.setApplicationEndpoint(kReferenceEndpoint)
+        MobileConnectSDK.setClientKey(kClientKey)
+        MobileConnectSDK.setClientSecret(kClientSecret)
+        MobileConnectSDK.setRedirect(kRedirectURL)
+        MobileConnectSDK.setApplicationEndpoint(kApplicationEndpoint)
         
         return true
     }

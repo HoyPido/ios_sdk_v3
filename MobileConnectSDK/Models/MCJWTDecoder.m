@@ -34,17 +34,13 @@
             
             return [self decodeDataComponent:dataComponent];
         }
-        else
-        {
-            NSLog(@"failed to find data component in the JWT");
-            
-            return nil;
-        }
+        
+        NSLog(@"failed to find data component in the JWT");
+        
+        return nil;
     }
-    else
-    {
-        NSLog(@"The JWTDecoder was initialized with null string value");
-    }
+    
+    NSLog(@"The JWTDecoder was initialized with null string value");
     
     return nil;
 }
@@ -53,7 +49,9 @@
 {
     if (dataComponent) {
         
-        NSInteger charactersToAdd = dataComponent.length % 4;
+        NSInteger charactersOffset = 4 - dataComponent.length % 4;
+        
+        NSInteger charactersToAdd = charactersOffset > 3 ? 0 : charactersOffset;
         
         NSString *paddedDataComponent = [dataComponent stringByAppendingString:[@"" stringByPaddingToLength:charactersToAdd withString:@"=" startingAtIndex:0]];
         

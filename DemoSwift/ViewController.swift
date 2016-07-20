@@ -10,6 +10,8 @@ import UIKit
 import MobileConnectSDK
 import Alamofire
 
+private let kPlistExtension : String = "plist"
+
 class ViewController: UIViewController, MobileConnectManagerDelegate {
     
     func writeDictionary(dictionary : NSDictionary, withName name : String)
@@ -23,11 +25,83 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
         dictionary.writeToURL(plistPath, atomically: true)
     }
     
+    func modelWithName<T : MCModel>(name : String) -> T
+    {
+        let bundle : NSBundle = NSBundle(forClass: ViewController.classForCoder())
+        
+        let url : NSURL = bundle.URLForResource(name, withExtension: kPlistExtension)!
+        
+        let dictionary : NSDictionary = NSDictionary(contentsOfURL: url)!
+        
+        return try! T(dictionary: dictionary as [NSObject : AnyObject])
+    }
+    
     //MARK: Events
     @IBAction func getAction(sender: AnyObject) {
         
-        let manager : MobileConnectManager = MobileConnectManager()
-        manager.delegate = self
+        let operatorsData : DiscoveryResponse = modelWithName("testOperatorData")
+        
+        let configuration : MobileConnectServiceConfiguration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
+        
+        let service : MCService = MCService(configuration: configuration)
+        
+        service.getTokenInController(self, completionHandler: { (controller, tokenModel, error) in
+            
+            controller?.dismissViewControllerAnimated(true, completion: nil)
+            print(tokenModel)
+            
+        })
+        
+//        let manager : MobileConnectManager = MobileConnectManager()
+//        manager.delegate = self
+//
+//        manager.getTokenForPhoneNumber("+923448510272", inPresenterController: self) { (tokenResponseModel, error) in
+//            print(tokenResponseModel)
+//        }
+        
+//        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
+//            print(tokenResponseModel)
+//        }
+        
+//        manager.getAuthorizationTokenForPhoneNumber("+923448510272", inPresenterController: self, withScopes: [OpenIdProductType.Email], context: "asdas", bindingMessage: nil) { (tokenResponseModel, error) in
+//            print(tokenResponseModel)
+//        }
+        
+        let discovery : DSService = DSService()
+        
+        discovery.startOperatorDiscoveryForPhoneNumber("+923448510272") { (operatorsData, error) in
+            
+            if let operatorsData = operatorsData
+            {
+                
+                self.writeDictionary(operatorsData.toDictionary(), withName: "telenor")
+                
+//                let configuration : MobileConnectServiceConfiguration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
+//                
+//                let service : MCService = MCService(configuration: configuration)
+//                
+//                service.getTokenInController(self, completionHandler: { (controller, tokenModel, error) in
+//                    
+//                    controller?.dismissViewControllerAnimated(true, completion: nil)
+//                    print(tokenModel)
+//                    
+//                })
+            }
+            
+        }
+        
+        //let mobile : MCService = MCService(configuration: <#T##MobileConnectServiceConfiguration#>)
+        
+//        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
+//            print(tokenResponseModel)
+//            print(error)
+//        }
+        
+//        manager.getAuthorizationTokenInPresenterController(self, withContext: "asdas", scopes: [OpenIdProductType.Email], bindingMessage: nil) { (tokenResponseModel, error) in
+//            
+//            print(tokenResponseModel)
+//            
+//        }
         
 //        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
 //            

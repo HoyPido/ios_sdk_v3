@@ -19,6 +19,8 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     var webController : BaseWebController?
     
+    var isFirstResponse : Bool = true
+    
     //MARK: init
     required init(webController : BaseWebController? = WebController.existingTemplate) {
         
@@ -38,6 +40,9 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     func webController(controller : BaseWebController, shouldRedirectToURL url : NSURL) -> Bool
     {
+        print("----------------------------------------- should redirect to url ")
+        print("\(url)")
+        
         return !isValidRedirectURL(url, inController: controller)
     }
     
@@ -64,7 +69,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     //MARK: Web view additional methods
     func presentWebControllerWithRequest(request : NSURLRequest?, inController controller : UIViewController, errorHandler : (error : NSError) -> Void)
-    {
+    {        
         guard let webController = webController else
         {
             errorHandler(error: MCErrorCode.WebControllerNil.error)
@@ -87,8 +92,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     //MARK: Web view helpers
     func isValidRedirectURL(url : NSURL, inController controller : BaseWebController) -> Bool
     {
-        print(url)
-        
         var isTheSameHost : Bool = false
         
         if let urlHost = url.host, redirectHost = redirectURL.host
@@ -238,21 +241,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     {        
         request.responseJSON { (response : Response<AnyObject, NSError>) in
             
-            self.isAwaitingResponse = false
-            
-            if response.result.isSuccess
-            {
-                self.deserializeModel(response.result.value, completionHandler: completionHandler)
-            }
-            else
-            {
-                print(response.result.error)
-                print(response.request?.URL)
-                
-                print(String(data: response.data!, encoding: NSUTF8StringEncoding))
-                
-                completionHandler(model: nil, error: response.result.error)
-            }
+            self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
         }
     }
     

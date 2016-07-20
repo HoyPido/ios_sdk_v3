@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Alamofire
 
 protocol WebControllerDelegate
 {
@@ -33,13 +34,18 @@ class WebController: BaseWebController {
     @IBOutlet weak var webViewContainer: UIView!
     
     //MARK: iVars
+    
     lazy var webView : WKWebView = {
         
         [weak self] in
         
         let configuration : WKWebViewConfiguration = WKWebViewConfiguration()
         
-        configuration.preferences = WKPreferences()
+        let preferences : WKPreferences = WKPreferences()
+        
+        //preferences.javaScriptEnabled = false
+        
+        configuration.preferences = preferences
         
         let localWebView : WKWebView = WKWebView(frame: self?.webViewContainer.bounds ?? CGRectMake(0, 0, 0, 0), configuration: configuration)
         
@@ -54,9 +60,9 @@ class WebController: BaseWebController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let request = requestToLoad
+        if let localRequest = requestToLoad
         {
-            webView.loadRequest(request)
+            self.webView.loadRequest(localRequest)
         }
         else
         {

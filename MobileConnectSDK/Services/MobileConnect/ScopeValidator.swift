@@ -58,7 +58,7 @@ class ScopeValidator: NSObject {
     func scopeForStringValue(stringValue : String) -> String
     {
         //if passed values is openid, change to openid mc_authn if supported by metadata
-        if stringValue == MobileConnect
+        if stringValue == MobileConnect || stringValue == MobileConnectAuthentication
         {
             return (metadata?.supportedVersionsPairs.contains({$0.key == MobileConnectAuthentication}) ?? false) ? MobileConnectAuthentication : MobileConnect
         }

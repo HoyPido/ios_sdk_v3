@@ -12,28 +12,13 @@ import Nimble
 
 @testable import MobileConnectSDK
 
-class DiscoveryServiceSpec: QuickSpec {
-    
-    lazy var viewController : UIViewController = {
-       
-        let tmpController : UIViewController = UIViewController()
-        
-        tmpController.beginAppearanceTransition(true, animated: false)
-        
-        return tmpController
-    }()
-    
-    //let viewController : UIViewController = UIViewController()
-    
-    let webControllerMock : WebControllerMock = WebControllerMock()
+class DiscoveryServiceSpec: BaseServiceSpec {
     
     override func spec() {
         
-        initConfig()
+        super.spec()
         
-        describe("discoveryService") {
-            
-            //base mobile connect service tests
+        describe("DiscoveryService") {
             self.concurrency()
             self.noWebController()
             self.checkMetadata()
@@ -66,7 +51,7 @@ class DiscoveryServiceSpec: QuickSpec {
     
     func noWebController()
     {
-        context("nil web controller") { 
+        context("has nil web controller") {
             
             let discovery : DiscoveryServiceMock = self.mockedService
             
@@ -146,14 +131,6 @@ class DiscoveryServiceSpec: QuickSpec {
     func checkMetadataValue(metadataValue : String?, againstMockValue mockValue : String?)
     {
         expect(metadataValue == mockValue).to(beTrue())
-    }
-    
-    func initConfig()
-    {
-        MobileConnectSDK.setClientKey(kClientKey)
-        MobileConnectSDK.setClientSecret(kClientSecret)
-        MobileConnectSDK.setRedirect(kRedirectURL)
-        MobileConnectSDK.setApplicationEndpoint(kApplicationEndpoint)
     }
     
     var discoveryWithMetadata : DiscoveryServiceMock

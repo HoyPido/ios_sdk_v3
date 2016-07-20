@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>response</key>
+	<dict>
+		<key>apis</key>
+		<dict>
+			<key>operatorid</key>
+			<dict>
+				<key>link</key>
+				<array>
+					<dict>
+						<key>href</key>
+						<string>https://connect.telenordigital.com/oauth/telenor_pakistan/authorize</string>
+						<key>rel</key>
+						<string>authorization</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>https://connect.telenordigital.com/oauth/telenor_pakistan/token</string>
+						<key>rel</key>
+						<string>token</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>https://connect.telenordigital.com/oauth/telenor_pakistan/userinfo</string>
+						<key>rel</key>
+						<string>userinfo</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>https://connect.telenordigital.com/oauth/telenor_pakistan/token</string>
+						<key>rel</key>
+						<string>tokenrefresh</string>
+					</dict>
+					<dict>
+						<key>href</key>
+						<string>https://connect.telenordigital.com/oauth/telenor_pakistan/revoke</string>
+						<key>rel</key>
+						<string>tokenrevoke</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<key>client_id</key>
+		<string>x-NTQwOGM4MmY1MzlmNWUyZTYw</string>
+		<key>client_secret</key>
+		<string>x-ZmIzMTlmNDQ5MzlmODcxMmI</string>
+		<key>country</key>
+		<string>Pakistan</string>
+		<key>currency</key>
+		<string>PKR</string>
+		<key>serving_operator</key>
+		<string>telenor_pakistan</string>
+	</dict>
+	<key>subscriber_id</key>
+	<string>0710c41ddc65e88fb8b43a30c14993b9cd82d73521b498622c9b04128393f7ba03f76ca65af00c99a889346814b3e7e1e99de09e7dc59ccad9fb1be635f86eb0ead6c5bd53264ca557a10324c07db6d751f8a123472bcd56a4e371f2f985f1bf8c502a7605d0dbcd2a12623446064e26011a12b9dbafaec93776dbee8d44a4cd8c58d56cc745ccc8e348fb6a306228b1936ce118ed250adcc87ba1caa15005eb2c964d8f5d98ccfef6f0891ac8eff88050cf378945512f9ada9734f86a6c4c812d2d2d27d5808c071eb1b120d6acc9b6ec374f7e954af2c223085b30c696f056fbcf330337205a36418d333610832c512c002a5905be95ebbbdf70d8ec8a2ee3</string>
+	<key>ttl</key>
+	<integer>1480586270</integer>
+</dict>
+</plist>

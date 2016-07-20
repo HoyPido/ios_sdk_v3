@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name = "MobileConnectSDK"
-spec.version = "1.2.4"
+spec.version = "2.1"
 spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
 spec.homepage = "https://developer.mobileconnect.io"
 spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
@@ -39,7 +39,7 @@ models.subspec 'Enums' do |enums|
 enums.source_files = "MobileConnectSDK/Models/Enums/*.{h,m,swift}"
 end
 
-models.source_files = 'MobileConnectSDK/Models/*.{h,m}'
+models.source_files = 'MobileConnectSDK/Models/*.{h,m,swift}'
 end
 
 spec.subspec 'MobileConnectManager' do |mobileConnectManager|

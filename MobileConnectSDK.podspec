@@ -39,7 +39,7 @@ models.subspec 'Enums' do |enums|
 enums.source_files = "MobileConnectSDK/Models/Enums/*.{h,m,swift}"
 end
 
-models.source_files = 'MobileConnectSDK/Models/*.{h,m}'
+models.source_files = 'MobileConnectSDK/Models/*.{h,m,swift}'
 end
 
 spec.subspec 'MobileConnectManager' do |mobileConnectManager|

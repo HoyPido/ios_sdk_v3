@@ -12,12 +12,17 @@ spec.requires_arc = true
 spec.source = { :git => "https://github.com/Mobile-Connect/r2-ios-sdk.git", :branch => 'master', :tag=>  "#{spec.version}"}
 
 spec.subspec 'Extensions' do |extensions|
-extensions.source_files = 'MobileConnectSDK/Extensions/Extension{NSException,Dictionary}.swift'
+extensions.source_files = 'MobileConnectSDK/Extensions/*.swift'
 end
 
 spec.subspec 'Services' do |services|
 
 services.subspec 'MobileConnect' do |mobileConnect|
+
+mobileConnect.subspec 'Configurations' do |configurations|
+configurations.source_files = 'MobileConnectSDK/Services/MobileConnect/Configurations/*.swift'
+end
+
 mobileConnect.source_files = 'MobileConnectSDK/Services/MobileConnect/*.swift'
 end
 
@@ -29,6 +34,11 @@ services.source_files = 'MobileConnectSDK/Services/*.swift'
 end
 
 spec.subspec 'Models' do |models|
+
+models.subspec 'Enums' do |enums|
+enums.source_files = "MobileConnectSDK/Models/Enums/*.{h,m,swift}"
+end
+
 models.source_files = 'MobileConnectSDK/Models/*.{h,m}'
 end
 

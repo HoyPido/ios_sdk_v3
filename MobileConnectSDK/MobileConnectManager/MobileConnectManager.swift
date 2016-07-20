@@ -97,7 +97,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, scopes : [OpenIdProductType], bindingMessage : String?, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, scopes : [OpenIdProductType], bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
     {
         getToken(presenterController, context: context, scopes: scopes, bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
     }
@@ -212,10 +212,9 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
     //MARK: Mobile connect methods
     func checkMobileConnectResponse(operatorData : DiscoveryResponse?) -> (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void
     {
-        return {[weak self]
-            (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void in
+        return { (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void in
             
-            self?.finishWithResponse(controller, model: self?.tokenResponseModel(tokenModel: tokenModel, operatorsData: operatorData), error: error)
+            self.finishWithResponse(controller, model: self.tokenResponseModel(tokenModel: tokenModel, operatorsData: operatorData), error: error)
         }
     }
     

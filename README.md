@@ -139,7 +139,13 @@ And that's it!
 - (void)mobileConnectFailedGettingTokenResponseWithError:(NSError * _Nonnull)error;
 ```
 
-3) Drag and drop a view in your storyboards and set it's class to MobileConnectManagerButton
+3) Provide the delegate to the MobileConnectSDK
+
+```
+[MobileConnectSDK setDelegate:self];
+```
+
+4) Drag and drop a view in your storyboards and set it's class to MobileConnectManagerButton
 
 ![Dropping the button and setting it's class](https://cloud.githubusercontent.com/assets/19551956/16233183/6234cc76-37c5-11e6-8c0a-1100fe0d850f.png)
 

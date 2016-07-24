@@ -79,7 +79,7 @@
 		A65D02B01D2D3B60002840CC /* ExtensionMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02AF1D2D3B60002840CC /* ExtensionMetadataModel.swift */; };
 		A65D02B21D2D431F002840CC /* MetadataConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02B11D2D431F002840CC /* MetadataConfiguration.swift */; };
 		A669461F1D3FA8D20014DDF8 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A669461E1D3FA8D20014DDF8 /* JSONModel.framework */; };
-		A66946891D4565B10014DDF8 /* MobileConnectSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A66946881D4565B10014DDF8 /* MobileConnectSDK.podspec */; };
+		A669468B1D4567090014DDF8 /* MobileConnectSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A669468A1D4567090014DDF8 /* MobileConnectSDK.podspec */; };
 		A673B1EE1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */; };
 		A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */; };
 		A673B1F21D3E9833008B7F60 /* MobileConnectServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */; };
@@ -249,7 +249,7 @@
 		A669461E1D3FA8D20014DDF8 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "Pods/../build/Debug-iphoneos/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
 		A66946201D3FA8D40014DDF8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Pods/../build/Debug-iphoneos/Nimble/Nimble.framework"; sourceTree = "<group>"; };
 		A66946221D3FA8D70014DDF8 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick/Quick.framework"; sourceTree = "<group>"; };
-		A66946881D4565B10014DDF8 /* MobileConnectSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MobileConnectSDK.podspec; path = ../../sdk/MobileConnectSDK.podspec; sourceTree = "<group>"; };
+		A669468A1D4567090014DDF8 /* MobileConnectSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MobileConnectSDK.podspec; sourceTree = SOURCE_ROOT; };
 		A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceSpec.swift; sourceTree = "<group>"; };
 		A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCRequestConstructorMock.swift; sourceTree = "<group>"; };
 		A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceMock.swift; sourceTree = "<group>"; };
@@ -414,8 +414,8 @@
 				3CD7916F1D05706B0023FD0A /* Views */,
 				3CD791691D056F2E0023FD0A /* Utilities */,
 				3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */,
+				A669468A1D4567090014DDF8 /* MobileConnectSDK.podspec */,
 				3C3F82D71D04C7C8006EE8F4 /* Info.plist */,
-				A66946881D4565B10014DDF8 /* MobileConnectSDK.podspec */,
 				3C72CF111D0649B700A095ED /* Constants.swift */,
 			);
 			path = MobileConnectSDK;
@@ -792,7 +792,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A66946891D4565B10014DDF8 /* MobileConnectSDK.podspec in Resources */,
+				A669468B1D4567090014DDF8 /* MobileConnectSDK.podspec in Resources */,
 				3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */,
 				3C72CF151D064B7500A095ED /* Localizable.strings in Resources */,
 				3C36B85F1D05B9A600A997E3 /* WebController.storyboard in Resources */,

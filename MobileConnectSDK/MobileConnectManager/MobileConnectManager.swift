@@ -96,7 +96,7 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, withScopes scopes : [ProductType], bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, withScopes scopes : [ProductType], bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
         getToken(presenterController, context: context, scopes: scopes.map({$0.stringValue}), bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
     }
@@ -112,7 +112,7 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, withStringValueScopes scopes : [String], bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, withStringValueScopes scopes : [String], bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
         getToken(presenterController, context: context, scopes: scopes, bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
     }
@@ -153,7 +153,7 @@ public class MobileConnectManager: NSObject {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [ProductType], context : String, bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes.map({$0.stringValue}),  completionHandler: completionHandler)
     }
@@ -169,7 +169,7 @@ public class MobileConnectManager: NSObject {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [String], context : String, bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [String], context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes,  completionHandler: completionHandler)
     }

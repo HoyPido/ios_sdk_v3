@@ -39,20 +39,20 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
     //MARK: Events
     @IBAction func getAction(sender: AnyObject) {
         
-        let operatorsData : DiscoveryResponse = modelWithName("testOperatorData")
+//        let operatorsData : DiscoveryResponse = modelWithName("operatorData")
+//        
+//        let configuration : MobileConnectServiceConfiguration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
+//        
+//        let service : MCService = MCService(configuration: configuration)
+//        
+//        service.getTokenInController(self, completionHandler: { (controller, tokenModel, error) in
+//            
+//            controller?.dismissViewControllerAnimated(true, completion: nil)
+//            print(tokenModel)
+//            
+//        })
         
-        let configuration : MobileConnectServiceConfiguration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
-        
-        let service : MCService = MCService(configuration: configuration)
-        
-        service.getTokenInController(self, completionHandler: { (controller, tokenModel, error) in
-            
-            controller?.dismissViewControllerAnimated(true, completion: nil)
-            print(tokenModel)
-            
-        })
-        
-//        let manager : MobileConnectManager = MobileConnectManager()
+        let manager : MobileConnectManager = MobileConnectManager()
 //        manager.delegate = self
 //
 //        manager.getTokenForPhoneNumber("+923448510272", inPresenterController: self) { (tokenResponseModel, error) in
@@ -67,15 +67,15 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
 //            print(tokenResponseModel)
 //        }
         
-        let discovery : DSService = DSService()
-        
-        discovery.startOperatorDiscoveryForPhoneNumber("+923448510272") { (operatorsData, error) in
-            
-            if let operatorsData = operatorsData
-            {
-                
-                self.writeDictionary(operatorsData.toDictionary(), withName: "telenor")
-                
+//        let discovery : DSService = DSService()
+//        
+//        discovery.startOperatorDiscoveryForPhoneNumber("+923448510272") { (operatorsData, error) in
+//            
+//            if let operatorsData = operatorsData
+//            {
+//                
+//                //self.writeDictionary(operatorsData.toDictionary(), withName: "telenor")
+//                
 //                let configuration : MobileConnectServiceConfiguration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
 //                
 //                let service : MCService = MCService(configuration: configuration)
@@ -86,9 +86,9 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
 //                    print(tokenModel)
 //                    
 //                })
-            }
-            
-        }
+//            }
+//            
+//        }
         
         //let mobile : MCService = MCService(configuration: <#T##MobileConnectServiceConfiguration#>)
         
@@ -97,11 +97,15 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
 //            print(error)
 //        }
         
-//        manager.getAuthorizationTokenInPresenterController(self, withContext: "asdas", scopes: [OpenIdProductType.Email], bindingMessage: nil) { (tokenResponseModel, error) in
-//            
-//            print(tokenResponseModel)
-//            
-//        }
+        
+        
+        manager.getAuthorizationTokenInPresenterController(self, withContext: "asdas", scopes: [], bindingMessage: nil)
+        {
+            (tokenResponseModel, error) in
+            
+            print(tokenResponseModel)
+        
+        }
         
 //        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
 //            

@@ -79,8 +79,6 @@
 		A65D02B01D2D3B60002840CC /* ExtensionMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02AF1D2D3B60002840CC /* ExtensionMetadataModel.swift */; };
 		A65D02B21D2D431F002840CC /* MetadataConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02B11D2D431F002840CC /* MetadataConfiguration.swift */; };
 		A669461F1D3FA8D20014DDF8 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A669461E1D3FA8D20014DDF8 /* JSONModel.framework */; };
-		A66946211D3FA8D40014DDF8 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66946201D3FA8D40014DDF8 /* Nimble.framework */; };
-		A66946231D3FA8D70014DDF8 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66946221D3FA8D70014DDF8 /* Quick.framework */; };
 		A673B1EE1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */; };
 		A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */; };
 		A673B1F21D3E9833008B7F60 /* MobileConnectServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */; };
@@ -111,7 +109,6 @@
 		A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9901D34D56A000F1312 /* ProductType.swift */; };
 		A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */; };
 		A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */; };
-		A6F8D9A01D3794CB000F1312 /* OpenIdProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99F1D3794CB000F1312 /* OpenIdProductType.swift */; };
 		A6F8D9B11D37E844000F1312 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8D9AF1D37E837000F1312 /* Nimble.framework */; };
 		A6F8D9B21D37E847000F1312 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8D9AB1D37E80C000F1312 /* Quick.framework */; };
 		A6F8D9B81D39088F000F1312 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */; };
@@ -280,7 +277,6 @@
 		A6F8D9901D34D56A000F1312 /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationConfiguration.swift; sourceTree = "<group>"; };
-		A6F8D99F1D3794CB000F1312 /* OpenIdProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenIdProductType.swift; sourceTree = "<group>"; };
 		A6F8D9AB1D37E80C000F1312 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick/Quick.framework"; sourceTree = "<group>"; };
 		A6F8D9AF1D37E837000F1312 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble/Nimble.framework"; sourceTree = "<group>"; };
 		A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
@@ -298,8 +294,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A66946231D3FA8D70014DDF8 /* Quick.framework in Frameworks */,
-				A66946211D3FA8D40014DDF8 /* Nimble.framework in Frameworks */,
 				A669461F1D3FA8D20014DDF8 /* JSONModel.framework in Frameworks */,
 				A61B041C1D2A854900F4B916 /* Alamofire.framework in Frameworks */,
 				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,
@@ -638,7 +632,6 @@
 				A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */,
 				A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */,
 				A6F8D9901D34D56A000F1312 /* ProductType.swift */,
-				A6F8D99F1D3794CB000F1312 /* OpenIdProductType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -950,7 +943,6 @@
 				3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */,
 				A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */,
 				A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */,
-				A6F8D9A01D3794CB000F1312 /* OpenIdProductType.swift in Sources */,
 				3CD791721D0571250023FD0A /* WebController.swift in Sources */,
 				3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */,
 				A6B5803A1D241E5700640E17 /* ExtensionDiscoveryResponse.swift in Sources */,

@@ -69,7 +69,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     //MARK: Web view additional methods
     func presentWebControllerWithRequest(request : NSURLRequest?, inController controller : UIViewController, errorHandler : (error : NSError) -> Void)
-    {        
+    {
         guard let webController = webController else
         {
             errorHandler(error: MCErrorCode.WebControllerNil.error)
@@ -193,7 +193,10 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
             //saving completition block for later when the server response comes
             self.controllerResponse = completionHandler
             
+            print("before present web controller with request in class \(self.dynamicType)")
+            
             self.presentWebControllerWithRequest(request.request, inController: controller, errorHandler: { (error) in
+                print("after present web controller with request in class \(self.dynamicType)")
                 self.isAwaitingResponse = false
                 self.controllerResponse?(controller: self.webController, model: nil, error: error)
             })

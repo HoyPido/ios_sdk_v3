@@ -19,25 +19,10 @@ public typealias MobileConnectResponse = (tokenResponseModel : TokenResponseMode
     optional func mobileConnectFailedGettingTokenResponseWithError(error : NSError)
 }
 
-protocol MobileConnectManagerProtocol
-{
-    //MARK: iVars
-    var delegate : MobileConnectManagerDelegate? {get set}
-    
-    //MARK: Main actions
-    func getTokenInPresenterController(presenterController: UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
-    
-    func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
-    
-    func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, scopes : [OpenIdProductType], bindingMessage : String?, completionHandler : MobileConnectResponse?)
-    
-    func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [OpenIdProductType], context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
-}
-
 /**
  Abstracts the Discovery and Mobile Connect services by offering 2 convenience methods for directly getting the token. The token will be delivered in the supplied callbacks or delegate methods if set.
  */
-public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
+public class MobileConnectManager: NSObject {
     
     ///The delegate responsible for receiving MobileConnectManager events
     public var delegate : MobileConnectManagerDelegate?
@@ -81,10 +66,24 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
      Will automatically try to retrieve and merge the Metadata.
      - Parameter presenterController: The controller which will present the Mobile Connect web view controller
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
+     - Parameter scopes: The scopes to be authorized
      */
-    public func getTokenInPresenterController(presenterController: UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
+    public func getTokenInPresenterController(presenterController: UIViewController, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
-        getToken(presenterController, withCompletionHandler: completionHandler)
+        getToken(presenterController, scopes : (scopes ?? []).map({$0.stringValue}), withCompletionHandler: completionHandler)
+    }
+    
+    /**
+     Will get the token without any info needed from the client. Will use both Discovery and Mobile Connect services underneath. First the Discovery web controller will be presented which will require client's phone number or operator information. Afterwards the Mobile Connect Service will present its web view controller. In case the client did not provide a phone number, Mobile Connect will first ask the client for a phone number and then present the waiting for sms confirmation screen.
+     Will automatically try to retrieve and merge the Metadata.
+     This methods allows passing string values for the scopes array.
+     - Parameter presenterController: The controller which will present the Mobile Connect web view controller
+     - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
+     - Parameter scopes: The scopes to be authorized
+     */
+    public func getTokenInPresenterController(presenterController: UIViewController, withStringValueScopes scopes : [String], withCompletionHandler completionHandler : MobileConnectResponse?)
+    {
+        getToken(presenterController, scopes : scopes, withCompletionHandler: completionHandler)
     }
     
     /**
@@ -97,7 +96,23 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, scopes : [OpenIdProductType], bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, withScopes scopes : [ProductType], bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    {
+        getToken(presenterController, context: context, scopes: scopes.map({$0.stringValue}), bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
+    }
+    
+    /**
+     Will get the authorization token without any info needed from the client. Will use both Discovery and Mobile Connect services underneath. First the Discovery web controller will be presented which will require client's phone number or operator information. Afterwards the Mobile Connect Service will present its web view controller. In case the client did not provide a phone number, Mobile Connect will first ask the client for a phone number and then present the waiting for sms confirmation screen.
+     Will automatically try to retrieve and merge the Metadata.
+     This methods allows passing string values for the scopes array.
+     - Parameter presenterController: The controller which will present the Mobile Connect web view controller
+     - Parameter context: The context required for making authorization requests
+     - Parameter scopes: The scopes to be authorized
+     - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
+     - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
+     */
+    
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, withStringValueScopes scopes : [String], bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
     {
         getToken(presenterController, context: context, scopes: scopes, bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
     }
@@ -109,9 +124,23 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
      - Parameter presenterController: The controller which will present the Mobile Connect web view controller
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
+    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, scopes : (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
+    }
+    
+    /**
+     Will get the token with client's phone number. By providing the number the only web view presented will be that of the sms confirmation. Will use both Discovery and Mobile Connect services underneath.
+     Will automatically try to retrieve and merge the Metadata.
+     This methods allows passing string values for the scopes array.
+     - Parameter phoneNumber: The client's phone number
+     - Parameter presenterController: The controller which will present the Mobile Connect web view controller
+     - Parameter scopes: The scopes to be authorized
+     - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
+     */
+    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [String], withCompletionHandler completionHandler : MobileConnectResponse?)
+    {
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, scopes : scopes, completionHandler: completionHandler)
     }
     
     /**
@@ -124,12 +153,28 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [OpenIdProductType], context : String, bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [ProductType], context : String, bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
+    {
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes.map({$0.stringValue}),  completionHandler: completionHandler)
+    }
+    
+    /**
+     Will get the token with client's phone number. By providing the number the only web view presented will be that of the sms confirmation. Will use both Discovery and Mobile Connect services underneath.
+     Will automatically try to retrieve and merge the Metadata.
+     This methods allows passing string values for the scopes array.
+     - Parameter phoneNumber: The client's phone number
+     - Parameter presenterController: The controller which will present the Mobile Connect web view controller
+     - Parameter scopes: The scopes to be authorized
+     - Parameter context: The context required for making authorization requests
+     - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
+     - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
+     */
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [String], context : String, bindingMessage : String? = nil, completionHandler : MobileConnectResponse?)
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes,  completionHandler: completionHandler)
     }
     
-    func getToken(presenterController: UIViewController, context : String? = nil, scopes : [OpenIdProductType]? = nil, bindingMessage : String? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
+    func getToken(presenterController: UIViewController, context : String? = nil, scopes : [String]? = nil, bindingMessage : String? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
         startDiscoveryInHandler({
             
@@ -141,7 +186,7 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
             },presenter: presenterController, withCompletition: completionHandler)
     }
     
-    func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withContext context : String? = nil, bindingMessage : String? = nil, scopes : [OpenIdProductType]? = nil, completionHandler : MobileConnectResponse?)
+    func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withContext context : String? = nil, bindingMessage : String? = nil, scopes : [String]? = nil, completionHandler : MobileConnectResponse?)
     {
         startDiscoveryInHandler({
             
@@ -154,9 +199,9 @@ public class MobileConnectManager: NSObject, MobileConnectManagerProtocol {
     }
     
     //MARK: Discovery methods
-    func checkDiscoveryResponse(controller : BaseWebController?, operatorsData : DiscoveryResponse?, error : NSError?) -> (context : String?, scopes : [OpenIdProductType]?, bindingMessage : String?) -> Void
+    func checkDiscoveryResponse(controller : BaseWebController?, operatorsData : DiscoveryResponse?, error : NSError?) -> (context : String?, scopes : [String]?, bindingMessage : String?) -> Void
     {
-        return { (context : String?, scopes : [OpenIdProductType]?, bindingMessage : String?) -> Void in
+        return { (context : String?, scopes : [String]?, bindingMessage : String?) -> Void in
             
             guard let operatorsData = operatorsData else
             {

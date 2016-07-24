@@ -34,10 +34,40 @@ class MobileConnectServiceSpec: BaseServiceSpec {
         describe("MobileConnectService") {
             
             self.concurrency()
-            //self.noWebController()
-            //self.checkRedirect()
+            self.noWebController()
+            self.checkRedirect()
             //self.checkAuthorizationToken()
             //self.checkAuthenticationToken()
+        }
+    }
+    
+    func noWebController()
+    {
+        context("has nil web controller") {
+            
+            waitUntil(action: { (done : () -> Void) in
+                
+                let mobileConnect : MobileConnectServiceMock = self.mockedService
+                
+                mobileConnect.webController = nil
+                mobileConnect.shouldCallSuper = true
+                mobileConnect.isAwaitingResponse = false
+                mobileConnect.checksForNilWebController = true
+                
+                mobileConnect.getAuthenticationTokenInController(self.viewController, completionHandler: { (controller, tokenModel, error) in
+                    
+                    it("not awaiting response", closure: {
+                        expect(mobileConnect.isAwaitingResponse).toNot(beTrue())
+                    })
+                    
+                    it("has nil web controller error", closure: {
+                        expect(error?.code).to(be(MCErrorCode.WebControllerNil.error.code))
+                    })
+                    
+                    done()
+                })
+                
+            })
         }
     }
     
@@ -69,10 +99,10 @@ class MobileConnectServiceSpec: BaseServiceSpec {
     
     func checkRedirect()
     {
-//        describe("catching redirect") {
-//            
-//            context("error redirect", closure: {
-//                
+        describe("catching redirect") {
+            
+            context("error redirect", closure: {
+                
 //                waitUntil(action: { (done : () -> Void) in
 //                    
 //                    let service : MobileConnectServiceMock = self.mockedService
@@ -94,19 +124,38 @@ class MobileConnectServiceSpec: BaseServiceSpec {
 //                    
 //                })
         
+                self.checkAuthenticationServiceWithRedirectModel(Mocker.errorRedirect, expectationHandler: { (tokenModel, error) in
+                    it("has error", closure: {
+                        expect(error).toNot(beNil())
+                    })
+                })
+                
+//                let service : MobileConnectServiceMock = self.mockedService
+//                service.codeResponse = Mocker.errorRedirect
+//                
 //                self.checkServiceForRedirect(service, redirectModel: Mocker.errorRedirect, action: service.getAuthenticationTokenInController, withExpectationHandler: { (tokenModel, error) in
 //                    it("has error", closure: {
 //                        expect(error).toNot(beNil())
 //                    })
 //                })
-            //})
+            })
             
-//            context("correct redirect", closure: {
-//                
-//                
-//                
-//            })
-        //}
+            context("correct redirect", closure: {
+                
+                
+                
+            })
+        }
+    }
+    
+    func checkAuthenticationServiceWithRedirectModel(redirectModel : [NSObject : AnyObject], expectationHandler : (tokenModel : TokenModel?, error : NSError?) -> Void)
+    {
+        describe("authentication") {
+            
+            let service : MobileConnectServiceMock = self.mockedService
+            
+            self.checkServiceForRedirect(service, redirectModel: redirectModel, action: service.getAuthenticationTokenInController, withExpectationHandler: expectationHandler)
+        }
     }
     
     func checkServiceForRedirect(service : MobileConnectServiceMock, redirectModel : [NSObject : AnyObject], action : (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void, withExpectationHandler expectationHandler : (tokenModel : TokenModel?, error : NSError?) -> Void)
@@ -188,33 +237,5 @@ class MobileConnectServiceSpec: BaseServiceSpec {
         //check if response
         //check redirect flag
         self.checkRedirect()
-    }
-    
-    func noWebController()
-    {
-        context("has nil web controller") {
-            
-            let mobileConnect : MobileConnectServiceMock = self.mockedService
-            
-            mobileConnect.webController = nil
-            mobileConnect.shouldCallSuper = true
-            
-            waitUntil(action: { (done : () -> Void) in
-                
-                mobileConnect.getAuthenticationTokenInController(self.viewController, completionHandler: { (controller, tokenModel, error) in
-                    
-                    it("not awaiting response", closure: {
-                        expect(mobileConnect.isAwaitingResponse).toNot(beTrue())
-                    })
-                    
-                    it("has nil web controller error", closure: {
-                        expect(error?.code).to(be(MCErrorCode.WebControllerNil.error.code))
-                    })
-                    
-                    done()
-                })
-                
-            })
-        }
     }
 }

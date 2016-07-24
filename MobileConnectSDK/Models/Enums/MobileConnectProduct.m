@@ -16,3 +16,8 @@ NSString *const MobileConnectIdentityPhone = @"openid mc_identity_phonenumber";
 NSString *const MobileConnectIdentitySignup = @"openid mc_identity_signup";
 NSString *const MobileConnectIdentitySignupPlus = @"openid mc_identity_signupplus";
 NSString *const MobileConnectIdentityNationalID = @"openid mc_identity_nationalid";
+
+NSString *const MobileConnectPhone = @"phone";
+NSString *const MobileConnectAddress = @"address";
+NSString *const MobileConnectProfile = @"profile";
+NSString *const MobileConnectEmail = @"email";

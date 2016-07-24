@@ -54,7 +54,7 @@ public class MobileConnectButton: UIButton {
             return
         }
         
-        MobileConnectManager().getTokenInPresenterController(presenter, withCompletionHandler: nil)
+        //MobileConnectManager().getTokenInPresenterController(presenter, withCompletionHandler: nil)
     }
     
     //MARK: Helpers

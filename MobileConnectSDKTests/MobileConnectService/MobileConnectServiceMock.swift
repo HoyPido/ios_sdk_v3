@@ -28,11 +28,20 @@ class MobileConnectServiceMock: MobileConnectService {
     var hasPresentedWebController : Bool = false
     var hasCalledRequestForToken : Bool = false
     
+    var checksForNilWebController : Bool = false
+    
     override func presentWebControllerWithRequest(request: NSURLRequest?, inController controller: UIViewController, errorHandler: (error: NSError) -> Void)
     {
-        hasPresentedWebController = true
-        
-        treatWebRedirectParameters(codeResponse, withCompletionHandler: didReceiveResponseFromController)
+        if checksForNilWebController
+        {
+            super.presentWebControllerWithRequest(request, inController: controller, errorHandler: errorHandler)
+        }
+        else
+        {
+            hasPresentedWebController = true
+            
+            treatWebRedirectParameters(codeResponse, withCompletionHandler: didReceiveResponseFromController)
+        }
     }
     
     override func processRequest(request: Request, withParameters parameters: [(String?, MCErrorCode)], inHandler localHandler: (model: TokenModel?, error: NSError?) -> Void)

@@ -16,14 +16,14 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
     let context : String //context value required while authorizing
     let bindingMessage : String?
     
-    init(clientKey: String,
+    public init(clientKey: String,
          clientSecret: String,
          authorizationURLString: String,
          tokenURLString: String,
          assuranceLevel: MCLevelOfAssurance,
          subscriberId: String?,
          metadata: MetadataModel?,
-         authorizationScopes : [OpenIdProductType],
+         authorizationScopes : [String],
          clientName : String,
          context : String,
          bindingMessage : String?)
@@ -35,7 +35,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.clientName = clientName
         self.context = context
         
-        let stringValuedScopes : [String] = authorizationScopes.map({$0.stringValue}) + [MobileConnectAuthorization]
+        let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
         
         super.init(clientKey: clientKey,
                    clientSecret: clientSecret,
@@ -47,11 +47,25 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                    authorizationScopes: stringValuedScopes)
     }
     
-    convenience init(discoveryResponse : DiscoveryResponse,
+    convenience public init(discoveryResponse : DiscoveryResponse,
+                            assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
+                            context : String,
+                            bindingMessage : String?,
+                            authorizationScopes : [ProductType])
+    {
+        self.init(discoveryResponse : discoveryResponse,
+                  assuranceLevel: assuranceLevel,
+                  context:  context,
+                  bindingMessage: bindingMessage,
+                  authorizationScopes: authorizationScopes.map({$0.stringValue})
+        )
+    }
+    
+    convenience public init(discoveryResponse : DiscoveryResponse,
          assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
          context : String,
          bindingMessage : String?,
-         authorizationScopes : [OpenIdProductType])
+         authorizationScopes : [String])
     {
         let localClientName : String = discoveryResponse.applicationShortName ?? ""
         

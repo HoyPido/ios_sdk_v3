@@ -44,9 +44,9 @@ class MobileConnectManagerMock: MobileConnectManager {
         super.getTokenWithMobileConnectService(mobileConnectServiceMock, inWebController: webController, withOperatorsData: operatorsData, isAuthorization : isAuthorization)
     }
     
-    override var tokenResponseModel : (tokenModel : TokenModel?) -> TokenResponseModel?
+    override var tokenResponseModel : (tokenModel : TokenModel?, operatorsData : DiscoveryResponse?) -> TokenResponseModel?
     {
-        return { (tokenModel : TokenModel?) -> TokenResponseModel? in
+        return { (tokenModel : TokenModel?, operatorsData : DiscoveryResponse?) -> TokenResponseModel? in
             return self.error == .None ? Mocker.tokenResponseModel : nil
         }
     }

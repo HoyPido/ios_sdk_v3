@@ -97,10 +97,14 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
 //            print(error)
 //        }
         
-        manager.getAuthorizationTokenInPresenterController(self, withContext: "asdas", withStringValueScopes: [], bindingMessage: nil) { (tokenResponseModel, error) in
-            
+        manager.getTokenInPresenterController(self, withScopes: [ProductType.Email]) { (tokenResponseModel, error) in
             print(tokenResponseModel)
         }
+        
+//        manager.getAuthorizationTokenInPresenterController(self, withContext: "asdas", withStringValueScopes: [], bindingMessage: nil) { (tokenResponseModel, error) in
+//            
+//            print(tokenResponseModel)
+//        }
         
 //        manager.getTokenInPresenterController(self) { (tokenResponseModel, error) in
 //            

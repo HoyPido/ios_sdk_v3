@@ -224,7 +224,7 @@ public class MobileConnectManager: NSObject {
             }
             else
             {
-                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData)
+                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [])
             }
             
             let mobileConnect : MobileConnectService = MobileConnectService(configuration: configuration)

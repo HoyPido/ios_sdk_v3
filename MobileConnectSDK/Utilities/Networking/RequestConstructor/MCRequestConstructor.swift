@@ -72,7 +72,7 @@ class MCRequestConstructor: RequestConstructor {
     
     var authenticationRequest : Request
     {
-        return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: [MobileConnectAuthentication], url: configuration.authorizationURLString, shouldNotStartImmediately : true)
+        return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, shouldNotStartImmediately : true)
     }
     
     ///Will return nil if the configuration used to initialize the Request Constructor is not of type MCAuthorizationConfiguration

@@ -34,19 +34,19 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                          assuranceLevel : MCLevelOfAssurance,
                          subscriberId : String?,
                          metadata : MetadataModel?,
-                         authorizationScopes : [String] = [MobileConnectAuthentication])
+                         authorizationScopes : [String])
     {
         self.authorizationURLString = authorizationURLString
         self.tokenURLString = tokenURLString
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
         self.metadata = metadata
-        scopes = authorizationScopes
+        scopes = authorizationScopes + [MobileConnectAuthentication]
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     
-    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, authorizationScopes : [String] = [MobileConnectAuthentication])
+    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, authorizationScopes : [String])
     {
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         

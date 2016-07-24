@@ -9,7 +9,7 @@ spec.social_media_url = "https://developer.mobileconnect.io"
 
 spec.platform = :ios, "8.0"
 spec.requires_arc = true
-spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/testsdk.git", :branch => 'master', :tag=>  "#{spec.version}"}
+spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/testsdk.git", :branch => 'GMC-162', :tag=>  "#{spec.version}"}
 
 spec.subspec 'Extensions' do |extensions|
 extensions.source_files = 'MobileConnectSDK/Extensions/*.swift'
@@ -39,7 +39,7 @@ models.subspec 'Enums' do |enums|
 enums.source_files = 'MobileConnectSDK/Models/Enums/*.*'
 end
 
-models.source_files = 'MobileConnectSDK/Models/*.swift'
+models.source_files = 'MobileConnectSDK/Models/*.{h,m,swift}'
 end
 
 spec.subspec 'MobileConnectManager' do |mobileConnectManager|

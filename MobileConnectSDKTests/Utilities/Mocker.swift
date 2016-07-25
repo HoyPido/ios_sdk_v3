@@ -24,7 +24,8 @@ class Mocker: NSObject {
     }()
 
     static var mobileConnectConfiguration : MobileConnectServiceConfiguration = {
-       return MobileConnectServiceConfiguration(discoveryResponse: discoveryResponse)
+        
+        return MCAuthorizationConfiguration(discoveryResponse: discoveryResponse, context: "", bindingMessage: nil, authorizationScopes: [])
     }()
     
     class var metadata : MetadataModel

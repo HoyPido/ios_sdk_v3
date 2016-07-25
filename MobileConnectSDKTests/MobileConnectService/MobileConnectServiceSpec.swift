@@ -32,41 +32,104 @@ class MobileConnectServiceSpec: BaseServiceSpec {
         super.spec()
         
         describe("MobileConnectService") {
-            
             self.concurrency()
             self.noWebController()
-            self.checkRedirect()
-            //self.checkAuthorizationToken()
-            //self.checkAuthenticationToken()
+            self.checkProducts()
         }
     }
     
-    func noWebController()
+    func checkProducts()
     {
-        context("has nil web controller") {
+        describe("check authentication", closure: {
+            self.checkService { (service) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void in
+                return service.getAuthenticationTokenInController
+            }
+        })
+        
+        describe("check authorization", closure: {
+            self.checkService { (service) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void in
+                return service.getAuthorizationTokenInController
+            }
+        })
+    }
+    
+    func checkService(serviceHandler : (service : MobileConnectServiceMock) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void)
+    {
+        //check for error if redirect returned error
+        describe("has error on redirect") {
             
-            waitUntil(action: { (done : () -> Void) in
-                
-                let mobileConnect : MobileConnectServiceMock = self.mockedService
-                
-                mobileConnect.webController = nil
-                mobileConnect.shouldCallSuper = true
-                mobileConnect.isAwaitingResponse = false
-                mobileConnect.checksForNilWebController = true
-                
-                mobileConnect.getAuthenticationTokenInController(self.viewController, completionHandler: { (controller, tokenModel, error) in
+            self.checkService(
+                {
+                    (service) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void in
                     
-                    it("not awaiting response", closure: {
-                        expect(mobileConnect.isAwaitingResponse).toNot(beTrue())
-                    })
+                    service.codeResponse = Mocker.errorRedirect
                     
-                    it("has nil web controller error", closure: {
-                        expect(error?.code).to(be(MCErrorCode.WebControllerNil.error.code))
-                    })
+                    return serviceHandler(service: service)
                     
-                    done()
                 })
+            {
+                (tokenModel, error) in
                 
+                it("has error", closure: {
+                    expect(error).toNot(beNil())
+                })
+            }
+        }
+        
+        describe("has error on redirect success but failed token") {
+            
+            self.checkService(
+                {
+                    (service) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void in
+                    
+                    service.codeResponse = Mocker.authenticationCodeResponse
+                    service.error = MCErrorCode.Unknown.error
+                    
+                    return serviceHandler(service: service)
+                    
+                })
+            {
+                (tokenModel, error) in
+                
+                it("has error", closure: {
+                    expect(error).toNot(beNil())
+                })
+            }
+        }
+        
+        describe("has result on redirect and response success") {
+            
+            self.checkService(
+                {
+                    (service) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void in
+                    
+                    service.codeResponse = Mocker.authenticationCodeResponse
+                    service.response = Mocker.tokenResponseModel.tokenData
+                    
+                    return serviceHandler(service: service)
+                })
+            {
+                (tokenModel, error) in
+                
+                it("has successfully redirected", closure: {
+                    expect(tokenModel).toNot(beNil())
+                })
+            }
+        }
+    }
+    
+    func checkService(creationHandler : (service : MobileConnectServiceMock) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void, expectationHandler : (tokenModel : TokenModel?, error : NSError?) -> Void)
+    {
+        waitUntil { (done : () -> Void) in
+            
+            let service : MobileConnectServiceMock = self.mockedService
+            
+            creationHandler(service: service)(controller: self.viewController, completionHandler : {
+                (controller : BaseWebController?, tokenModel : TokenModel?, error : NSError?) -> Void in
+                
+                expectationHandler(tokenModel: tokenModel, error: error)
+                
+                done()
             })
         }
     }
@@ -97,145 +160,33 @@ class MobileConnectServiceSpec: BaseServiceSpec {
         
     }
     
-    func checkRedirect()
+    func noWebController()
     {
-        describe("catching redirect") {
-            
-            context("error redirect", closure: {
-                
-//                waitUntil(action: { (done : () -> Void) in
-//                    
-//                    let service : MobileConnectServiceMock = self.mockedService
-//                    service.codeResponse = Mocker.errorRedirect
-//                    
-//                    print("before calling method")
-//                    
-//                    service.getAuthenticationTokenInController(self.viewController, completionHandler: { (controller, tokenModel, error) in
-//                        
-//                        print("after calling method")
-//                        it("has error", closure: {
-//                            
-//                            print("inside it method")
-//                            expect(error).toNot(beNil())
-//                        })
-//                        
-//                        done()
-//                    })
-//                    
-//                })
-        
-                self.checkAuthenticationServiceWithRedirectModel(Mocker.errorRedirect, expectationHandler: { (tokenModel, error) in
-                    it("has error", closure: {
-                        expect(error).toNot(beNil())
-                    })
-                })
-                
-//                let service : MobileConnectServiceMock = self.mockedService
-//                service.codeResponse = Mocker.errorRedirect
-//                
-//                self.checkServiceForRedirect(service, redirectModel: Mocker.errorRedirect, action: service.getAuthenticationTokenInController, withExpectationHandler: { (tokenModel, error) in
-//                    it("has error", closure: {
-//                        expect(error).toNot(beNil())
-//                    })
-//                })
-            })
-            
-            context("correct redirect", closure: {
-                
-                
-                
-            })
-        }
-    }
-    
-    func checkAuthenticationServiceWithRedirectModel(redirectModel : [NSObject : AnyObject], expectationHandler : (tokenModel : TokenModel?, error : NSError?) -> Void)
-    {
-        describe("authentication") {
-            
-            let service : MobileConnectServiceMock = self.mockedService
-            
-            self.checkServiceForRedirect(service, redirectModel: redirectModel, action: service.getAuthenticationTokenInController, withExpectationHandler: expectationHandler)
-        }
-    }
-    
-    func checkServiceForRedirect(service : MobileConnectServiceMock, redirectModel : [NSObject : AnyObject], action : (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void, withExpectationHandler expectationHandler : (tokenModel : TokenModel?, error : NSError?) -> Void)
-    {
-        service.codeResponse = Mocker.errorRedirect
-        
-        self.checkService(action, withExpectationHandler: expectationHandler)
-    }
-    
-    func checkService(action : (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void, withExpectationHandler expectationHandler : (tokenModel : TokenModel?, error : NSError?) -> Void)
-    {
-        waitUntil { (done : () -> Void) in
-            
-            action(controller: self.viewController, completionHandler: { (controller, tokenModel, error) in
-                
-                expectationHandler(tokenModel: tokenModel, error: error)
-                
-                done()
-            })
-        }
-    }
-    
-    func checkAuthorizationToken()
-    {
-        describe("getting authorization token") { 
-            
-            let service : MobileConnectServiceMock = self.mockedService
-            service.response = Mocker.tokenResponseModel.tokenData
-            
-        }
-        
-        //check request constructor in completion handler
-        checkTokenWithActionWithRequestConstructor()
-    }
-    
-    func checkAuthenticationToken()
-    {
-        describe("getting authentication token") {
-            
-            let service : MobileConnectServiceMock = self.mockedService
-            service.response = Mocker.tokenResponseModel.tokenData
+        context("has nil web controller") {
             
             waitUntil(action: { (done : () -> Void) in
                 
-                service.getAuthenticationTokenInController(self.viewController, completionHandler:
-                {
-                    (controller, tokenModel, error) in
+                let mobileConnect : MobileConnectServiceMock = self.mockedService
+                
+                mobileConnect.webController = nil
+                mobileConnect.shouldCallSuper = true
+                mobileConnect.isAwaitingResponse = false
+                mobileConnect.checksForNilWebController = true
+                
+                mobileConnect.getAuthenticationTokenInController(self.viewController, completionHandler: { (controller, tokenModel, error) in
                     
-                    it("should have called request constructor authentication request", closure: {
-                        expect(self.requestConstructor.authenticationRequestAccessed).to(beTrue())
+                    it("not awaiting response", closure: {
+                        expect(mobileConnect.isAwaitingResponse).toNot(beTrue())
                     })
                     
-                    it("should have a response", closure: { 
-                        expect(tokenModel).toNot(beNil())
-                    })
-                    
-                    //will it call error handler if error model sent?
-                    //will it call response handler if correct model sent?
-                    it("should have presented web controller", closure: {
-                        expect(service.hasPresentedWebController).to(beTrue())
-                    })
-                    
-                    it("should have called request for token", closure: { 
-                        expect(service.hasCalledRequestForToken).to(beTrue())
+                    it("has nil web controller error", closure: {
+                        expect(error?.code).to(be(MCErrorCode.WebControllerNil.error.code))
                     })
                     
                     done()
                 })
+                
             })
         }
-        
-        //check request constructor in completion handler
-        checkTokenWithActionWithRequestConstructor()
-    }
-    
-    func checkTokenWithActionWithRequestConstructor()
-    {
-        //check if nil response + error
-        //check if response
-        //check redirect flag
-        self.checkRedirect()
     }
 }

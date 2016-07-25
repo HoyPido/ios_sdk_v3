@@ -57,7 +57,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   assuranceLevel: assuranceLevel,
                   context:  context,
                   bindingMessage: bindingMessage,
-                  authorizationScopes: authorizationScopes.map({$0.stringValue})
+                  stringAuthorizationScopes: authorizationScopes.map({$0.stringValue})
         )
     }
     
@@ -65,7 +65,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
          context : String,
          bindingMessage : String?,
-         authorizationScopes : [String])
+         stringAuthorizationScopes : [String])
     {
         let localClientName : String = discoveryResponse.applicationShortName ?? ""
         
@@ -88,7 +88,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   assuranceLevel: assuranceLevel,
                   subscriberId: localSubscriberId,
                   metadata: localMetadata,
-                  authorizationScopes : authorizationScopes,
+                  authorizationScopes : stringAuthorizationScopes,
                   clientName : localClientName,
                   context : context,
                   bindingMessage: bindingMessage)

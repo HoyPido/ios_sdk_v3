@@ -22,11 +22,7 @@ class MobileConnectServiceMock: MobileConnectService {
     var error : NSError?
     var response : TokenModel?
     var codeResponse : [NSObject : AnyObject] = Mocker.authenticationCodeResponse
-    var withDelay : Bool = false
     var shouldCallSuper : Bool = false
-    
-    var hasPresentedWebController : Bool = false
-    var hasCalledRequestForToken : Bool = false
     
     var checksForNilWebController : Bool = false
     
@@ -38,16 +34,12 @@ class MobileConnectServiceMock: MobileConnectService {
         }
         else
         {
-            hasPresentedWebController = true
-            
             treatWebRedirectParameters(codeResponse, withCompletionHandler: didReceiveResponseFromController)
         }
     }
     
     override func processRequest(request: Request, withParameters parameters: [(String?, MCErrorCode)], inHandler localHandler: (model: TokenModel?, error: NSError?) -> Void)
     {
-        hasCalledRequestForToken = true
-        
         localHandler(model: response, error: error)
     }
     
@@ -59,9 +51,7 @@ class MobileConnectServiceMock: MobileConnectService {
         }
         else
         {
-            callHandlerWithDelay({
-                completionHandler(controller: self.webController, tokenModel: self.response, error: self.error)
-            })
+            completionHandler(controller: self.webController, tokenModel: self.response, error: self.error)
         }
     }
     
@@ -73,34 +63,7 @@ class MobileConnectServiceMock: MobileConnectService {
         }
         else
         {
-            callHandlerWithDelay({
-                completionHandler(controller: self.webController, tokenModel: self.response, error: self.error)
-            })
-        }
-    }
-    
-    //MARK: Helper testing functions
-    func callHandlerWithDelay(handler : () -> Void)
-    {
-        if withDelay
-        {
-            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
-            
-            dispatch_async(queue, {
-                
-                let queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), queue2, {
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        handler()
-                    })
-                })
-            })
-        }
-        else
-        {
-            handler()
+            completionHandler(controller: self.webController, tokenModel: self.response, error: self.error)
         }
     }
 }

@@ -14,7 +14,7 @@ class MobileConnectManagerMock: MobileConnectManager {
     
     var error : NSError?
     var context : String?
-    var scopes : [OpenIdProductType]?
+    var scopes : [ProductType]?
     var bindingMessage : String?
     
     override func getTokenWithMobileConnectService(mobileConnectService: MobileConnectService, inWebController webController: BaseWebController?, withOperatorsData operatorsData: DiscoveryResponse, isAuthorization: Bool) {
@@ -29,7 +29,7 @@ class MobileConnectManagerMock: MobileConnectManager {
         }
         else
         {
-            mobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData))
+            mobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : []))
         }
         
         if let error = error

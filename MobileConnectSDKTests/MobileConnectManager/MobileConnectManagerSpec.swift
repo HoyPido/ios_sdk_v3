@@ -59,7 +59,7 @@ class MobileConnectManagerSpec : QuickSpec
                 
                 self.startTesting(true){ (completionHandler) in
                     
-                    self.manager.getAuthorizationTokenInPresenterController(self.viewController, withContext: "asdasd", scopes: [OpenIdProductType.Address], bindingMessage: "test", completionHandler: completionHandler)
+                    self.manager.getAuthorizationTokenInPresenterController(self.viewController, withContext: "asdasd", withScopes: [ProductType.Address], bindingMessage: "test", completionHandler: completionHandler)
                 }
                 
             })
@@ -68,7 +68,7 @@ class MobileConnectManagerSpec : QuickSpec
                 
                 self.startTesting(true){ (completionHandler) in
                     
-                    self.manager.getAuthorizationTokenForPhoneNumber("", inPresenterController: self.viewController, withScopes: [OpenIdProductType.Address], context: "test", bindingMessage: nil, completionHandler: completionHandler)
+                    self.manager.getAuthorizationTokenForPhoneNumber("", inPresenterController: self.viewController, withScopes: [ProductType.Address], context: "test", bindingMessage: nil, completionHandler: completionHandler)
                 }
                 
             })
@@ -200,7 +200,7 @@ class MobileConnectManagerSpec : QuickSpec
         if isAuthorization
         {
             manager.context = "asdad"
-            manager.scopes = [OpenIdProductType.Address]
+            manager.scopes = [ProductType.Address]
             manager.bindingMessage = "asdas"
         }
     }

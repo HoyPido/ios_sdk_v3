@@ -220,7 +220,7 @@ public class MobileConnectManager: NSObject {
             
             if let context = context
             {
-                configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage ,authorizationScopes: scopes ?? [])
+                configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage , stringAuthorizationScopes: scopes ?? [])
             }
             else
             {

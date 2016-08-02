@@ -44,7 +44,7 @@ class MobileConnectManagerWrongMCResponse: QuickSpec {
                     discoveryService.response = Mocker.discoveryResponse
                     manager.willProvideGoodMobileConnectResponse = false
                     
-                    manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
+                    manager.getTokenInPresenterController(viewController, withCompletionHandler: { (tokenResponseModel, error) in
                         
                         it("has a nil response model", closure: {
                             expect(tokenResponseModel).to(beNil())

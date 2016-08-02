@@ -57,10 +57,10 @@ public class MCService: NSObject {
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
-     - Parameter completitionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
+     - Parameter completionHandler: the closure which will be called upon the method completion in order to pass the resultant Mobile Connect data.
      */
-    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completitionHandler : MobileConnectControllerResponse)
+    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
     {
-        service.getTokenInController(controller, subscriberId: subscriberId, completitionHandler: completitionHandler)
+        service.getTokenInController(controller, subscriberId: subscriberId, completionHandler: completionHandler)
     }
 }

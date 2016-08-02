@@ -39,7 +39,7 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
 //            
 //            let mobileService : MobileConnectService = MobileConnectService(clientId: clientId, authorizationURL: authorizationURL, tokenURL: tokenURL)
 //            
-//            mobileService.getTokenInController(self, subscriberId: operatorsData?.subscriber_id ?? "", completitionHandler: { (controller, tokenModel, error) in
+//            mobileService.getTokenInController(self, subscriberId: operatorsData?.subscriber_id ?? "", completionHandler: { (controller, tokenModel, error) in
 //                
 //                controller?.dismissViewControllerAnimated(true, completion: nil)
 //                

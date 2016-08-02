@@ -59,14 +59,14 @@ public class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, Opera
     
     //MARK: Discovery service with no client data
     ///Gets operator data by showing a webview which will request data from client
-    public func startOperatorDiscoveryInController(controller : UIViewController, completitionHandler : DiscoveryResponseBlock)
+    public func startOperatorDiscoveryInController(controller : UIViewController, completionHandler : DiscoveryResponseBlock)
     {
-        startServiceInController(controller, withRequest: self.requestConstructor.noOperatorDataRequest, completitionHandler: completitionHandler)
+        startServiceInController(controller, withRequest: self.requestConstructor.noOperatorDataRequest, completitionHandler: completionHandler)
     }
     
     override func didReceiveResponseFromController(controller: BaseWebController?, withRedirectModel redirectModel: OperatorDataRedirectModel?, error: NSError?)
     {
-        startOperatorDiscoveryWithCountryCode(redirectModel?.mcc() ?? "", networkCode: redirectModel?.mnc() ?? "", completitionHandler:
+        startOperatorDiscoveryWithCountryCode(redirectModel?.mcc() ?? "", networkCode: redirectModel?.mnc() ?? "", completionHandler:
         {
             (operatorsData, error) in
             
@@ -80,15 +80,15 @@ public class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, Opera
     
     //MARK: Discovery service with client Country Code and Mobile Network Code
     //Gets operator data by using client's operator country code and network code. It will not return a subscriber_id as for the subcriber_id one should provide the concrete phone number.
-    public func startOperatorDiscoveryWithCountryCode(countryCode : String, networkCode : String, completitionHandler : DiscoveryDataResponse)
+    public func startOperatorDiscoveryWithCountryCode(countryCode : String, networkCode : String, completionHandler : DiscoveryDataResponse)
     {
-        processRequest(requestConstructor.requestWithCountryCode(countryCode, networkCode: networkCode), withParameters: [(countryCode, MCErrorCode.NilCountryCode ), (networkCode, MCErrorCode.NilNetworkCode)], inHandler: completitionHandler)
+        processRequest(requestConstructor.requestWithCountryCode(countryCode, networkCode: networkCode), withParameters: [(countryCode, MCErrorCode.NilCountryCode ), (networkCode, MCErrorCode.NilNetworkCode)], inHandler: completionHandler)
     }
     
     //MARK: Discovery service with phone number
     //Gets operator data by using client's phone number. It will return a subscriber_id.
-    public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, completitionHandler : DiscoveryDataResponse)
+    public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, completionHandler : DiscoveryDataResponse)
     {
-        processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber), withParameters: [(phoneNumber, MCErrorCode.NilPhoneNumber)], inHandler: completitionHandler)
+        processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber), withParameters: [(phoneNumber, MCErrorCode.NilPhoneNumber)], inHandler: completionHandler)
     }
 }

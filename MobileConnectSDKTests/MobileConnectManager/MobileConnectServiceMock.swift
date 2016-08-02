@@ -15,7 +15,7 @@ class MobileConnectServiceMock: MobileConnectService {
     var error : NSError?
     var response : TokenModel?
     
-    override func getTokenInController(controller: UIViewController, subscriberId: String?, completitionHandler: MobileConnectControllerResponse) {
-        completitionHandler(controller: webController, tokenModel: response, error: error)
+    override func getTokenInController(controller: UIViewController, subscriberId: String?, completionHandler: MobileConnectControllerResponse) {
+        completionHandler(controller: webController, tokenModel: response, error: error)
     }
 }

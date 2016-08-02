@@ -19,17 +19,17 @@ class DiscoveryServiceMock: DiscoveryService {
     
     var withDelay : Bool = false
     
-    override func startOperatorDiscoveryInController(controller: UIViewController, completitionHandler: DiscoveryResponseBlock)
+    override func startOperatorDiscoveryInController(controller: UIViewController, completionHandler: DiscoveryResponseBlock)
     {
         callHandlerWithDelay {
-            completitionHandler(controller: self.webController, operatorsData: self.response, error: self.error)
+            completionHandler(controller: self.webController, operatorsData: self.response, error: self.error)
         }
     }
     
-    override func startOperatorDiscoveryForPhoneNumber(phoneNumber: String, completitionHandler: DiscoveryDataResponse)
+    override func startOperatorDiscoveryForPhoneNumber(phoneNumber: String, completionHandler: DiscoveryDataResponse)
     {
         callHandlerWithDelay {
-            completitionHandler(operatorsData: self.response, error: self.error)
+            completionHandler(operatorsData: self.response, error: self.error)
         }
     }
     

@@ -25,9 +25,9 @@ protocol MobileConnectManagerProtocol
     var delegate : MobileConnectManagerDelegate? {get set}
     
     //MARK: Main actions
-    func getTokenInPresenterController(presenterController : UIViewController, withCompletitionHandler completitionHandler : MobileConnectResponse?)
+    func getTokenInPresenterController(presenterController : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
     
-    func getTokenForPhoneNumber(phoneNumber : String, inPresenterController controller : UIViewController, withCompletitionHandler completitionHandler : MobileConnectResponse?)
+    func getTokenForPhoneNumber(phoneNumber : String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
 }
 
 /**
@@ -51,7 +51,7 @@ protocol MobileConnectManagerProtocol
     var isRunning : Bool = false
     
     //MARK: init
-    public init(delegate : MobileConnectManagerDelegate? = MobileConnectSDK.getDelegate(), discoveryService : DiscoveryService = DiscoveryService()) {
+    init(delegate : MobileConnectManagerDelegate? , discoveryService : DiscoveryService ) {
         NSException.checkDelegate(delegate)
         
         self.delegate = delegate
@@ -59,38 +59,43 @@ protocol MobileConnectManagerProtocol
         
         super.init()
     }
+      
+    public override convenience init() {
+
+      self.init(delegate: MobileConnectSDK.getDelegate(), discoveryService: DiscoveryService())
+    }
     
     //MARK: SDK main methods
     /**
     Will get the token without any info needed from the client. Will use both Discovery and Mobile Connect services underneath. First the Discovery web controller will be presented which will require client's phone number or operator information. Afterwards the Mobile Connect Service will present its web view controller. In case the client did not provide a phone number, Mobile Connect will first ask the client for a phone number and then present the waiting for sms confirmation screen.
         - Parameter presenterController: The controller which will present the Mobile Connect web view controller
-        - Parameter completitionHandler: The closure in which the Mobile Connect Token or error will be returned
+        - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
     */
-    public func getTokenInPresenterController(presenterController: UIViewController, withCompletitionHandler completitionHandler : MobileConnectResponse?)
+    public func getTokenInPresenterController(presenterController: UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
         startDiscoveryInHandler({ 
             
             self.delegate?.mobileConnectWillPresentWebController?()
-            self.discovery.startOperatorDiscoveryInController(presenterController, completitionHandler: self.checkDiscoveryResponse)
+            self.discovery.startOperatorDiscoveryInController(presenterController, completionHandler: self.checkDiscoveryResponse)
             
-        },presenter: presenterController, withCompletition: completitionHandler)
+        },presenter: presenterController, withCompletion: completionHandler)
     }
     
     /**
      Will get the token with client's phone number. By providing the number the only web view presented will be that of the sms confirmation. Will use both Discovery and Mobile Connect services underneath.
      - Parameter presenterController: The controller which will present the Mobile Connect web view controller
-     - Parameter completitionHandler: The closure in which the Mobile Connect Token or error will be returned
+     - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController controller : UIViewController, withCompletitionHandler completitionHandler : MobileConnectResponse?) {
+    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController controller : UIViewController, withCompletionHandler completionHandler : MobileConnectResponse?) {
         
         startDiscoveryInHandler({
             
-            self.discovery.startOperatorDiscoveryForPhoneNumber(phoneNumber, completitionHandler: { (operatorsData, error) in
+            self.discovery.startOperatorDiscoveryForPhoneNumber(phoneNumber, completionHandler: { (operatorsData, error) in
                 
                 self.checkDiscoveryResponse(nil, operatorsData: operatorsData, error: error)
             })
             
-        }, presenter: controller, withCompletition: completitionHandler)
+        }, presenter: controller, withCompletion: completionHandler)
     }
     
     
@@ -121,7 +126,7 @@ protocol MobileConnectManagerProtocol
         if let presenter = currentPresenter
         {
             delegate?.mobileConnectWillPresentWebController?()
-            mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id, completitionHandler: checkMobileConnectResponse)
+            mobileConnectService.getTokenInController(presenter, subscriberId: operatorsData.subscriber_id, completionHandler: checkMobileConnectResponse)
         }
         else
         {
@@ -136,7 +141,7 @@ protocol MobileConnectManagerProtocol
     }
     
     //MARK: Helpers
-    func startDiscoveryInHandler(handler : () -> Void, presenter : UIViewController, withCompletition completitionHandler : MobileConnectResponse?)
+    func startDiscoveryInHandler(handler : () -> Void, presenter : UIViewController, withCompletion completionHandler : MobileConnectResponse?)
     {
         if !isRunning
         {
@@ -144,7 +149,7 @@ protocol MobileConnectManagerProtocol
             
             delegate?.mobileConnectWillStart?()
             
-            currentResponse = completitionHandler
+            currentResponse = completionHandler
             currentPresenter = presenter
             
             handler()

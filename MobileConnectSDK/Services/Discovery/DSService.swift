@@ -25,22 +25,22 @@ public class DSService: NSObject {
 
     //MARK: Discovery service with no client data
     ///Gets operator data by showing a webview which will request data from client
-    public func startOperatorDiscoveryInController(controller : UIViewController, completitionHandler : DiscoveryResponseBlock)
+    public func startOperatorDiscoveryInController(controller : UIViewController, completionHandler : DiscoveryResponseBlock)
     {
-        service.startOperatorDiscoveryInController(controller, completitionHandler: completitionHandler)
+        service.startOperatorDiscoveryInController(controller, completionHandler: completionHandler)
     }
     
     //MARK: Discovery service with client Country Code and Mobile Network Code
     //Gets operator data by using client's operator country code and network code. It will not return a subscriber_id as for the subcriber_id one should provide the concrete phone number.
-    public func startOperatorDiscoveryWithCountryCode(countryCode : String, networkCode : String, completitionHandler : DiscoveryDataResponse)
+    public func startOperatorDiscoveryWithCountryCode(countryCode : String, networkCode : String, completionHandler : DiscoveryDataResponse)
     {
-        service.startOperatorDiscoveryWithCountryCode(countryCode, networkCode: networkCode, completitionHandler: completitionHandler)
+        service.startOperatorDiscoveryWithCountryCode(countryCode, networkCode: networkCode, completionHandler: completionHandler)
     }
     
     //MARK: Discovery service with phone number
     //Gets operator data by using client's phone number. It will return a subscriber_id.
-    public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, completitionHandler : DiscoveryDataResponse)
+    public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, completionHandler : DiscoveryDataResponse)
     {
-        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, completitionHandler: completitionHandler)
+        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, completionHandler: completionHandler)
     }
 }

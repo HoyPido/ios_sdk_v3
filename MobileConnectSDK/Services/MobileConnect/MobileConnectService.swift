@@ -76,17 +76,17 @@ public class MobileConnectService: BaseMobileConnectService<TokenModel, Authoriz
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
-     - Parameter completitionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
+     - Parameter completionHandler: the closure which will be called upon the method completion in order to pass the resultant Mobile Connect data.
      */
-    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completitionHandler : MobileConnectControllerResponse)
+    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithClientId(self.clientId, acreditationValue: self.levelOfAssurance, subscriberId: subscriberId, atURL: self.authorizationURL, shouldNotStartImmediately: true), completitionHandler: completitionHandler)
+        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithClientId(self.clientId, acreditationValue: self.levelOfAssurance, subscriberId: subscriberId, atURL: self.authorizationURL, shouldNotStartImmediately: true), completitionHandler: completionHandler)
     }
     
     //MARK: Secondary methods
-    func getTokenWithCode(code : String, completitionHandler : MobileConnectDataResponse)
+    func getTokenWithCode(code : String, completionHandler : MobileConnectDataResponse)
     {
-        processRequest(requestConstructor.tokenRequestAtURL(tokenURL, withCode: code), withParameters: [(code, MCErrorCode.NilCode)], inHandler: completitionHandler)
+        processRequest(requestConstructor.tokenRequestAtURL(tokenURL, withCode: code), withParameters: [(code, MCErrorCode.NilCode)], inHandler: completionHandler)
     }
     
     //MARK: WebController methods
@@ -99,10 +99,10 @@ public class MobileConnectService: BaseMobileConnectService<TokenModel, Authoriz
     }
     
     //MARK: Helper
-    override func startInHandler(handler: () -> Void, withParameters parameters: [(String?, MCErrorCode)], completitionHandler: (error: NSError) -> Void)
+    override func startInHandler(handler: () -> Void, withParameters parameters: [(String?, MCErrorCode)], completitionHandler completionHandler: (error: NSError) -> Void)
     {
         let localParameters : [(String?, MCErrorCode)] = parameters + [(clientId, MCErrorCode.NilClientId), (authorizationURL, MCErrorCode.NilAuthorizationURL), (tokenURL, MCErrorCode.NilTokenURL)]
         
-        super.startInHandler(handler, withParameters: localParameters, completitionHandler: completitionHandler)
+        super.startInHandler(handler, withParameters: localParameters, completitionHandler: completionHandler)
     }
 }

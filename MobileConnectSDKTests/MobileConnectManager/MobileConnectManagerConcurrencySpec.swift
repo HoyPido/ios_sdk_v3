@@ -43,11 +43,11 @@ class MobileConnectManagerConcurrencySpec: QuickSpec {
                     discoveryService.error = MCErrorCode.Unknown.error
                     discoveryService.withDelay = true
                     
-                    manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
+                    manager.getTokenInPresenterController(viewController, withCompletionHandler: { (tokenResponseModel, error) in
                         
                     })
                     
-                    manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
+                    manager.getTokenInPresenterController(viewController, withCompletionHandler: { (tokenResponseModel, error) in
                         
                         it("has a concurrency error", closure: {
                             expect(error?.code).to(be(MCErrorCode.Concurrency.error.code))

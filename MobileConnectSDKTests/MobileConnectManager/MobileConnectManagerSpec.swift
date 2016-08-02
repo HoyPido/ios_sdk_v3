@@ -43,7 +43,7 @@ class MobileConnectManagerSpec : QuickSpec
                     
                     discoveryService.error = MCErrorCode.UserCancelled.error
                     
-                    manager.getTokenInPresenterController(viewController, withCompletitionHandler:
+                    manager.getTokenInPresenterController(viewController, withCompletionHandler:
                     { (tokenResponseModel, error) in
                         
                         self.tryResponse(tokenResponseModel, error: error, withDiscoveryService: discoveryService, mockDelegate: mockDelegate)

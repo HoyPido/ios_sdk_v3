@@ -44,7 +44,7 @@ class MobileConnectManagerSpecGoodMCResponse: QuickSpec {
                     discoveryService.response = Mocker.discoveryResponse
                     manager.willProvideGoodMobileConnectResponse = true
                     
-                    manager.getTokenInPresenterController(viewController, withCompletitionHandler: { (tokenResponseModel, error) in
+                    manager.getTokenInPresenterController(viewController, withCompletionHandler: { (tokenResponseModel, error) in
                         
                         it("has a valid response model", closure: {
                             expect(tokenResponseModel).toNot(beNil())

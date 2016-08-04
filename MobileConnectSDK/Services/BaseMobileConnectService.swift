@@ -40,9 +40,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     func webController(controller : BaseWebController, shouldRedirectToURL url : NSURL) -> Bool
     {
-        print("----------------------------------------- should redirect to url ")
-        print("\(url)")
-        
         return !isValidRedirectURL(url, inController: controller)
     }
     
@@ -193,10 +190,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
             //saving completition block for later when the server response comes
             self.controllerResponse = completionHandler
             
-            print("before present web controller with request in class \(self.dynamicType)")
-            
             self.presentWebControllerWithRequest(request.request, inController: controller, errorHandler: { (error) in
-                print("after present web controller with request in class \(self.dynamicType)")
                 self.isAwaitingResponse = false
                 self.controllerResponse?(controller: self.webController, model: nil, error: error)
             })
@@ -258,11 +252,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         }
         else
         {
-            print(response.request?.allHTTPHeaderFields)
-            
-            print(response.result.error)
-            print(response.request?.URL)
-            
             clientResponseHandler(model: nil, error: response.result.error)
         }
     }

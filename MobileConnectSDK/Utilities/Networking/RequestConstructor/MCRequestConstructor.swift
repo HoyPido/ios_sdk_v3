@@ -49,8 +49,6 @@ class MCRequestConstructor: RequestConstructor {
         let nonce : String = NSUUID.randomUUID
         let state : String = NSUUID.randomUUID
         
-        print("the current scopes are \(scopeValidator.validatedScopes(scopes))")
-        
         var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : nonce]
         
         if let subscriberId = subscriberId {

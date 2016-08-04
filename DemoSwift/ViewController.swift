@@ -19,7 +19,7 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
         
         let manager : MobileConnectManager = MobileConnectManager()
         
-        manager.getTokenInPresenterController(self, withScopes: [ProductType.Email]) { (tokenResponseModel, error) in
+        manager.getAuthorizationTokenInPresenterController(self, withContext: "the context", withScopes: [ProductType.Email, ProductType.Profile], bindingMessage: "binding message") { (tokenResponseModel, error) in
             print(tokenResponseModel)
         }
     }

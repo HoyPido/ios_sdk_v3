@@ -53,9 +53,55 @@ private let kNilPresenterMessage : String = "The buttons container controller ca
 
 private let kNilMetadataURL : String = "There was no metadata URL"
 
+private let kNilClientName : String = "NilClientName"
+private let kNilClientNameMessage : String = "Authorization request requires a client name"
+
+private let kNilContext : String = "NilContext"
+private let kNilContextMessage : String = "Authorization request requires a context value"
+
+private let kNoScopes : String = "NoScopes"
+private let kNoScopesMessage : String = "Authorization requests require scopes specified"
+
+private let kRequiresAuthorizationConfiguration : String = "Using authorization requires initializing mobile connect services with MCAuthorizationConfiguration instead of MobileConnectConfiguration"
+
 class Localizator: NSObject {
     
     //MARK: Exception related strings
+    class var requiresAuthorizationConfiguration : String
+    {
+        return localized(kRequiresAuthorizationConfiguration)
+    }
+    
+    class var noScopesMessage : String
+    {
+        return localized(kNoScopesMessage)
+    }
+    
+    class var noScopes : String
+    {
+        return localized(kNoScopes)
+    }
+    
+    class var nilContextMessage : String
+    {
+        return localized(kNilContextMessage)
+    }
+    
+    class var nilContext : String
+    {
+        return localized(kNilContext)
+    }
+    
+    class var nilClientNameMessage : String
+    {
+        return localized(kNilClientNameMessage)
+    }
+    
+    class var nilClientName : String
+    {
+        return localized(kNilClientName)
+    }
+    
     class var nilMetadataURL : String
     {
         return localized(kNilMetadataURL)

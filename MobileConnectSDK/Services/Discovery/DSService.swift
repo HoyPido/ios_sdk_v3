@@ -28,9 +28,6 @@ public typealias DiscoveryResponseBlock = (controller : BaseWebController?, oper
     Allows getting operator data by providing a phone number, in which case the web view will not be presented.
     Allows getting operator data without any data from the client side in which case a web view will be presented.
     The webview will require client's operator data or phone number.
- 
-    Objective C Wrapper class around DiscoveryService
-    It is needed because Objective C cannot access generic classes or classes which inherit from generic classes
  */
 public class DSService: NSObject {
     

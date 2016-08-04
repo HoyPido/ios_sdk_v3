@@ -28,26 +28,14 @@ public typealias MobileConnectControllerResponse = (controller : BaseWebControll
  Allows getting token data by providing a subscriber id, in which case only the loading web view will be presented.
  Allows getting token data by providing a subscriber id in which case a web view will be presented.
  The webview will require client's phone number.
- 
- Objective C Wrapper class around MobileConnectService
- It is needed because objective c cannot access generic classes or classes which inherit from generic classes
  */
 public class MCService: NSObject {
     
-    //MARK: iVar
+    //MARK: iVars
     let service : MobileConnectService
     
     //MARK: init
-    /**
-     This constructor will default the levelOfAssurance to Level 2.
-     - Parameter levelOfAssurance: The required level of assurance.
-     - Parameter clientId: the client id received from the discovery OperatorData model
-     - Parameter clientSecret: the client secret received from the discovery OperatorData model
-     - Parameter authorizationURL: the authorization url received from the discovery OperatorData model
-     - Parameter tokenURL: the token url received from the discovery OperatorData model
-     */
     public init(configuration : MobileConnectServiceConfiguration) {
-        
         service = MobileConnectService(configuration: configuration)
     }
     
@@ -55,11 +43,20 @@ public class MCService: NSObject {
     /**
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
-     - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    public func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
+    public func getTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
     {
-        service.getTokenInController(controller, subscriberId: subscriberId, completionHandler: completionHandler)
+        service.getAuthenticationTokenInController(controller, completionHandler: completionHandler)
+    }
+    
+    /**
+     Gets an authorization token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
+     - Parameter controller: the controller in which the Mobile Connect should present the web view controller
+     - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
+     */
+    public func getAuthorizationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
+    {
+        service.getAuthorizationTokenInController(controller, completionHandler: completionHandler)
     }
 }

@@ -19,6 +19,8 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     var webController : BaseWebController?
     
+    var isFirstResponse : Bool = true
+    
     //MARK: init
     required init(webController : BaseWebController? = WebController.existingTemplate) {
         
@@ -38,6 +40,9 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     func webController(controller : BaseWebController, shouldRedirectToURL url : NSURL) -> Bool
     {
+        print("----------------------------------------- should redirect to url ")
+        print("\(url)")
+        
         return !isValidRedirectURL(url, inController: controller)
     }
     
@@ -87,8 +92,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     //MARK: Web view helpers
     func isValidRedirectURL(url : NSURL, inController controller : BaseWebController) -> Bool
     {
-        print(url)
-        
         var isTheSameHost : Bool = false
         
         if let urlHost = url.host, redirectHost = redirectURL.host
@@ -190,7 +193,10 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
             //saving completition block for later when the server response comes
             self.controllerResponse = completionHandler
             
+            print("before present web controller with request in class \(self.dynamicType)")
+            
             self.presentWebControllerWithRequest(request.request, inController: controller, errorHandler: { (error) in
+                print("after present web controller with request in class \(self.dynamicType)")
                 self.isAwaitingResponse = false
                 self.controllerResponse?(controller: self.webController, model: nil, error: error)
             })
@@ -238,21 +244,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     {        
         request.responseJSON { (response : Response<AnyObject, NSError>) in
             
-            self.isAwaitingResponse = false
-            
-            if response.result.isSuccess
-            {
-                self.deserializeModel(response.result.value, completionHandler: completionHandler)
-            }
-            else
-            {
-                print(response.result.error)
-                print(response.request?.URL)
-                
-                print(String(data: response.data!, encoding: NSUTF8StringEncoding))
-                
-                completionHandler(model: nil, error: response.result.error)
-            }
+            self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
         }
     }
     

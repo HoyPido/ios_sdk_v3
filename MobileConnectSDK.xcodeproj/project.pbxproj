@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EF526CF1D367272008C50CC /* ExtensionNSUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */; };
 		3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7C61D0C2D5000D7634A /* MCService.swift */; };
 		3C24E7D41D0C323800D7634A /* DSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7D31D0C323800D7634A /* DSService.swift */; };
 		3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C36B85C1D05B99800A997E3 /* Images.xcassets */; };
@@ -49,6 +50,10 @@
 		3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */; };
 		3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */; };
 		3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */; };
+		3C7B07EE1D361F84009225AC /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B07EB1D361F68009225AC /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C7B07EF1D361FCF009225AC /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B07EB1D361F68009225AC /* JSONModel.framework */; };
+		3C7B07F01D361FCF009225AC /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B07EB1D361F68009225AC /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C7B07F81D3626DA009225AC /* ExtensionMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B07F71D3626DA009225AC /* ExtensionMetadataModel.swift */; };
 		3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38101D0868ED0051BBB1 /* Resources.swift */; };
 		3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38141D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift */; };
 		3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */; };
@@ -69,16 +74,16 @@
 		A63653BC1D20367F00A8A6E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63653BA1D20367F00A8A6E2 /* LaunchScreen.storyboard */; };
 		A65D02911D2C09DF002840CC /* DiscoveryServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02901D2C09DF002840CC /* DiscoveryServiceSpec.swift */; };
 		A65D02951D2C0A64002840CC /* DiscoveryServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02941D2C0A64002840CC /* DiscoveryServiceMock.swift */; };
-		A65D029E1D2C0B8B002840CC /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65D029D1D2C0B8B002840CC /* JSONModel.framework */; };
-		A65D029F1D2C0B94002840CC /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A65D029D1D2C0B8B002840CC /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A65D02A01D2C161C002840CC /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A65D029D1D2C0B8B002840CC /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A65D02A51D2C16A6002840CC /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A65D029D1D2C0B8B002840CC /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A65D02A81D2D028A002840CC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65D02A11D2C1622002840CC /* Quick.framework */; };
-		A65D02A91D2D028D002840CC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65D02A31D2C1625002840CC /* Nimble.framework */; };
 		A65D02AA1D2D0DAA002840CC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; };
 		A65D02AB1D2D0DAF002840CC /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A65D02B01D2D3B60002840CC /* ExtensionMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02AF1D2D3B60002840CC /* ExtensionMetadataModel.swift */; };
 		A65D02B21D2D431F002840CC /* MetadataConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D02B11D2D431F002840CC /* MetadataConfiguration.swift */; };
+		A669461F1D3FA8D20014DDF8 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A669461E1D3FA8D20014DDF8 /* JSONModel.framework */; };
+		A669468B1D4567090014DDF8 /* MobileConnectSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A669468A1D4567090014DDF8 /* MobileConnectSDK.podspec */; };
+		A673B1EE1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */; };
+		A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */; };
+		A673B1F21D3E9833008B7F60 /* MobileConnectServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */; };
+		A673B1F81D3E9D49008B7F60 /* BaseServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673B1F71D3E9D49008B7F60 /* BaseServiceSpec.swift */; };
 		A695DE5B1D2AC24300BFD0CB /* MobileConnectManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695DE5A1D2AC24300BFD0CB /* MobileConnectManagerConfiguration.swift */; };
 		A6A980451D203DFE00E8C664 /* MobileConnectManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980441D203DFE00E8C664 /* MobileConnectManagerSpec.swift */; };
 		A6A980771D206B7E00E8C664 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980761D206B7E00E8C664 /* Constants.swift */; };
@@ -90,28 +95,25 @@
 		A6A980A11D20A11800E8C664 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980A01D20A11800E8C664 /* Mocker.swift */; };
 		A6A980A31D20A35000E8C664 /* DiscoveryDataResponse.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6A980A21D20A35000E8C664 /* DiscoveryDataResponse.plist */; };
 		A6A980A51D20A44400E8C664 /* MobileConnectManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980A41D20A44400E8C664 /* MobileConnectManagerMock.swift */; };
-		A6A980A71D20A46700E8C664 /* MobileConnectServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A980A61D20A46700E8C664 /* MobileConnectServiceMock.swift */; };
 		A6B5803A1D241E5700640E17 /* ExtensionDiscoveryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B580391D241E5700640E17 /* ExtensionDiscoveryResponse.swift */; };
 		A6B5803D1D24304200640E17 /* MetadataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B5803B1D24304200640E17 /* MetadataModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B5803E1D24304200640E17 /* MetadataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B5803C1D24304200640E17 /* MetadataModel.m */; };
 		A6DD33A11D2FC49B0041FBD9 /* MobileConnectProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */; };
+		A6F34AE71D3CF56000ADF8CF /* operatorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AE61D3CF56000ADF8CF /* operatorData.plist */; };
+		A6F34AEB1D3D2DB500ADF8CF /* testOperatorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AEA1D3D2DB500ADF8CF /* testOperatorData.plist */; };
+		A6F34AED1D3E283300ADF8CF /* operatorDataMobilink.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AEC1D3E283300ADF8CF /* operatorDataMobilink.plist */; };
+		A6F34AEF1D3E33DD00ADF8CF /* telenor.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AEE1D3E33DD00ADF8CF /* telenor.plist */; };
 		A6F8D9671D33AD96000F1312 /* ScopeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */; };
-		A6F8D9691D33AE74000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9681D33AE74000F1312 /* MobileConnectServiceConfiguration.swift */; };
 		A6F8D96B1D33C5F7000F1312 /* BaseServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D96A1D33C5F7000F1312 /* BaseServiceConfiguration.swift */; };
 		A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */; };
-		A6F8D9761D33D0A2000F1312 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9751D33D0A2000F1312 /* main.m */; };
-		A6F8D9791D33D0A2000F1312 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9781D33D0A2000F1312 /* AppDelegate.m */; };
-		A6F8D97C1D33D0A2000F1312 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D97B1D33D0A2000F1312 /* ViewController.m */; };
-		A6F8D97F1D33D0A2000F1312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F8D97D1D33D0A2000F1312 /* Main.storyboard */; };
-		A6F8D9811D33D0A2000F1312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F8D9801D33D0A2000F1312 /* Assets.xcassets */; };
-		A6F8D9841D33D0A2000F1312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F8D9821D33D0A2000F1312 /* LaunchScreen.storyboard */; };
-		A6F8D98A1D33D0DF000F1312 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
-		A6F8D98B1D33D0E2000F1312 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65D029D1D2C0B8B002840CC /* JSONModel.framework */; };
-		A6F8D98C1D33D0E2000F1312 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A65D029D1D2C0B8B002840CC /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A6F8D98E1D33D0E5000F1312 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; };
-		A6F8D98F1D33D0E5000F1312 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9901D34D56A000F1312 /* ProductType.swift */; };
+		A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */; };
+		A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */; };
+		A6F8D9B11D37E844000F1312 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8D9AF1D37E837000F1312 /* Nimble.framework */; };
+		A6F8D9B21D37E847000F1312 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8D9AB1D37E80C000F1312 /* Quick.framework */; };
+		A6F8D9B81D39088F000F1312 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */; };
+		A6F8D9BB1D390BFE000F1312 /* JWTDecoderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,8 +140,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3C7B07EE1D361F84009225AC /* JSONModel.framework in Embed Frameworks */,
 				A65D02AB1D2D0DAF002840CC /* Alamofire.framework in Embed Frameworks */,
-				A65D02A01D2C161C002840CC /* JSONModel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,7 +152,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A65D029F1D2C0B94002840CC /* JSONModel.framework in Embed Frameworks */,
 				A61B04221D2A857000F4B916 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -162,21 +163,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A65D02A51D2C16A6002840CC /* JSONModel.framework in Embed Frameworks */,
+				3C7B07F01D361FCF009225AC /* JSONModel.framework in Embed Frameworks */,
 				A6A9809A1D2093A200E8C664 /* MobileConnectSDK.framework in Embed Frameworks */,
 				A632A5451D23F14700DD86E9 /* Alamofire.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8D98D1D33D0E2000F1312 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A6F8D98C1D33D0E2000F1312 /* JSONModel.framework in Embed Frameworks */,
-				A6F8D98F1D33D0E5000F1312 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +174,7 @@
 
 /* Begin PBXFileReference section */
 		0BD31996F4CF30D63D4ED8E4 /* Pods-MobileConnectSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNSUUID.swift; sourceTree = "<group>"; };
 		211C8A7172843FE2D8B52F50 /* Pods-MobileConnectSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		346A209DC19B57780E63DDE5 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C24E7C61D0C2D5000D7634A /* MCService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCService.swift; sourceTree = "<group>"; };
@@ -231,6 +221,8 @@
 		3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryService.swift; sourceTree = "<group>"; };
 		3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNSException.swift; sourceTree = "<group>"; };
 		3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDictionary.swift; sourceTree = "<group>"; };
+		3C7B07EB1D361F68009225AC /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
+		3C7B07F71D3626DA009225AC /* ExtensionMetadataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionMetadataModel.swift; sourceTree = "<group>"; };
 		3C8F38101D0868ED0051BBB1 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		3C8F38141D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryRequestConstructor.swift; sourceTree = "<group>"; };
 		3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestConstructor.swift; sourceTree = "<group>"; };
@@ -252,11 +244,16 @@
 		A63653BD1D20367F00A8A6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A65D02901D2C09DF002840CC /* DiscoveryServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryServiceSpec.swift; sourceTree = "<group>"; };
 		A65D02941D2C0A64002840CC /* DiscoveryServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryServiceMock.swift; sourceTree = "<group>"; };
-		A65D029D1D2C0B8B002840CC /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
-		A65D02A11D2C1622002840CC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick/Quick.framework"; sourceTree = "<group>"; };
-		A65D02A31D2C1625002840CC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble/Nimble.framework"; sourceTree = "<group>"; };
 		A65D02AF1D2D3B60002840CC /* ExtensionMetadataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionMetadataModel.swift; sourceTree = "<group>"; };
 		A65D02B11D2D431F002840CC /* MetadataConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataConfiguration.swift; sourceTree = "<group>"; };
+		A669461E1D3FA8D20014DDF8 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "Pods/../build/Debug-iphoneos/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
+		A66946201D3FA8D40014DDF8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Pods/../build/Debug-iphoneos/Nimble/Nimble.framework"; sourceTree = "<group>"; };
+		A66946221D3FA8D70014DDF8 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick/Quick.framework"; sourceTree = "<group>"; };
+		A669468A1D4567090014DDF8 /* MobileConnectSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MobileConnectSDK.podspec; sourceTree = SOURCE_ROOT; };
+		A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceSpec.swift; sourceTree = "<group>"; };
+		A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCRequestConstructorMock.swift; sourceTree = "<group>"; };
+		A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceMock.swift; sourceTree = "<group>"; };
+		A673B1F71D3E9D49008B7F60 /* BaseServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceSpec.swift; sourceTree = "<group>"; };
 		A695DE5A1D2AC24300BFD0CB /* MobileConnectManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectManagerConfiguration.swift; sourceTree = "<group>"; };
 		A6A980431D203DFE00E8C664 /* MobileConnectSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileConnectSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A6A980441D203DFE00E8C664 /* MobileConnectManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectManagerSpec.swift; sourceTree = "<group>"; };
@@ -267,28 +264,25 @@
 		A6A980A01D20A11800E8C664 /* Mocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocker.swift; sourceTree = "<group>"; };
 		A6A980A21D20A35000E8C664 /* DiscoveryDataResponse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DiscoveryDataResponse.plist; sourceTree = "<group>"; };
 		A6A980A41D20A44400E8C664 /* MobileConnectManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectManagerMock.swift; sourceTree = "<group>"; };
-		A6A980A61D20A46700E8C664 /* MobileConnectServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceMock.swift; sourceTree = "<group>"; };
 		A6B580391D241E5700640E17 /* ExtensionDiscoveryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDiscoveryResponse.swift; sourceTree = "<group>"; };
 		A6B5803B1D24304200640E17 /* MetadataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetadataModel.h; sourceTree = "<group>"; };
 		A6B5803C1D24304200640E17 /* MetadataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetadataModel.m; sourceTree = "<group>"; };
 		A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileConnectProduct.h; sourceTree = "<group>"; };
 		A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileConnectProduct.m; sourceTree = "<group>"; };
+		A6F34AE61D3CF56000ADF8CF /* operatorData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = operatorData.plist; sourceTree = "<group>"; };
+		A6F34AEA1D3D2DB500ADF8CF /* testOperatorData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testOperatorData.plist; sourceTree = "<group>"; };
+		A6F34AEC1D3E283300ADF8CF /* operatorDataMobilink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = operatorDataMobilink.plist; sourceTree = "<group>"; };
+		A6F34AEE1D3E33DD00ADF8CF /* telenor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = telenor.plist; sourceTree = "<group>"; };
 		A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScopeValidator.swift; sourceTree = "<group>"; };
-		A6F8D9681D33AE74000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D96A1D33C5F7000F1312 /* BaseServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryServiceConfiguration.swift; sourceTree = "<group>"; };
-		A6F8D9721D33D0A1000F1312 /* DemoObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoObjectiveC.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6F8D9751D33D0A2000F1312 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A6F8D9771D33D0A2000F1312 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A6F8D9781D33D0A2000F1312 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A6F8D97A1D33D0A2000F1312 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A6F8D97B1D33D0A2000F1312 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A6F8D97E1D33D0A2000F1312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A6F8D9801D33D0A2000F1312 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A6F8D9831D33D0A2000F1312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A6F8D9851D33D0A2000F1312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6F8D9891D33D0BF000F1312 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A6F8D9901D34D56A000F1312 /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
+		A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
+		A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationConfiguration.swift; sourceTree = "<group>"; };
+		A6F8D9AB1D37E80C000F1312 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick/Quick.framework"; sourceTree = "<group>"; };
+		A6F8D9AF1D37E837000F1312 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble/Nimble.framework"; sourceTree = "<group>"; };
+		A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
+		A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoderSpec.swift; sourceTree = "<group>"; };
 		AC0AB763998CB98C24645121 /* Pods-MobileConnectSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1305E53A72908350D045A3 /* Pods-MobileConnectSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK.release.xcconfig"; sourceTree = "<group>"; };
 		D524F7B82C688C79BEFB2EB7 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -302,7 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A65D029E1D2C0B8B002840CC /* JSONModel.framework in Frameworks */,
+				A669461F1D3FA8D20014DDF8 /* JSONModel.framework in Frameworks */,
 				A61B041C1D2A854900F4B916 /* Alamofire.framework in Frameworks */,
 				3C72CF0D1D0606EC00A095ED /* WebKit.framework in Frameworks */,
 			);
@@ -312,9 +306,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F8D9B21D37E847000F1312 /* Quick.framework in Frameworks */,
+				A6F8D9B11D37E844000F1312 /* Nimble.framework in Frameworks */,
 				A65D02AA1D2D0DAA002840CC /* Alamofire.framework in Frameworks */,
-				A65D02A91D2D028D002840CC /* Nimble.framework in Frameworks */,
-				A65D02A81D2D028A002840CC /* Quick.framework in Frameworks */,
 				A63653A51D20366700A8A6E2 /* MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,18 +317,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7B07EF1D361FCF009225AC /* JSONModel.framework in Frameworks */,
 				A6A980991D2093A200E8C664 /* MobileConnectSDK.framework in Frameworks */,
 				A632A5441D23F14700DD86E9 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8D96F1D33D0A1000F1312 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8D98B1D33D0E2000F1312 /* JSONModel.framework in Frameworks */,
-				A6F8D98E1D33D0E5000F1312 /* Alamofire.framework in Frameworks */,
-				A6F8D98A1D33D0DF000F1312 /* MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +375,7 @@
 				A6B580391D241E5700640E17 /* ExtensionDiscoveryResponse.swift */,
 				A6B5803B1D24304200640E17 /* MetadataModel.h */,
 				A6B5803C1D24304200640E17 /* MetadataModel.m */,
+				3C7B07F71D3626DA009225AC /* ExtensionMetadataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -399,7 +385,6 @@
 			children = (
 				A63653A11D20366700A8A6E2 /* MobileConnectSDKTests */,
 				A63653B01D20367E00A8A6E2 /* DemoSwift */,
-				A6F8D9731D33D0A2000F1312 /* DemoObjectiveC */,
 				3CD7915C1D04D0E80023FD0A /* Frameworks */,
 				3C3F82D41D04C7C8006EE8F4 /* MobileConnectSDK */,
 				3C3F82D31D04C7C8006EE8F4 /* Products */,
@@ -413,7 +398,6 @@
 				3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */,
 				A63653A01D20366700A8A6E2 /* MobileConnectSDKTests.xctest */,
 				A63653AF1D20367E00A8A6E2 /* DemoSwift.app */,
-				A6F8D9721D33D0A1000F1312 /* DemoObjectiveC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +414,7 @@
 				3CD7916F1D05706B0023FD0A /* Views */,
 				3CD791691D056F2E0023FD0A /* Utilities */,
 				3C3F82D51D04C7C8006EE8F4 /* MobileConnectSDK.h */,
+				A669468A1D4567090014DDF8 /* MobileConnectSDK.podspec */,
 				3C3F82D71D04C7C8006EE8F4 /* Info.plist */,
 				3C72CF111D0649B700A095ED /* Constants.swift */,
 			);
@@ -460,10 +445,10 @@
 		3C72CF091D05E7D900A095ED /* MobileConnect */ = {
 			isa = PBXGroup;
 			children = (
+				A6F8D99A1D36DD3E000F1312 /* Configurations */,
 				3C36EF031D0A19D200297A17 /* MobileConnectService.swift */,
 				3C24E7C61D0C2D5000D7634A /* MCService.swift */,
 				A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */,
-				A6F8D9681D33AE74000F1312 /* MobileConnectServiceConfiguration.swift */,
 			);
 			path = MobileConnect;
 			sourceTree = "<group>";
@@ -473,6 +458,7 @@
 			children = (
 				3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */,
 				3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */,
+				1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -499,9 +485,12 @@
 		3CD7915C1D04D0E80023FD0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A65D02A31D2C1625002840CC /* Nimble.framework */,
-				A65D02A11D2C1622002840CC /* Quick.framework */,
-				A65D029D1D2C0B8B002840CC /* JSONModel.framework */,
+				A66946221D3FA8D70014DDF8 /* Quick.framework */,
+				A66946201D3FA8D40014DDF8 /* Nimble.framework */,
+				A669461E1D3FA8D20014DDF8 /* JSONModel.framework */,
+				A6F8D9AF1D37E837000F1312 /* Nimble.framework */,
+				A6F8D9AB1D37E80C000F1312 /* Quick.framework */,
+				3C7B07EB1D361F68009225AC /* JSONModel.framework */,
 				A632A5411D23DC0C00DD86E9 /* Alamofire.framework */,
 				3C72CF0C1D0606EC00A095ED /* WebKit.framework */,
 			);
@@ -515,6 +504,7 @@
 				3C8F38101D0868ED0051BBB1 /* Resources.swift */,
 				3C72CF161D064BF100A095ED /* Localizator.swift */,
 				3C36EEFF1D09FC3100297A17 /* MobileConnectSDK.swift */,
+				A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -556,12 +546,14 @@
 		A63653A11D20366700A8A6E2 /* MobileConnectSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				A6F8D9B91D390BC9000F1312 /* JWTDecoder */,
 				A6A9809F1D20A0FC00E8C664 /* Utilities */,
 				A6A9809C1D2096EB00E8C664 /* Supporting Files */,
 				A6A980421D203DB100E8C664 /* MobileConnectService */,
 				A6A980411D203D9E00E8C664 /* DiscoveryService */,
 				A6A980401D203D8400E8C664 /* MobileConnectManager */,
 				A63653A41D20366700A8A6E2 /* Info.plist */,
+				A673B1F71D3E9D49008B7F60 /* BaseServiceSpec.swift */,
 				A6A980761D206B7E00E8C664 /* Constants.swift */,
 			);
 			path = MobileConnectSDKTests;
@@ -576,6 +568,10 @@
 				A63653B81D20367F00A8A6E2 /* Assets.xcassets */,
 				A63653BA1D20367F00A8A6E2 /* LaunchScreen.storyboard */,
 				A63653BD1D20367F00A8A6E2 /* Info.plist */,
+				A6F34AEE1D3E33DD00ADF8CF /* telenor.plist */,
+				A6F34AEC1D3E283300ADF8CF /* operatorDataMobilink.plist */,
+				A6F34AEA1D3D2DB500ADF8CF /* testOperatorData.plist */,
+				A6F34AE61D3CF56000ADF8CF /* operatorData.plist */,
 				A6A9808B1D208C8E00E8C664 /* Constants.swift */,
 			);
 			path = DemoSwift;
@@ -588,7 +584,6 @@
 				A6A980431D203DFE00E8C664 /* MobileConnectSDKTests-Bridging-Header.h */,
 				A6A980781D206C5800E8C664 /* MobileConnectManagerDelegateMock.swift */,
 				A6A980A41D20A44400E8C664 /* MobileConnectManagerMock.swift */,
-				A6A980A61D20A46700E8C664 /* MobileConnectServiceMock.swift */,
 				A695DE5A1D2AC24300BFD0CB /* MobileConnectManagerConfiguration.swift */,
 			);
 			path = MobileConnectManager;
@@ -607,6 +602,9 @@
 		A6A980421D203DB100E8C664 /* MobileConnectService */ = {
 			isa = PBXGroup;
 			children = (
+				A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */,
+				A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */,
+				A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */,
 			);
 			path = MobileConnectService;
 			sourceTree = "<group>";
@@ -641,29 +639,21 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		A6F8D9731D33D0A2000F1312 /* DemoObjectiveC */ = {
+		A6F8D99A1D36DD3E000F1312 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				A6F8D9771D33D0A2000F1312 /* AppDelegate.h */,
-				A6F8D9781D33D0A2000F1312 /* AppDelegate.m */,
-				A6F8D97A1D33D0A2000F1312 /* ViewController.h */,
-				A6F8D97B1D33D0A2000F1312 /* ViewController.m */,
-				A6F8D97D1D33D0A2000F1312 /* Main.storyboard */,
-				A6F8D9801D33D0A2000F1312 /* Assets.xcassets */,
-				A6F8D9821D33D0A2000F1312 /* LaunchScreen.storyboard */,
-				A6F8D9891D33D0BF000F1312 /* Constants.h */,
-				A6F8D9851D33D0A2000F1312 /* Info.plist */,
-				A6F8D9741D33D0A2000F1312 /* Supporting Files */,
+				A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */,
+				A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */,
 			);
-			path = DemoObjectiveC;
+			path = Configurations;
 			sourceTree = "<group>";
 		};
-		A6F8D9741D33D0A2000F1312 /* Supporting Files */ = {
+		A6F8D9B91D390BC9000F1312 /* JWTDecoder */ = {
 			isa = PBXGroup;
 			children = (
-				A6F8D9751D33D0A2000F1312 /* main.m */,
+				A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */,
 			);
-			name = "Supporting Files";
+			path = JWTDecoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -756,24 +746,6 @@
 			productReference = A63653AF1D20367E00A8A6E2 /* DemoSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A6F8D9711D33D0A1000F1312 /* DemoObjectiveC */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6F8D9861D33D0A2000F1312 /* Build configuration list for PBXNativeTarget "DemoObjectiveC" */;
-			buildPhases = (
-				A6F8D96E1D33D0A1000F1312 /* Sources */,
-				A6F8D96F1D33D0A1000F1312 /* Frameworks */,
-				A6F8D9701D33D0A1000F1312 /* Resources */,
-				A6F8D98D1D33D0E2000F1312 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DemoObjectiveC;
-			productName = DemoObjectiveC;
-			productReference = A6F8D9721D33D0A1000F1312 /* DemoObjectiveC.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -791,9 +763,6 @@
 						CreatedOnToolsVersion = 7.3.1;
 					};
 					A63653AE1D20367E00A8A6E2 = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
-					A6F8D9711D33D0A1000F1312 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
@@ -814,7 +783,6 @@
 				3C3F82D11D04C7C8006EE8F4 /* MobileConnectSDK */,
 				A636539F1D20366700A8A6E2 /* MobileConnectSDKTests */,
 				A63653AE1D20367E00A8A6E2 /* DemoSwift */,
-				A6F8D9711D33D0A1000F1312 /* DemoObjectiveC */,
 			);
 		};
 /* End PBXProject section */
@@ -824,6 +792,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A669468B1D4567090014DDF8 /* MobileConnectSDK.podspec in Resources */,
 				3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */,
 				3C72CF151D064B7500A095ED /* Localizable.strings in Resources */,
 				3C36B85F1D05B9A600A997E3 /* WebController.storyboard in Resources */,
@@ -845,18 +814,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A63653BC1D20367F00A8A6E2 /* LaunchScreen.storyboard in Resources */,
+				A6F34AEB1D3D2DB500ADF8CF /* testOperatorData.plist in Resources */,
+				A6F34AEF1D3E33DD00ADF8CF /* telenor.plist in Resources */,
 				A63653B91D20367F00A8A6E2 /* Assets.xcassets in Resources */,
+				A6F34AE71D3CF56000ADF8CF /* operatorData.plist in Resources */,
 				A63653B71D20367F00A8A6E2 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8D9701D33D0A1000F1312 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8D9841D33D0A2000F1312 /* LaunchScreen.storyboard in Resources */,
-				A6F8D9811D33D0A2000F1312 /* Assets.xcassets in Resources */,
-				A6F8D97F1D33D0A2000F1312 /* Main.storyboard in Resources */,
+				A6F34AED1D3E283300ADF8CF /* operatorDataMobilink.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,11 +909,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C72CF121D0649B700A095ED /* Constants.swift in Sources */,
+				1EF526CF1D367272008C50CC /* ExtensionNSUUID.swift in Sources */,
 				3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */,
 				3C72CF3B1D069D1100A095ED /* DiscoveryService.swift in Sources */,
 				A6F8D9671D33AD96000F1312 /* ScopeValidator.swift in Sources */,
 				3C401A261D0EB36700F73EA5 /* LinkModel.m in Sources */,
+				A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */,
 				3C72CF171D064BF100A095ED /* Localizator.swift in Sources */,
+				3C7B07F81D3626DA009225AC /* ExtensionMetadataModel.swift in Sources */,
 				3C24E7D41D0C323800D7634A /* DSService.swift in Sources */,
 				3C401A221D0EB36700F73EA5 /* AuthorizationModel.m in Sources */,
 				3C401A241D0EB36700F73EA5 /* DiscoveryResponse.m in Sources */,
@@ -958,9 +924,9 @@
 				3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */,
 				3C401A321D0EB36700F73EA5 /* OperatorIdModel.m in Sources */,
 				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
-				A6F8D9691D33AE74000F1312 /* MobileConnectServiceConfiguration.swift in Sources */,
 				A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */,
 				3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */,
+				A6F8D9B81D39088F000F1312 /* JWTDecoder.swift in Sources */,
 				A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */,
 				A6B5803E1D24304200640E17 /* MetadataModel.m in Sources */,
 				3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */,
@@ -980,6 +946,7 @@
 				3C401A201D0EB36700F73EA5 /* APISModel.m in Sources */,
 				3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */,
 				A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */,
+				A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */,
 				3CD791721D0571250023FD0A /* WebController.swift in Sources */,
 				3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */,
 				A6B5803A1D241E5700640E17 /* ExtensionDiscoveryResponse.swift in Sources */,
@@ -991,13 +958,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F8D9BB1D390BFE000F1312 /* JWTDecoderSpec.swift in Sources */,
 				A6A980A51D20A44400E8C664 /* MobileConnectManagerMock.swift in Sources */,
+				A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */,
 				A6A980A11D20A11800E8C664 /* Mocker.swift in Sources */,
 				3CFAB7F71D2C91820002105E /* WebControllerMock.swift in Sources */,
+				A673B1F21D3E9833008B7F60 /* MobileConnectServiceMock.swift in Sources */,
 				A65D02B21D2D431F002840CC /* MetadataConfiguration.swift in Sources */,
+				A673B1F81D3E9D49008B7F60 /* BaseServiceSpec.swift in Sources */,
 				A6A980451D203DFE00E8C664 /* MobileConnectManagerSpec.swift in Sources */,
 				A65D02951D2C0A64002840CC /* DiscoveryServiceMock.swift in Sources */,
-				A6A980A71D20A46700E8C664 /* MobileConnectServiceMock.swift in Sources */,
+				A673B1EE1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift in Sources */,
 				A6A980771D206B7E00E8C664 /* Constants.swift in Sources */,
 				A65D02B01D2D3B60002840CC /* ExtensionMetadataModel.swift in Sources */,
 				A65D02911D2C09DF002840CC /* DiscoveryServiceSpec.swift in Sources */,
@@ -1013,16 +984,6 @@
 				A63653B41D20367F00A8A6E2 /* ViewController.swift in Sources */,
 				A63653B21D20367E00A8A6E2 /* AppDelegate.swift in Sources */,
 				A6A9808C1D208C8E00E8C664 /* Constants.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8D96E1D33D0A1000F1312 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8D97C1D33D0A2000F1312 /* ViewController.m in Sources */,
-				A6F8D9791D33D0A2000F1312 /* AppDelegate.m in Sources */,
-				A6F8D9761D33D0A2000F1312 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,22 +1015,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A63653BB1D20367F00A8A6E2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		A6F8D97D1D33D0A2000F1312 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A6F8D97E1D33D0A2000F1312 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A6F8D9821D33D0A2000F1312 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A6F8D9831D33D0A2000F1312 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1193,6 +1138,9 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JSONModel",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Nimble",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Quick",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1221,6 +1169,9 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JSONModel",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Nimble",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Quick",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1313,39 +1264,6 @@
 			};
 			name = Release;
 		};
-		A6F8D9871D33D0A2000F1312 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
-				);
-				INFOPLIST_FILE = DemoObjectiveC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK.DemoObjectiveC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		A6F8D9881D33D0A2000F1312 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
-				);
-				INFOPLIST_FILE = DemoObjectiveC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK.DemoObjectiveC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1384,14 +1302,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		A6F8D9861D33D0A2000F1312 /* Build configuration list for PBXNativeTarget "DemoObjectiveC" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6F8D9871D33D0A2000F1312 /* Debug */,
-				A6F8D9881D33D0A2000F1312 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

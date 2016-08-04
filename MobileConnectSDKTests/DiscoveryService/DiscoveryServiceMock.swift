@@ -25,7 +25,6 @@ class DiscoveryServiceMock: DiscoveryService {
     override func startOperatorDiscoveryInController(controller: UIViewController, shouldProvideMetadata: Bool = true, completionHandler: DiscoveryResponseBlock) {
         
         if shouldCallSuper {
-            print("passed start operator discovery")
             super.startOperatorDiscoveryInController(controller, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
         }
         else

@@ -27,23 +27,29 @@ private let kGrantTypeKey : String = "grant_type"
 private let kGrantTypeValue : String = "authorization_code"
 private let kRedirectUri : String = "redirect_uri"
 
+private let kContextKey : String = "context"
+private let kClientNameKey : String = "client_name"
+
 class MCRequestConstructor: RequestConstructor {
     
     let scopeValidator : ScopeValidator
+    let configuration : MobileConnectServiceConfiguration
     
-    init(clientKey: String, clientSecret: String, redirectURL: URLStringConvertible, scopeValidator : ScopeValidator) {
+    //Pass a MCAuthorizationConfiguration if an authorization behavior is required
+    init(configuration : MobileConnectServiceConfiguration, scopeValidator : ScopeValidator) {
         
+        self.configuration = configuration
         self.scopeValidator = scopeValidator
         
-        super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: redirectURL)
+        super.init(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], atURL url : String) -> Request
+    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
-        let nonce : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
-        let state : String = NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
+        let nonce : String = NSUUID.randomUUID
+        let state : String = NSUUID.randomUUID
         
-        print(scopeValidator.validatedScopes(scopes))
+        print("the current scopes are \(scopeValidator.validatedScopes(scopes))")
         
         var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : nonce]
         
@@ -51,12 +57,33 @@ class MCRequestConstructor: RequestConstructor {
             parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
         }
         
-        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
+        if let clientName = clientName
+        {
+            parameters[kClientNameKey] = clientName
+        }
+        
+        if let context = context
+        {
+            parameters[kContextKey] = context
+        }
+        
+        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
     }
     
-    func authorizationRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, atURL url : String, withScopes scopes : [String]) -> Request
+    var authenticationRequest : Request
     {
-        return mobileConnectRequestWithAssuranceLevel(assuranceLevel, subscriberId: subscriberId, scopes: scopes, atURL: url)
+        return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, shouldNotStartImmediately : true)
+    }
+    
+    ///Will return nil if the configuration used to initialize the Request Constructor is not of type MCAuthorizationConfiguration
+    var authorizationRequest : Request?
+    {
+        if let configuration = configuration as? MCAuthorizationConfiguration
+        {
+            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, shouldNotStartImmediately : true)
+        }
+        
+        return nil
     }
     
     func tokenRequestAtURL(url : String, withCode code : String) -> Request

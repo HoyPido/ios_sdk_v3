@@ -13,12 +13,25 @@ import UIKit
 class MobileConnectManagerMock: MobileConnectManager {
     
     var error : NSError?
-
+    var context : String?
+    var scopes : [ProductType]?
+    var bindingMessage : String?
     
-    override func getTokenWithMobileConnectService(mobileConnectService: MobileConnectService, inWebController webController: BaseWebController?, withOperatorsData operatorsData: DiscoveryResponse)
-    {
-        let mobileConnectServiceMock : MobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData))
-     
+    override func getTokenWithMobileConnectService(mobileConnectService: MobileConnectService, inWebController webController: BaseWebController?, withOperatorsData operatorsData: DiscoveryResponse, isAuthorization: Bool) {
+        
+        var mobileConnectServiceMock : MobileConnectServiceMock
+        
+        if let context = context, scopes = scopes
+        {
+            let configuration : MCAuthorizationConfiguration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: "bla bla", authorizationScopes: scopes)
+            
+            mobileConnectServiceMock = MobileConnectServiceMock(configuration: configuration)
+        }
+        else
+        {
+            mobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : []))
+        }
+        
         if let error = error
         {
             mobileConnectServiceMock.error = error
@@ -28,12 +41,12 @@ class MobileConnectManagerMock: MobileConnectManager {
             mobileConnectServiceMock.response = Mocker.tokenResponseModel.tokenData
         }
         
-        super.getTokenWithMobileConnectService(mobileConnectServiceMock, inWebController: webController, withOperatorsData: operatorsData)
+        super.getTokenWithMobileConnectService(mobileConnectServiceMock, inWebController: webController, withOperatorsData: operatorsData, isAuthorization : isAuthorization)
     }
     
-    override var tokenResponseModel : (tokenModel : TokenModel?) -> TokenResponseModel?
+    override var tokenResponseModel : (tokenModel : TokenModel?, operatorsData : DiscoveryResponse?) -> TokenResponseModel?
     {
-        return { (tokenModel : TokenModel?) -> TokenResponseModel? in
+        return { (tokenModel : TokenModel?, operatorsData : DiscoveryResponse?) -> TokenResponseModel? in
             return self.error == .None ? Mocker.tokenResponseModel : nil
         }
     }

@@ -16,3 +16,8 @@ extern NSString *const MobileConnectIdentityPhone;
 extern NSString *const MobileConnectIdentitySignup;
 extern NSString *const MobileConnectIdentitySignupPlus;
 extern NSString *const MobileConnectIdentityNationalID;
+
+extern NSString *const MobileConnectPhone;
+extern NSString *const MobileConnectAddress;
+extern NSString *const MobileConnectProfile;
+extern NSString *const MobileConnectEmail;

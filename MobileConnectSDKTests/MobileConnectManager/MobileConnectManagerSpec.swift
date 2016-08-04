@@ -43,23 +43,43 @@ class MobileConnectManagerSpec : QuickSpec
             describe("gets token without client details")
             {
                 self.startTesting(){ (completionHandler) in
+                    
                     self.manager.getTokenInPresenterController(self.viewController, withCompletionHandler: completionHandler)
                 }
             }
             
             describe("gets token with phone number", closure: {
-                self.startTesting({ (completionHandler) in
+                self.startTesting(){ (completionHandler) in
+                    
                     self.manager.getTokenForPhoneNumber("", inPresenterController: self.viewController, withCompletionHandler: completionHandler)
-                })
+                }
+            })
+             
+            describe("gets authorization token without client details", closure: { 
+                
+                self.startTesting(true){ (completionHandler) in
+                    
+                    self.manager.getAuthorizationTokenInPresenterController(self.viewController, withContext: "asdasd", withScopes: [ProductType.Address], bindingMessage: "test", completionHandler: completionHandler)
+                }
+                
+            })
+            
+            describe("gets authorization token with phone number", closure: { 
+                
+                self.startTesting(true){ (completionHandler) in
+                    
+                    self.manager.getAuthorizationTokenForPhoneNumber("", inPresenterController: self.viewController, withScopes: [ProductType.Address], context: "test", bindingMessage: nil, completionHandler: completionHandler)
+                }
+                
             })
         }
     }
     
-    func startTesting(action : (completionHandler : (tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void) -> Void)
+    func startTesting(isAuthorization : Bool = false ,action : (completionHandler : (tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void) -> Void)
     {
         context("is called before finishing", closure: {
             
-            self.resetBeforeEach()
+            self.resetBeforeEach(isAuthorization)
             
             self.discoveryService.error = MCErrorCode.Unknown.error
             self.discoveryService.withDelay = true
@@ -80,7 +100,7 @@ class MobileConnectManagerSpec : QuickSpec
             
             waitUntil(action: { (done : () -> Void) in
                 
-                self.resetBeforeEach()
+                self.resetBeforeEach(isAuthorization)
                 self.discoveryService.error = MCErrorCode.UserCancelled.error
                 
                 action(completionHandler: { (tokenResponseModel, error) in
@@ -97,7 +117,7 @@ class MobileConnectManagerSpec : QuickSpec
             {
                 waitUntil(action: { (done : () -> Void) in
                     
-                    self.resetBeforeEach()
+                    self.resetBeforeEach(isAuthorization)
                     self.discoveryService.response = Mocker.discoveryResponse
                     self.manager.error = MCErrorCode.Unknown.error
                     
@@ -114,7 +134,7 @@ class MobileConnectManagerSpec : QuickSpec
             
             waitUntil(action: { (done : () -> Void) in
                 
-                self.resetBeforeEach()
+                self.resetBeforeEach(isAuthorization)
                 self.discoveryService.response = Mocker.discoveryResponse
                 
                 action(completionHandler: { (tokenResponseModel, error) in
@@ -163,7 +183,7 @@ class MobileConnectManagerSpec : QuickSpec
         }
     }
     
-    func resetBeforeEach()
+    func resetBeforeEach(isAuthorization : Bool = false)
     {
         mockDelegate.resetFlags()
         
@@ -173,5 +193,15 @@ class MobileConnectManagerSpec : QuickSpec
         mockDelegate.error = nil
         mockDelegate.response = nil
         manager.error = nil
+        manager.context = nil
+        manager.context = nil
+        manager.bindingMessage = nil
+        
+        if isAuthorization
+        {
+            manager.context = "asdad"
+            manager.scopes = [ProductType.Address]
+            manager.bindingMessage = "asdas"
+        }
     }
 }

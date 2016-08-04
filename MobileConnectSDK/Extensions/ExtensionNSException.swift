@@ -10,6 +10,24 @@ import Foundation
 
 extension NSException
 {
+    class func checkContext(context : String?)
+    {
+        checkParameters([context], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
+    }
+    
+    class func checkClientName(clientName : String?)
+    {
+        checkParameters([clientName], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
+    }
+    
+    private class func checkAuthorizationProperty(property : String?, withErrorName errorName : String, andErrorMessage errorMessage : String)
+    {
+        if property == .None
+        {
+            NSException(name: errorName, reason: errorMessage, userInfo: [NSLocalizedDescriptionKey : errorMessage]).raise()
+        }
+    }
+    
     class func checkController(controller : UIViewController?)
     {
         if controller == .None

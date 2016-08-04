@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name = "MobileConnectSDK"
-spec.version = "1.2.4"
+spec.version = "2.1"
 spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
 spec.homepage = "https://developer.mobileconnect.io"
 spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
@@ -9,15 +9,20 @@ spec.social_media_url = "https://developer.mobileconnect.io"
 
 spec.platform = :ios, "8.0"
 spec.requires_arc = true
-spec.source = { :git => "https://github.com/Mobile-Connect/r2-ios-sdk.git", :branch => 'master', :tag=>  "#{spec.version}"}
+spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/testsdk.git", :branch => 'GMC-162', :tag=>  "#{spec.version}"}
 
 spec.subspec 'Extensions' do |extensions|
-extensions.source_files = 'MobileConnectSDK/Extensions/Extension{NSException,Dictionary}.swift'
+extensions.source_files = 'MobileConnectSDK/Extensions/*.swift'
 end
 
 spec.subspec 'Services' do |services|
 
 services.subspec 'MobileConnect' do |mobileConnect|
+
+mobileConnect.subspec 'Configurations' do |configurations|
+configurations.source_files = 'MobileConnectSDK/Services/MobileConnect/Configurations/*.swift'
+end
+
 mobileConnect.source_files = 'MobileConnectSDK/Services/MobileConnect/*.swift'
 end
 
@@ -29,14 +34,19 @@ services.source_files = 'MobileConnectSDK/Services/*.swift'
 end
 
 spec.subspec 'Models' do |models|
-models.source_files = 'MobileConnectSDK/Models/*.{h,m}'
+
+models.subspec 'Enums' do |enums|
+enums.source_files = 'MobileConnectSDK/Models/Enums/*.*'
+end
+
+models.source_files = 'MobileConnectSDK/Models/*.{h,m,swift}'
 end
 
 spec.subspec 'MobileConnectManager' do |mobileConnectManager|
 mobileConnectManager.source_files = 'MobileConnectSDK/MobileConnectManager/*.swift'
 end
 
-spec.resources = "MobileConnectSDK/AdditionalFiles/*.{xcassets,storyboard,strings}"
+spec.resources = 'MobileConnectSDK/AdditionalFiles/*.{xcassets,storyboard,strings}'
 
 spec.subspec 'Controllers' do |controllers|
 controllers.source_files = "MobileConnectSDK/Controllers/*.swift"

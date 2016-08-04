@@ -8,6 +8,7 @@
 
 #import "MCModel.h"
 #import "TokenModel.h"
+#import "DiscoveryResponse.h"
 
 /**
     Contains the tokenModel received from the server as well as the decoded JWT token.
@@ -15,9 +16,10 @@
  */
 @interface TokenResponseModel : MCModel
 
-- (nullable instancetype)initWithTokenModel:(nullable TokenModel*)tokenModel;
+- (nullable instancetype)initWithTokenModel:(nullable TokenModel*)tokenModel discoveryResponse:(nullable DiscoveryResponse*)discoveryResponse;
 
 @property (nullable) TokenModel *tokenData;
 @property (nullable) NSDictionary *decodedToken;
+@property (nullable) DiscoveryResponse *discoveryResponse;
 
 @end

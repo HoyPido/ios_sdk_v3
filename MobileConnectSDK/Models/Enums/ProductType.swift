@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc enum ProductType : Int
+@objc public enum ProductType : Int
 {
     case Authentication
     case Authorization
@@ -17,6 +17,10 @@ import Foundation
     case IdentitySignUpPlus
     case IdentityNationalID
     case Unknown
+    case Phone
+    case Address
+    case Profile
+    case Email
 }
 
 extension ProductType
@@ -35,6 +39,18 @@ extension ProductType
         }
     }
     
+    var stringValue : String
+    {
+        if let indexOfKeySet = ProductType.enumValues.indexOf(self)
+        {
+            assert(ProductType.enumValues.count == ProductType.keySets.count, "The enum values array should reflect the enum values of the strings arrays inside the keysets property. Please check in the product type enum!!!")
+            
+            return  ProductType.keySets[indexOfKeySet].first ?? ""
+        }
+        
+        return ""
+    }
+    
     private var enumIndex : Int?
     {
         return ProductType.enumValues.indexOf(self)
@@ -50,13 +66,13 @@ extension ProductType
         return []
     }
     
-    static var enumValues : [ProductType]
+    private static var enumValues : [ProductType]
     {
-        return [.Authentication, .Authorization, .IdentityPhoneNumber, .IdentitySignUp, .IdentitySignUpPlus, .IdentityPhoneNumber, .IdentityNationalID]
+        return [.Authentication, .Authorization, .IdentityPhoneNumber, .IdentitySignUp, .IdentitySignUpPlus, .IdentityPhoneNumber, .IdentityNationalID, .Phone, .Address, .Profile, .Email]
     }
     
-    static var keySets : [[String]]
+    private static var keySets : [[String]]
     {
-        return [[MobileConnect, MobileConnectAuthentication], [MobileConnectAuthorization], [MobileConnectIdentityPhone], [MobileConnectIdentitySignup], [MobileConnectIdentitySignupPlus],[MobileConnectIdentityPhone], [MobileConnectIdentityNationalID]]
+        return [[MobileConnect, MobileConnectAuthentication], [MobileConnectAuthorization], [MobileConnectIdentityPhone], [MobileConnectIdentitySignup], [MobileConnectIdentitySignupPlus],[MobileConnectIdentityPhone], [MobileConnectIdentityNationalID], [MobileConnectPhone], [MobileConnectAddress], [MobileConnectProfile], [MobileConnectEmail]]
     }
 }

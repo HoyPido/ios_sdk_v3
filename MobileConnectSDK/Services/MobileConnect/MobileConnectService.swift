@@ -25,7 +25,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         }
         else
         {
-            self.requestConstructor = MCRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, scopeValidator: ScopeValidator(metadata: configuration.metadata))
+            self.requestConstructor = MCRequestConstructor(configuration: configuration, scopeValidator: ScopeValidator(metadata: configuration.metadata))
         }
         
         super.init()
@@ -33,14 +33,33 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     
     //MARK: Main mobile connect service method
     /**
-     Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
+     Gets the token which allows logging in[authenticating] by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
-     - Parameter subscriberId: the subscriber id received from the Discovery service operatorData model
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getTokenInController(controller : UIViewController, subscriberId : String? = nil, completionHandler : MobileConnectControllerResponse)
+    func getAuthenticationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
     {
-        startServiceInController(controller, withRequest: requestConstructor.authorizationRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: subscriberId, atURL: configuration.authorizationURLString, withScopes : configuration.scopes), completionHandler: completionHandler)
+        let request : Request = requestConstructor.authenticationRequest
+        
+        startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
+    }
+    
+    /**
+     Gets the token which allows access to user's details by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
+     It will request user's rights specified in the scopes passed in the configuration object.
+     - Parameter controller: the controller in which the Mobile Connect should present the web view controller
+     - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
+     */
+    func getAuthorizationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
+    {
+        if let request = requestConstructor.authorizationRequest
+        {
+            startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
+        }
+        else
+        {
+            completionHandler(controller: nil, tokenModel: nil, error: MCErrorCode.RequiresAuthorizationConfiguration.error)
+        }
     }
     
     //MARK: Secondary methods

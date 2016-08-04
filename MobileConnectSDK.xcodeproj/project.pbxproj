@@ -99,6 +99,7 @@
 		A6B5803A1D241E5700640E17 /* ExtensionDiscoveryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B580391D241E5700640E17 /* ExtensionDiscoveryResponse.swift */; };
 		A6B5803D1D24304200640E17 /* MetadataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B5803B1D24304200640E17 /* MetadataModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B5803E1D24304200640E17 /* MetadataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B5803C1D24304200640E17 /* MetadataModel.m */; };
+		A6B948A31D5377DD006A8A4E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A6B948A21D5377DD006A8A4E /* .swiftlint.yml */; };
 		A6DD33A11D2FC49B0041FBD9 /* MobileConnectProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */; };
 		A6F34AE71D3CF56000ADF8CF /* operatorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AE61D3CF56000ADF8CF /* operatorData.plist */; };
@@ -270,6 +271,7 @@
 		A6B580391D241E5700640E17 /* ExtensionDiscoveryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDiscoveryResponse.swift; sourceTree = "<group>"; };
 		A6B5803B1D24304200640E17 /* MetadataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetadataModel.h; sourceTree = "<group>"; };
 		A6B5803C1D24304200640E17 /* MetadataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetadataModel.m; sourceTree = "<group>"; };
+		A6B948A21D5377DD006A8A4E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileConnectProduct.h; sourceTree = "<group>"; };
 		A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileConnectProduct.m; sourceTree = "<group>"; };
 		A6F34AE61D3CF56000ADF8CF /* operatorData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = operatorData.plist; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		3C3F82C81D04C7C8006EE8F4 = {
 			isa = PBXGroup;
 			children = (
+				A6B948A21D5377DD006A8A4E /* .swiftlint.yml */,
 				A63653A11D20366700A8A6E2 /* MobileConnectSDKTests */,
 				A63653B01D20367E00A8A6E2 /* DemoSwift */,
 				3CD7915C1D04D0E80023FD0A /* Frameworks */,
@@ -800,6 +803,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B948A31D5377DD006A8A4E /* .swiftlint.yml in Resources */,
 				A669468B1D4567090014DDF8 /* MobileConnectSDK.podspec in Resources */,
 				3C36B85D1D05B99800A997E3 /* Images.xcassets in Resources */,
 				3C72CF151D064B7500A095ED /* Localizable.strings in Resources */,

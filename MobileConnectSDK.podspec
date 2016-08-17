@@ -17,9 +17,9 @@ end
 
 spec.subspec 'Services' do |services|
 
-services.subpsec 'AttributeService' do |attributeservice|
+services.subpsec 'BaseMobileConnect' do |basemobileconnect|
 
-attributeservice.source_files = 'MobileConnectSDK/Services/AttributeService/*.swift'
+basemobileconnect.source_files = 'MobileConnectSDK/Services/BaseMobileConnect/*.swift'
 
 end
 

@@ -55,6 +55,7 @@
 		3CCA570F1D64A846004CE16A /* BaseMobileConnectServiceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA570B1D64A846004CE16A /* BaseMobileConnectServiceExtensions.swift */; };
 		3CCA57101D64A846004CE16A /* BaseMobileConnectServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA570C1D64A846004CE16A /* BaseMobileConnectServiceHelper.swift */; };
 		3CCA57111D64A846004CE16A /* BaseServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA570D1D64A846004CE16A /* BaseServiceConfiguration.swift */; };
+		3CCA57131D64AA62004CE16A /* TestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA57121D64AA62004CE16A /* TestFile.swift */; };
 		3CD791721D0571250023FD0A /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791711D0571250023FD0A /* WebController.swift */; };
 		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
 		3CFAB7F71D2C91820002105E /* WebControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F61D2C91820002105E /* WebControllerMock.swift */; };
@@ -232,6 +233,7 @@
 		3CCA570B1D64A846004CE16A /* BaseMobileConnectServiceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceExtensions.swift; sourceTree = "<group>"; };
 		3CCA570C1D64A846004CE16A /* BaseMobileConnectServiceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceHelper.swift; sourceTree = "<group>"; };
 		3CCA570D1D64A846004CE16A /* BaseServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceConfiguration.swift; sourceTree = "<group>"; };
+		3CCA57121D64AA62004CE16A /* TestFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
 		3CD791711D0571250023FD0A /* WebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
 		3CD791731D0571450023FD0A /* MobileConnectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectButton.swift; sourceTree = "<group>"; };
 		3CFAB7F61D2C91820002105E /* WebControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerMock.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				3C36EF031D0A19D200297A17 /* MobileConnectService.swift */,
 				3C24E7C61D0C2D5000D7634A /* MCService.swift */,
 				A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */,
+				3CCA57121D64AA62004CE16A /* TestFile.swift */,
 			);
 			path = MobileConnect;
 			sourceTree = "<group>";
@@ -977,6 +980,7 @@
 				3C401A241D0EB36700F73EA5 /* DiscoveryResponse.m in Sources */,
 				6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */,
 				3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */,
+				3CCA57131D64AA62004CE16A /* TestFile.swift in Sources */,
 				3C401A321D0EB36700F73EA5 /* OperatorIdModel.m in Sources */,
 				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
 				A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */,

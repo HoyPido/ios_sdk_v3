@@ -9,7 +9,7 @@ spec.social_media_url = "https://developer.mobileconnect.io"
 
 spec.platform = :ios, "8.0"
 spec.requires_arc = true
-spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/testsdk.git", :branch => 'features/GMC-235', :tag=>  "#{spec.version}"}
+spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/r2-ios-sdk.git", :branch => 'features/GMC-235', :tag=>  "#{spec.version}"}
 
 spec.subspec 'Extensions' do |extensions|
 extensions.source_files = 'MobileConnectSDK/Extensions/*.swift'

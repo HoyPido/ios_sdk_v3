@@ -75,6 +75,7 @@
 		6C4C053E1D647121008B1AB7 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C427C151D53832F0008A744 /* JSONModel.framework */; };
 		6C4C053F1D647142008B1AB7 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C427C151D53832F0008A744 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C4C05401D647148008B1AB7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C4C054F1D64C311008B1AB7 /* HelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */; };
 		6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */; };
 		A632A5441D23F14700DD86E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; };
 		A632A5451D23F14700DD86E9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -249,6 +250,7 @@
 		6C4C05391D6470EB008B1AB7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick/Quick.framework"; sourceTree = "<group>"; };
 		6C4C05411D64718E008B1AB7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Pods/../build/Debug-iphoneos/Nimble/Nimble.framework"; sourceTree = "<group>"; };
 		6C4C05431D647191008B1AB7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick/Quick.framework"; sourceTree = "<group>"; };
+		6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperSpec.swift; sourceTree = "<group>"; };
 		6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeRequestConstructor.swift; sourceTree = "<group>"; };
 		A5263C2E9BC94926BF61B136 /* Pods-Demo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo2/Pods-Demo2.release.xcconfig"; sourceTree = "<group>"; };
 		A632A5411D23DC0C00DD86E9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -592,9 +594,18 @@
 			path = AttributeService;
 			sourceTree = "<group>";
 		};
+		6C4C054D1D64C21E008B1AB7 /* BaseServiceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */,
+			);
+			path = BaseServiceHelper;
+			sourceTree = "<group>";
+		};
 		A63653A11D20366700A8A6E2 /* MobileConnectSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				6C4C054D1D64C21E008B1AB7 /* BaseServiceHelper */,
 				6C4C05301D634823008B1AB7 /* AttributeService */,
 				A6F8D9B91D390BC9000F1312 /* JWTDecoder */,
 				A6A9809F1D20A0FC00E8C664 /* Utilities */,
@@ -1017,6 +1028,7 @@
 			files = (
 				A6F8D9BB1D390BFE000F1312 /* JWTDecoderSpec.swift in Sources */,
 				A6A980A51D20A44400E8C664 /* MobileConnectManagerMock.swift in Sources */,
+				6C4C054F1D64C311008B1AB7 /* HelperSpec.swift in Sources */,
 				6C4C05321D634C51008B1AB7 /* AttributeServiceSpec.swift in Sources */,
 				A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */,
 				A6A980A11D20A11800E8C664 /* Mocker.swift in Sources */,

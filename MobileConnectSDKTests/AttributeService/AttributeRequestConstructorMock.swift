@@ -19,7 +19,6 @@ class AttributeRequestConstructorMock : AttributeRequestConstructor  {
   
   override func generatePremiumInfoRequest(withURL: String) -> Request {
     self.getPremiumInfoMethodAccessed = true
-    print("FUNCTIA - generatePremiumInfoRequest")
     return super.generatePremiumInfoRequest(withURL)
   }
   

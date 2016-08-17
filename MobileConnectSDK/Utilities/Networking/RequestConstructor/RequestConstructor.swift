@@ -15,8 +15,6 @@ class RequestConstructor: NSObject {
     let clientSecret : String
     let redirectURL : URLStringConvertible
     
-    var manager : Manager?
-    
     lazy var lazyManager : Manager = {
        
         let configuration : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -51,29 +49,15 @@ class RequestConstructor: NSObject {
             headers = headers + additionalHeaders
         }
         
-        if let localManager = manager
-        {
-            //in case there was a manager provided in the method withManager, nullify it in order to avoid using it next time
-            manager = nil
-            
-            return localManager.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
-        }
-        
         //the requests loaded in a webview should not be launched at creation 
         if shouldNotStartImmediately
         {
             return lazyManager.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
         }
         
-        let requestTest = request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+        let requestObject = request(method, url, parameters: parameters, encoding: encoding, headers: headers)
         
-        return requestTest
+        return requestObject
     }
-    
-    func withManager(manager : Manager) -> Self
-    {
-        self.manager = manager
-        
-        return self
-    }
+
 }

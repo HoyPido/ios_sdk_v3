@@ -173,13 +173,33 @@ public class MobileConnectManager: NSObject {
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes,  completionHandler: completionHandler)
     }
-    
+  
+    public func getAttributeServiceResponse(controller: UIViewController, context : String, scopes : [ProductType], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){
+      
+      self.getAuthorizationTokenInPresenterController(controller, withContext: context, withScopes: scopes, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+        guard let accessToken = tokenResponseModel?.tokenData?.access_token, premiumURL = tokenResponseModel?.discoveryResponse?.linksInformation?.premiumInfo() else {
+          //error handle
+          return
+        }
+        
+        let attributeRequest = AttributeRequestConstructor(accessToken: accessToken)
+        let attributeService = AttributeService(requestConstructor: attributeRequest)
+        
+        attributeService.getAttributeInformation(withURL: premiumURL, completionHandler: { (responseModel, error) in
+          withCompletionHandler(response: responseModel, error: error)
+        })
+      }
+      
+      
+    }
+  
     func getToken(presenterController: UIViewController, context : String? = nil, scopes : [String]? = nil, bindingMessage : String? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
         startDiscoveryInHandler({
             
             self.delegate?.mobileConnectWillPresentWebController?()
-            self.discovery.startOperatorDiscoveryInController(presenterController, completionHandler: { (controller, operatorsData, error) in
+            self.discovery.startOperatorDiscoveryInController(presenterController, completionHandler: {
+              (controller, operatorsData, error) in
                 self.checkDiscoveryResponse(controller, operatorsData: operatorsData, error: error)(context: context, scopes : scopes, bindingMessage : bindingMessage)
             })
             

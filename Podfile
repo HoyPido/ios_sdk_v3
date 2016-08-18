@@ -1,10 +1,17 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
-target ‘MobileConnectSDKTests’ do 
+target 'DemoSwift' do
+    use_frameworks!
+    pod 'Quick'
+    pod 'Nimble'
+    
+end
+
+target 'MobileConnectSDKTests' do 
    use_frameworks!
    pod 'Quick'
-   pod ‘Nimble'	
+   pod 'Nimble'	
 
 end
 

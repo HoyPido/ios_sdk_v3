@@ -2,10 +2,6 @@
 # platform :ios, '9.0'
 
 target 'DemoSwift' do
-    use_frameworks!
-    pod 'Quick'
-    pod 'Nimble'
-    
 end
 
 target 'MobileConnectSDKTests' do 

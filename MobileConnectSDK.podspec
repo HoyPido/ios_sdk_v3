@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name = "MobileConnectSDK"
-spec.version = "2.1"
+spec.version = "2.11"
 spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
 spec.homepage = "https://developer.mobileconnect.io"
 spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
@@ -9,13 +9,21 @@ spec.social_media_url = "https://developer.mobileconnect.io"
 
 spec.platform = :ios, "8.0"
 spec.requires_arc = true
-spec.source = { :git => "https://github.com/Dan-Andoni-BJSS/testsdk.git", :branch => 'GMC-162', :tag=>  "#{spec.version}"}
+spec.source = { :git => "https://github.com/Mobile-Connect/r2-ios-sdk/features/GMC-235" :tag=>  "#{spec.version}"}
 
 spec.subspec 'Extensions' do |extensions|
 extensions.source_files = 'MobileConnectSDK/Extensions/*.swift'
 end
 
 spec.subspec 'Services' do |services|
+
+services.subpsec 'AttributeService' do |attributeservice|
+attributeservice.source_files = 'MobileConnectSDK/Services/AttributeService/*.swift'
+end
+
+services.subpsec 'BaseMobileConnect' do |basemobileconnect|
+basemobileconnect.source_files = 'MobileConnectSDK/Services/BaseMobileConnect/*.swift'
+end
 
 services.subspec 'MobileConnect' do |mobileConnect|
 

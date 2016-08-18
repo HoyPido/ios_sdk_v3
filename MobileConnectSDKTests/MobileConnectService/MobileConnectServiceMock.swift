@@ -22,7 +22,7 @@ class MobileConnectServiceMock: MobileConnectService {
     var error : NSError?
     var response : TokenModel?
     var codeResponse : [NSObject : AnyObject] = Mocker.authenticationCodeResponse
-    var shouldCallSuper : Bool = false
+    var shouldCallSuper : Bool = true
     
     var checksForNilWebController : Bool = false
     
@@ -34,7 +34,7 @@ class MobileConnectServiceMock: MobileConnectService {
         }
         else
         {
-            treatWebRedirectParameters(codeResponse, withCompletionHandler: didReceiveResponseFromController)
+            treatWebRedirectParameters(codeResponse)
         }
     }
     

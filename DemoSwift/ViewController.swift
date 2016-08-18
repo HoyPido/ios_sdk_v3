@@ -17,11 +17,12 @@ class ViewController: UIViewController, MobileConnectManagerDelegate {
     //MARK: Events
     @IBAction func getAction(sender: AnyObject) {
         
-        let manager : MobileConnectManager = MobileConnectManager()
-        
-        manager.getAuthorizationTokenInPresenterController(self, withContext: "the context", withScopes: [ProductType.Email, ProductType.Profile], bindingMessage: "binding message") { (tokenResponseModel, error) in
-            print(tokenResponseModel)
-        }
+      let manager : MobileConnectManager = MobileConnectManager()
+      
+      manager.getAttributeServiceResponse(self, context: "the context", scopes: [ProductType.IdentityPhoneNumber, ProductType.Phone], bindingMessage: "binding message") { (response, error) in
+     
+      }
+      
     }
 }
 

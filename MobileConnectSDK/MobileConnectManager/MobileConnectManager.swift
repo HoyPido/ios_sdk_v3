@@ -177,17 +177,18 @@ public class MobileConnectManager: NSObject {
     public func getAttributeServiceResponse(controller: UIViewController, context : String, scopes : [ProductType], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){
       
       self.getAuthorizationTokenInPresenterController(controller, withContext: context, withScopes: scopes, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
-        guard let accessToken = tokenResponseModel?.tokenData?.access_token, premiumURL = tokenResponseModel?.discoveryResponse?.linksInformation?.premiumInfo() else {
+        guard let accessToken = tokenResponseModel?.tokenData?.access_token, premiumURL = tokenResponseModel?.discoveryResponse?.linksInformation?.premiumInfo(), tokenResponseModel = tokenResponseModel  else {
           withCompletionHandler(response: nil, error: error)
           return
         }
         
         let attributeRequest = AttributeRequestConstructor(accessToken: accessToken)
-        let attributeService = AttributeService(requestConstructor: attributeRequest)
+        let attributeService = AttributeService(tokenResponse: tokenResponseModel)
         
-        attributeService.getAttributeInformation(withURL: premiumURL, completionHandler: { (responseModel, error) in
+        attributeService.getAttributeInformation({ (responseModel, error) in
           withCompletionHandler(response: responseModel, error: error)
         })
+        
       }
       
       

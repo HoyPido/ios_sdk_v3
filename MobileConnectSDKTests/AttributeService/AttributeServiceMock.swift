@@ -16,7 +16,7 @@ class AttributeServiceMock: AttributeService {
   var error: NSError?
   var response: AttributeResponseModel?
   
-  override func getAttributeInformation(withURL URL: String, request: Request?, completionHandler: (responseModel: AttributeResponseModel?, error: NSError?) -> Void) {
+  override func getAttributeInformation(completionHandler: (responseModel: AttributeResponseModel?, error: NSError?) -> Void) {
     completionHandler(responseModel: self.response, error: self.error)
   }
   

@@ -36,12 +36,8 @@ class AttributeServiceSpec : BaseServiceSpec {
       self.attributeRequestConstructor = nil
     }
 
-    if let requestConstructor = self.attributeRequestConstructor {
-      let service = AttributeServiceMock(requestConstructor: requestConstructor)
-      self.mockedService = service
-    } else {
-      self.mockedService =  nil
-    }
+    self.mockedService = AttributeServiceMock(tokenResponse: Mocker.tokenResponseModel)
+  
   }
   
   func checkGetPremiumInfoDetails(isExpectingError: Bool) {
@@ -59,10 +55,12 @@ class AttributeServiceSpec : BaseServiceSpec {
     requestConstructor?.getPremiumInfoMethodAccessed = false
     
     waitUntil { (done:() -> Void) in
-      mockService?.getAttributeInformation(withURL: "", request: requestConstructor?.generatePremiumInfoRequest(""), completionHandler: { (responseModel, error) in
+      mockService?.getAttributeInformation({ (responseModel, error) in
         
         it("should call request contructor", closure: {
-          expect(requestConstructor?.getPremiumInfoMethodAccessed).to(beTrue())
+          if let request = mockService?.requestConstructor as? AttributeRequestConstructorMock {
+            expect(request.getPremiumInfoMethodAccessed).to(beTrue())
+          }
         })
         
         it("has response", closure: {
@@ -71,21 +69,17 @@ class AttributeServiceSpec : BaseServiceSpec {
           } else {
             expect(responseModel).toNot(beNil())
           }
-                 
+          
         })
         
         done()
+
       })
     }
   }
 
   func createMockService(attributeRequest: AttributeRequestConstructorMock?) -> AttributeServiceMock? {
-    if let requestConstructor = attributeRequest {
-      let service = AttributeServiceMock(requestConstructor: requestConstructor)
-      return service
-    } else {
-      return nil
-    }
+    return AttributeServiceMock(tokenResponse: Mocker.tokenResponseModel)
   }
   
   func createMockAttributeRequest() -> AttributeRequestConstructorMock? {

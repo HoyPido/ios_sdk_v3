@@ -178,7 +178,7 @@ public class MobileConnectManager: NSObject {
       
       self.getAuthorizationTokenInPresenterController(controller, withContext: context, withScopes: scopes, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
         guard let accessToken = tokenResponseModel?.tokenData?.access_token, premiumURL = tokenResponseModel?.discoveryResponse?.linksInformation?.premiumInfo() else {
-          //error handle
+          withCompletionHandler(response: nil, error: error)
           return
         }
         

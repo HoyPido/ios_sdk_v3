@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>sub</key>
+	<string>158E5BA1-ED61-76ED-D7E0-C08629CD401C</string>
+	<key>family_name</key>
+	<string>test4</string>
+	<key>given_name</key>
+	<string>test4</string>
+	<key>national_identifier</key>
+	<string>XXXXXXXXXXXX</string>
+</dict>
+</plist>

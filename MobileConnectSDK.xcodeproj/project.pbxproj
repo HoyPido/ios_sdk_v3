@@ -15,6 +15,7 @@
 		097E17591D66250D002B23E2 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 097E17561D6624B6002B23E2 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		097E175A1D662535002B23E2 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097E17561D6624B6002B23E2 /* JSONModel.framework */; };
 		097E175B1D66253F002B23E2 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 097E17561D6624B6002B23E2 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		097E175C1D662845002B23E2 /* attributeResponseModel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C4C05371D645DFB008B1AB7 /* attributeResponseModel.plist */; };
 		11B61926EF42CB4054323683 /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0779D3B3830D7A6E6D06FE2D /* Pods_MobileConnectSDK.framework */; };
 		1EF526CF1D367272008C50CC /* ExtensionNSUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */; };
 		3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E7C61D0C2D5000D7634A /* MCService.swift */; };
@@ -863,6 +864,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097E175C1D662845002B23E2 /* attributeResponseModel.plist in Resources */,
 				A6A980A31D20A35000E8C664 /* DiscoveryDataResponse.plist in Resources */,
 				A6A9809E1D20970200E8C664 /* tokenResponseModel.plist in Resources */,
 				3CFAB7F91D2CF85A0002105E /* metadata.plist in Resources */,

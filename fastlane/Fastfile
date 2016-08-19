@@ -5,18 +5,22 @@ default_platform :ios
 platform :ios do
   before_all do
 	verify_xcode_version
+	cocoapods
   end
 
   after_all do
   end
 
   lane :test do
-    cocoapods
     scan(
 		scheme: 		"MobileConnectSDK",
 		output_directory: 	"test_reports",
 		code_coverage:		true
 	) 
+  end
+
+  lane :sonar do
+	sh "cd .. && ./fastlane/scripts/run-sonar-swift.sh"
   end
 
   private_lane :verify_xcode_version do

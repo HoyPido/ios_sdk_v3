@@ -11,6 +11,11 @@ sudo gem install fastlane
 fastlane ios test
 ```
 
+### ios sonar
+```
+fastlane ios sonar
+```
+
 
 ----
 

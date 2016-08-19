@@ -1,0 +1,26 @@
+fastlane_version "1.101.0"
+REQUIRED_XCODE_VERSION = "7.3.1"
+default_platform :ios
+
+platform :ios do
+  before_all do
+	verify_xcode_version
+  end
+
+  after_all do
+  end
+
+  lane :test do
+    cocoapods
+    scan(
+		scheme: 		"MobileConnectSDK",
+		output_directory: 	"test_reports",
+		code_coverage:		true
+	) 
+  end
+
+  private_lane :verify_xcode_version do
+    ensure_xcode_version(version: REQUIRED_XCODE_VERSION)
+  end
+
+end

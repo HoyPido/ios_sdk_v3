@@ -2,13 +2,17 @@
 # platform :ios, '9.0'
 
 target 'DemoSwift' do
+    use_frameworks!
+    pod 'JSONModel', '~> 1.2.0'
+    pod 'Alamofire', '~> 3.4'
 end
 
 target 'MobileConnectSDKTests' do 
    use_frameworks!
    pod 'Quick'
    pod 'Nimble'	
-
+   pod 'JSONModel', '~> 1.2.0'
+   pod 'Alamofire', '~> 3.4'
 end
 
 target 'MobileConnectSDK' do

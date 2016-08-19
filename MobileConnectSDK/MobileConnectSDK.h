@@ -25,3 +25,5 @@ FOUNDATION_EXPORT const unsigned char MobileConnectSDKVersionString[];
 #import "MetadataModel.h"
 #import "MobileConnectProduct.h"
 #import "AttributeResponseModel.h"
+#import "DecodedTokenModel.h"
+#import "PublicKeyModel.h"

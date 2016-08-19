@@ -19,7 +19,7 @@ platform :ios do
   lane :test do
     scan(
 		scheme: 		"MobileConnectSDK",
-		output_directory: 	"test_reports",
+		output_directory: 	"test-reports",
 		code_coverage:		true
 	) 
   end

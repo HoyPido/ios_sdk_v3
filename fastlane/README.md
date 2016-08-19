@@ -16,9 +16,9 @@ fastlane ios jenkins
 fastlane ios test
 ```
 
-### ios sonar
+### ios sonar_check
 ```
-fastlane ios sonar
+fastlane ios sonar_check
 ```
 
 

@@ -176,7 +176,7 @@ appConfiguration=''; readParameter appConfiguration 'sonar.swift.appConfiguratio
 testScheme=''; readParameter testScheme 'sonar.swift.testScheme'
 
 # Read destination simulator
-destinationSimulator=''; readParameter destinationSimulator 'sonar.swift.simulator'
+destinationSimulatorPlatform=''; readParameter destinationSimulatorPlatform 'sonar.swift.simulator.platform'
 
 
 # The file patterns to exclude from coverage report
@@ -198,8 +198,8 @@ if [ -z "$appScheme" -o "$appScheme" = " " ]; then
 	echo >&2 "ERROR - sonar.swift.appScheme parameter is missing in sonar-project.properties. You must specify which scheme is used to build your application."
 	exit 1
 fi
-if [ -z "$destinationSimulator" -o "$destinationSimulator" = " " ]; then
-	echo >&2 "ERROR - sonar.swift.simulator parameter is missing in sonar-project.properties. You must specify which simulator to use."
+if [ -z "$destinationSimulatorPlatform" -o "$destinationSimulatorPlatform" = " " ]; then
+	echo >&2 "ERROR - sonar.swift.simulator.platform parameter is missing in sonar-project.properties. You must specify which simulator to use."
 	exit 1
 fi
 
@@ -214,7 +214,7 @@ if [ "$vflag" = "on" ]; then
  	echo "Xcode project file is: $projectFile"
 	echo "Xcode workspace file is: $workspaceFile"
  	echo "Xcode application scheme is: $appScheme"
- 	echo "Destination simulator is: $destinationSimulator"
+ 	echo "Destination simulator Platform is: $destinationSimulatorPlatform"
  	echo "Excluded paths from coverage are: $excludedPathsFromCoverage"
 fi
 
@@ -248,9 +248,8 @@ elif [[ ! -z "$projectFile" ]]; then
 	  buildCmd+=(-project $projectFile)
 fi
 buildCmd+=( -scheme "$appScheme" -configuration "$appConfiguration" -enableCodeCoverage YES VALID_ARCHS=x86_64)
-if [[ ! -z "$destinationSimulator" ]]; then
-    #buildCmd+=(-destination $destinationSimulator -destination-timeout 60)
-    buildCmd+=(-destination platform="iOS Simulator,id=C3C34755-F8D6-4EBC-BCD6-211C067F34C7" -destination-timeout 60)
+if [[ ! -z "$destinationSimulatorPlatform" ]]; then
+    buildCmd+=(-destination platform="$destinationSimulatorPlatform" -destination-timeout 60)
 fi
 echo ${buildCmd[@]}
 runCommand  sonar-reports/xcodebuild.log "${buildCmd[@]}"

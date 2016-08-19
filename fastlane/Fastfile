@@ -13,7 +13,7 @@ platform :ios do
 
   lane :jenkins do
    test
-   sonar
+   sonar_check
   end
 
   lane :test do

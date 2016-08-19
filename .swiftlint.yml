@@ -1,17 +1,18 @@
 # BJSS Swift Lint Rules
 
 disabled_rules: # rule identifiers to exclude from running
-#- trailing_whitespace
-# - colon
+- trailing_whitespace
+- colon
 - line_length
 - valid_docs
 - missing_docs
 - function_parameter_count
+- opening_brace
 #  - comma
 #  - control_statement
 
 opt_in_rules: # some rules are only opt-in
-  - empty_count
+- empty_count: warning
 #  - missing_docs
 
 # Find all the available rules by running:

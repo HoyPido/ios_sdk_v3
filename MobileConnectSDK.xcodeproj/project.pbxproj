@@ -735,6 +735,7 @@
 			buildConfigurationList = 3C3F82E61D04C7C8006EE8F4 /* Build configuration list for PBXNativeTarget "MobileConnectSDK" */;
 			buildPhases = (
 				0562095C454E3F6F69E8ABBE /* [CP] Check Pods Manifest.lock */,
+				097E17891D6728D7002B23E2 /* Lint Check */,
 				3C3F82CD1D04C7C8006EE8F4 /* Sources */,
 				3C3F82CE1D04C7C8006EE8F4 /* Frameworks */,
 				3C3F82CF1D04C7C8006EE8F4 /* Headers */,
@@ -893,6 +894,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		097E17891D6728D7002B23E2 /* Lint Check */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Check";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		1BB1E890426F4EAD96446846 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

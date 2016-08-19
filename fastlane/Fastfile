@@ -11,6 +11,11 @@ platform :ios do
   after_all do
   end
 
+  lane :jenkins do
+   test
+   sonar
+  end
+
   lane :test do
     scan(
 		scheme: 		"MobileConnectSDK",

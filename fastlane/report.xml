@@ -3,32 +3,37 @@
   <testsuite name="fastlane.lanes">
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000472">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000512">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000213">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000402">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: Switch to ios verify_xcode_version lane" time="0.000202">
+      <testcase classname="fastlane.lanes" name="2: Switch to ios verify_xcode_version lane" time="0.000194">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: ensure_xcode_version" time="0.491047">
+      <testcase classname="fastlane.lanes" name="3: ensure_xcode_version" time="0.499752">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: cocoapods" time="2.251152">
+      <testcase classname="fastlane.lanes" name="4: cocoapods" time="2.252681">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: cd .. &amp;&amp; ./fastlane/scripts/run-sonar-swift.sh" time="60.159326">
+      <testcase classname="fastlane.lanes" name="5: Switch to ios test lane" time="0.000253">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: scan" time="0.779683">
         
       </testcase>
     

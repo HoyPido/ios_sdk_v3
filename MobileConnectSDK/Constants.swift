@@ -13,24 +13,6 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
 ///The error enum used by the Mobile Connect classes
 @objc public enum MCErrorCode : Int
 {
-    case NoError
-    //Token validation errors
-    //Invalid metadata
-    case MetadataInvalidError
-    //Invalid token
-    case InvalidAccessTokenError
-    //Token expired
-    case TokenExpiredError
-    //Invalid issuer
-    case InvalidIssuerError
-    //Invalid Aud
-    case InvalidAudError
-    //Invalid Azp
-    case InvalidAzpError
-    //Invalid nonce
-    case InvalidNonce
-    //Max_age expired
-    case MaxAgeError
     //Web controller
     ///In case the request provided to Mobile Connect web controllers was nil
     case NoRequestToLoad
@@ -105,6 +87,25 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     
     ///In case MobileConnectService tries to access authorization request with incorrect configuration
     case RequiresAuthorizationConfiguration
+    
+    case NoError
+    //Token validation errors
+    //Invalid metadata
+    case MetadataInvalidError
+    //Invalid token
+    case InvalidAccessTokenError
+    //Token expired
+    case TokenExpiredError
+    //Invalid issuer
+    case InvalidIssuerError
+    //Invalid Aud
+    case InvalidAudError
+    //Invalid Azp
+    case InvalidAzpError
+    //Invalid nonce
+    case InvalidNonce
+    //Max_age expired
+    case MaxAgeError
 }
 
 @objc public enum MCLevelOfAssurance : Int

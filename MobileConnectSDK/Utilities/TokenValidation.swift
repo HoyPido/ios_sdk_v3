@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import JWTTools
+import Heimdall
 
 class TokenValidation<T:MCModel>: NSObject {
   
@@ -25,23 +27,63 @@ class TokenValidation<T:MCModel>: NSObject {
     
     initialCheckTokenIsValid { (error) in
       if(error != MCErrorCode.NoError.error) {
-        completionHandler(MCErrorCode.Unknown.error)
+        completionHandler(error)
       }
     }
     
     getPublicKeys { (model, error) in
-      guard let model = model else {
+      guard let model = model, publicKeys = model.keys else {
         completionHandler(error)
         return
       }
       
-      if let error = error {
-        completionHandler(error)
-      } else {
-        completionHandler(MCErrorCode.NoError.error)
-      }
+      let publicKeyModel = publicKeys[0]
+      if let publicKeyModel = publicKeyModel as? PublicKeyModel, id_token = self.model.id_token {
+        
+        let publicKeyObject = PublicKey(exponentString: publicKeyModel.e!, modulusString: publicKeyModel.n!)
+        
+        let heimdallObject : Heimdall? = Heimdall(publicTag: "test", publicKeyModulus: publicKeyObject.modulusData ?? NSData(), publicKeyExponent: publicKeyObject.exponentData ?? NSData())
+        
+        guard let heimdall = heimdallObject else {
+            completionHandler(MCErrorCode.Unknown.error)
+            return
+        }
+        
+        let decoder =  JWTTools.JWTDecoder(tokenString: id_token)
+        
+        let heimdallVerifyResult = heimdall.verify(decoder.messageString ?? "", signatureBase64: decoder.signature ?? "", urlEncoded: true)
+        let jwtTokenManager = JWTManager(JWTTokenString: id_token)
+        
+        print(id_token)
+        
+        //if !heimdallVerifyResult {
+        //completionHandler(MCErrorCode.Unknown.error)
+        do {
+          if try jwtTokenManager.verifyWithPublicKey(publicKeyObject) {
+           let x = 1
+          }
+        }
+        catch {
+          print(error)
+        }
+//        } else {
+//
+//            return
+//        }
+      //}
+      
+      
+      
+//      if let error = error {
+//        completionHandler(error)
+//      } else {
+//        completionHandler(MCErrorCode.NoError.error)
+//      }
+        
+        }
     }
   }
+        
   
   func initialCheckTokenIsValid(completion:(NSError)->Void) {
     

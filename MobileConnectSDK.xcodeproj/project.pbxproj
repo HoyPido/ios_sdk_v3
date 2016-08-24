@@ -59,9 +59,16 @@
 		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
 		3CFAB7F71D2C91820002105E /* WebControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F61D2C91820002105E /* WebControllerMock.swift */; };
 		3CFAB7F91D2CF85A0002105E /* metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F81D2CF85A0002105E /* metadata.plist */; };
-		6C427C171D5383330008A744 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C427C151D53832F0008A744 /* JSONModel.framework */; };
-		6C427C181D5383330008A744 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C427C151D53832F0008A744 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6C47B2FD1D536BA700C1A631 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; };
+		6C212A081D6C93F4006A710C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; };
+		6C212A0A1D6C93F6006A710C /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; };
+		6C212A0E1D6C93FC006A710C /* JWTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A0D1D6C93FC006A710C /* JWTTools.framework */; };
+		6C212A141D6C9431006A710C /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; };
+		6C212A151D6C9476006A710C /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C212A161D6C947E006A710C /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C212A171D6C947E006A710C /* JWTTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A0D1D6C93FC006A710C /* JWTTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C212A181D6C9483006A710C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C212A1A1D6C94A8006A710C /* SwiftyRSA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; };
+		6C212A1B1D6C94B5006A710C /* SwiftyRSA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C4C05291D61CB77008B1AB7 /* AttributeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05281D61CB77008B1AB7 /* AttributeService.swift */; };
 		6C4C052B1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */; };
 		6C4C052E1D632C34008B1AB7 /* AttributeResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,11 +77,6 @@
 		6C4C05341D63510E008B1AB7 /* AttributeRequestConstructorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05331D63510E008B1AB7 /* AttributeRequestConstructorMock.swift */; };
 		6C4C05361D645AA8008B1AB7 /* AttributeServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05351D645AA8008B1AB7 /* AttributeServiceMock.swift */; };
 		6C4C05381D645DFB008B1AB7 /* attributeResponseModel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C4C05371D645DFB008B1AB7 /* attributeResponseModel.plist */; };
-		6C4C053A1D6470EB008B1AB7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4C05391D6470EB008B1AB7 /* Quick.framework */; };
-		6C4C053B1D6470EE008B1AB7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C47B2FE1D537F6F00C1A631 /* Nimble.framework */; };
-		6C4C053E1D647121008B1AB7 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C427C151D53832F0008A744 /* JSONModel.framework */; };
-		6C4C053F1D647142008B1AB7 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C427C151D53832F0008A744 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6C4C05401D647148008B1AB7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C4C054F1D64C311008B1AB7 /* HelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */; };
 		6C4C05511D65EA60008B1AB7 /* TokenValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05501D65EA60008B1AB7 /* TokenValidation.swift */; };
 		6C4C05561D65EB75008B1AB7 /* DecodedTokenModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4C05541D65EB75008B1AB7 /* DecodedTokenModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,8 +84,10 @@
 		6C4C055E1D6727D4008B1AB7 /* PublicKeyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4C055C1D6727D4008B1AB7 /* PublicKeyModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C4C055F1D6727D4008B1AB7 /* PublicKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C055D1D6727D4008B1AB7 /* PublicKeyModel.m */; };
 		6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */; };
-		A632A5441D23F14700DD86E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; };
-		A632A5451D23F14700DD86E9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A632A5411D23DC0C00DD86E9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6CBDAD2B1D6DE4670050ECD6 /* JWTTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A0D1D6C93FC006A710C /* JWTTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6CBDAD2C1D6DE4980050ECD6 /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6CBDAD2D1D6DE4D00050ECD6 /* SwiftyRSA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6CBDAD2F1D6DFAEC0050ECD6 /* TokenValidationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBDAD2E1D6DFAEC0050ECD6 /* TokenValidationSpec.swift */; };
 		A63653A51D20366700A8A6E2 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		A63653B21D20367E00A8A6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63653B11D20367E00A8A6E2 /* AppDelegate.swift */; };
 		A63653B41D20367F00A8A6E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63653B31D20367F00A8A6E2 /* ViewController.swift */; };
@@ -153,8 +157,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6C4C05401D647148008B1AB7 /* Alamofire.framework in Embed Frameworks */,
-				6C4C053F1D647142008B1AB7 /* JSONModel.framework in Embed Frameworks */,
+				6CBDAD2D1D6DE4D00050ECD6 /* SwiftyRSA.framework in Embed Frameworks */,
+				6CBDAD2C1D6DE4980050ECD6 /* Heimdall.framework in Embed Frameworks */,
+				6CBDAD2B1D6DE4670050ECD6 /* JWTTools.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,9 +180,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6C427C181D5383330008A744 /* JSONModel.framework in Embed Frameworks */,
+				6C212A1B1D6C94B5006A710C /* SwiftyRSA.framework in Embed Frameworks */,
+				6C212A181D6C9483006A710C /* Alamofire.framework in Embed Frameworks */,
+				6C212A161D6C947E006A710C /* JSONModel.framework in Embed Frameworks */,
+				6C212A171D6C947E006A710C /* JWTTools.framework in Embed Frameworks */,
+				6C212A151D6C9476006A710C /* Heimdall.framework in Embed Frameworks */,
 				A6A9809A1D2093A200E8C664 /* MobileConnectSDK.framework in Embed Frameworks */,
-				A632A5451D23F14700DD86E9 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,8 +251,11 @@
 		3CD791731D0571450023FD0A /* MobileConnectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectButton.swift; sourceTree = "<group>"; };
 		3CFAB7F61D2C91820002105E /* WebControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerMock.swift; sourceTree = "<group>"; };
 		3CFAB7F81D2CF85A0002105E /* metadata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = metadata.plist; sourceTree = "<group>"; };
-		6C427C151D53832F0008A744 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
-		6C47B2FE1D537F6F00C1A631 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble/Nimble.framework"; sourceTree = "<group>"; };
+		6C212A071D6C93F4006A710C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		6C212A091D6C93F6006A710C /* Heimdall.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Heimdall.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall/Heimdall.framework"; sourceTree = "<group>"; };
+		6C212A0D1D6C93FC006A710C /* JWTTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTTools.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools/JWTTools.framework"; sourceTree = "<group>"; };
+		6C212A131D6C9431006A710C /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
+		6C212A191D6C94A8006A710C /* SwiftyRSA.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyRSA.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA/SwiftyRSA.framework"; sourceTree = "<group>"; };
 		6C4C05281D61CB77008B1AB7 /* AttributeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeService.swift; sourceTree = "<group>"; };
 		6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceRequest.swift; sourceTree = "<group>"; };
 		6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeResponseModel.h; sourceTree = "<group>"; };
@@ -253,9 +264,6 @@
 		6C4C05331D63510E008B1AB7 /* AttributeRequestConstructorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeRequestConstructorMock.swift; sourceTree = "<group>"; };
 		6C4C05351D645AA8008B1AB7 /* AttributeServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeServiceMock.swift; sourceTree = "<group>"; };
 		6C4C05371D645DFB008B1AB7 /* attributeResponseModel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = attributeResponseModel.plist; sourceTree = "<group>"; };
-		6C4C05391D6470EB008B1AB7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick/Quick.framework"; sourceTree = "<group>"; };
-		6C4C05411D64718E008B1AB7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Pods/../build/Debug-iphoneos/Nimble/Nimble.framework"; sourceTree = "<group>"; };
-		6C4C05431D647191008B1AB7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick/Quick.framework"; sourceTree = "<group>"; };
 		6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperSpec.swift; sourceTree = "<group>"; };
 		6C4C05501D65EA60008B1AB7 /* TokenValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenValidation.swift; sourceTree = "<group>"; };
 		6C4C05541D65EB75008B1AB7 /* DecodedTokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecodedTokenModel.h; sourceTree = "<group>"; };
@@ -263,8 +271,9 @@
 		6C4C055C1D6727D4008B1AB7 /* PublicKeyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicKeyModel.h; sourceTree = "<group>"; };
 		6C4C055D1D6727D4008B1AB7 /* PublicKeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicKeyModel.m; sourceTree = "<group>"; };
 		6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeRequestConstructor.swift; sourceTree = "<group>"; };
+		6CBDAD2E1D6DFAEC0050ECD6 /* TokenValidationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenValidationSpec.swift; sourceTree = "<group>"; };
+		9860700A5715A9B9D21E38EC /* Pods-DemoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoSwift/Pods-DemoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		A5263C2E9BC94926BF61B136 /* Pods-Demo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo2/Pods-Demo2.release.xcconfig"; sourceTree = "<group>"; };
-		A632A5411D23DC0C00DD86E9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		A63653A01D20366700A8A6E2 /* MobileConnectSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileConnectSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63653A41D20366700A8A6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A63653AF1D20367E00A8A6E2 /* DemoSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,6 +321,7 @@
 		A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoderSpec.swift; sourceTree = "<group>"; };
 		AC0AB763998CB98C24645121 /* Pods-MobileConnectSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1305E53A72908350D045A3 /* Pods-MobileConnectSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK.release.xcconfig"; sourceTree = "<group>"; };
+		CB0FC16BA1A925231F319D05 /* Pods-DemoSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoSwift/Pods-DemoSwift.release.xcconfig"; sourceTree = "<group>"; };
 		D524F7B82C688C79BEFB2EB7 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		D708E5FB447240A053E435D2 /* Pods-Demo2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo2/Pods-Demo2.debug.xcconfig"; sourceTree = "<group>"; };
 		E2098210B0070AB58B0E0839 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -323,8 +333,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C4C053E1D647121008B1AB7 /* JSONModel.framework in Frameworks */,
-				6C47B2FD1D536BA700C1A631 /* Alamofire.framework in Frameworks */,
+				6C212A1A1D6C94A8006A710C /* SwiftyRSA.framework in Frameworks */,
+				6C212A141D6C9431006A710C /* JSONModel.framework in Frameworks */,
+				6C212A0E1D6C93FC006A710C /* JWTTools.framework in Frameworks */,
+				6C212A0A1D6C93F6006A710C /* Heimdall.framework in Frameworks */,
+				6C212A081D6C93F4006A710C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +345,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C4C053B1D6470EE008B1AB7 /* Nimble.framework in Frameworks */,
-				6C4C053A1D6470EB008B1AB7 /* Quick.framework in Frameworks */,
 				A63653A51D20366700A8A6E2 /* MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,8 +354,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A980991D2093A200E8C664 /* MobileConnectSDK.framework in Frameworks */,
-				6C427C171D5383330008A744 /* JSONModel.framework in Frameworks */,
-				A632A5441D23F14700DD86E9 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,12 +525,11 @@
 		3CD7915C1D04D0E80023FD0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C4C05431D647191008B1AB7 /* Quick.framework */,
-				6C4C05411D64718E008B1AB7 /* Nimble.framework */,
-				6C4C05391D6470EB008B1AB7 /* Quick.framework */,
-				6C427C151D53832F0008A744 /* JSONModel.framework */,
-				6C47B2FE1D537F6F00C1A631 /* Nimble.framework */,
-				A632A5411D23DC0C00DD86E9 /* Alamofire.framework */,
+				6C212A191D6C94A8006A710C /* SwiftyRSA.framework */,
+				6C212A131D6C9431006A710C /* JSONModel.framework */,
+				6C212A0D1D6C93FC006A710C /* JWTTools.framework */,
+				6C212A091D6C93F6006A710C /* Heimdall.framework */,
+				6C212A071D6C93F4006A710C /* Alamofire.framework */,
 				3C72CF0C1D0606EC00A095ED /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -570,6 +578,8 @@
 				BA1305E53A72908350D045A3 /* Pods-MobileConnectSDK.release.xcconfig */,
 				AC0AB763998CB98C24645121 /* Pods-MobileConnectSDKTests.debug.xcconfig */,
 				0BD31996F4CF30D63D4ED8E4 /* Pods-MobileConnectSDKTests.release.xcconfig */,
+				9860700A5715A9B9D21E38EC /* Pods-DemoSwift.debug.xcconfig */,
+				CB0FC16BA1A925231F319D05 /* Pods-DemoSwift.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -705,6 +715,7 @@
 				A6A980A01D20A11800E8C664 /* Mocker.swift */,
 				3CFAB7F61D2C91820002105E /* WebControllerMock.swift */,
 				A65D02AF1D2D3B60002840CC /* ExtensionMetadataModel.swift */,
+				6CBDAD2E1D6DFAEC0050ECD6 /* TokenValidationSpec.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -813,10 +824,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A63653BE1D20367F00A8A6E2 /* Build configuration list for PBXNativeTarget "DemoSwift" */;
 			buildPhases = (
+				78CDC2C8E12975D6DA008E3C /* [CP] Check Pods Manifest.lock */,
 				A63653AB1D20367E00A8A6E2 /* Sources */,
 				A63653AC1D20367E00A8A6E2 /* Frameworks */,
 				A63653AD1D20367E00A8A6E2 /* Resources */,
 				A6A9809B1D2093A300E8C664 /* Embed Frameworks */,
+				0C99CB63E55A1643976BA228 /* [CP] Embed Pods Frameworks */,
+				752BA327F815810696DFFE6E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -925,6 +939,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		0C99CB63E55A1643976BA228 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DemoSwift/Pods-DemoSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1BB1E890426F4EAD96446846 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -941,6 +970,36 @@
 			showEnvVarsInLog = 0;
 		};
 		67A06E05726DEB9864FC83EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		752BA327F815810696DFFE6E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DemoSwift/Pods-DemoSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78CDC2C8E12975D6DA008E3C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1066,6 +1125,7 @@
 				A6A980771D206B7E00E8C664 /* Constants.swift in Sources */,
 				6C4C05341D63510E008B1AB7 /* AttributeRequestConstructorMock.swift in Sources */,
 				6C4C05361D645AA8008B1AB7 /* AttributeServiceMock.swift in Sources */,
+				6CBDAD2F1D6DFAEC0050ECD6 /* TokenValidationSpec.swift in Sources */,
 				A65D02B01D2D3B60002840CC /* ExtensionMetadataModel.swift in Sources */,
 				A65D02911D2C09DF002840CC /* DiscoveryServiceSpec.swift in Sources */,
 				A6A980791D206C5800E8C664 /* MobileConnectManagerDelegateMock.swift in Sources */,
@@ -1241,6 +1301,12 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Release-iphoneos/JSONModel",
 					"$(PROJECT_DIR)/build/Release-iphoneos/Quick",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JWTTools",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SwiftyRSA",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Heimdall",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1276,6 +1342,12 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Release-iphoneos/JSONModel",
 					"$(PROJECT_DIR)/build/Release-iphoneos/Quick",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JWTTools",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SwiftyRSA",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Heimdall",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1297,6 +1369,9 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Nimble",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Quick",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools",
 				);
 				INFOPLIST_FILE = MobileConnectSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble $(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick";
@@ -1318,6 +1393,9 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Nimble",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Quick",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools",
 				);
 				INFOPLIST_FILE = MobileConnectSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble $(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick";
@@ -1330,6 +1408,7 @@
 		};
 		A63653BF1D20367F00A8A6E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9860700A5715A9B9D21E38EC /* Pods-DemoSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1340,6 +1419,10 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
 					"$(PROJECT_DIR)/build/Release-iphoneos/JSONModel",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
 				);
 				INFOPLIST_FILE = DemoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1351,6 +1434,7 @@
 		};
 		A63653C01D20367F00A8A6E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB0FC16BA1A925231F319D05 /* Pods-DemoSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1361,6 +1445,10 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire",
 					"$(PROJECT_DIR)/build/Release-iphoneos/JSONModel",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
 				);
 				INFOPLIST_FILE = DemoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

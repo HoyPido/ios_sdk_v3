@@ -1,4 +1,4 @@
-//
+ //
 //  TokenValidation.swift
 //  MobileConnectSDK
 //
@@ -21,69 +21,44 @@ class TokenValidation<T:MCModel>: NSObject {
     self.model = model
   }
   
-  func checkIdTokenIsValid(completionHandler:(NSError?)->Void) {
-    
-    self.decodeTokenSignature()
-    
-    initialCheckTokenIsValid { (error) in
-      if(error != MCErrorCode.NoError.error) {
-        completionHandler(error)
-      }
-    }
-    
-    getPublicKeys { (model, error) in
-      guard let model = model, publicKeys = model.keys else {
-        completionHandler(error)
-        return
-      }
-      
-      let publicKeyModel = publicKeys[0]
-      if let publicKeyModel = publicKeyModel as? PublicKeyModel, id_token = self.model.id_token {
+    func checkIdTokenIsValid(completionHandler:(NSError?)->Void) {
         
-        let publicKeyObject = PublicKey(exponentString: publicKeyModel.e!, modulusString: publicKeyModel.n!)
-        
-        let heimdallObject : Heimdall? = Heimdall(publicTag: "test", publicKeyModulus: publicKeyObject.modulusData ?? NSData(), publicKeyExponent: publicKeyObject.exponentData ?? NSData())
-        
-        guard let heimdall = heimdallObject else {
-            completionHandler(MCErrorCode.Unknown.error)
-            return
+        initialCheckTokenIsValid { (error) in
+            if(error != MCErrorCode.NoError.error) {
+                completionHandler(error)
+            }
         }
         
-        let decoder =  JWTTools.JWTDecoder(tokenString: id_token)
-        
-        let heimdallVerifyResult = heimdall.verify(decoder.messageString ?? "", signatureBase64: decoder.signature ?? "", urlEncoded: true)
-        let jwtTokenManager = JWTManager(JWTTokenString: id_token)
-        
-        print(id_token)
-        
-        //if !heimdallVerifyResult {
-        //completionHandler(MCErrorCode.Unknown.error)
-        do {
-          if try jwtTokenManager.verifyWithPublicKey(publicKeyObject) {
-           let x = 1
-          }
-        }
-        catch {
-          print(error)
-        }
-//        } else {
-//
-//            return
-//        }
-      //}
-      
-      
-      
-//      if let error = error {
-//        completionHandler(error)
-//      } else {
-//        completionHandler(MCErrorCode.NoError.error)
-//      }
-        
+        getPublicKeys { (model, error) in
+            guard let model = model, publicKeys = model.keys else {
+                completionHandler(error)
+                return
+            }
+            
+            let publicKeyModel = publicKeys[0]
+            if let publicKeyModel = publicKeyModel as? PublicKeyModel, id_token = self.model.id_token {
+                
+                let publicKeyObject = PublicKey(exponentString: publicKeyModel.e!, modulusString: publicKeyModel.n!)
+                
+                let jwtTokenManager = JWTManager(JWTTokenString: id_token)
+                
+                do {
+                    
+                    let verifyResult : Bool = try jwtTokenManager.verifyWithPublicKey(publicKeyObject)
+                    
+                    if(verifyResult) {
+                       return completionHandler(MCErrorCode.NoError.error) 
+                    }
+                    
+                }
+                catch {
+                    completionHandler(MCErrorCode.InvalidSignature.error)
+                }
+                
+            }
         }
     }
-  }
-        
+    
   
   func initialCheckTokenIsValid(completion:(NSError)->Void) {
     
@@ -156,16 +131,5 @@ class TokenValidation<T:MCModel>: NSObject {
       deserializerObject?.deserializeModel(completion)
     }
   }
-  
-  func decodeTokenSignature() {
-    let tokenComponents = self.model.id_token?.componentsSeparatedByString(".")
     
-    if let encodedSignature : NSData = tokenComponents![2].dataUsingEncoding(NSUTF8StringEncoding)
-    {
-      let encodedCredentials : String = encodedSignature.base64EncodedStringWithOptions([])
-      var x = 1
-    }
-
-  }
-  
 }

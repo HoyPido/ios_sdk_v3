@@ -60,15 +60,12 @@
 		3CFAB7F71D2C91820002105E /* WebControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F61D2C91820002105E /* WebControllerMock.swift */; };
 		3CFAB7F91D2CF85A0002105E /* metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F81D2CF85A0002105E /* metadata.plist */; };
 		6C212A081D6C93F4006A710C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; };
-		6C212A0A1D6C93F6006A710C /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; };
 		6C212A0E1D6C93FC006A710C /* JWTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A0D1D6C93FC006A710C /* JWTTools.framework */; };
 		6C212A141D6C9431006A710C /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; };
-		6C212A151D6C9476006A710C /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C212A161D6C947E006A710C /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C212A171D6C947E006A710C /* JWTTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A0D1D6C93FC006A710C /* JWTTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C212A181D6C9483006A710C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C212A1A1D6C94A8006A710C /* SwiftyRSA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; };
-		6C212A1B1D6C94B5006A710C /* SwiftyRSA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C4C05291D61CB77008B1AB7 /* AttributeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05281D61CB77008B1AB7 /* AttributeService.swift */; };
 		6C4C052B1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */; };
 		6C4C052E1D632C34008B1AB7 /* AttributeResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,9 +82,11 @@
 		6C4C055F1D6727D4008B1AB7 /* PublicKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C055D1D6727D4008B1AB7 /* PublicKeyModel.m */; };
 		6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */; };
 		6CBDAD2B1D6DE4670050ECD6 /* JWTTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A0D1D6C93FC006A710C /* JWTTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6CBDAD2C1D6DE4980050ECD6 /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6CBDAD2D1D6DE4D00050ECD6 /* SwiftyRSA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6CBDAD2F1D6DFAEC0050ECD6 /* TokenValidationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBDAD2E1D6DFAEC0050ECD6 /* TokenValidationSpec.swift */; };
+		6CBDAD301D6EE24C0050ECD6 /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; };
+		6CBDAD311D6EE24C0050ECD6 /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A091D6C93F6006A710C /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6CBDAD321D6EE2AC0050ECD6 /* SwiftyRSA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; };
+		6CBDAD331D6EE2AC0050ECD6 /* SwiftyRSA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A191D6C94A8006A710C /* SwiftyRSA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A63653A51D20366700A8A6E2 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		A63653B21D20367E00A8A6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63653B11D20367E00A8A6E2 /* AppDelegate.swift */; };
 		A63653B41D20367F00A8A6E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63653B31D20367F00A8A6E2 /* ViewController.swift */; };
@@ -157,8 +156,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6CBDAD2D1D6DE4D00050ECD6 /* SwiftyRSA.framework in Embed Frameworks */,
-				6CBDAD2C1D6DE4980050ECD6 /* Heimdall.framework in Embed Frameworks */,
 				6CBDAD2B1D6DE4670050ECD6 /* JWTTools.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -180,12 +177,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6C212A1B1D6C94B5006A710C /* SwiftyRSA.framework in Embed Frameworks */,
+				6CBDAD311D6EE24C0050ECD6 /* Heimdall.framework in Embed Frameworks */,
 				6C212A181D6C9483006A710C /* Alamofire.framework in Embed Frameworks */,
 				6C212A161D6C947E006A710C /* JSONModel.framework in Embed Frameworks */,
 				6C212A171D6C947E006A710C /* JWTTools.framework in Embed Frameworks */,
-				6C212A151D6C9476006A710C /* Heimdall.framework in Embed Frameworks */,
 				A6A9809A1D2093A200E8C664 /* MobileConnectSDK.framework in Embed Frameworks */,
+				6CBDAD331D6EE2AC0050ECD6 /* SwiftyRSA.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +333,6 @@
 				6C212A1A1D6C94A8006A710C /* SwiftyRSA.framework in Frameworks */,
 				6C212A141D6C9431006A710C /* JSONModel.framework in Frameworks */,
 				6C212A0E1D6C93FC006A710C /* JWTTools.framework in Frameworks */,
-				6C212A0A1D6C93F6006A710C /* Heimdall.framework in Frameworks */,
 				6C212A081D6C93F4006A710C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,7 +349,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CBDAD301D6EE24C0050ECD6 /* Heimdall.framework in Frameworks */,
 				A6A980991D2093A200E8C664 /* MobileConnectSDK.framework in Frameworks */,
+				6CBDAD321D6EE2AC0050ECD6 /* SwiftyRSA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1423,6 +1421,7 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
 				);
 				INFOPLIST_FILE = DemoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1449,6 +1448,7 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Quick",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
+					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
 				);
 				INFOPLIST_FILE = DemoSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -106,6 +106,8 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     case InvalidNonce
     //Max_age expired
     case MaxAgeError
+    //Invalid signature
+    case InvalidSignature
 }
 
 @objc public enum MCLevelOfAssurance : Int

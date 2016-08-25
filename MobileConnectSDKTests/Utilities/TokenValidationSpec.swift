@@ -8,8 +8,19 @@
 
 import Foundation
 import Quick
+import Nimble
+
+private let configurationName : String = "TokenValidationConfiguration"
 
 class TokenValidationSpec : QuickSpec {
+    
 }
 
-class TokenValidation
+class TokenValidationConfiguration : QuickConfiguration {
+    override class func configure(configuration : Configuration)
+    {
+        sharedExamples(configurationName) { (context : SharedExampleContext) in
+            
+        }
+    }
+}

@@ -1,6 +1,3 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
-
 target 'DemoSwift' do
   use_frameworks!
   pod 'JSONModel', '~> 1.2.0'
@@ -25,6 +22,3 @@ target 'MobileConnectSDK' do
   # Pods for MobileConnectSDK
   
 end
-
-
-

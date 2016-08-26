@@ -82,6 +82,11 @@ private let kInvalidKey : String = "Invalid key"
 
 class Localizator: NSObject {
     
+    class var invalidAlgorithm : String
+    {
+        return localized(kKeyAlgorithmNotSupported)
+    }
+    
     //MARK: Exception related strings
     class var requiresAuthorizationConfiguration : String
     {

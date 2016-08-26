@@ -147,11 +147,12 @@ extension MCErrorCode
     
     static private var messages : [String]
     {
-        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.noKeyFound, Localizator.invalidKey]
+        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.invalidKey , Localizator.invalidAlgorithm, Localizator.noKeyFound]
     }
     
     static private var errors : [MCErrorCode]
     {
-        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown, NilMetadataURL, RequiresAuthorizationConfiguration, MCErrorCode.NoTokenID, MCErrorCode.NoValidKeyFound, MCErrorCode.NoValidAlgorithmFound, MCErrorCode.InvalidKey]
+        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown,
+                NilMetadataURL, RequiresAuthorizationConfiguration, MCErrorCode.NoTokenID, MCErrorCode.NoValidKeyFound, MCErrorCode.NoValidAlgorithmFound, MCErrorCode.InvalidKey]
     }
 }

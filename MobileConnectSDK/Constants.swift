@@ -108,6 +108,14 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     case MaxAgeError
     //Invalid signature
     case InvalidSignature
+    
+    case NoTokenID
+    
+    case NoValidKeyFound
+    
+    case NoValidAlgorithmFound
+    
+    case InvalidKey
 }
 
 @objc public enum MCLevelOfAssurance : Int
@@ -139,11 +147,11 @@ extension MCErrorCode
     
     static private var messages : [String]
     {
-        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration]
+        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.noKeyFound, Localizator.invalidKey]
     }
     
     static private var errors : [MCErrorCode]
     {
-        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown, NilMetadataURL, RequiresAuthorizationConfiguration]
+        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown, NilMetadataURL, RequiresAuthorizationConfiguration, MCErrorCode.NoTokenID, MCErrorCode.NoValidKeyFound, MCErrorCode.NoValidAlgorithmFound, MCErrorCode.InvalidKey]
     }
 }

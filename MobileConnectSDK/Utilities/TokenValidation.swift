@@ -10,60 +10,78 @@ import Foundation
 import Alamofire
 import JWTTools
 import Heimdall
-
-class TokenValidation<T:MCModel>: NSObject {
+ 
+class TokenValidation : NSObject {
   
   let configuration: MobileConnectServiceConfiguration
   let model: TokenModel
+  let verifier : JWTManager
   
-  init(configuration: MobileConnectServiceConfiguration, model: TokenModel) {
-    self.configuration = configuration
-    self.model = model
-  }
-  
-    func checkIdTokenIsValid(completionHandler:(NSError?)->Void) {
+  init?(configuration: MobileConnectServiceConfiguration, model: TokenModel) {
+        self.configuration = configuration
+        self.model = model
+    
+        guard let tokenId = model.id_token else
+        {
+            return nil
+        }
+    
+        verifier = JWTManager(JWTTokenString: tokenId)
+    }
+    
+    func checkIdTokenIsValid(completionHandler: (NSError?) -> Void) {
         
         initialCheckTokenIsValid { (error) in
-            if(error != MCErrorCode.NoError.error) {
+            if let error = error
+            {
                 completionHandler(error)
             }
         }
         
-        getPublicKeys { (model, error) in
-            guard let model = model, publicKeys = model.keys else {
-                completionHandler(error)
+        checkIfHasValidKeyWithCompletionHandler(completionHandler)
+    }
+    
+    func checkIfHasValidKeyWithCompletionHandler(completionHandler : (error : NSError?) -> Void)
+    {
+        getValidKeyWithCompletionHandler { (key, error) in
+            
+            guard let key = key else
+            {
+                completionHandler(error: error)
+                
                 return
             }
             
-            let publicKeyModel = publicKeys[0]
-            if let publicKeyModel = publicKeyModel as? PublicKeyModel, id_token = self.model.id_token {
+            self.checkKey(key, withCompletionHandler: completionHandler)
+        }
+    }
+    
+    func checkKey(key : PublicKeyModel, withCompletionHandler completionHandler : (error : NSError?) -> Void)
+    {
+        do
+        {
+            guard let exponent = key.e, modulus = key.n else
+            {
+                completionHandler(error: MCErrorCode.InvalidKey.error)
                 
-                let publicKeyObject = PublicKey(exponentString: publicKeyModel.e!, modulusString: publicKeyModel.n!)
-                
-                let jwtTokenManager = JWTManager(JWTTokenString: id_token)
-                
-                do {
-                    
-                    let verifyResult : Bool = try jwtTokenManager.verifyWithPublicKey(publicKeyObject)
-                    
-                    if(verifyResult) {
-                       return completionHandler(MCErrorCode.NoError.error) 
-                    }
-                    
-                }
-                catch {
-                    completionHandler(MCErrorCode.InvalidSignature.error)
-                }
-                
+                return
             }
+            
+            let validKey : Bool = try self.verifier.verifyWithPublicKey(PublicKey(exponentString: exponent, modulusString: modulus))
+            
+            completionHandler(error: validKey ? nil : MCErrorCode.InvalidKey.error)
+        }
+        catch
+        {
+            completionHandler(error: error as NSError)
         }
     }
     
   
-  func initialCheckTokenIsValid(completion:(NSError)->Void) {
+  func initialCheckTokenIsValid(completion:(NSError?)->Void) {
     
-    if let id_token = model.id_token, decodedTokenDictionary = JWTDecoder(tokenString: id_token).decodedDictionary {
-      
+    if let decodedTokenDictionary = verifier.decoder.decodedDictionary {
+        
       guard let metadata = configuration.metadata else {
         completion(MCErrorCode.MetadataInvalidError.error)
         return
@@ -116,7 +134,7 @@ class TokenValidation<T:MCModel>: NSObject {
       }
       
     }
-    completion(MCErrorCode.NoError.error)
+    completion(nil)
   }
   
   func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?)->Void) {

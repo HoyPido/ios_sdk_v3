@@ -2,13 +2,13 @@
 //  AppDelegate.m
 //  DemoObjectiveC
 //
-//  Created by jenkins on 11/07/2016.
+//  Created by jenkins on 25/08/2016.
 //  Copyright © 2016 GSMA. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "Constants.h"
 
+@import MobileConnectSDK;
 
 @interface AppDelegate ()
 
@@ -19,12 +19,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    [MobileConnectSDK setClientKey:kReferenceClientId];
-    [MobileConnectSDK setClientSecret:kReferenceClientSecret];
-    [MobileConnectSDK setApplicationEndpoint:kReferenceEndpoint];
-    [MobileConnectSDK setRedirect:[NSURL URLWithString:kReferenceURL]];
-    
     return YES;
 }
 

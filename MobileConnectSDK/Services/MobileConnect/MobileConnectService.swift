@@ -73,14 +73,17 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
             return
           }
           
-          let tokenValidator = TokenValidation(configuration: self.configuration, model: model)
+            guard let tokenValidator = TokenValidation(configuration: self.configuration, model: model) else
+            {
+                completionHandler(tokenModel: nil, error: MCErrorCode.NoTokenID.error)
+                
+                return
+            }
           
           tokenValidator.checkIdTokenIsValid({ (error) in
             completionHandler(tokenModel: model, error: error)
           })
-          
       }
-      
     }
     
     //MARK: WebController methods

@@ -1,0 +1,70 @@
+fastlane_version "1.101.0"
+REQUIRED_XCODE_VERSION = "7.3.1"
+default_platform :ios
+
+platform :ios do
+  before_all do
+	verify_xcode_version
+	cocoapods
+  end
+
+  after_all do
+  end
+
+
+  desc "Build, Test & Sonar Analysis using fastlane actions directoy"
+  lane :jenkins do
+   metrics
+  end
+
+  desc "Build, Test & Sonar Analysis using script file (run-sonar-swift.sh)"
+  lane :jenkins_scripted do
+   test
+   sonar_check
+  end
+
+  desc "Build and Test xCode Project"
+  lane :test do
+    scan(
+		scheme: 		"MobileConnectSDK",
+		output_directory: 	"reports",
+		code_coverage:		true
+	) 
+  end
+
+  desc "Run Sonar using script file (run-sonar-swift.sh)"
+  lane :sonar_check do
+	sh "cd .. && ./fastlane/scripts/run-sonar-swift.sh"
+  end
+
+  desc "Run Sonar using fastlane actions directly"
+  lane :metrics do
+    scan(
+		scheme: "MobileConnectSDK", 
+		code_coverage: true, 
+		derived_data_path: "./DerivedData", 
+		output_directory: "./reports"
+	)
+
+    slather(
+		cobertura_xml: true, 	
+		jenkins: true, 
+		scheme: "MobileConnectSDK", 
+		build_directory: "./DerivedData", 
+		output_directory: "./reports", 
+		proj: "MobileConnectSDK.xcodeproj",
+		workspace: "MobileConnectSDK.xcworkspace"
+	)
+
+    sh	("cd .. && lizard . -l swift --xml > ./reports/lizard-report.xml")
+
+    swiftlint(output_file: "./reports/swiftlint.txt", ignore_exit_status: true)
+
+    sonar
+  end
+
+  private_lane :verify_xcode_version do
+    ensure_xcode_version(version: REQUIRED_XCODE_VERSION)
+  end
+
+end

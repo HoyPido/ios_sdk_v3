@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+      
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.00047">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000219">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: Switch to ios verify_xcode_version lane" time="0.00019">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: ensure_xcode_version" time="0.496428">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: cocoapods" time="2.26914">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: cd .. &amp;&amp; ./fastlane/scripts/run-sonar-swift.sh" time="5.074242">
+        
+          <failure message="/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/actions/actions_helper.rb:33:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/fast_file.rb:169:in `sh'&#10;Fastfile:28:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/runner.rb:45:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/runner.rb:45:in `execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/lane_manager.rb:46:in `cruise_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/commands_generator.rb:49:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.4.0/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.4.0/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.4.0/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.4.0/lib/commander/runner.rb:444:in `run_active_command'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane_core-0.50.2/lib/fastlane_core/ui/fastlane_runner.rb:36:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.4.0/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/commands_generator.rb:246:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/commands_generator.rb:20:in `start'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/lib/fastlane/cli_tools_distributor.rb:58:in `take_off'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.101.0/bin/fastlane:5:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Exit status of command 'cd .. &amp;&amp; ./fastlane/scripts/run-sonar-swift.sh' was 70 instead of 0.&#10;Running run-sonar-swift.sh...&#10;.Running testsxcodebuild clean build test -workspace MobileConnectSDK.xcworkspace -scheme MobileConnectSDK -configuration Debug -enableCodeCoverage YES VALID_ARCHS=x86_64&#10;** BUILD FAILED **&#10;&#10;&#10;The following build commands failed:&#10;	Check dependencies&#10;	Check dependencies&#10;(2 failures)&#10;xcodebuild: error: Failed to build workspace MobileConnectSDK with scheme MobileConnectSDK.&#10;	Reason: A build only device cannot be used to run this target.&#10;ERROR - Command 'xcodebuild clean build test -workspace MobileConnectSDK.xcworkspace -scheme MobileConnectSDK -configuration Debug -enableCodeCoverage YES VALID_ARCHS=x86_64' failed with error code: 70&#10;" />
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

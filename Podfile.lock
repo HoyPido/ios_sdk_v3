@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (3.4.1)
+  - JSONModel (1.2.0)
+  - Nimble (4.1.0)
+  - Quick (0.9.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - JSONModel (~> 1.2.0)
+  - Nimble
+  - Quick
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
+  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+
+PODFILE CHECKSUM: 8ca020a6cf98a26fc7382b22cadedec9bc3204cd
+
+COCOAPODS: 1.0.1

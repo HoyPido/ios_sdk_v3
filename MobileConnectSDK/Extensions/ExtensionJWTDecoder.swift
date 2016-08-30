@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import JWTTools
 
 extension JWTDecoder
 {

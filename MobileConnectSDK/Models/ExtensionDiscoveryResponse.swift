@@ -12,7 +12,7 @@ import Alamofire
 extension DiscoveryResponse {
     
     ///In case the passed services argument contains scopes which are not contained in the metadata, the function will return nil
-    func isMobileConnectServiceSupported(services : String) -> Bool?
+    public func isMobileConnectServiceSupported(services : String) -> Bool?
     {
         guard services.characters.count > 0 else
         {

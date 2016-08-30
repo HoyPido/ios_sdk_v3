@@ -84,6 +84,6 @@ class MCRequestConstructor: RequestConstructor {
     
     func tokenRequestAtURL(url : String, withCode code : String) -> Request
     {
-        return requestWithMethod(.POST, url: url, parameters: [kCodeKey : code, kGrantTypeKey : kGrantTypeValue, kRedirectURI : redirectURL.URLString], encoding: ParameterEncoding.URL)
+        return requestWithMethod(.POST, url: url, parameters: [kCodeKey : code, kGrantTypeKey : kGrantTypeValue, kRedirectURI : redirectURL.URLString], encoding: ParameterEncoding.URL, additionalHeaders:  ["Content-Type":"application/x-www-form-urlencoded"])
     }
 }

@@ -40,16 +40,22 @@ class ViewController: UIViewController {
     
     @IBAction func getTokenAction(sender: AnyObject) {
         
-        let manager : MobileConnectManager = MobileConnectManager()
+        let discovery : DSService = DSService()
         
-        if segmentedControl.selectedSegmentIndex == 0
-        {
-            actionWithoutPhoneWithManager(manager)
+        discovery.startOperatorDiscoveryForPhoneNumber("+447700100040", shouldProvideMetadata: true) { (operatorsData, error) in
+            print(operatorsData?.metadata)
         }
-        else
-        {
-            actionWithPhoneAndWithManager(manager)
-        }
+        
+//        let manager : MobileConnectManager = MobileConnectManager()
+//        
+//        if segmentedControl.selectedSegmentIndex == 0
+//        {
+//            actionWithoutPhoneWithManager(manager)
+//        }
+//        else
+//        {
+//            actionWithPhoneAndWithManager(manager)
+//        }
     }
     
     //MARK: To be overriden

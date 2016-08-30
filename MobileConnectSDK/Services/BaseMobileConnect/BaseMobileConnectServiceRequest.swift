@@ -13,7 +13,7 @@ class BaseMobileConnectServiceRequest {
   
   static func callRequest<T : MCModel>(request : Request, forCompletionHandler completionHandler : (model : T?, error : NSError?) -> Void) {
     request.responseJSON { (response : Response<AnyObject, NSError>) in
-      
+        
       self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
     }
   }

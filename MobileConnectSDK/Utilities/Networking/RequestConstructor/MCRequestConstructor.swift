@@ -25,7 +25,6 @@ private let kLoginHintFormat : String = "ENCR_MSISDN:%@"
 private let kCodeKey : String = "code"
 private let kGrantTypeKey : String = "grant_type"
 private let kGrantTypeValue : String = "authorization_code"
-private let kRedirectUri : String = "redirect_uri"
 
 private let kContextKey : String = "context"
 private let kClientNameKey : String = "client_name"

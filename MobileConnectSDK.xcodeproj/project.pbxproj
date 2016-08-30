@@ -105,6 +105,24 @@
 		A6B948A31D5377DD006A8A4E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A6B948A21D5377DD006A8A4E /* .swiftlint.yml */; };
 		A6DD33A11D2FC49B0041FBD9 /* MobileConnectProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */; };
+		A6E6E9E01D75CC3600DD64B3 /* JWTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9DC1D75CC3600DD64B3 /* JWTConstants.swift */; };
+		A6E6E9E11D75CC3600DD64B3 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9DD1D75CC3600DD64B3 /* JWTDecoder.swift */; };
+		A6E6E9E21D75CC3600DD64B3 /* JWTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9DE1D75CC3600DD64B3 /* JWTManager.swift */; };
+		A6E6E9E31D75CC3600DD64B3 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9DF1D75CC3600DD64B3 /* PublicKey.swift */; };
+		A6E6E9E51D75CC4300DD64B3 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9E41D75CC4300DD64B3 /* ExtensionString.swift */; };
+		A6E6E9E81D75CC6100DD64B3 /* DecodedTokenModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6E6E9E61D75CC6100DD64B3 /* DecodedTokenModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6E6E9E91D75CC6100DD64B3 /* DecodedTokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9E71D75CC6100DD64B3 /* DecodedTokenModel.m */; };
+		A6E6E9EB1D75CD1500DD64B3 /* TokenValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9EA1D75CD1500DD64B3 /* TokenValidation.swift */; };
+		A6E6E9ED1D75CD2A00DD64B3 /* ExtensionTokenValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9EC1D75CD2A00DD64B3 /* ExtensionTokenValidation.swift */; };
+		A6E6E9F01D75CD4A00DD64B3 /* PublicKeyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6E6E9EE1D75CD4A00DD64B3 /* PublicKeyModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6E6E9F11D75CD4A00DD64B3 /* PublicKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9EF1D75CD4A00DD64B3 /* PublicKeyModel.m */; };
+		A6E6E9F41D75CD6000DD64B3 /* TokenIdHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F31D75CD6000DD64B3 /* TokenIdHeaderModel.swift */; };
+		A6E6E9F61D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F51D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift */; };
+		A6E6E9FC1D75CDB300DD64B3 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F71D75CDB300DD64B3 /* AuthenticationViewController.swift */; };
+		A6E6E9FD1D75CDB300DD64B3 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F81D75CDB300DD64B3 /* AuthorizationViewController.swift */; };
+		A6E6E9FE1D75CDB300DD64B3 /* BaseInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F91D75CDB300DD64B3 /* BaseInfoPresenter.swift */; };
+		A6E6E9FF1D75CDB300DD64B3 /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9FA1D75CDB300DD64B3 /* IdentityViewController.swift */; };
+		A6E6EA001D75CDB300DD64B3 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9FB1D75CDB300DD64B3 /* TokenInfoViewController.swift */; };
 		A6F34AE71D3CF56000ADF8CF /* operatorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AE61D3CF56000ADF8CF /* operatorData.plist */; };
 		A6F34AEB1D3D2DB500ADF8CF /* testOperatorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AEA1D3D2DB500ADF8CF /* testOperatorData.plist */; };
 		A6F34AED1D3E283300ADF8CF /* operatorDataMobilink.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AEC1D3E283300ADF8CF /* operatorDataMobilink.plist */; };
@@ -114,7 +132,6 @@
 		A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9901D34D56A000F1312 /* ProductType.swift */; };
 		A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */; };
 		A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */; };
-		A6F8D9B81D39088F000F1312 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */; };
 		A6F8D9BB1D390BFE000F1312 /* JWTDecoderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */; };
 /* End PBXBuildFile section */
 
@@ -283,6 +300,24 @@
 		A6B948A21D5377DD006A8A4E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileConnectProduct.h; sourceTree = "<group>"; };
 		A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileConnectProduct.m; sourceTree = "<group>"; };
+		A6E6E9DC1D75CC3600DD64B3 /* JWTConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTConstants.swift; sourceTree = "<group>"; };
+		A6E6E9DD1D75CC3600DD64B3 /* JWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
+		A6E6E9DE1D75CC3600DD64B3 /* JWTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTManager.swift; sourceTree = "<group>"; };
+		A6E6E9DF1D75CC3600DD64B3 /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		A6E6E9E41D75CC4300DD64B3 /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		A6E6E9E61D75CC6100DD64B3 /* DecodedTokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecodedTokenModel.h; sourceTree = "<group>"; };
+		A6E6E9E71D75CC6100DD64B3 /* DecodedTokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecodedTokenModel.m; sourceTree = "<group>"; };
+		A6E6E9EA1D75CD1500DD64B3 /* TokenValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenValidation.swift; sourceTree = "<group>"; };
+		A6E6E9EC1D75CD2A00DD64B3 /* ExtensionTokenValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTokenValidation.swift; sourceTree = "<group>"; };
+		A6E6E9EE1D75CD4A00DD64B3 /* PublicKeyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicKeyModel.h; sourceTree = "<group>"; };
+		A6E6E9EF1D75CD4A00DD64B3 /* PublicKeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicKeyModel.m; sourceTree = "<group>"; };
+		A6E6E9F31D75CD6000DD64B3 /* TokenIdHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenIdHeaderModel.swift; sourceTree = "<group>"; };
+		A6E6E9F51D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionJWTDecoder.swift; sourceTree = "<group>"; };
+		A6E6E9F71D75CDB300DD64B3 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		A6E6E9F81D75CDB300DD64B3 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		A6E6E9F91D75CDB300DD64B3 /* BaseInfoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoPresenter.swift; sourceTree = "<group>"; };
+		A6E6E9FA1D75CDB300DD64B3 /* IdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
+		A6E6E9FB1D75CDB300DD64B3 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
 		A6F34AE61D3CF56000ADF8CF /* operatorData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = operatorData.plist; sourceTree = "<group>"; };
 		A6F34AEA1D3D2DB500ADF8CF /* testOperatorData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testOperatorData.plist; sourceTree = "<group>"; };
 		A6F34AEC1D3E283300ADF8CF /* operatorDataMobilink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = operatorDataMobilink.plist; sourceTree = "<group>"; };
@@ -292,7 +327,6 @@
 		A6F8D9901D34D56A000F1312 /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationConfiguration.swift; sourceTree = "<group>"; };
-		A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
 		A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoderSpec.swift; sourceTree = "<group>"; };
 		B15286BEB32D067DFADBD499 /* Pods_MobileConnectSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileConnectSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2409E5CC1E21A952302B257 /* Pods_MobileConnectSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileConnectSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,9 +397,14 @@
 		3C36B8671D05C15E00A997E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A6E6E9F21D75CD6000DD64B3 /* TokenId */,
 				A6DD339E1D2FC4790041FBD9 /* Enums */,
+				A6E6E9EE1D75CD4A00DD64B3 /* PublicKeyModel.h */,
+				A6E6E9EF1D75CD4A00DD64B3 /* PublicKeyModel.m */,
 				3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */,
 				3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */,
+				A6E6E9E61D75CC6100DD64B3 /* DecodedTokenModel.h */,
+				A6E6E9E71D75CC6100DD64B3 /* DecodedTokenModel.m */,
 				3C401A091D0EB36700F73EA5 /* APISModel.h */,
 				3C401A0A1D0EB36700F73EA5 /* APISModel.m */,
 				3C401A0B1D0EB36700F73EA5 /* AuthorizationModel.h */,
@@ -473,6 +512,8 @@
 		3C72CF3E1D06ACF600A095ED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A6E6E9F51D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift */,
+				A6E6E9E41D75CC4300DD64B3 /* ExtensionString.swift */,
 				3C72CF3F1D06AD1900A095ED /* ExtensionNSException.swift */,
 				3C72CF471D06D84900A095ED /* ExtensionDictionary.swift */,
 				1EF526CE1D367272008C50CC /* ExtensionNSUUID.swift */,
@@ -514,11 +555,13 @@
 		3CD791691D056F2E0023FD0A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A6E6E9EC1D75CD2A00DD64B3 /* ExtensionTokenValidation.swift */,
+				A6E6E9EA1D75CD1500DD64B3 /* TokenValidation.swift */,
+				A6E6E9DB1D75CC2600DD64B3 /* JWTTools */,
 				3C8F38121D086F6F0051BBB1 /* Networking */,
 				3C8F38101D0868ED0051BBB1 /* Resources.swift */,
 				3C72CF161D064BF100A095ED /* Localizator.swift */,
 				3C36EEFF1D09FC3100297A17 /* MobileConnectSDK.swift */,
-				A6F8D9B71D39088F000F1312 /* JWTDecoder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -608,6 +651,11 @@
 			isa = PBXGroup;
 			children = (
 				A63653B11D20367E00A8A6E2 /* AppDelegate.swift */,
+				A6E6E9F71D75CDB300DD64B3 /* AuthenticationViewController.swift */,
+				A6E6E9F81D75CDB300DD64B3 /* AuthorizationViewController.swift */,
+				A6E6E9F91D75CDB300DD64B3 /* BaseInfoPresenter.swift */,
+				A6E6E9FA1D75CDB300DD64B3 /* IdentityViewController.swift */,
+				A6E6E9FB1D75CDB300DD64B3 /* TokenInfoViewController.swift */,
 				A63653B31D20367F00A8A6E2 /* ViewController.swift */,
 				A63653B51D20367F00A8A6E2 /* Main.storyboard */,
 				A63653B81D20367F00A8A6E2 /* Assets.xcassets */,
@@ -685,6 +733,25 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		A6E6E9DB1D75CC2600DD64B3 /* JWTTools */ = {
+			isa = PBXGroup;
+			children = (
+				A6E6E9DC1D75CC3600DD64B3 /* JWTConstants.swift */,
+				A6E6E9DD1D75CC3600DD64B3 /* JWTDecoder.swift */,
+				A6E6E9DE1D75CC3600DD64B3 /* JWTManager.swift */,
+				A6E6E9DF1D75CC3600DD64B3 /* PublicKey.swift */,
+			);
+			path = JWTTools;
+			sourceTree = "<group>";
+		};
+		A6E6E9F21D75CD6000DD64B3 /* TokenId */ = {
+			isa = PBXGroup;
+			children = (
+				A6E6E9F31D75CD6000DD64B3 /* TokenIdHeaderModel.swift */,
+			);
+			path = TokenId;
+			sourceTree = "<group>";
+		};
 		A6F8D99A1D36DD3E000F1312 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,11 +779,13 @@
 				3C401A331D0EB36700F73EA5 /* TokenModel.h in Headers */,
 				A6B5803D1D24304200640E17 /* MetadataModel.h in Headers */,
 				3C401A2B1D0EB36700F73EA5 /* MCModel.h in Headers */,
+				A6E6E9E81D75CC6100DD64B3 /* DecodedTokenModel.h in Headers */,
 				3C401A2F1D0EB36700F73EA5 /* OperatorDataResponse.h in Headers */,
 				3C401A371D0EB43600F73EA5 /* TokenResponseModel.h in Headers */,
 				3C401A311D0EB36700F73EA5 /* OperatorIdModel.h in Headers */,
 				3C401A251D0EB36700F73EA5 /* LinkModel.h in Headers */,
 				3C401A231D0EB36700F73EA5 /* DiscoveryResponse.h in Headers */,
+				A6E6E9F01D75CD4A00DD64B3 /* PublicKeyModel.h in Headers */,
 				3C401A2D1D0EB36700F73EA5 /* OperatorDataRedirectModel.h in Headers */,
 				3C401A211D0EB36700F73EA5 /* AuthorizationModel.h in Headers */,
 				6C4C052E1D632C34008B1AB7 /* AttributeResponseModel.h in Headers */,
@@ -1021,6 +1090,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E6E9ED1D75CD2A00DD64B3 /* ExtensionTokenValidation.swift in Sources */,
+				A6E6E9E91D75CC6100DD64B3 /* DecodedTokenModel.m in Sources */,
 				3C72CF121D0649B700A095ED /* Constants.swift in Sources */,
 				1EF526CF1D367272008C50CC /* ExtensionNSUUID.swift in Sources */,
 				3C401A341D0EB36700F73EA5 /* TokenModel.m in Sources */,
@@ -1031,9 +1102,13 @@
 				A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */,
 				6C4C05291D61CB77008B1AB7 /* AttributeService.swift in Sources */,
 				3C72CF171D064BF100A095ED /* Localizator.swift in Sources */,
+				A6E6E9F11D75CD4A00DD64B3 /* PublicKeyModel.m in Sources */,
+				A6E6E9E31D75CC3600DD64B3 /* PublicKey.swift in Sources */,
+				A6E6E9F61D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift in Sources */,
 				3C7B07F81D3626DA009225AC /* ExtensionMetadataModel.swift in Sources */,
 				3CCA57101D64A846004CE16A /* BaseMobileConnectServiceHelper.swift in Sources */,
 				3C24E7D41D0C323800D7634A /* DSService.swift in Sources */,
+				A6E6E9E21D75CC3600DD64B3 /* JWTManager.swift in Sources */,
 				3C401A221D0EB36700F73EA5 /* AuthorizationModel.m in Sources */,
 				3C401A241D0EB36700F73EA5 /* DiscoveryResponse.m in Sources */,
 				6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */,
@@ -1042,7 +1117,6 @@
 				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
 				A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */,
 				3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */,
-				A6F8D9B81D39088F000F1312 /* JWTDecoder.swift in Sources */,
 				6C4C052B1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift in Sources */,
 				6C4C052F1D632C34008B1AB7 /* AttributeResponseModel.m in Sources */,
 				A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */,
@@ -1053,15 +1127,20 @@
 				3CCA57111D64A846004CE16A /* BaseServiceConfiguration.swift in Sources */,
 				3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */,
 				3C401A2E1D0EB36700F73EA5 /* OperatorDataRedirectModel.m in Sources */,
+				A6E6E9E01D75CC3600DD64B3 /* JWTConstants.swift in Sources */,
 				3C401A301D0EB36700F73EA5 /* OperatorDataResponse.m in Sources */,
 				3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */,
 				3C36EF001D09FC3100297A17 /* MobileConnectSDK.swift in Sources */,
 				3C401A281D0EB36700F73EA5 /* MCError.m in Sources */,
+				A6E6E9F41D75CD6000DD64B3 /* TokenIdHeaderModel.swift in Sources */,
 				3C36EF041D0A19D200297A17 /* MobileConnectService.swift in Sources */,
 				3C36EF061D0A3EFF00297A17 /* MCRequestConstructor.swift in Sources */,
 				3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */,
 				3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */,
 				3C401A201D0EB36700F73EA5 /* APISModel.m in Sources */,
+				A6E6E9EB1D75CD1500DD64B3 /* TokenValidation.swift in Sources */,
+				A6E6E9E11D75CC3600DD64B3 /* JWTDecoder.swift in Sources */,
+				A6E6E9E51D75CC4300DD64B3 /* ExtensionString.swift in Sources */,
 				3C36B8661D05BFE000A997E3 /* MobileConnectManager.swift in Sources */,
 				A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */,
 				A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */,
@@ -1103,9 +1182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E6E9FC1D75CDB300DD64B3 /* AuthenticationViewController.swift in Sources */,
 				A63653B41D20367F00A8A6E2 /* ViewController.swift in Sources */,
 				A63653B21D20367E00A8A6E2 /* AppDelegate.swift in Sources */,
+				A6E6E9FD1D75CDB300DD64B3 /* AuthorizationViewController.swift in Sources */,
+				A6E6EA001D75CDB300DD64B3 /* TokenInfoViewController.swift in Sources */,
 				A6A9808C1D208C8E00E8C664 /* Constants.swift in Sources */,
+				A6E6E9FE1D75CDB300DD64B3 /* BaseInfoPresenter.swift in Sources */,
+				A6E6E9FF1D75CDB300DD64B3 /* IdentityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -60,6 +60,9 @@
 		3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD791731D0571450023FD0A /* MobileConnectButton.swift */; };
 		3CFAB7F71D2C91820002105E /* WebControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F61D2C91820002105E /* WebControllerMock.swift */; };
 		3CFAB7F91D2CF85A0002105E /* metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CFAB7F81D2CF85A0002105E /* metadata.plist */; };
+		6C212A081D6C93F4006A710C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; };
+		6C212A141D6C9431006A710C /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; };
+		6C212A161D6C947E006A710C /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C4C05291D61CB77008B1AB7 /* AttributeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05281D61CB77008B1AB7 /* AttributeService.swift */; };
 		6C4C052B1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */; };
 		6C4C052E1D632C34008B1AB7 /* AttributeResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,11 +116,25 @@
 		A6BA93EB1D6F4D750038EF0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6BA93EA1D6F4D750038EF0B /* Assets.xcassets */; };
 		A6BA93EE1D6F4D750038EF0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BA93EC1D6F4D750038EF0B /* LaunchScreen.storyboard */; };
 		A6BA93F41D6F4D860038EF0B /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BA93F31D6F4D860038EF0B /* Constants.h */; };
+		A6BA93F61D6F4DA50038EF0B /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; };
+		A6BA93F71D6F4DA50038EF0B /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A131D6C9431006A710C /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6BA93F91D6F4DA80038EF0B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; };
+		A6BA93FA1D6F4DA80038EF0B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6BA94031D6F4ECD0038EF0B /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA94021D6F4ECD0038EF0B /* Heimdall.framework */; };
+		A6BA94041D6F4ECD0038EF0B /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA94021D6F4ECD0038EF0B /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6BA940A1D6F4EF00038EF0B /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA94021D6F4ECD0038EF0B /* Heimdall.framework */; };
+		A6BA940B1D6F4EF00038EF0B /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA94021D6F4ECD0038EF0B /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6BA940C1D6F4F3D0038EF0B /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		A6BA940D1D6F4F3D0038EF0B /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6BA94111D704F4E0038EF0B /* ExtensionJWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA94101D704F4E0038EF0B /* ExtensionJWTDecoder.swift */; };
+		A6C46A7F1D7053AF00B347E5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; };
+		A6C46A801D7053B200B347E5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; };
+		A6C46A811D7053B200B347E5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C212A071D6C93F4006A710C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6C46A841D70542A00B347E5 /* TokenIdHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C46A831D70542A00B347E5 /* TokenIdHeaderModel.swift */; };
 		A6C46A861D708ABA00B347E5 /* ExtensionTokenValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C46A851D708ABA00B347E5 /* ExtensionTokenValidation.swift */; };
+		A6C46A8C1D708DFC00B347E5 /* JWTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C46A8B1D708DFC00B347E5 /* JWTTools.framework */; };
+		A6C46A8D1D708E0100B347E5 /* JWTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C46A8B1D708DFC00B347E5 /* JWTTools.framework */; };
+		A6C46A8E1D708E0100B347E5 /* JWTTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6C46A8B1D708DFC00B347E5 /* JWTTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6DD33A11D2FC49B0041FBD9 /* MobileConnectProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DD33A21D2FC49B0041FBD9 /* MobileConnectProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */; };
 		A6F34AE71D3CF56000ADF8CF /* operatorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F34AE61D3CF56000ADF8CF /* operatorData.plist */; };
@@ -130,25 +147,8 @@
 		A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */; };
 		A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */; };
 		A6F8D9BB1D390BFE000F1312 /* JWTDecoderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */; };
-		A6FAC62B1D70AA1000917B55 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC6261D70AA1000917B55 /* AuthenticationViewController.swift */; };
-		A6FAC62C1D70AA1000917B55 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC6271D70AA1000917B55 /* AuthorizationViewController.swift */; };
-		A6FAC62D1D70AA1000917B55 /* BaseInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC6281D70AA1000917B55 /* BaseInfoPresenter.swift */; };
-		A6FAC62E1D70AA1000917B55 /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC6291D70AA1000917B55 /* IdentityViewController.swift */; };
-		A6FAC62F1D70AA1000917B55 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC62A1D70AA1000917B55 /* TokenInfoViewController.swift */; };
-		A6FAC63A1D70ACCF00917B55 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC6391D70ACCF00917B55 /* WebKit.framework */; };
-		A6FAC6431D70AD1200917B55 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63B1D70ACD100917B55 /* Alamofire.framework */; };
-		A6FAC6441D70AD1200917B55 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63B1D70ACD100917B55 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A6FAC6451D70AD1700917B55 /* JWTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC6411D70ACD900917B55 /* JWTTools.framework */; };
-		A6FAC6461D70AD1700917B55 /* JWTTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC6411D70ACD900917B55 /* JWTTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A6FAC6471D70AD1A00917B55 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63F1D70ACD600917B55 /* JSONModel.framework */; };
-		A6FAC6481D70AD1A00917B55 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63F1D70ACD600917B55 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A6FAC6491D70AE4C00917B55 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63B1D70ACD100917B55 /* Alamofire.framework */; };
-		A6FAC64A1D70AE4F00917B55 /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63D1D70ACD400917B55 /* Heimdall.framework */; };
-		A6FAC64B1D70AE5200917B55 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63F1D70ACD600917B55 /* JSONModel.framework */; };
-		A6FAC64C1D70AE5400917B55 /* JWTTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC6411D70ACD900917B55 /* JWTTools.framework */; };
-		A6FAC64D1D70AEA400917B55 /* Heimdall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63D1D70ACD400917B55 /* Heimdall.framework */; };
-		A6FAC64E1D70AEA400917B55 /* Heimdall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6FAC63D1D70ACD400917B55 /* Heimdall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B3B249696105733CB2F856D9 /* Pods_MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2757434975C815C2837A57 /* Pods_MobileConnectSDK.framework */; };
+		F28180CCCDEB570B9BCFF935 /* Pods_MobileConnectSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA240338B1279DC263524C39 /* Pods_MobileConnectSDKTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,10 +202,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A6FAC64E1D70AEA400917B55 /* Heimdall.framework in Embed Frameworks */,
-				A6FAC6481D70AD1A00917B55 /* JSONModel.framework in Embed Frameworks */,
-				A6FAC6461D70AD1700917B55 /* JWTTools.framework in Embed Frameworks */,
-				A6FAC6441D70AD1200917B55 /* Alamofire.framework in Embed Frameworks */,
+				6C212A161D6C947E006A710C /* JSONModel.framework in Embed Frameworks */,
+				A6BA94041D6F4ECD0038EF0B /* Heimdall.framework in Embed Frameworks */,
+				A6C46A8E1D708E0100B347E5 /* JWTTools.framework in Embed Frameworks */,
+				A6C46A811D7053B200B347E5 /* Alamofire.framework in Embed Frameworks */,
 				A6A9809A1D2093A200E8C664 /* MobileConnectSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -217,6 +217,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A6BA93F71D6F4DA50038EF0B /* JSONModel.framework in Embed Frameworks */,
+				A6BA940B1D6F4EF00038EF0B /* Heimdall.framework in Embed Frameworks */,
+				A6BA93FA1D6F4DA80038EF0B /* Alamofire.framework in Embed Frameworks */,
 				A6BA940D1D6F4F3D0038EF0B /* MobileConnectSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -264,6 +267,7 @@
 		3C401A351D0EB43600F73EA5 /* TokenResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenResponseModel.h; sourceTree = "<group>"; };
 		3C401A361D0EB43600F73EA5 /* TokenResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenResponseModel.m; sourceTree = "<group>"; };
 		3C72CF0A1D05F77100A095ED /* WebControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerProtocol.swift; sourceTree = "<group>"; };
+		3C72CF0C1D0606EC00A095ED /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3C72CF111D0649B700A095ED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3C72CF141D064B7500A095ED /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3C72CF161D064BF100A095ED /* Localizator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 		3CFAB7F61D2C91820002105E /* WebControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebControllerMock.swift; sourceTree = "<group>"; };
 		3CFAB7F81D2CF85A0002105E /* metadata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = metadata.plist; sourceTree = "<group>"; };
 		6A2757434975C815C2837A57 /* Pods_MobileConnectSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileConnectSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C212A071D6C93F4006A710C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		6C212A131D6C9431006A710C /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
 		6C4C05281D61CB77008B1AB7 /* AttributeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeService.swift; sourceTree = "<group>"; };
 		6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceRequest.swift; sourceTree = "<group>"; };
 		6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeResponseModel.h; sourceTree = "<group>"; };
@@ -345,9 +351,12 @@
 		A6BA93ED1D6F4D750038EF0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6BA93EF1D6F4D750038EF0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6BA93F31D6F4D860038EF0B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A6BA94021D6F4ECD0038EF0B /* Heimdall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Heimdall.framework; path = "/Users/jenkins/Desktop/sdk/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall/Heimdall.framework"; sourceTree = "<absolute>"; };
 		A6BA94101D704F4E0038EF0B /* ExtensionJWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionJWTDecoder.swift; sourceTree = "<group>"; };
 		A6C46A831D70542A00B347E5 /* TokenIdHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenIdHeaderModel.swift; sourceTree = "<group>"; };
 		A6C46A851D708ABA00B347E5 /* ExtensionTokenValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTokenValidation.swift; sourceTree = "<group>"; };
+		A6C46A871D708D6900B347E5 /* JWTTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTTools.framework; path = "Pods/../build/Debug-iphoneos/JWTTools/JWTTools.framework"; sourceTree = "<group>"; };
+		A6C46A8B1D708DFC00B347E5 /* JWTTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTTools.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/JWTTools/JWTTools.framework"; sourceTree = "<group>"; };
 		A6DD339F1D2FC49B0041FBD9 /* MobileConnectProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileConnectProduct.h; sourceTree = "<group>"; };
 		A6DD33A01D2FC49B0041FBD9 /* MobileConnectProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileConnectProduct.m; sourceTree = "<group>"; };
 		A6F34AE61D3CF56000ADF8CF /* operatorData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = operatorData.plist; sourceTree = "<group>"; };
@@ -360,16 +369,6 @@
 		A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTDecoderSpec.swift; sourceTree = "<group>"; };
-		A6FAC6261D70AA1000917B55 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		A6FAC6271D70AA1000917B55 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
-		A6FAC6281D70AA1000917B55 /* BaseInfoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoPresenter.swift; sourceTree = "<group>"; };
-		A6FAC6291D70AA1000917B55 /* IdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
-		A6FAC62A1D70AA1000917B55 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
-		A6FAC6391D70ACCF00917B55 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		A6FAC63B1D70ACD100917B55 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
-		A6FAC63D1D70ACD400917B55 /* Heimdall.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Heimdall.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Heimdall/Heimdall.framework"; sourceTree = "<group>"; };
-		A6FAC63F1D70ACD600917B55 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel/JSONModel.framework"; sourceTree = "<group>"; };
-		A6FAC6411D70ACD900917B55 /* JWTTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTTools.framework; path = "DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JWTTools/JWTTools.framework"; sourceTree = "<group>"; };
 		AC0AB763998CB98C24645121 /* Pods-MobileConnectSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1305E53A72908350D045A3 /* Pods-MobileConnectSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDK/Pods-MobileConnectSDK.release.xcconfig"; sourceTree = "<group>"; };
 		CB0FC16BA1A925231F319D05 /* Pods-DemoSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoSwift/Pods-DemoSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -377,6 +376,7 @@
 		D708E5FB447240A053E435D2 /* Pods-Demo2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo2/Pods-Demo2.debug.xcconfig"; sourceTree = "<group>"; };
 		E2098210B0070AB58B0E0839 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9CC3F47ED74B4A067C3E818 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		FA240338B1279DC263524C39 /* Pods_MobileConnectSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileConnectSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,11 +384,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6FAC64C1D70AE5400917B55 /* JWTTools.framework in Frameworks */,
-				A6FAC64B1D70AE5200917B55 /* JSONModel.framework in Frameworks */,
-				A6FAC64A1D70AE4F00917B55 /* Heimdall.framework in Frameworks */,
-				A6FAC6491D70AE4C00917B55 /* Alamofire.framework in Frameworks */,
-				A6FAC63A1D70ACCF00917B55 /* WebKit.framework in Frameworks */,
+				A6C46A8C1D708DFC00B347E5 /* JWTTools.framework in Frameworks */,
+				6C212A141D6C9431006A710C /* JSONModel.framework in Frameworks */,
+				6C212A081D6C93F4006A710C /* Alamofire.framework in Frameworks */,
 				B3B249696105733CB2F856D9 /* Pods_MobileConnectSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A63653A51D20366700A8A6E2 /* MobileConnectSDK.framework in Frameworks */,
+				F28180CCCDEB570B9BCFF935 /* Pods_MobileConnectSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,12 +404,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6FAC6471D70AD1A00917B55 /* JSONModel.framework in Frameworks */,
+				A6C46A8D1D708E0100B347E5 /* JWTTools.framework in Frameworks */,
+				A6C46A7F1D7053AF00B347E5 /* Alamofire.framework in Frameworks */,
+				A6C46A801D7053B200B347E5 /* Alamofire.framework in Frameworks */,
 				A6A980991D2093A200E8C664 /* MobileConnectSDK.framework in Frameworks */,
-				A6FAC64D1D70AEA400917B55 /* Heimdall.framework in Frameworks */,
-				A6FAC6451D70AD1700917B55 /* JWTTools.framework in Frameworks */,
+				A6BA94031D6F4ECD0038EF0B /* Heimdall.framework in Frameworks */,
 				087678A0F02E1D1E9CEEE556 /* Pods_DemoSwift.framework in Frameworks */,
-				A6FAC6431D70AD1200917B55 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +418,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6BA940C1D6F4F3D0038EF0B /* MobileConnectSDK.framework in Frameworks */,
+				A6BA940A1D6F4EF00038EF0B /* Heimdall.framework in Frameworks */,
+				A6BA93F61D6F4DA50038EF0B /* JSONModel.framework in Frameworks */,
+				A6BA93F91D6F4DA80038EF0B /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +489,7 @@
 		3C3F82C81D04C7C8006EE8F4 = {
 			isa = PBXGroup;
 			children = (
+				A6BA94021D6F4ECD0038EF0B /* Heimdall.framework */,
 				A6B948A21D5377DD006A8A4E /* .swiftlint.yml */,
 				A63653A11D20366700A8A6E2 /* MobileConnectSDKTests */,
 				A63653B01D20367E00A8A6E2 /* DemoSwift */,
@@ -594,13 +597,14 @@
 		3CD7915C1D04D0E80023FD0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A6FAC6411D70ACD900917B55 /* JWTTools.framework */,
-				A6FAC63F1D70ACD600917B55 /* JSONModel.framework */,
-				A6FAC63D1D70ACD400917B55 /* Heimdall.framework */,
-				A6FAC63B1D70ACD100917B55 /* Alamofire.framework */,
-				A6FAC6391D70ACCF00917B55 /* WebKit.framework */,
+				A6C46A8B1D708DFC00B347E5 /* JWTTools.framework */,
+				A6C46A871D708D6900B347E5 /* JWTTools.framework */,
+				6C212A131D6C9431006A710C /* JSONModel.framework */,
+				6C212A071D6C93F4006A710C /* Alamofire.framework */,
+				3C72CF0C1D0606EC00A095ED /* WebKit.framework */,
 				1A2BC9B5764573057E4D5B68 /* Pods_DemoSwift.framework */,
 				6A2757434975C815C2837A57 /* Pods_MobileConnectSDK.framework */,
+				FA240338B1279DC263524C39 /* Pods_MobileConnectSDKTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -721,11 +725,6 @@
 		A63653B01D20367E00A8A6E2 /* DemoSwift */ = {
 			isa = PBXGroup;
 			children = (
-				A6FAC6261D70AA1000917B55 /* AuthenticationViewController.swift */,
-				A6FAC6271D70AA1000917B55 /* AuthorizationViewController.swift */,
-				A6FAC6281D70AA1000917B55 /* BaseInfoPresenter.swift */,
-				A6FAC6291D70AA1000917B55 /* IdentityViewController.swift */,
-				A6FAC62A1D70AA1000917B55 /* TokenInfoViewController.swift */,
 				A63653B11D20367E00A8A6E2 /* AppDelegate.swift */,
 				A63653B31D20367F00A8A6E2 /* ViewController.swift */,
 				A63653B51D20367F00A8A6E2 /* Main.storyboard */,
@@ -989,7 +988,6 @@
 					};
 					A63653AE1D20367E00A8A6E2 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = GCYT26D724;
 					};
 					A6BA93DB1D6F4D750038EF0B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1283,14 +1281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6FAC62B1D70AA1000917B55 /* AuthenticationViewController.swift in Sources */,
 				A63653B41D20367F00A8A6E2 /* ViewController.swift in Sources */,
 				A63653B21D20367E00A8A6E2 /* AppDelegate.swift in Sources */,
-				A6FAC62C1D70AA1000917B55 /* AuthorizationViewController.swift in Sources */,
-				A6FAC62F1D70AA1000917B55 /* TokenInfoViewController.swift in Sources */,
 				A6A9808C1D208C8E00E8C664 /* Constants.swift in Sources */,
-				A6FAC62D1D70AA1000917B55 /* BaseInfoPresenter.swift in Sources */,
-				A6FAC62E1D70AA1000917B55 /* IdentityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1489,14 +1482,9 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Heimdall",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JWTTools",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Heimdall",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1535,14 +1523,9 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/SwiftyRSA",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Heimdall",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JWTTools",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Heimdall",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel",
 				);
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1617,13 +1600,8 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/JWTTools",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JWTTools",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Heimdall",
 				);
 				INFOPLIST_FILE = DemoSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK.DemoSwift;
@@ -1650,13 +1628,8 @@
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Nimble",
 					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphonesimulator/Heimdall",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/JWTTools",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Alamofire",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JWTTools",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/JSONModel",
-					"$(PROJECT_DIR)/DerivedData/MobileConnectSDK/Build/Products/Debug-iphoneos/Heimdall",
 				);
 				INFOPLIST_FILE = DemoSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK.DemoSwift;

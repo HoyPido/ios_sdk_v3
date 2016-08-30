@@ -18,6 +18,8 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let metadata : MetadataModel?
     let subscriberId : String?
     let scopes : [String]
+    let maxAge = 3600
+    let nonce = NSUUID.randomUUID
     /**
      This constructor may change with addition of new features in future versions.
      It is recommended to use the init with discovery response if possible.

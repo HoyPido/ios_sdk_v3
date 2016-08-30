@@ -87,6 +87,35 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     
     ///In case MobileConnectService tries to access authorization request with incorrect configuration
     case RequiresAuthorizationConfiguration
+    
+    case NoError
+    //Token validation errors
+    //Invalid metadata
+    case MetadataInvalidError
+    //Invalid token
+    case InvalidAccessTokenError
+    //Token expired
+    case TokenExpiredError
+    //Invalid issuer
+    case InvalidIssuerError
+    //Invalid Aud
+    case InvalidAudError
+    //Invalid Azp
+    case InvalidAzpError
+    //Invalid nonce
+    case InvalidNonce
+    //Max_age expired
+    case MaxAgeError
+    //Invalid signature
+    case InvalidSignature
+    
+    case NoTokenID
+    
+    case NoValidKeyFound
+    
+    case NoValidAlgorithmFound
+    
+    case InvalidKey
 }
 
 @objc public enum MCLevelOfAssurance : Int
@@ -118,11 +147,12 @@ extension MCErrorCode
     
     static private var messages : [String]
     {
-        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration]
+        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL,  "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.invalidKey , Localizator.invalidAlgorithm, Localizator.noKeyFound]
     }
     
     static private var errors : [MCErrorCode]
     {
-        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown, NilMetadataURL, RequiresAuthorizationConfiguration]
+        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown,
+                NilMetadataURL, RequiresAuthorizationConfiguration, MCErrorCode.NoTokenID, MCErrorCode.NoValidKeyFound, MCErrorCode.NoValidAlgorithmFound, MCErrorCode.InvalidKey]
     }
 }

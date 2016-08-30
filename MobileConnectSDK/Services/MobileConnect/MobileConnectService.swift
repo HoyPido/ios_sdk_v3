@@ -65,7 +65,25 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     //MARK: Secondary methods
     func getTokenWithCode(code : String, completionHandler : MobileConnectDataResponse)
     {
-        processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.NilCode)], inHandler: completionHandler)
+      
+        processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.NilCode)]) { (model, error) in
+          
+          guard let model = model else {
+            completionHandler(tokenModel: nil, error: error)
+            return
+          }
+          
+            guard let tokenValidator = TokenValidation(configuration: self.configuration, model: model) else
+            {
+                completionHandler(tokenModel: nil, error: MCErrorCode.NoTokenID.error)
+                
+                return
+            }
+          
+          tokenValidator.checkIdTokenIsValid({ (error) in
+            completionHandler(tokenModel: model, error: error)
+          })
+      }
     }
     
     //MARK: WebController methods
@@ -89,4 +107,5 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         
         super.startInHandler(handler, withParameters: localParameters, completionHandler: completionHandler)
     }
+  
 }

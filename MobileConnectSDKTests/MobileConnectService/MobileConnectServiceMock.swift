@@ -22,7 +22,7 @@ class MobileConnectServiceMock: MobileConnectService {
     var error : NSError?
     var response : TokenModel?
     var codeResponse : [NSObject : AnyObject] = Mocker.authenticationCodeResponse
-    var shouldCallSuper : Bool = true
+    var shouldCallSuper : Bool = false
     
     var checksForNilWebController : Bool = false
     

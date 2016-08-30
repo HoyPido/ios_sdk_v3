@@ -46,10 +46,9 @@ class MCRequestConstructor: RequestConstructor {
     
     func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
-        let nonce : String = NSUUID.randomUUID
         let state : String = NSUUID.randomUUID
         
-        var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : nonce]
+        var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : configuration.nonce]
         
         if let subscriberId = subscriberId {
             parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)

@@ -64,7 +64,28 @@ private let kNoScopesMessage : String = "Authorization requests require scopes s
 
 private let kRequiresAuthorizationConfiguration : String = "Using authorization requires initializing mobile connect services with MCAuthorizationConfiguration instead of MobileConnectConfiguration"
 
+private let kNoTokenIdInJWT : String = "There was no token id token response"
+
+//MARK: Token validation errors
+
+private let kInvalidDiscoveryMetadata : String = "Invalid discovery metadata"
+private let kInvalidAccessToken: String = "Invalid access token"
+private let kTokenExpiredError: String = "Token expired"
+private let kInvalidIssuer: String = "Invalid issuer"
+private let kInvalidAud: String = "Invalid aud"
+private let kInvalidAzp: String = "Invalid azp"
+private let kInvalidNonce: String = "Invalid nonce"
+private let kMaxAgeError: String = "Max age outdated"
+private let kNoKeyFound : String = "There is no key with specified id"
+private let kKeyAlgorithmNotSupported : String = "Key Algorithm is Not Supported"
+private let kInvalidKey : String = "Invalid key"
+
 class Localizator: NSObject {
+    
+    class var invalidAlgorithm : String
+    {
+        return localized(kKeyAlgorithmNotSupported)
+    }
     
     //MARK: Exception related strings
     class var requiresAuthorizationConfiguration : String
@@ -173,6 +194,21 @@ class Localizator: NSObject {
     }
     
     //MARK: Error related messages
+    class var invalidKey : String
+    {
+        return localized(kInvalidKey)
+    }
+    
+    class var noKeyFound : String
+    {
+        return localized(kNoKeyFound)
+    }
+    
+    class var noTokenIdInTokenResponse : String
+    {
+        return localized(kNoTokenIdInJWT)
+    }
+    
     class var concurrencyError : String
     {
         return localized(kConcurrencyError)
@@ -255,4 +291,39 @@ class Localizator: NSObject {
     {
         return NSLocalizedString(key, comment: "")
     }
+  
+    //MARK: Token validation error
+  
+    class var invalidDiscoveryMetadata : String {
+      return localized(kInvalidDiscoveryMetadata)
+    }
+    
+    class var invalidAccessToken : String {
+        return localized(kInvalidAccessToken)
+    }
+    
+    class var tokenExpiredError : String {
+        return localized(kTokenExpiredError)
+    }
+    
+    class var invalidIssuer : String {
+        return localized(kInvalidIssuer)
+    }
+    
+    class var invalidAud : String {
+        return localized(kInvalidAud)
+    }
+    
+    class var invalidAzp : String {
+        return localized(kInvalidAzp)
+    }
+    
+    class var invalidNonce : String {
+        return localized(kInvalidNonce)
+    }
+    
+    class var maxAgeError : String {
+        return localized(kMaxAgeError)
+    }
+  
 }

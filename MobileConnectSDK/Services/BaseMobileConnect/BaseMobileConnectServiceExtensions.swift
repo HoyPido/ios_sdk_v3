@@ -57,7 +57,7 @@ extension BaseMobileConnectService : WebControllerDelegate {
     
     let deserializeObject = BaseMobileConnectServiceDeserializer<RedirectModel>(dictionary: parameters)
     
-    deserializeObject!.deserializeModel { (model : RedirectModel?, error : NSError?) in
+    deserializeObject?.deserializeModel { (model : RedirectModel?, error : NSError?) in
       guard let model = model else {
         self.controllerResponse?(controller: self.webController, model: nil, error : error)
         return

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BaseMobileConnectServiceDeserializer<RedirectModel:MCModel>: NSObject {
+class BaseMobileConnectServiceDeserializer<T:MCModel>: NSObject {
   
   let modelDictionary : [NSObject : AnyObject]
   
@@ -20,26 +20,29 @@ class BaseMobileConnectServiceDeserializer<RedirectModel:MCModel>: NSObject {
     }
   }
   
-  func deserializeModel(completionHandler : (model : RedirectModel? , error : NSError?) -> Void) {
-    //if server responds with error, create an NSError instance and send in completion handler
-    if self.modelDictionary.keys.contains({$0 == "error"}) {
-      
-      let errorDescription : String = (self.modelDictionary["error_description"] as? String) ?? (self.modelDictionary["description"] as? String) ?? ""
-      
-      completionHandler(model: nil, error: NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : errorDescription]))
-      return
+    func seriallyDeserializeModel() throws -> T?
+    {
+        if self.modelDictionary.keys.contains({$0 == "error"}) {
+            
+            let errorDescription : String = (self.modelDictionary["error_description"] as? String) ?? (self.modelDictionary["description"] as? String) ?? ""
+            
+            throw NSError(domain: kMobileConnectErrorDomain, code: MCErrorCode.ServerResponse.rawValue, userInfo: [NSLocalizedDescriptionKey : errorDescription])
+        }
+        
+        let model = try T(dictionary: self.modelDictionary)
+
+        return model
     }
     
-    var model : RedirectModel?
-    
-    do {
-      model = try RedirectModel(dictionary: self.modelDictionary)
+  func deserializeModel(completionHandler : (model : T? , error : NSError?) -> Void) {
+    do
+    {
+        completionHandler(model: try seriallyDeserializeModel(), error: nil)
     }
-    catch {
-      completionHandler(model: nil, error: MCErrorCode.SerializationError.error)
+    catch
+    {
+        completionHandler(model: nil, error: error as NSError)
     }
-    
-    completionHandler(model: model, error: nil)
   }
   
 }

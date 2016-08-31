@@ -20,7 +20,7 @@ extension NSException
         checkParameters([clientName], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
     }
     
-    private class func checkAuthorizationProperty(property : String?, withErrorName errorName : String, andErrorMessage errorMessage : String)
+    class func checkAuthorizationProperty(property : String?, withErrorName errorName : String, andErrorMessage errorMessage : String)
     {
         if property == .None
         {

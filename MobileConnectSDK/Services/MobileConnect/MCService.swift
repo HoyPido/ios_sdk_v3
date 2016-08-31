@@ -34,9 +34,13 @@ public class MCService: NSObject {
     //MARK: iVars
     let service : MobileConnectService
     
+    init(service : MobileConnectService) {
+        self.service = service
+    }
+    
     //MARK: init
-    public init(configuration : MobileConnectServiceConfiguration) {
-        service = MobileConnectService(configuration: configuration)
+    public convenience init(configuration : MobileConnectServiceConfiguration) {
+        self.init(service: MobileConnectService(configuration: configuration))
     }
     
     //MARK: Main mobile connect service method

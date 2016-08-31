@@ -77,6 +77,19 @@
 		6C552BF41D81645A00395A4E /* AuthorizationConfigurationParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C552BF21D81645A00395A4E /* AuthorizationConfigurationParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C552BF51D81645A00395A4E /* AuthorizationConfigurationParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C552BF31D81645A00395A4E /* AuthorizationConfigurationParameters.m */; };
 		6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */; };
+		6CB6D4711D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D46F1D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift */; };
+		6CB6D4721D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */; };
+		6CB6D4751D75E8AF009FDD82 /* DSServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4731D75E8AF009FDD82 /* DSServiceMock.swift */; };
+		6CB6D4761D75E8AF009FDD82 /* DSServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4741D75E8AF009FDD82 /* DSServiceSpec.swift */; };
+		6CB6D4791D75E8CD009FDD82 /* MCServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4771D75E8CD009FDD82 /* MCServiceMock.swift */; };
+		6CB6D47A1D75E8CD009FDD82 /* MCServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4781D75E8CD009FDD82 /* MCServiceSpec.swift */; };
+		6CB6D47C1D75E8DE009FDD82 /* DiscoveryDataResponseWithMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CB6D47B1D75E8DE009FDD82 /* DiscoveryDataResponseWithMetadata.plist */; };
+		6CB6D47E1D75E8EA009FDD82 /* publicKeyArrayModel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CB6D47D1D75E8EA009FDD82 /* publicKeyArrayModel.plist */; };
+		6CB6D4811D76CCE4009FDD82 /* TokenValidationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D47F1D76CCE4009FDD82 /* TokenValidationMock.swift */; };
+		6CB6D4821D76CCE4009FDD82 /* TokenValidationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4801D76CCE4009FDD82 /* TokenValidationSpec.swift */; };
+		6CB6D4841D76D1EE009FDD82 /* JWTErrorCodeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4831D76D1EE009FDD82 /* JWTErrorCodeSpec.swift */; };
+		6CB6D4861D76E5D9009FDD82 /* MobileConnectButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4851D76E5D9009FDD82 /* MobileConnectButtonSpec.swift */; };
+		6CB6D4881D76E8F1009FDD82 /* ExtensionNSExceptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4871D76E8F1009FDD82 /* ExtensionNSExceptionSpec.swift */; };
 		A63653A51D20366700A8A6E2 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		A63653B21D20367E00A8A6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63653B11D20367E00A8A6E2 /* AppDelegate.swift */; };
 		A63653B41D20367F00A8A6E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63653B31D20367F00A8A6E2 /* ViewController.swift */; };
@@ -269,6 +282,19 @@
 		6C552BF21D81645A00395A4E /* AuthorizationConfigurationParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationConfigurationParameters.h; sourceTree = "<group>"; };
 		6C552BF31D81645A00395A4E /* AuthorizationConfigurationParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationConfigurationParameters.m; sourceTree = "<group>"; };
 		6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeRequestConstructor.swift; sourceTree = "<group>"; };
+		6CB6D46F1D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceRequestMock.swift; sourceTree = "<group>"; };
+		6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceSpec.swift; sourceTree = "<group>"; };
+		6CB6D4731D75E8AF009FDD82 /* DSServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSServiceMock.swift; sourceTree = "<group>"; };
+		6CB6D4741D75E8AF009FDD82 /* DSServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSServiceSpec.swift; sourceTree = "<group>"; };
+		6CB6D4771D75E8CD009FDD82 /* MCServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCServiceMock.swift; sourceTree = "<group>"; };
+		6CB6D4781D75E8CD009FDD82 /* MCServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCServiceSpec.swift; sourceTree = "<group>"; };
+		6CB6D47B1D75E8DE009FDD82 /* DiscoveryDataResponseWithMetadata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DiscoveryDataResponseWithMetadata.plist; sourceTree = "<group>"; };
+		6CB6D47D1D75E8EA009FDD82 /* publicKeyArrayModel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = publicKeyArrayModel.plist; sourceTree = "<group>"; };
+		6CB6D47F1D76CCE4009FDD82 /* TokenValidationMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenValidationMock.swift; sourceTree = "<group>"; };
+		6CB6D4801D76CCE4009FDD82 /* TokenValidationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenValidationSpec.swift; sourceTree = "<group>"; };
+		6CB6D4831D76D1EE009FDD82 /* JWTErrorCodeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTErrorCodeSpec.swift; sourceTree = "<group>"; };
+		6CB6D4851D76E5D9009FDD82 /* MobileConnectButtonSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectButtonSpec.swift; sourceTree = "<group>"; };
+		6CB6D4871D76E8F1009FDD82 /* ExtensionNSExceptionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNSExceptionSpec.swift; sourceTree = "<group>"; };
 		9E3CD5DF20A238F080243D92 /* Pods-MobileConnectSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileConnectSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileConnectSDKTests/Pods-MobileConnectSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A63653A01D20366700A8A6E2 /* MobileConnectSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileConnectSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63653A41D20366700A8A6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -631,6 +657,8 @@
 			isa = PBXGroup;
 			children = (
 				6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */,
+				6CB6D46F1D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift */,
+				6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */,
 			);
 			path = BaseServiceHelper;
 			sourceTree = "<group>";
@@ -691,6 +719,8 @@
 		A6A980411D203D9E00E8C664 /* DiscoveryService */ = {
 			isa = PBXGroup;
 			children = (
+				6CB6D4731D75E8AF009FDD82 /* DSServiceMock.swift */,
+				6CB6D4741D75E8AF009FDD82 /* DSServiceSpec.swift */,
 				A65D02901D2C09DF002840CC /* DiscoveryServiceSpec.swift */,
 				A65D02941D2C0A64002840CC /* DiscoveryServiceMock.swift */,
 				A65D02B11D2D431F002840CC /* MetadataConfiguration.swift */,
@@ -701,6 +731,8 @@
 		A6A980421D203DB100E8C664 /* MobileConnectService */ = {
 			isa = PBXGroup;
 			children = (
+				6CB6D4771D75E8CD009FDD82 /* MCServiceMock.swift */,
+				6CB6D4781D75E8CD009FDD82 /* MCServiceSpec.swift */,
 				A673B1ED1D3E8AD9008B7F60 /* MobileConnectServiceSpec.swift */,
 				A673B1EF1D3E8C11008B7F60 /* MCRequestConstructorMock.swift */,
 				A673B1F11D3E9833008B7F60 /* MobileConnectServiceMock.swift */,
@@ -712,6 +744,8 @@
 			isa = PBXGroup;
 			children = (
 				6C4C05371D645DFB008B1AB7 /* attributeResponseModel.plist */,
+				6CB6D47B1D75E8DE009FDD82 /* DiscoveryDataResponseWithMetadata.plist */,
+				6CB6D47D1D75E8EA009FDD82 /* publicKeyArrayModel.plist */,
 				3CFAB7F81D2CF85A0002105E /* metadata.plist */,
 				A6A980A21D20A35000E8C664 /* DiscoveryDataResponse.plist */,
 				A6A9809D1D20970200E8C664 /* tokenResponseModel.plist */,
@@ -722,9 +756,13 @@
 		A6A9809F1D20A0FC00E8C664 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6CB6D47F1D76CCE4009FDD82 /* TokenValidationMock.swift */,
+				6CB6D4801D76CCE4009FDD82 /* TokenValidationSpec.swift */,
 				A6A980A01D20A11800E8C664 /* Mocker.swift */,
 				3CFAB7F61D2C91820002105E /* WebControllerMock.swift */,
 				A65D02AF1D2D3B60002840CC /* ExtensionMetadataModel.swift */,
+				6CB6D4851D76E5D9009FDD82 /* MobileConnectButtonSpec.swift */,
+				6CB6D4871D76E8F1009FDD82 /* ExtensionNSExceptionSpec.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -771,6 +809,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F8D9BA1D390BFE000F1312 /* JWTDecoderSpec.swift */,
+				6CB6D4831D76D1EE009FDD82 /* JWTErrorCodeSpec.swift */,
 			);
 			path = JWTDecoder;
 			sourceTree = "<group>";
@@ -935,7 +974,9 @@
 				097E175C1D662845002B23E2 /* attributeResponseModel.plist in Resources */,
 				A6A980A31D20A35000E8C664 /* DiscoveryDataResponse.plist in Resources */,
 				A6A9809E1D20970200E8C664 /* tokenResponseModel.plist in Resources */,
+				6CB6D47C1D75E8DE009FDD82 /* DiscoveryDataResponseWithMetadata.plist in Resources */,
 				3CFAB7F91D2CF85A0002105E /* metadata.plist in Resources */,
+				6CB6D47E1D75E8EA009FDD82 /* publicKeyArrayModel.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,10 +1204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CB6D4881D76E8F1009FDD82 /* ExtensionNSExceptionSpec.swift in Sources */,
 				A6F8D9BB1D390BFE000F1312 /* JWTDecoderSpec.swift in Sources */,
+				6CB6D4791D75E8CD009FDD82 /* MCServiceMock.swift in Sources */,
 				A6A980A51D20A44400E8C664 /* MobileConnectManagerMock.swift in Sources */,
+				6CB6D4861D76E5D9009FDD82 /* MobileConnectButtonSpec.swift in Sources */,
 				6C4C054F1D64C311008B1AB7 /* HelperSpec.swift in Sources */,
 				6C4C05321D634C51008B1AB7 /* AttributeServiceSpec.swift in Sources */,
+				6CB6D4721D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift in Sources */,
+				6CB6D47A1D75E8CD009FDD82 /* MCServiceSpec.swift in Sources */,
 				A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */,
 				A6A980A11D20A11800E8C664 /* Mocker.swift in Sources */,
 				3CFAB7F71D2C91820002105E /* WebControllerMock.swift in Sources */,
@@ -1179,9 +1225,15 @@
 				A6A980771D206B7E00E8C664 /* Constants.swift in Sources */,
 				6C4C05341D63510E008B1AB7 /* AttributeRequestConstructorMock.swift in Sources */,
 				6C4C05361D645AA8008B1AB7 /* AttributeServiceMock.swift in Sources */,
+				6CB6D4811D76CCE4009FDD82 /* TokenValidationMock.swift in Sources */,
+				6CB6D4761D75E8AF009FDD82 /* DSServiceSpec.swift in Sources */,
 				A65D02B01D2D3B60002840CC /* ExtensionMetadataModel.swift in Sources */,
 				A65D02911D2C09DF002840CC /* DiscoveryServiceSpec.swift in Sources */,
+				6CB6D4821D76CCE4009FDD82 /* TokenValidationSpec.swift in Sources */,
+				6CB6D4841D76D1EE009FDD82 /* JWTErrorCodeSpec.swift in Sources */,
+				6CB6D4751D75E8AF009FDD82 /* DSServiceMock.swift in Sources */,
 				A6A980791D206C5800E8C664 /* MobileConnectManagerDelegateMock.swift in Sources */,
+				6CB6D4711D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift in Sources */,
 				A695DE5B1D2AC24300BFD0CB /* MobileConnectManagerConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

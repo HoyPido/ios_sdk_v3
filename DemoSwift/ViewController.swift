@@ -95,6 +95,7 @@ class ViewController: UIViewController {
             controller.dataModel = model
             controller.hasGetIdentity = values.count == kHasGetIdentityCountNumber
         }
+
     }
 }
 

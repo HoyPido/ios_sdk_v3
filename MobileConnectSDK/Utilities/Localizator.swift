@@ -204,6 +204,10 @@ class Localizator: NSObject {
         return localized(kNoKeyFound)
     }
     
+    class var keyAlgorithmNotSupported : String {
+        return localized(kKeyAlgorithmNotSupported)
+    }
+    
     class var noTokenIdInTokenResponse : String
     {
         return localized(kNoTokenIdInJWT)

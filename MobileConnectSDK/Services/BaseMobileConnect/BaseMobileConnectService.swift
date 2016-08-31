@@ -99,8 +99,8 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     func processSpecificRequest<T : MCModel>(request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : (model : T?, error : NSError?) -> Void) {
         startInHandler({
-            
-          BaseMobileConnectServiceRequest.callRequest(request, forCompletionHandler: { (model : T?, error : NSError?) in
+              
+          BaseMobileConnectServiceRequest().callRequest(request, forCompletionHandler: { (model : T?, error : NSError?) in
             self.isAwaitingResponse = false
             localHandler(model: model, error: error)
           })

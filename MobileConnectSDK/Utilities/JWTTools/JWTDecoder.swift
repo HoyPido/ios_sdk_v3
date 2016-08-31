@@ -32,7 +32,7 @@ private let kSignatureComponentIndex : Int = 2
         return deserializeNullableComponentData(decodedValue)
     }
     
-    var decodedHeaderValue : NSData?
+    public var decodedHeaderValue : NSData?
     {
         return decodeComponent(header ?? "")
     }
@@ -42,7 +42,7 @@ private let kSignatureComponentIndex : Int = 2
         return decodeComponent(dataComponent ?? "")
     }
     
-    var message : String?
+    public var message : String?
     {
         guard let header = headerToken else
         {

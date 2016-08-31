@@ -18,7 +18,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let metadata : MetadataModel?
     let subscriberId : String?
     let scopes : [String]
-    let maxAge = 3600
+    var maxAge = 3600
     let nonce = NSUUID.randomUUID
     /**
      This constructor may change with addition of new features in future versions.

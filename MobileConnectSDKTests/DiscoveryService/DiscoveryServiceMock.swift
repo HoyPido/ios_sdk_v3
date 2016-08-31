@@ -64,7 +64,7 @@ class DiscoveryServiceMock: DiscoveryService {
         }
         
         callHandlerWithDelay {
-          BaseMobileConnectServiceRequest.treatResponseCompletionHandler(Alamofire.Response<AnyObject, NSError>(request: nil, response: nil, data: nil,result: result), withClientResponseHandler: localHandler)
+          BaseMobileConnectServiceRequest().treatResponseCompletionHandler(Alamofire.Response<AnyObject, NSError>(request: nil, response: nil, data: nil,result: result), withClientResponseHandler: localHandler)
         }
     }
     

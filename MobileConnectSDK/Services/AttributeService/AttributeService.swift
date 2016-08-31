@@ -13,22 +13,22 @@ public class AttributeService : NSObject {
   
   let requestConstructor : AttributeRequestConstructor
   let tokenResponseModel : TokenResponseModel
-  
+  let connectService : BaseMobileConnectServiceRequest
+    
   public convenience init(tokenResponse : TokenResponseModel)
   {
     self.init(requestConstructor: AttributeRequestConstructor(accessToken: tokenResponse.tokenData?.access_token ?? ""), tokenResponse: tokenResponse)
   }
   
-  init(requestConstructor: AttributeRequestConstructor, tokenResponse : TokenResponseModel) {
+  init(connectService : BaseMobileConnectServiceRequest = BaseMobileConnectServiceRequest(), requestConstructor: AttributeRequestConstructor, tokenResponse : TokenResponseModel) {
     self.tokenResponseModel = tokenResponse
     self.requestConstructor = requestConstructor
+    self.connectService = connectService
   }
   
   public func getAttributeInformation(completionHandler : (responseModel : AttributeResponseModel?, error : NSError?) -> Void) {
-
     let premiumInfoURL : String = tokenResponseModel.discoveryResponse?.premiumInfoEndpoint ?? ""
-    
-    BaseMobileConnectServiceRequest.callRequest(requestConstructor.generatePremiumInfoRequest(premiumInfoURL), forCompletionHandler: completionHandler)
+    self.connectService.callRequest(requestConstructor.generatePremiumInfoRequest(premiumInfoURL), forCompletionHandler: completionHandler)
   }
   
 }

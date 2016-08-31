@@ -104,7 +104,8 @@ class MobileConnectServiceSpec: BaseServiceSpec {
                     (service) -> (controller: UIViewController, completionHandler: MobileConnectControllerResponse) -> Void in
                     
                     service.codeResponse = Mocker.authenticationCodeResponse
-                    service.response = Mocker.tokenResponseModel.tokenData
+                    let tokenModel = Mocker.tokenResponseModel
+                    service.response = tokenModel.tokenData
                     
                     return serviceHandler(service: service)
                 })

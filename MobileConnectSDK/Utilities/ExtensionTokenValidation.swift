@@ -39,7 +39,7 @@ extension TokenValidation
                 return false
             }
             
-            return algorithm == keyAlgorithm
+            return (algorithm == keyAlgorithm || (keyAlgorithm == "RS256" && publicKey.kty == "RSA"))
             }.first
     }
     
@@ -53,7 +53,7 @@ extension TokenValidation
             
             let identifiedKeys : [PublicKeyModel] = self.getKeysWithId(self.verifier.decoder.headerModel?.kid, fromKeys: publicKeys)
             
-            guard identifiedKeys.count == 0 else
+            guard identifiedKeys.count != 0 else
             {
                 handler(key: nil, error: MCErrorCode.NoValidKeyFound.error)
                 

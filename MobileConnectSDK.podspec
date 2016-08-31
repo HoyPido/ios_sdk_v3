@@ -66,6 +66,10 @@ end
 
 spec.subspec 'Utilities' do |utilities|
 
+utilities.subspec 'JWTTools' do |jwttools|
+jwttools.source_files = "MobileConnectSDK/Utilities/JWTTools/*.swift"
+end
+
 utilities.subspec 'Networking' do |networking|
 
 networking.subspec 'RequestConstructor' do |requestConstructor|

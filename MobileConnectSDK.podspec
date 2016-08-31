@@ -43,6 +43,10 @@ end
 
 spec.subspec 'Models' do |models|
 
+models.subspec 'TokenId' do |tokenid|
+tokenid.source_files = 'MobileConnectSDK/Models/Enums/*.*'
+end
+
 models.subspec 'Enums' do |enums|
 enums.source_files = 'MobileConnectSDK/Models/Enums/*.*'
 end

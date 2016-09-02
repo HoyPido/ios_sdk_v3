@@ -34,8 +34,9 @@ class Mocker: NSObject {
         return Mocker.modelWithName(kTokenResponseModelPlistName)
     }()
     
-    static func resetTokenResponseModel() {
+    static func resetModels() {
         tokenResponseModel = Mocker.modelWithName(kTokenResponseModelPlistName)
+        publicKeyModel = Mocker.modelWithName(kPublicKeyModelPlistName)
     }
 
     static var mobileConnectConfiguration : MobileConnectServiceConfiguration = {

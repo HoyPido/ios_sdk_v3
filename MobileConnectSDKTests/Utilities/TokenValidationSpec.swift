@@ -22,6 +22,7 @@ enum ExpectedModel {
     case NullAud
     case InvalidExpiresIn
     case NullClientKey
+    case EmptyKid
 }
 
 class TokenValidationSpec : QuickSpec {
@@ -36,8 +37,10 @@ class TokenValidationSpec : QuickSpec {
             self.initialTokenValidation(withMetadata: true, expectedModel: .NullIssuer)
             self.initialTokenValidation(withMetadata: true, expectedModel: .InvalidExpiresIn)
             self.initialTokenValidation(withMetadata: true, expectedModel: .NullIdToken)
-            self.getKeysWithId()
+            self.getKeysWithId("PHPOP-00")
+            self.getKeysWithId("")
             self.getKeyForAlgorithm("RSA")
+            self.getKeyForAlgorithm("")
             self.getKeyForAlgorithm(nil)
             self.checkKey(false)
         }
@@ -111,6 +114,8 @@ class TokenValidationSpec : QuickSpec {
         let tokenModel = Mocker.tokenResponseModel.tokenData!
         let configuration : MobileConnectServiceConfiguration
         
+        Mocker.resetModels()
+        
         if(withMetadata) {
             configuration = Mocker.mobileConnectConfigurationWithMetadata
         } else {
@@ -131,6 +136,7 @@ class TokenValidationSpec : QuickSpec {
         
         let tokenValidationMock = TokenValidationMock(configuration: configuration, model: tokenModel)!
         
+        
         if(error != nil) {
             tokenValidationMock.error = error
             tokenValidationMock.response = nil
@@ -138,38 +144,92 @@ class TokenValidationSpec : QuickSpec {
             tokenValidationMock.error = nil
             tokenValidationMock.response = Mocker.publicKeyModel
             let key : PublicKeyModel = Mocker.publicKeyModel.keys![0] as! PublicKeyModel
-            key.kid = ""
+            if expectedModel == .EmptyKid {
+                key.kid = nil
+            }
         }
         
         return tokenValidationMock
     }
+
     
-    func getKeysWithId() {
-        let keyId = "PHPOP-00"
-        let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
+    
+    func getKeysWithId(keyId : String) {
         
-        if let publicKey = keysArray.keys?[0] {
-            let keys = getTokenValidationMock(true, expectedModel: .NoChange).getKeysWithId(keyId, fromKeys: [publicKey as! PublicKeyModel])
-            it("should have no elements", closure: {
-                expect(keys.count).to(be(0))
-            })
+        var tokenValidationMock : TokenValidationMock
+        
+        if(keyId == "") {
+            tokenValidationMock = getTokenValidationMock(true, expectedModel: .EmptyKid)
+        } else {
+            tokenValidationMock = getTokenValidationMock(true, expectedModel: .NoChange)
+        }
+        
+        let keysArray = tokenValidationMock.response
+        
+        if let publicKey = keysArray!.keys?[0] {
+            let keys = tokenValidationMock.getKeysWithId(keyId, fromKeys: [publicKey as! PublicKeyModel])
+            if(keyId != "") {
+                it("should have elements", closure: {
+                    expect(keys.count).to(be(1))
+                })
+            } else {
+                it("should have no elements", closure: {
+                    expect(keys.count).to(be(0))
+                })
+            }
         }
     }
     
+    
+    
+//    func getKeysWithId(keyId : String) {
+//        let keyId = keyId
+//        let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
+//        
+//        if let publicKey = keysArray.keys?[0] {
+//            let keys = getTokenValidationMock(true, expectedModel: .NoChange).getKeysWithId(keyId, fromKeys: [publicKey as! PublicKeyModel])
+//            //print((publicKey.kid ) + " ----  " + keyId + "/n")
+//            if(keyId != "") {
+//                it("should have elements", closure: {
+//                    expect(keys.count).to(be(1))
+//                })
+//            } else {
+//                it("should have no elements", closure: {
+//                    expect(keys.count).to(be(0))
+//                })
+//            }
+//            
+//            getTokenValidationMock(true, expectedModel: .EmptyKid).getKeysWithId(keyId, fromKeys: [publicKey as! PublicKeyModel])
+//        }
+//    }
+    
     func getKeyForAlgorithm(algorithm : String?) {
         let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
-        if let publicKey = keysArray.keys?[0] {
+        
+        let publicKey : PublicKeyModel = keysArray.keys![0] as! PublicKeyModel
+        //if let publicKey = keysArray.keys?[0] {
+            if(algorithm == "") {
+                publicKey.kty = nil
+            }
+            
             let key = getTokenValidationMock(true, expectedModel: .NoChange).getKeyForAlgorithm(algorithm, fromKeys: [publicKey as! PublicKeyModel])
+        
             if(algorithm != nil) {
-                it("should have a key with algorithm", closure: {
-                    expect(key).notTo(beNil())
-                })
+                if(publicKey.kty != nil) {
+                    it("should have a key with algorithm", closure: {
+                        expect(key).notTo(beNil())
+                    })
+                } else {
+                    it("should have no key with algorithm", closure: {
+                        expect(key).to(beNil())
+                    })
+                }
             } else {
                 it("should have no key with algorithm", closure: {
                     expect(key).to(beNil())
                 })
             }
-        }
+        //}
         
     }
     
@@ -177,15 +237,25 @@ class TokenValidationSpec : QuickSpec {
         let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
         
         let publicKey : PublicKeyModel = keysArray.keys![0] as! PublicKeyModel
-            if(withError) {
-                publicKey.e = nil
-                publicKey.n = nil
-            }
-            getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
-                it("should have error", closure: { 
-                    expect(error).notTo(beNil())
-                })
+        if(withError) {
+            publicKey.e = nil
+            publicKey.n = nil
+        }
+        getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
+            it("should have error", closure: {
+                expect(error).notTo(beNil())
             })
+        })
+        
+        publicKey.e = ""
+        publicKey.n = "0"
+        
+        //de revizuit
+        getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
+            it("should have error", closure: {
+                expect(error).notTo(beNil())
+            })
+        })
 
     }
     

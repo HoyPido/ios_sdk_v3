@@ -24,6 +24,13 @@ class BaseMobileConnectServiceSpec : BaseServiceSpec {
         describe("Check base mobile connect extension") { 
             self.checkKeyValueFromString()
         }
+        
+        describe("Check base mobile connect functions") {
+            self.checkParametersAreValid()
+            self.presentWebControllerCheck()
+            BaseMobileConnectService().didReceiveResponseFromController(nil, withRedirectModel: nil, error: nil)
+            self.startInHandlerFunction()
+        }
     }
     
     func checkKeyValueFromString() {
@@ -41,5 +48,41 @@ class BaseMobileConnectServiceSpec : BaseServiceSpec {
             
         }
     }
+    
+    func checkParametersAreValid() {
+        waitUntil { (done:() -> Void) in
+            BaseMobileConnectService().parametersAreValid([(nil,MCErrorCode.Unknown)], completionHandler: { (error) in
+                it("should have error", closure: {
+                    expect(error).notTo(beNil())
+                })
+                done()
+            })
+        }
+    }
+    
+    func presentWebControllerCheck() {
+        waitUntil { (done:() -> Void) in
+            BaseMobileConnectService().presentWebControllerWithRequest(nil, inController: UIViewController(), errorHandler: { (error) in
+                it("should have error", closure: {
+                    expect(error).notTo(beNil())
+                })
+                done()
+            })
+        }
+    }
+    
+    func startInHandlerFunction() {
+        waitUntil { (done:() -> Void) in
+            BaseMobileConnectService().startInHandler({
+                
+                }, withParameters: [(nil, MCErrorCode.Unknown)], completionHandler: { (error) in
+                    it("should have error", closure: {
+                        expect(error).notTo(beNil())
+                    })
+                    done()
+            })
+        }
+    }
+
     
 }

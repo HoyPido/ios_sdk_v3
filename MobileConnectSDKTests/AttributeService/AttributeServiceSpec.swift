@@ -48,7 +48,7 @@ class AttributeServiceSpec : BaseServiceSpec {
             tokenResponseModel.tokenData = nil
             expect(AttributeService(tokenResponse: tokenResponseModel)).toNot(beNil())
         })
-        Mocker.resetTokenResponseModel()
+        Mocker.resetModels()
     })
   }
   

@@ -39,7 +39,7 @@ extension TokenValidation
                 return false
             }
             
-            return (algorithm == keyAlgorithm || (keyAlgorithm == "RS256" && publicKey.kty == "RSA"))
+            return (algorithm == keyAlgorithm || (algorithm == "RS256" && publicKey.kty == "RSA"))
             }.first
     }
     

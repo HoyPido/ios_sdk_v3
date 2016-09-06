@@ -10,7 +10,7 @@ import Foundation
 
 extension JWTDecoder
 {
-    public var headerModel : TokenIdHeaderModel?
+    var headerModel : TokenIdHeaderModel?
     {
         guard let deserializer = BaseMobileConnectServiceDeserializer<TokenIdHeaderModel>(dictionary: decodedHeader) else
         {

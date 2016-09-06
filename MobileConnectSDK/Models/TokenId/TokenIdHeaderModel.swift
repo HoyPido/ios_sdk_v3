@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TokenIdHeaderModel : MCModel
+class TokenIdHeaderModel : MCModel
 {
     var kid : String?
     var alg : String?

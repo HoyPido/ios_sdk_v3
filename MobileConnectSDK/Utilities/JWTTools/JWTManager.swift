@@ -21,7 +21,7 @@ public class JWTManager : NSObject
         super.init()
     }
     
-    public func verifyWithPublicKey(publicKey : PublicKey) throws -> Bool
+    func verifyWithPublicKey(publicKey : PublicKey) throws -> Bool
     {
         guard let modulusData = publicKey.modulusData, exponentData = publicKey.exponentData else
         {

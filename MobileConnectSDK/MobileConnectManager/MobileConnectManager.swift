@@ -173,6 +173,24 @@ public class MobileConnectManager: NSObject {
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes, config: config,  completionHandler: completionHandler)
     }
+    
+    
+    public func getAttributeServiceResponseWithPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ) {
+        
+        getAuthorizationTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withScopes: scopes, context: context, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+            guard let tokenResponseModel = tokenResponseModel  else {
+                completionHandler(response: nil, error: error)
+                return
+            }
+            
+            let attributeService = AttributeService(tokenResponse: tokenResponseModel)
+            
+            attributeService.getAttributeInformation({ (responseModel, error) in
+                completionHandler(response: responseModel, error: error)
+            })
+        }
+    }
+    
   
     public func getAttributeServiceResponse(controller: UIViewController, context : String, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){
         

@@ -12,7 +12,6 @@ class IdentityViewController: BaseInfoPresenter {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +20,6 @@ class IdentityViewController: BaseInfoPresenter {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

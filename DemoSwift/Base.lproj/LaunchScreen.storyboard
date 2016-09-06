@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,14 +15,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile_connect_title" translatesAutoresizingMaskIntoConstraints="NO" id="NC9-wm-RKK">
+                                <rect key="frame" x="34" y="189" width="252" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="3ol-de-byL"/>
+                                    <constraint firstAttribute="width" constant="252" id="UGL-mQ-C5O"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NC9-wm-RKK" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="169" id="JwA-ua-E8r"/>
+                            <constraint firstItem="NC9-wm-RKK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KIw-U4-Urm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NC9-wm-RKK" secondAttribute="trailing" constant="-4" id="O17-pK-BeF"/>
+                            <constraint firstItem="NC9-wm-RKK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ibR-SJ-C7C"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="O17-pK-BeF"/>
+                                <exclude reference="ibR-SJ-C7C"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mobile_connect_title" width="227" height="110"/>
+    </resources>
 </document>

@@ -22,7 +22,7 @@
 @property (nullable) NSString *national_identifier;
 @property (nullable) NSString *phone_number;
 @property (nullable) AddressModel *address;
-@property (nullable) NSDate *birthdate;
+@property (nullable) NSString *birthdate;
 
 @end
 

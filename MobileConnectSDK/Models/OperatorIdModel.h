@@ -21,6 +21,5 @@
 - (nullable NSString*)premiumInfo;
 - (nullable NSString*)tokenRevocation;
 - (nullable NSString*)JSONWebTokenValidation;
-- (nullable NSString*)applicationShortName;
 
 @end

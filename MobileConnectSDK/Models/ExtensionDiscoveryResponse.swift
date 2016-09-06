@@ -52,6 +52,6 @@ extension DiscoveryResponse {
     
     public var applicationShortName : String?
     {
-        return response?.apis?.operatorid?.applicationShortName()
+        return response?.applicationShortName
     }
 }

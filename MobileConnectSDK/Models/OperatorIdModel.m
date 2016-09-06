@@ -16,7 +16,6 @@
 #define kPremiumInfo @"premiuminfo"
 #define kTokenRevoke @"tokenrevoke"
 #define kJSONValidation @"jwks"
-#define kApplicationShortName @"applicationShortName"
 
 @implementation OperatorIdModel
 
@@ -58,11 +57,6 @@
 - (nullable NSString*)JSONWebTokenValidation
 {
     return [self linkForParameter:kJSONValidation];
-}
-
-- (nullable NSString*)applicationShortName
-{
-    return [self linkForParameter:kApplicationShortName];
 }
 
 - (nullable NSString*)linkForParameter:(NSString*)parameter

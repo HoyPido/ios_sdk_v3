@@ -44,17 +44,25 @@ private let kSignatureComponentIndex : Int = 2
     
     var message : String?
     {
-        guard let header = header else
+        guard let header = headerToken else
         {
             return nil
         }
         
-        guard let dataComponent = dataComponent else
+        guard let dataComponent = dataComponentToken else
         {
             return nil
         }
         
         return header + "." + dataComponent
+    }
+    
+    var headerToken : String? {
+        return componentAtIndex(kHeaderComponentIndex)
+    }
+    
+    var dataComponentToken : String? {
+        return componentAtIndex(kDataComponentIndex)
     }
     
     var header : String?

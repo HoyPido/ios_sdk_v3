@@ -10,11 +10,11 @@ import Foundation
 import Heimdall
 
 
-public class JWTManager : NSObject
+class JWTManager : NSObject
 {
-    public let decoder : JWTDecoder
+    let decoder : JWTDecoder
     
-    public init(JWTTokenString : String) {
+    init(JWTTokenString : String) {
         
         decoder = JWTDecoder(tokenString: JWTTokenString)
 
@@ -23,7 +23,7 @@ public class JWTManager : NSObject
     
     func verifyWithPublicKey(publicKey : PublicKey) throws -> Bool
     {
-        guard let modulusData = publicKey.modulusData, exponentData = publicKey.exponentData else
+        guard let modulusData = publicKey.modulusData, exponentData = publicKey.exponentData  where publicKey.modulus != "" else
         {
             throw JWTErrorCode.InvalidPublicKey.error
         }

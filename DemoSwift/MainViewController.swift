@@ -11,9 +11,9 @@ import UIKit
 class MainViewController : UIViewController {
     @IBOutlet weak var tableView : UITableView!
     
-    let availablSections = ["Authorization", "Authentication", "Identity - SignUp", "Identity - NationalID", "Identity - PhoneNumber"]
+    let availablSections = ["Authentication", "Authorisation", "Identity - SignUp", "Identity - NationalID", "Identity - PhoneNumber"]
     
-    let availableSegue = ["showAuthz", "showAuthe", "showIdentitySignUp", "showIdentityNationalId", "showIdentityPhoneNumber"]
+    let availableSegue = ["showAuthe", "showAuthz", "showIdentitySignUp", "showIdentityNationalId", "showIdentityPhoneNumber"]
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true

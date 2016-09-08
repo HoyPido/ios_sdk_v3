@@ -21,6 +21,8 @@ private let kState : String = "state"
 private let kNonce : String = "nonce"
 private let kLoginHint : String = "login_hint"
 private let kLoginHintFormat : String = "ENCR_MSISDN:%@"
+private let kLoginHintFormatPCR : String = "PCR:%@"
+private let kLoginHintFormatMSISDN : String = "MSISDN:%@"
 
 private let kCodeKey : String = "code"
 private let kGrantTypeKey : String = "grant_type"
@@ -28,6 +30,14 @@ private let kGrantTypeValue : String = "authorization_code"
 
 private let kContextKey : String = "context"
 private let kClientNameKey : String = "client_name"
+
+private let kVersionKey : String = "version"
+private let kUILocaleKey : String = "ui_locales"
+private let kPromptKey : String = "prompt"
+private let kIdTokenHintKey : String = "id_token_hint"
+private let kLoginHintTokenKey : String = "login_hint_token"
+private let kResponseModeKey : String = "response_mode"
+private let kClaimsKey : String = "claims"
 
 class MCRequestConstructor: RequestConstructor {
     
@@ -43,7 +53,7 @@ class MCRequestConstructor: RequestConstructor {
         super.init(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], url : String, clientName : String? = nil, context : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
+    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], config : AuthorizationConfigurationParameters? = nil, url : String, clientName : String? = nil, context : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
         let state : String = NSUUID.randomUUID
         
@@ -56,6 +66,47 @@ class MCRequestConstructor: RequestConstructor {
         if let clientName = clientName
         {
             parameters[kClientNameKey] = clientName
+        }
+        
+        if let config = config {
+            if let version = config.version {
+                parameters[kVersionKey] = version
+            }
+            
+            if let prompt = config.prompt {
+                parameters[kPromptKey] = prompt
+            }
+            
+            if let uiLocale = config.ui_locales {
+                parameters[kUILocaleKey] = uiLocale
+            }
+            
+            if let idTokenHint = config.id_token_hint {
+                parameters[kIdTokenHintKey] = idTokenHint
+            }
+            
+            if let loginHintToken = config.login_hint_token {
+                parameters[kLoginHintTokenKey] = loginHintToken
+            }
+            
+            if let response = config.response_mode {
+                parameters[kResponseModeKey] = response
+            }
+            
+            if let claims = config.claims {
+                parameters[kClaimsKey] = claims
+            }
+            
+            if let subscriberId = subscriberId {
+                if(config.loginHint == .MSISDN) {
+                    parameters[kLoginHint] = String(format: kLoginHintFormatMSISDN, subscriberId)
+                } else if(config.loginHint == .MSISDNEncrypted) {
+                    parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
+                } else {
+                    parameters[kLoginHint] = String(format: kLoginHintFormatPCR, subscriberId)
+                }
+            }
+            
         }
         
         if let context = context
@@ -76,7 +127,7 @@ class MCRequestConstructor: RequestConstructor {
     {
         if let configuration = configuration as? MCAuthorizationConfiguration
         {
-            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, shouldNotStartImmediately : true)
+            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, config: configuration.config, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, shouldNotStartImmediately : true)
         }
         
         return nil

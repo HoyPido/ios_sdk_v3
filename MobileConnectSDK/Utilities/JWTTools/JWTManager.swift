@@ -23,7 +23,7 @@ class JWTManager : NSObject
     
     func verifyWithPublicKey(publicKey : PublicKey) throws -> Bool
     {
-        guard let modulusData = publicKey.modulusData, exponentData = publicKey.exponentData  where publicKey.modulus != "" else
+        guard let modulusData = publicKey.modulusData, exponentData = publicKey.exponentData  where publicKey.modulus != "" && publicKey.exponent != "" else
         {
             throw JWTErrorCode.InvalidPublicKey.error
         }

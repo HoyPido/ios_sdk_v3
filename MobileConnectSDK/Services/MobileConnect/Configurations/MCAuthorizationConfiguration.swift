@@ -15,6 +15,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
     let clientName : String //aka application short name from discovery response
     let context : String //context value required while authorizing
     let bindingMessage : String?
+    let config : AuthorizationConfigurationParameters?
     
     public init(clientKey: String,
          clientSecret: String,
@@ -26,7 +27,8 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          authorizationScopes : [String],
          clientName : String,
          context : String,
-         bindingMessage : String?)
+         bindingMessage : String?,
+         config : AuthorizationConfigurationParameters?)
     {
         NSException.checkClientName(clientName)
         NSException.checkContext(context)
@@ -34,6 +36,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.bindingMessage = bindingMessage
         self.clientName = clientName
         self.context = context
+        self.config = config
         
         let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
         
@@ -51,21 +54,23 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                             assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
                             context : String,
                             bindingMessage : String?,
-                            authorizationScopes : [ProductType])
+                            authorizationScopes : [ProductType],
+                            config : AuthorizationConfigurationParameters?)
     {
         self.init(discoveryResponse : discoveryResponse,
                   assuranceLevel: assuranceLevel,
                   context:  context,
                   bindingMessage: bindingMessage,
-                  stringAuthorizationScopes: authorizationScopes.map({$0.stringValue})
-        )
+                  stringAuthorizationScopes: authorizationScopes.map({$0.stringValue}),
+                  config: config)
     }
     
     convenience public init(discoveryResponse : DiscoveryResponse,
          assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
          context : String,
          bindingMessage : String?,
-         stringAuthorizationScopes : [String])
+         stringAuthorizationScopes : [String],
+         config : AuthorizationConfigurationParameters?)
     {
         let localClientName : String = discoveryResponse.applicationShortName ?? ""
         
@@ -91,6 +96,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   authorizationScopes : stringAuthorizationScopes,
                   clientName : localClientName,
                   context : context,
-                  bindingMessage: bindingMessage)
+                  bindingMessage: bindingMessage,
+                  config: config)
     }
 }

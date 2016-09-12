@@ -171,7 +171,7 @@ public class MobileConnectManager: NSObject {
      */
     public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes,  completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes, config: config,  completionHandler: completionHandler)
     }
   
     public func getAttributeServiceResponse(controller: UIViewController, context : String, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){

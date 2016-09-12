@@ -39,6 +39,7 @@ private let kIdTokenHintKey : String = "id_token_hint"
 private let kLoginHintTokenKey : String = "login_hint_token"
 private let kResponseModeKey : String = "response_mode"
 private let kClaimsKey : String = "claims"
+private let kMaxAgeKey : String = "max_age"
 
 class MCRequestConstructor: RequestConstructor {
     
@@ -96,6 +97,10 @@ class MCRequestConstructor: RequestConstructor {
             
             if let claims = config.claims {
                 parameters[kClaimsKey] = claims
+            }
+            
+            if let maxAge = config.max_age {
+                parameters[kMaxAgeKey] = maxAge
             }
             
             if let subscriberId = subscriberId {

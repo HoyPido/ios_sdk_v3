@@ -29,6 +29,7 @@ private let kGrantTypeKey : String = "grant_type"
 private let kGrantTypeValue : String = "authorization_code"
 
 private let kContextKey : String = "context"
+private let kBindingMessageKey : String = "binding_message"
 private let kClientNameKey : String = "client_name"
 
 private let kVersionKey : String = "version"
@@ -53,7 +54,7 @@ class MCRequestConstructor: RequestConstructor {
         super.init(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], config : AuthorizationConfigurationParameters? = nil, url : String, clientName : String? = nil, context : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
+    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], config : AuthorizationConfigurationParameters? = nil, url : String, clientName : String? = nil, context : String? = nil, bindingMessage : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
         let state : String = NSUUID.randomUUID
         
@@ -114,6 +115,10 @@ class MCRequestConstructor: RequestConstructor {
             parameters[kContextKey] = context
         }
         
+        if let bindingMessage = bindingMessage {
+            parameters[kBindingMessageKey] = bindingMessage
+        }
+        
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
     }
     
@@ -127,7 +132,7 @@ class MCRequestConstructor: RequestConstructor {
     {
         if let configuration = configuration as? MCAuthorizationConfiguration
         {
-            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, config: configuration.config, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, shouldNotStartImmediately : true)
+            return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, config: configuration.config, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, bindingMessage: configuration.bindingMessage, shouldNotStartImmediately : true)
         }
         
         return nil

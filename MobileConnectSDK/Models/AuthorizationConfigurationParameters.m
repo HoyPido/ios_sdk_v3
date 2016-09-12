@@ -14,7 +14,7 @@
 /**
  Initialize object with login_hint parameter
  */
-- (id)initWithLoginHint:(MCLoginHint)loginHint version:(nullable NSString*)version prompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims {
+- (id)initWithLoginHint:(MCLoginHint)loginHint version:(nullable NSString*)version prompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims maxAge:(nullable NSString*)maxAge {
     
     self = [super init];
     if(self) {
@@ -26,6 +26,7 @@
         self.login_hint_token = loginHintToken;
         self.claims = claims;
         self.loginHint = loginHint;
+        self.max_age = maxAge;
     }
     
     return self;
@@ -34,8 +35,8 @@
 /**
 Initialize object with default login_hint
  */
--(id)initWithVersion:(NSString *)version prompt:(NSString *)prompt uiLocale:(NSString *)uiLocale idTokenHint:(NSString *)idTokenHint loginHintToken:(NSString *)loginHintToken responseMode:(NSString *)responseMode claims:(NSString *)claims {
-    self = [self initWithLoginHint:MSISDNEncrypted version:version prompt:prompt uiLocale:uiLocale idTokenHint:idTokenHint loginHintToken:loginHintToken responseMode:responseMode claims:claims];
+-(id)initWithVersion:(NSString *)version prompt:(NSString *)prompt uiLocale:(NSString *)uiLocale idTokenHint:(NSString *)idTokenHint loginHintToken:(NSString *)loginHintToken responseMode:(NSString *)responseMode claims:(NSString *)claims maxAge:(nullable NSString*)maxAge {
+    self = [self initWithLoginHint:MSISDNEncrypted version:version prompt:prompt uiLocale:uiLocale idTokenHint:idTokenHint loginHintToken:loginHintToken responseMode:responseMode claims:claims maxAge:maxAge];
     return self;
 }
 

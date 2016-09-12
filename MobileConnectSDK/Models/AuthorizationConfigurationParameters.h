@@ -23,10 +23,11 @@ typedef NS_ENUM(NSInteger, MCLoginHint) {
 @property (nullable) NSString* login_hint_token;
 @property (nullable) NSString* response_mode;
 @property (nullable) NSString* claims;
+@property (nullable) NSString* max_age;
 @property MCLoginHint loginHint;
 
-- (id)initWithLoginHint:(MCLoginHint)loginHint version:(nullable NSString*)version prompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims;
+- (id)initWithLoginHint:(MCLoginHint)loginHint version:(nullable NSString*)version prompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims maxAge:(nullable NSString*)maxAge;
 
-- (id)initWithVersion:(nullable NSString*)version prompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims;
+- (id)initWithVersion:(nullable NSString*)version prompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims maxAge:(nullable NSString*)maxAge;
 
 @end

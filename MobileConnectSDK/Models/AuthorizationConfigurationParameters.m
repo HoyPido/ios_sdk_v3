@@ -21,6 +21,7 @@
         self.version = version;
         self.prompt = prompt;
         self.ui_locales = uiLocale;
+        self.id_token_hint = idTokenHint;
         self.response_mode = responseMode;
         self.login_hint_token = loginHintToken;
         self.claims = claims;

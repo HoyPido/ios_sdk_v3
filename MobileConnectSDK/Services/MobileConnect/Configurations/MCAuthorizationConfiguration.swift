@@ -99,4 +99,38 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   bindingMessage: bindingMessage,
                   config: config)
     }
+    
+    public func isLoginHintMSISDNSupported() -> Bool {
+        if let metadata = metadata {
+            if let methodSupported = metadata.login_hint_methods_supported {
+                if methodSupported.contains("MSISDN") {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    public func isLoginHintEncryptedMSISDNSupported() -> Bool {
+        if let metadata = metadata {
+            if let methodSupported = metadata.login_hint_methods_supported {
+                if methodSupported.contains("ENCR_MSISDN") {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    public func isLoginHintPCRSupported() -> Bool {
+        if let metadata = metadata {
+            if let methodSupported = metadata.login_hint_methods_supported {
+                if methodSupported.contains("PCR") {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
 }

@@ -88,7 +88,9 @@ class MCRequestConstructor: RequestConstructor {
             }
             
             if let loginHintToken = config.login_hint_token {
-                parameters[kLoginHintTokenKey] = loginHintToken
+                if checkLoginHint(loginHintToken) {
+                    parameters[kLoginHintTokenKey] = loginHintToken
+                }
             }
             
             if let response = config.response_mode {
@@ -125,6 +127,31 @@ class MCRequestConstructor: RequestConstructor {
         }
         
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
+    }
+    
+    func checkLoginHint(login_hint : String) -> Bool {
+        
+        if let configuration = configuration as? MCAuthorizationConfiguration {
+            if(login_hint == "MSISDN") {
+                if configuration.isLoginHintMSISDNSupported() {
+                    return true
+                }
+            }
+            
+            if(login_hint == "ENCR_MSISDN") {
+                if configuration.isLoginHintEncryptedMSISDNSupported() {
+                    return true
+                }
+            }
+            
+            if(login_hint == "PCR") {
+                if configuration.isLoginHintPCRSupported() {
+                    return true
+                }
+            }
+        }
+        
+        return false
     }
     
     var authenticationRequest : Request

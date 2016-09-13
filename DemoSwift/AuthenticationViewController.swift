@@ -1,15 +1,15 @@
 //
-//  MCViewController.swift
+//  AutheViewController.swift
 //  MobileConnectSDK
 //
-//  Created by Mircea Grecu on 02/09/2016.
+//  Created by Mircea Grecu on 04/09/2016.
 //  Copyright © 2016 GSMA. All rights reserved.
 //
 
 import UIKit
 import MobileConnectSDK
 
-class AuthzViewController : UIViewController {
+class AuthenticationViewController : UIViewController {
     
     @IBOutlet weak var segmentedControll : UISegmentedControl!
     @IBOutlet weak var getTokenButton : UIButton!
@@ -36,18 +36,18 @@ class AuthzViewController : UIViewController {
     }
     
     func commonInit() {
-        self.viewControllerNameLabel.text = "AuthorizationViewController"
+        self.viewControllerNameLabel.text = "AuthenticationViewController"
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
         getTokenButton.layer.borderColor = UIColor.blackColor().CGColor
     }
-    
+
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if(isCalledDiscoveryWithPhoneNumber) {
-            manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withScopes: [], context: "MC", bindingMessage: nil, completionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
         } else {
-            manager.getAuthorizationTokenInPresenterController(self, withContext: "MC", withScopes: [], bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
         }
     }
     
@@ -73,14 +73,13 @@ class AuthzViewController : UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: { 
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
                     self.phoneNumberTextField.hidden = true
                     }, completion: nil)
             })
             
             isCalledDiscoveryWithPhoneNumber = false
         }
-        
     }
     
     @IBAction func tapGestureAction() {
@@ -117,10 +116,11 @@ class AuthzViewController : UIViewController {
         }
     }
     
+    
     //MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
-        let alert = UIAlertController(title: "AuthorizationViewController", message: "AuthorizationViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "AuthenticationViewController", message: "AuthenticationViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
         self.presentViewController(alert, animated: true, completion:{
             alert.view.superview?.userInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))

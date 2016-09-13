@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="35" y="2820"/>
         </scene>
-        <!--Authz View Controller-->
+        <!--Authorization View Controller-->
         <scene sceneID="Vrg-as-teF">
             <objects>
-                <viewController id="h3b-4d-Ebo" customClass="AuthzViewController" customModule="DemoSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="h3b-4d-Ebo" customClass="AuthorizationViewController" customModule="DemoSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dYV-5R-U9C"/>
                         <viewControllerLayoutGuide type="bottom" id="ZDv-tw-Vll"/>
@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="649" y="1140"/>
         </scene>
-        <!--Authe View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="83s-vh-EbM">
             <objects>
-                <viewController id="RHH-LD-X57" customClass="AutheViewController" customModule="DemoSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RHH-LD-X57" customClass="AuthenticationViewController" customModule="DemoSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Pc-Rc-l5k"/>
                         <viewControllerLayoutGuide type="bottom" id="5pX-Nu-PMZ"/>

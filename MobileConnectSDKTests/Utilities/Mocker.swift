@@ -41,12 +41,12 @@ class Mocker: NSObject {
 
     static var mobileConnectConfiguration : MobileConnectServiceConfiguration = {
         
-        return MCAuthorizationConfiguration(discoveryResponse: discoveryResponse, context: "", bindingMessage: nil, authorizationScopes: [])
+        return MCAuthorizationConfiguration(discoveryResponse: discoveryResponse, context: "", bindingMessage: nil, authorizationScopes: [], config: nil)
     }()
     
     static var mobileConnectConfigurationWithMetadata : MobileConnectServiceConfiguration = {
         
-        return MCAuthorizationConfiguration(discoveryResponse: discoveryResponseWithMetadata, context: "", bindingMessage: nil, authorizationScopes: [])
+        return MCAuthorizationConfiguration(discoveryResponse: discoveryResponseWithMetadata, context: "", bindingMessage: nil, authorizationScopes: [], config: nil)
     }()
     
     class var metadata : MetadataModel

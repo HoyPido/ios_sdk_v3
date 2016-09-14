@@ -19,6 +19,7 @@ class MCServiceSpec: BaseServiceSpec {
         getTokenInController()
         getAuthorizationTokenInController()
         checkMCServiceObjectInit()
+        checkLoginHint()
     }
     
     
@@ -62,6 +63,32 @@ class MCServiceSpec: BaseServiceSpec {
                 expect(MCService(configuration: Mocker.mobileConnectConfiguration)).notTo(beNil())
             })
         }
+    }
+    
+    func checkLoginHint() {
+        let config = Mocker.mobileConnectConfigurationWithMetadata
+        if config is MCAuthorizationConfiguration {
+            if let config = config as? MCAuthorizationConfiguration {
+                context("check if login hint supports PCR") {
+                    it("expect to be true", closure: {
+                        expect(config.isLoginHintPCRSupported()).to(beTrue())
+                    })
+                }
+                
+                context("check if login hint supports MSISDN") {
+                    it("expect to be true", closure: {
+                        expect(config.isLoginHintMSISDNSupported()).to(beTrue())
+                    })
+                }
+                
+                context("check if login hint supports encrypted MSISDN") {
+                    it("expect to be true", closure: {
+                        expect(config.isLoginHintEncryptedMSISDNSupported()).to(beTrue())
+                    })
+                }
+            }
+        }
+        
     }
     
 }

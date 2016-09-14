@@ -23,7 +23,7 @@ class MobileConnectManagerMock: MobileConnectManager {
         
         if let context = context, scopes = scopes
         {
-            let configuration : MCAuthorizationConfiguration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: "bla bla", authorizationScopes: scopes)
+            let configuration : MCAuthorizationConfiguration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: "bla bla", authorizationScopes: scopes, config: nil)
             
             mobileConnectServiceMock = MobileConnectServiceMock(configuration: configuration)
         }

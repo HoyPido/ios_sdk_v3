@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 //let kReferenceEndpoint : String = "http://discovery.sandbox2.mobileconnect.io/v2/discovery"
 //
 //let kReferenceRedirect : NSURL =  NSURL(string: "https://example.com")!
@@ -41,3 +39,6 @@ let kReferenceClientSecret : String = "c7a2a795-1af3-48ac-aabe-ecaff243a4a1" //"
 //
 //let kReferenceClientId : String = "ZWRhNjU3OWI3MGIwYTRh" //"YjJjNzhhMWVmMjRjNjlj"
 //let kReferenceClientSecret : String = "NjQzZTBhZWM0YmQ4ZDQ5" //"NmJkM2Y2NmNkZmY3YWU0"
+
+
+

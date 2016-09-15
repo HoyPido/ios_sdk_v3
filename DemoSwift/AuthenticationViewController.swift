@@ -9,7 +9,7 @@
 import UIKit
 import MobileConnectSDK
 
-class AutheViewController : UIViewController {
+class AuthenticationViewController : UIViewController {
     
     @IBOutlet weak var segmentedControll : UISegmentedControl!
     @IBOutlet weak var getTokenButton : UIButton!
@@ -106,7 +106,9 @@ class AutheViewController : UIViewController {
             
             if let tokenResponse = currentTokenResponse
             {
-                model["message"] = "Success"
+                if(model["message"] == nil) {
+                    model["message"] = "Success"
+                }
                 model["application short name"] = tokenResponse.discoveryResponse?.applicationShortName ?? ""
                 model["access token"] = tokenResponse.tokenData?.access_token
                 model["token id"] = tokenResponse.tokenData?.id_token

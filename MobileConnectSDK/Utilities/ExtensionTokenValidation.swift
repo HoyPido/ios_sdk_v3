@@ -47,7 +47,7 @@ extension TokenValidation
     {
         getPublicKeys { (model, error) in
             guard let model = model, publicKeys = model.keys as? [PublicKeyModel] else {
-                handler(key: nil, error: error)
+                handler(key: nil, error: MCErrorCode.NoValidKeyFound.error      )
                 return
             }
             

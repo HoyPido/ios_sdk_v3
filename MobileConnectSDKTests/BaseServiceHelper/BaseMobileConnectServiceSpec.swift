@@ -23,6 +23,7 @@ class BaseMobileConnectServiceSpec : BaseServiceSpec {
         super.spec()
         describe("Check base mobile connect extension") { 
             self.checkKeyValueFromString()
+            self.callBaseMobileServiceWithParameter([:])
         }
         
         describe("Check base mobile connect functions") {
@@ -82,6 +83,11 @@ class BaseMobileConnectServiceSpec : BaseServiceSpec {
                     done()
             })
         }
+    }
+    
+    func callBaseMobileServiceWithParameter(parameters : [String:String]) {
+        BaseMobileConnectService().didReceiveResponseWithParameters([:], fromController: self.webControllerMock)
+        BaseMobileConnectService().webController(self.webControllerMock, failedLoadingRequestWithError: nil)
     }
 
     

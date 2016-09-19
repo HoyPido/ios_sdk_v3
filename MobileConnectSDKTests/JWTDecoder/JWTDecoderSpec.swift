@@ -52,7 +52,7 @@ class JWTDecoderSpec: QuickSpec {
             
             context("check headerModel", closure: {
                 it("should to be nil", closure:{
-                    expect(self.testHeaderModel("")).to(beNil())
+                    expect(self.testHeaderModel("")).notTo(beNil())
                 })
                 
                 it("should not be nil", closure:{

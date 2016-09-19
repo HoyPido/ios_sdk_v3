@@ -13,6 +13,9 @@ import Nimble
 @testable import MobileConnectSDK
 
 private let kTestConfigurationName : String = "TokenValidationConfiguration"
+private let kIdTokenDifferentAlgString : String = "eyJraWQiOiJQSFBPUC0wMCIsImFsZyI6IkhTMjU2In0.eyJub25jZSI6IjgzQ0M3MjZENzUxODQ2M0M5RDQ2ODA5NTA5MDhBM0E3Iiwic3ViIjoiNWU0Nzg3ZGI1MjFhNDAzNzBjNWIyMGQ2N2I5MGY3YTgiLCJhbXIiOlsiU0lNX1BJTiJdLCJhdXRoX3RpbWUiOjE0NjY5ODE4MzYsImFjciI6IjIiLCJhenAiOiJhMjVlOTFjNS1hYjFlLTRmOWUtOWZkOS00Y2QxNDgyYzBhNDgiLCJpYXQiOjE0NjY5ODE4MzUsImV4cCI6MTQ2Njk4NTQzNSwiYXVkIjpbImEyNWU5MWM1LWFiMWUtNGY5ZS05ZmQ5LTRjZDE0ODJjMGE0OCJdLCJpc3MiOiJodHRwOi8vb3BlcmF0b3JfYS5zYW5kYm94Mi5tb2JpbGVjb25uZWN0LmlvL29pZGMvYWNjZXNzdG9rZW4ifQ.xHwV1oDXeCfqnnsapFHsU-tV1Xmsm0-jeOh92ZjEONk"
+
+private let kIdTokenDifferentKidString : String = "eyJraWQiOiJQLTAwIiwiYWxnIjoiSFMyNTYifQ.eyJub25jZSI6IjgzQ0M3MjZENzUxODQ2M0M5RDQ2ODA5NTA5MDhBM0E3Iiwic3ViIjoiNWU0Nzg3ZGI1MjFhNDAzNzBjNWIyMGQ2N2I5MGY3YTgiLCJhbXIiOlsiU0lNX1BJTiJdLCJhdXRoX3RpbWUiOjE0NjY5ODE4MzYsImFjciI6IjIiLCJhenAiOiJhMjVlOTFjNS1hYjFlLTRmOWUtOWZkOS00Y2QxNDgyYzBhNDgiLCJpYXQiOjE0NjY5ODE4MzUsImV4cCI6MTQ2Njk4NTQzNSwiYXVkIjpbImEyNWU5MWM1LWFiMWUtNGY5ZS05ZmQ5LTRjZDE0ODJjMGE0OCJdLCJpc3MiOiJodHRwOi8vb3BlcmF0b3JfYS5zYW5kYm94Mi5tb2JpbGVjb25uZWN0LmlvL29pZGMvYWNjZXNzdG9rZW4ifQ.btUC2JoY0J5BPQtT8LXCnRbxkxKMIpQX_7Q9ZORnRp0"
 
 enum ExpectedModel {
     case NoChange
@@ -60,14 +63,26 @@ class TokenValidationSpec : QuickSpec {
                     expect(err).to(beNil())
                 })
                 
-                it("check get valid for invalid key id", closure: {
-                    self.getTokenValidationMock(true).getValidKeyWithCompletionHandler({ (key, error) in
+                it("check get valid key for invalid key", closure: {
+                    self.getTokenValidationMock(true, withError: MCErrorCode.NoValidAlgorithmFound.error).getValidKeyWithCompletionHandler({ (key, error) in
                         expect(error).notTo(beNil())
+                    })
+                })
+                
+                it("check get valid for valid key id", closure: {
+                    self.getTokenValidationMock(true).getValidKeyWithCompletionHandler({ (key, error) in
+                        expect(error).to(beNil())
                     })
                 })
                 
                 it("check get valid key for invalid key", closure: {
                     self.getTokenValidationMock(true, withError: MCErrorCode.Unknown.error).getValidKeyWithCompletionHandler({ (key, error) in
+                        expect(error).notTo(beNil())
+                    })
+                })
+                
+                it("check get valid key for invalid key", closure: {
+                    self.getTokenValidationMock(true, withError: MCErrorCode.NoValidKeyFound.error).getValidKeyWithCompletionHandler({ (key, error) in
                         expect(error).notTo(beNil())
                     })
                 })
@@ -134,10 +149,15 @@ class TokenValidationSpec : QuickSpec {
             configuration.metadata?.issuer = nil
         }
         
+        if (error == MCErrorCode.NoValidAlgorithmFound.error){
+            tokenModel.id_token = kIdTokenDifferentAlgString
+        } else if (error == MCErrorCode.NoValidKeyFound.error) {
+            tokenModel.id_token = kIdTokenDifferentKidString
+        }
+        
         let tokenValidationMock = TokenValidationMock(configuration: configuration, model: tokenModel)!
         
-        
-        if(error != nil) {
+        if(error != nil && error != MCErrorCode.NoValidAlgorithmFound.error && error != MCErrorCode.NoValidKeyFound.error) {
             tokenValidationMock.error = error
             tokenValidationMock.response = nil
         } else {

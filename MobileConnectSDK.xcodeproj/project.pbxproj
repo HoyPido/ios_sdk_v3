@@ -84,6 +84,8 @@
 		6CB619341D89826A000D01F5 /* IdentitySignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6192D1D89826A000D01F5 /* IdentitySignUpViewController.swift */; };
 		6CB619351D89826A000D01F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6192E1D89826A000D01F5 /* MainViewController.swift */; };
 		6CB619361D89826A000D01F5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6192F1D89826A000D01F5 /* ResultViewController.swift */; };
+		6CB619391D8AB53C000D01F5 /* RevokeTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB619381D8AB53C000D01F5 /* RevokeTokenService.swift */; };
+		6CB6193B1D8ADB49000D01F5 /* RevokeTokenRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6193A1D8ADB49000D01F5 /* RevokeTokenRequestConstructor.swift */; };
 		6CB6D4711D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D46F1D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift */; };
 		6CB6D4721D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */; };
 		6CB6D4751D75E8AF009FDD82 /* DSServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D4731D75E8AF009FDD82 /* DSServiceMock.swift */; };
@@ -290,6 +292,8 @@
 		6CB6192D1D89826A000D01F5 /* IdentitySignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentitySignUpViewController.swift; sourceTree = "<group>"; };
 		6CB6192E1D89826A000D01F5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6CB6192F1D89826A000D01F5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		6CB619381D8AB53C000D01F5 /* RevokeTokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeTokenService.swift; sourceTree = "<group>"; };
+		6CB6193A1D8ADB49000D01F5 /* RevokeTokenRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeTokenRequestConstructor.swift; sourceTree = "<group>"; };
 		6CB6D46F1D75E893009FDD82 /* BaseMobileConnectServiceRequestMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceRequestMock.swift; sourceTree = "<group>"; };
 		6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceSpec.swift; sourceTree = "<group>"; };
 		6CB6D4731D75E8AF009FDD82 /* DSServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSServiceMock.swift; sourceTree = "<group>"; };
@@ -514,6 +518,7 @@
 		3C72CF051D05E7A500A095ED /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6CB619371D8AB4F9000D01F5 /* RevokeToken */,
 				6C4C05251D5E2D2B008B1AB7 /* AttributeService */,
 				6C427C631D58DACF0008A744 /* BaseMobileConnect */,
 				3C72CF091D05E7D900A095ED /* MobileConnect */,
@@ -571,6 +576,7 @@
 				3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */,
 				3C36EF051D0A3EFF00297A17 /* MCRequestConstructor.swift */,
 				6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */,
+				6CB6193A1D8ADB49000D01F5 /* RevokeTokenRequestConstructor.swift */,
 			);
 			path = RequestConstructor;
 			sourceTree = "<group>";
@@ -663,6 +669,14 @@
 				6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */,
 			);
 			path = BaseServiceHelper;
+			sourceTree = "<group>";
+		};
+		6CB619371D8AB4F9000D01F5 /* RevokeToken */ = {
+			isa = PBXGroup;
+			children = (
+				6CB619381D8AB53C000D01F5 /* RevokeTokenService.swift */,
+			);
+			path = RevokeToken;
 			sourceTree = "<group>";
 		};
 		A63653A11D20366700A8A6E2 /* MobileConnectSDKTests */ = {
@@ -1178,6 +1192,8 @@
 				3C401A381D0EB43600F73EA5 /* TokenResponseModel.m in Sources */,
 				3CCA57111D64A846004CE16A /* BaseServiceConfiguration.swift in Sources */,
 				3C24E7C71D0C2D5000D7634A /* MCService.swift in Sources */,
+				6CB619391D8AB53C000D01F5 /* RevokeTokenService.swift in Sources */,
+				6CB6193B1D8ADB49000D01F5 /* RevokeTokenRequestConstructor.swift in Sources */,
 				3C401A2E1D0EB36700F73EA5 /* OperatorDataRedirectModel.m in Sources */,
 				A6E6E9E01D75CC3600DD64B3 /* JWTConstants.swift in Sources */,
 				3C401A301D0EB36700F73EA5 /* OperatorDataResponse.m in Sources */,

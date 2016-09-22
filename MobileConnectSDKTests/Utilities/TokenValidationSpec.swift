@@ -45,7 +45,11 @@ class TokenValidationSpec : QuickSpec {
             self.getKeyForAlgorithm("RSA")
             self.getKeyForAlgorithm("")
             self.getKeyForAlgorithm(nil)
-            self.checkKey(false)
+            self.checkKey(JWTErrorCode.InvalidPublicKey.error)
+            self.checkKey(JWTErrorCode.InvalidToken.error)
+            self.checkKey(JWTErrorCode.Unknown.error)
+            self.checkKey(nil)
+
         }
     }
     
@@ -153,6 +157,8 @@ class TokenValidationSpec : QuickSpec {
             tokenModel.id_token = kIdTokenDifferentAlgString
         } else if (error == MCErrorCode.NoValidKeyFound.error) {
             tokenModel.id_token = kIdTokenDifferentKidString
+        } else if (error == JWTErrorCode.InvalidToken.error) {
+            tokenModel.id_token = ""
         }
         
         let tokenValidationMock = TokenValidationMock(configuration: configuration, model: tokenModel)!
@@ -200,29 +206,6 @@ class TokenValidationSpec : QuickSpec {
         }
     }
     
-    
-    
-//    func getKeysWithId(keyId : String) {
-//        let keyId = keyId
-//        let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
-//        
-//        if let publicKey = keysArray.keys?[0] {
-//            let keys = getTokenValidationMock(true, expectedModel: .NoChange).getKeysWithId(keyId, fromKeys: [publicKey as! PublicKeyModel])
-//            //print((publicKey.kid ) + " ----  " + keyId + "/n")
-//            if(keyId != "") {
-//                it("should have elements", closure: {
-//                    expect(keys.count).to(be(1))
-//                })
-//            } else {
-//                it("should have no elements", closure: {
-//                    expect(keys.count).to(be(0))
-//                })
-//            }
-//            
-//            getTokenValidationMock(true, expectedModel: .EmptyKid).getKeysWithId(keyId, fromKeys: [publicKey as! PublicKeyModel])
-//        }
-//    }
-    
     func getKeyForAlgorithm(algorithm : String?) {
         let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
         
@@ -253,30 +236,42 @@ class TokenValidationSpec : QuickSpec {
         
     }
     
-    func checkKey(withError : Bool) {
+    func checkKey(withError : NSError?) {
         let keysArray : PublicKeyModelArray = Mocker.publicKeyModel
-        
         let publicKey : PublicKeyModel = keysArray.keys![0] as! PublicKeyModel
-        if(withError) {
+        
+        if(withError == JWTErrorCode.InvalidPublicKey.error) {
+            publicKey.e = ""
+            publicKey.n = ""
+        } else if(withError == JWTErrorCode.Unknown.error) {
             publicKey.e = nil
             publicKey.n = nil
         }
-        getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
-            it("should have error", closure: {
-                expect(error).notTo(beNil())
-            })
-        })
         
-        publicKey.e = ""
-        publicKey.n = "0"
-        
-        //de revizuit
-        getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
-            it("should have error", closure: {
-                expect(error).notTo(beNil())
+        if(withError != nil) {
+            
+            if(withError == JWTErrorCode.InvalidToken.error) {
+                getTokenValidationMock(true, withError: JWTErrorCode.InvalidToken.error).checkKey(publicKey, withCompletionHandler: { (error) in
+                    it("should have error", closure: {
+                        expect(error).notTo(beNil())
+                    })
+                })
+            } else {
+                getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
+                    it("should have error", closure: {
+                        expect(error).notTo(beNil())
+                    })
+                })
+            }
+        } else {
+            getTokenValidationMock(true).checkKey(publicKey, withCompletionHandler: { (error) in
+                it("should have error", closure: {
+                    expect(error).notTo(beNil())
+                })
             })
-        })
+        }
 
+        
     }
     
 }

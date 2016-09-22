@@ -19,9 +19,11 @@ class MCServiceSpec: BaseServiceSpec {
         getTokenInController()
         getAuthorizationTokenInController()
         checkMCServiceObjectInit()
-        checkLoginHint()
+        checkIsLoginHintSupported(true)
+        checkIsLoginHintSupported(false)
+        checkLoginHint(withMetadata: true)
+        checkLoginHint(withMetadata: false)
     }
-    
     
     func getTokenInController() {
         let mockService = MCServiceMock(configuration: Mocker.mobileConnectConfiguration)
@@ -65,30 +67,78 @@ class MCServiceSpec: BaseServiceSpec {
         }
     }
     
-    func checkLoginHint() {
-        let config = Mocker.mobileConnectConfigurationWithMetadata
+    func checkIsLoginHintSupported(isTrue : Bool) {
+        
+        var checkBoolMethod : ()->NonNilMatcherFunc<Bool>
+        var config = Mocker.mobileConnectConfigurationWithMetadata
+        
+        if(isTrue) {
+            checkBoolMethod = beTrue
+        } else {
+            checkBoolMethod = beFalse
+            config = Mocker.mobileConnectConfiguration
+        }
+    
         if config is MCAuthorizationConfiguration {
             if let config = config as? MCAuthorizationConfiguration {
                 context("check if login hint supports PCR") {
                     it("expect to be true", closure: {
-                        expect(config.isLoginHintPCRSupported()).to(beTrue())
+                        expect(config.isLoginHintPCRSupported()).to(checkBoolMethod())
                     })
                 }
                 
                 context("check if login hint supports MSISDN") {
                     it("expect to be true", closure: {
-                        expect(config.isLoginHintMSISDNSupported()).to(beTrue())
+                        expect(config.isLoginHintMSISDNSupported()).to(checkBoolMethod())
+                        
                     })
                 }
                 
                 context("check if login hint supports encrypted MSISDN") {
                     it("expect to be true", closure: {
-                        expect(config.isLoginHintEncryptedMSISDNSupported()).to(beTrue())
+                        expect(config.isLoginHintEncryptedMSISDNSupported()).to(checkBoolMethod())
                     })
                 }
+                
             }
         }
         
+    }
+    
+    func checkLoginHint(withMetadata flag : Bool) {
+        
+        var mockService : MobileConnectService
+        var expectMessageString : String
+        var checkBoolMethod : ()->NonNilMatcherFunc<Bool>
+        
+        if(flag) {
+            expectMessageString = "expect to be true"
+            checkBoolMethod = beTrue
+            mockService = MCServiceMock(configuration: Mocker.mobileConnectConfigurationWithMetadata)
+        } else {
+            expectMessageString = "expect to be false"
+            checkBoolMethod = beFalse
+            mockService = MCServiceMock(configuration: Mocker.mobileConnectConfiguration)
+        }
+        
+        context("check if login hint supports PCR") {
+            it(expectMessageString, closure: {
+                expect(mockService.requestConstructor.checkLoginHint("PCR")).to(checkBoolMethod())
+            })
+        }
+        
+        context("check if login hint supports MSISDN") {
+            it(expectMessageString, closure: {
+                expect(mockService.requestConstructor.checkLoginHint("MSISDN")).to(checkBoolMethod())
+            })
+        }
+        
+        context("check if login hint supports ENCR_MSISDN") {
+            it(expectMessageString, closure: {
+                expect(mockService.requestConstructor.checkLoginHint("ENCR_MSISDN")).to(checkBoolMethod())
+            })
+        }
+
     }
     
 }

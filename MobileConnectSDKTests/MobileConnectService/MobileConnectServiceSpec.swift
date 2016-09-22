@@ -35,6 +35,7 @@ class MobileConnectServiceSpec: BaseServiceSpec {
             self.concurrency()
             self.noWebController()
             self.checkProducts()
+            self.checkMCRequest()
         }
     }
     
@@ -190,4 +191,15 @@ class MobileConnectServiceSpec: BaseServiceSpec {
             })
         }
     }
+    
+    func checkMCRequest() {
+        let config : AuthorizationConfigurationParameters = AuthorizationConfigurationParameters(loginHint: .MSISDNEncrypted, version: "1", prompt: "a", uiLocale: "en", idTokenHint: "auth", loginHintToken: "PCR", responseMode: "", claims: "", maxAge: "")
+        
+        context("check request constructor") {
+            it("not to be nil", closure: {
+                expect(MCRequestConstructor(configuration: Mocker.mobileConnectConfigurationWithMetadata, scopeValidator: ScopeValidator(metadata: Mocker.metadata)).mobileConnectRequestWithAssuranceLevel(.Level2, subscriberId: "", scopes: [], config: config, url: "www.", clientName: "", context: "a", bindingMessage: "aa", shouldNotStartImmediately: false)).toNot(beNil())
+            })
+        }
+    }
+    
 }

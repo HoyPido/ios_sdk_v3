@@ -19,6 +19,7 @@ class DSServiceSpec : BaseServiceSpec {
         
         self.startOperatorDiscoveryWithCountryCode()
         self.startOperatorDiscoveryForPhoneNumber()
+        self.checkRedirectURL()
     }
     
     func startOperatorDiscoveryWithCountryCode() {
@@ -61,6 +62,19 @@ class DSServiceSpec : BaseServiceSpec {
                 }
             })
         }
+    }
+    
+    func checkRedirectURL() {
+        context("check redirectURL",{
+            waitUntil {
+                (done : () -> Void) in
+                
+                    it("should not be nil", closure: {
+                        expect(self.mockedService.service.redirectURL).notTo(beNil())
+                    })
+                    done()
+            }
+        })
     }
     
     var discoveryWithMetadata : DSServiceMock

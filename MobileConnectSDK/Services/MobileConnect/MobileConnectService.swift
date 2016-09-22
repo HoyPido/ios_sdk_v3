@@ -68,22 +68,22 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
       
         processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.NilCode)]) { (model, error) in
           
-          guard let model = model else {
-            completionHandler(tokenModel: nil, error: error)
-            return
-          }
-          
+            guard let model = model else {
+                completionHandler(tokenModel: nil, error: error)
+                return
+            }
+            
             guard let tokenValidator = TokenValidation(configuration: self.configuration, model: model) else
             {
                 completionHandler(tokenModel: nil, error: MCErrorCode.NoTokenID.error)
                 
                 return
             }
-          
-          tokenValidator.checkIdTokenIsValid({ (error) in
-            completionHandler(tokenModel: model, error: error)
-          })
-      }
+            
+            tokenValidator.checkIdTokenIsValid({ (error) in
+                completionHandler(tokenModel: model, error: error)
+            })
+        }
     }
     
     //MARK: WebController methods

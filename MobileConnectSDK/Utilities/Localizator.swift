@@ -79,6 +79,7 @@ private let kMaxAgeError: String = "Max age outdated"
 private let kNoKeyFound : String = "There is no key with specified id"
 private let kKeyAlgorithmNotSupported : String = "Key Algorithm is Not Supported"
 private let kInvalidKey : String = "Invalid key"
+private let kInvalidRefreshTokenError : String = "Invalid refresh token"
 
 class Localizator: NSObject {
     
@@ -328,6 +329,10 @@ class Localizator: NSObject {
     
     class var maxAgeError : String {
         return localized(kMaxAgeError)
+    }
+    
+    class var refreshToken : String {
+        return localized(kInvalidRefreshTokenError)
     }
   
 }

@@ -50,6 +50,11 @@ extension DiscoveryResponse {
         return metadata?.revoke_endpoint ?? response?.apis?.operatorid?.tokenRevocation()
     }
     
+    public var tokenRefresh : String?
+    {
+        return ((metadata?.refresh_endpoint) != nil) ? response?.apis?.operatorid?.tokenRefresh() : metadata?.token_endpoint ?? response?.apis?.operatorid?.tokenLink()
+    }
+    
     public var applicationShortName : String?
     {
         return response?.applicationShortName

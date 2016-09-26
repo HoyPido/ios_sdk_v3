@@ -31,6 +31,8 @@
 	</dict>
 	<key>tokenData</key>
 	<dict>
+		<key>refresh_token</key>
+		<string>ettgafQEf1yvs5stqnnWR</string>
 		<key>access_token</key>
 		<string>53865b10-3bf1-11e6-972a-d5e4ad642096</string>
 		<key>expires_in</key>

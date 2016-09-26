@@ -147,6 +147,20 @@ public class MobileConnectManager: NSObject {
     }
     
     /**
+     Will reresh token with provided token model will return a new token refresh model
+     - Parameter tokenResponseModel: The response object that client gets after getting the access token
+     - Parameter completionHandler: The closure in which the new token refresh model or eventual refresh error will be return
+     */
+    
+    public func refreshToken(tokenResponseModel : TokenResponseModel, withStringValueScopes scopes : [String]? = nil, completionHandler : (model : RefreshTokenModel?, error : NSError?)->Void) {
+        
+        let refreshService = RefreshTokenService(tokenResponseModel: tokenResponseModel, scopes: scopes)
+        refreshService.getRefreshToken { (responseModel, error) in
+            completionHandler(model: responseModel, error: error)
+        }
+    }
+    
+    /**
      Will get the token with client's phone number. By providing the number the only web view presented will be that of the sms confirmation. Will use both Discovery and Mobile Connect services underneath.
      Will automatically try to retrieve and merge the Metadata.
      This methods allows passing string values for the scopes array.

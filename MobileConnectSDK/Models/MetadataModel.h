@@ -50,5 +50,6 @@
 @property (nullable) NSString *version;
 @property (nullable) NSString *premiuminfo_endpoint;
 @property (nullable) NSString *revoke_endpoint;
+@property (nullable) NSString *refresh_endpoint;
 
 @end

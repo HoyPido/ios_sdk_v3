@@ -30,7 +30,7 @@ class MCServiceSpec: BaseServiceSpec {
         let service = MCService(service: mockService)
         
         context("check if method is called") {
-            waitUntil(timeout:10) { (done:() -> Void) in
+            waitUntil(timeout:5) { (done:() -> Void) in
                 service.getTokenInController(self.viewController) {
                     (controller, tokenModel, error) in
                     it("should call method", closure: {
@@ -47,7 +47,7 @@ class MCServiceSpec: BaseServiceSpec {
         let service = MCService(service: mockService)
         
         context("check if method is called") {
-            waitUntil(timeout:10) { (done:() -> Void) in
+            waitUntil(timeout:5) { (done:() -> Void) in
                 service.getAuthorizationTokenInController(self.viewController) {
                     (controller, tokenModel, error) in
                     it("should call method", closure: {

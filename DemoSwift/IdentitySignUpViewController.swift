@@ -107,9 +107,15 @@ class IdentitySignUpViewController : UIViewController {
             {
                 model["message"] = "Success"
                 model["sub"] = currentResponse.sub ?? ""
-                model["address"] = currentResponse.address?.formatted ?? ""
+                model["preferred_username"] = currentResponse.preferred_username ?? ""
                 model["family_name"] = currentResponse.family_name ?? ""
                 model["given_name"] = currentResponse.given_name ?? ""
+                model["email"] = currentResponse.email ?? ""
+                model["email_verified"] = currentResponse.email_verified.description
+                model["gender"] = currentResponse.gender ?? ""
+                model["locale"] = currentResponse.locale ?? ""
+                model["updated_at"] = currentResponse.updated_at ?? ""
+                model["birth_date"] = currentResponse.birth_date ?? ""
             }
 
             controller.datasource = model

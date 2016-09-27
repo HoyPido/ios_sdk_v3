@@ -107,10 +107,8 @@ class IdentityNationalIdViewController: UIViewController {
             {
                 model["message"] = "Success"
                 model["sub"] = currentResponse.sub ?? ""
-                model["birthdate"] = currentResponse.birthdate ?? ""
-                model["family_name"] = currentResponse.family_name ?? ""
-                model["given_name"] = currentResponse.given_name ?? ""
-                model["nationa_identifier"] = currentResponse.national_identifier ?? ""
+                model["nationa_identifier"] = currentResponse.national_ID ?? ""
+                model["updated_at"] = currentResponse.updated_at ?? ""
             }
             
             controller.datasource = model

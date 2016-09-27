@@ -108,6 +108,8 @@ class IdentityPhoneNumberViewController : UIViewController {
                 model["message"] = "Success"
                 model["sub"] = currentResponse.sub ?? ""
                 model["phone_number"] = currentResponse.phone_number ?? ""
+                model["phone_number_verified"] = currentResponse.phone_number_verified.description
+                model["updated_at"] = currentResponse.updated_at ?? ""
             }
             
             controller.datasource = model

@@ -32,8 +32,6 @@ class TokenValidationMock : TokenValidation {
         super.checkIdTokenIsValid { (err:NSError?) in
             completionHandler(err)
         }
-        
-        completionHandler(self.error)
     }
     
     override func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?)->Void) {

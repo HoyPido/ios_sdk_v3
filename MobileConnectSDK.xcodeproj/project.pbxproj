@@ -71,6 +71,7 @@
 		6C3ECA551D99117C00A58D40 /* RefreshTokenModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C3ECA531D99117C00A58D40 /* RefreshTokenModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C3ECA561D99117C00A58D40 /* RefreshTokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ECA541D99117C00A58D40 /* RefreshTokenModel.m */; };
 		6C3ECA581D9934AB00A58D40 /* TokenRefreshSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ECA571D9934AB00A58D40 /* TokenRefreshSpec.swift */; };
+		6C3ECA5A1D99642600A58D40 /* TokenRevokeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ECA591D99642600A58D40 /* TokenRevokeSpec.swift */; };
 		6C4C05291D61CB77008B1AB7 /* AttributeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C05281D61CB77008B1AB7 /* AttributeService.swift */; };
 		6C4C052B1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */; };
 		6C4C052E1D632C34008B1AB7 /* AttributeResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -283,6 +284,7 @@
 		6C3ECA531D99117C00A58D40 /* RefreshTokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTokenModel.h; sourceTree = "<group>"; };
 		6C3ECA541D99117C00A58D40 /* RefreshTokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTokenModel.m; sourceTree = "<group>"; };
 		6C3ECA571D9934AB00A58D40 /* TokenRefreshSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefreshSpec.swift; sourceTree = "<group>"; };
+		6C3ECA591D99642600A58D40 /* TokenRevokeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRevokeSpec.swift; sourceTree = "<group>"; };
 		6C4C05281D61CB77008B1AB7 /* AttributeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeService.swift; sourceTree = "<group>"; };
 		6C4C052A1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMobileConnectServiceRequest.swift; sourceTree = "<group>"; };
 		6C4C052C1D632C34008B1AB7 /* AttributeResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeResponseModel.h; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 				6CB6D4851D76E5D9009FDD82 /* MobileConnectButtonSpec.swift */,
 				6CB6D4871D76E8F1009FDD82 /* ExtensionNSExceptionSpec.swift */,
 				6C3ECA571D9934AB00A58D40 /* TokenRefreshSpec.swift */,
+				6C3ECA591D99642600A58D40 /* TokenRevokeSpec.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1257,6 +1260,7 @@
 				6CB6D4861D76E5D9009FDD82 /* MobileConnectButtonSpec.swift in Sources */,
 				6C4C054F1D64C311008B1AB7 /* HelperSpec.swift in Sources */,
 				6C4C05321D634C51008B1AB7 /* AttributeServiceSpec.swift in Sources */,
+				6C3ECA5A1D99642600A58D40 /* TokenRevokeSpec.swift in Sources */,
 				6CB6D4721D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift in Sources */,
 				6CB6D47A1D75E8CD009FDD82 /* MCServiceSpec.swift in Sources */,
 				A673B1F01D3E8C11008B7F60 /* MCRequestConstructorMock.swift in Sources */,

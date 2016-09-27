@@ -31,14 +31,13 @@ class TokenValidation : NSObject {
     func checkIdTokenIsValid(completionHandler: (NSError?) -> Void) {
         
         initialCheckTokenIsValid { (error) in
-            if let error = error
-            {
+            if let error = error {
                 completionHandler(error)
                 return
+            } else {
+                self.checkIfHasValidKeyWithCompletionHandler(completionHandler)
             }
         }
-        
-        checkIfHasValidKeyWithCompletionHandler(completionHandler)
     }
     
     func checkIfHasValidKeyWithCompletionHandler(completionHandler : (error : NSError?) -> Void)

@@ -49,6 +49,7 @@ class TokenValidationSpec : QuickSpec {
             self.checkKey(JWTErrorCode.InvalidToken.error)
             self.checkKey(JWTErrorCode.Unknown.error)
             self.checkKey(nil)
+            self.checkIdTokenIsValid()
 
         }
     }
@@ -102,7 +103,15 @@ class TokenValidationSpec : QuickSpec {
         
         waitUntil { (done:() -> Void) in
             mockTokenValidation.checkIdTokenIsValid({ (err:NSError?) in
-                
+                it("should call method checkIdTokenIsValid and get error", closure: {
+                    expect(err).notTo(beNil())
+                })
+             mockTokenValidation.checkIfHasValidKeyWithCompletionHandler({ (error) in
+                it("should call method checkIfHasValidKeyWithCompletionHandler and get error", closure: {
+                    expect(error).notTo(beNil())
+                })
+                done()
+             })
             })
         }
     }

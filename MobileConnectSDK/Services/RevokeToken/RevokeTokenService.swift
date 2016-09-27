@@ -27,10 +27,14 @@ class RevokeTokenService : NSObject {
         super.init()
     }
     
-    func getRevokeToken(completionHandler : (responseModel : AnyObject?, error : NSError?) -> Void) {
+    func getRevokeToken(serviceRequest : BaseMobileConnectServiceRequest? = nil, completionHandler : (responseModel : AnyObject?, error : NSError?) -> Void) {
         let revokeTokenURL : String = tokenResponseModel.discoveryResponse?.tokenRevocation ?? ""
         
-        self.connectService.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken), forCompletionHandler: completionHandler)
+        if let serviceRequest = serviceRequest {
+            serviceRequest.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken), forCompletionHandler: completionHandler)
+        } else {
+            self.connectService.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken), forCompletionHandler: completionHandler)
+        }
     }
     
 }

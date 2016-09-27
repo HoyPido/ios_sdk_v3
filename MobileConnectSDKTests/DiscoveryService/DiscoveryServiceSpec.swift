@@ -22,6 +22,11 @@ class DiscoveryServiceSpec: BaseServiceSpec {
             self.concurrency()
             self.noWebController()
             self.checkMetadata()
+            self.checkIsMobileConnectSupported()
+            self.getPremiumInfoEndpoint()
+            self.getTokenRevocation()
+            self.getUserInfoEndpoint()
+            self.checkWebController()
         }
     }
     
@@ -77,8 +82,35 @@ class DiscoveryServiceSpec: BaseServiceSpec {
         }
     }
     
+    func checkWebController() {
+        context("check webcontroller cancel action", closure : {
+            self.webControllerMock.cancelAction(self)
+        })
+    }
+    
+    func checkIsMobileConnectSupported() {
+        context("check is mobile connect supported", closure : {
+            self.discoveryWithMetadata.response!.isMobileConnectServiceSupported("")
+            self.discoveryWithMetadata.response!.isMobileConnectServiceSupported("a a")
+            
+        })
+    }
+    
+    func getPremiumInfoEndpoint() {
+        self.discoveryWithMetadata.response!.premiumInfoEndpoint
+    }
+    
+    func getTokenRevocation() {
+        self.discoveryWithMetadata.response!.tokenRevocation
+    }
+    
+    func getUserInfoEndpoint() {
+        self.discoveryWithMetadata.response!.userInfoEndpoint
+    }
+    
     func checkMetadata()
     {
+        
         describe("metadata") {
             
             context("has been required", closure: {

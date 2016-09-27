@@ -26,6 +26,7 @@ class AttributeServiceSpec : BaseServiceSpec {
       self.setupVariables()
       self.checkGetPremiumInfoDetails(true)
       self.checkGetPremiumInfoDetails(false)
+      self.checkObjectInititalization()
     }
   }
   
@@ -39,47 +40,57 @@ class AttributeServiceSpec : BaseServiceSpec {
     self.mockedService = AttributeServiceMock(tokenResponse: Mocker.tokenResponseModel)
   
   }
+    
+  func checkObjectInititalization() {
+    context("check service", closure: {
+        let tokenResponseModel = Mocker.tokenResponseModel
+        it("expect not nil object", closure: {
+            tokenResponseModel.tokenData = nil
+            expect(AttributeService(tokenResponse: tokenResponseModel)).toNot(beNil())
+        })
+        Mocker.resetModels()
+    })
+  }
   
   func checkGetPremiumInfoDetails(isExpectingError: Bool) {
     
-    let requestConstructor = createMockAttributeRequest()
-    let mockService = createMockService(requestConstructor)
-    
-    if(!isExpectingError) {
-      mockService?.response = Mocker.attributeResponseModel
-      mockService?.error = nil
-    } else {
-      mockService?.response = nil
-      mockService?.error = MCErrorCode.NilParameter.error
-    }
-    requestConstructor?.getPremiumInfoMethodAccessed = false
-    
-    waitUntil { (done:() -> Void) in
-      mockService?.getAttributeInformation({ (responseModel, error) in
+    context("get premium info details ", closure: {
         
-        it("should call request contructor", closure: {
-          if let request = mockService?.requestConstructor as? AttributeRequestConstructorMock {
-            expect(request.getPremiumInfoMethodAccessed).to(beTrue())
-          }
-        })
+        let requestConstructor = self.createMockAttributeRequest()
+        var connectService = BaseMobileConnectServiceRequestMock()
         
-        it("has response", closure: {
-          if(isExpectingError) {
-            expect(error).toNot(beNil())
-          } else {
-            expect(responseModel).toNot(beNil())
-          }
-          
-        })
+        let mockService = AttributeServiceMock(connectService: connectService, requestConstructor: requestConstructor!, tokenResponse: Mocker.tokenResponseModel)
         
-        done()
-
-      })
-    }
-  }
-
-  func createMockService(attributeRequest: AttributeRequestConstructorMock?) -> AttributeServiceMock? {
-    return AttributeServiceMock(tokenResponse: Mocker.tokenResponseModel)
+        if(!isExpectingError) {
+            connectService.response = Mocker.attributeResponseModel
+            connectService.error = nil
+        } else {
+            connectService.response = nil
+            connectService.error = MCErrorCode.NilParameter.error
+        }
+        
+        waitUntil { (done:() -> Void) in
+            
+            mockService.getAttributeInformation( { (responseModel, error) in
+                
+                it("should call request contructor", closure: {
+                    if let request = mockService.requestConstructor as? AttributeRequestConstructorMock {
+                        expect(request.getPremiumInfoMethodAccessed).to(beTrue())
+                    }
+                })
+                
+                it("has response", closure: {
+                    if(isExpectingError) {
+                        expect(error).toNot(beNil())
+                    } else {
+                        expect(responseModel).toNot(beNil())
+                    }
+                    
+                })
+                done()
+            })
+        }
+    })
   }
   
   func createMockAttributeRequest() -> AttributeRequestConstructorMock? {

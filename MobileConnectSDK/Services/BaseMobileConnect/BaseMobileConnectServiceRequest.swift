@@ -10,15 +10,15 @@ import Foundation
 import Alamofire
 
 class BaseMobileConnectServiceRequest {
-  
-  static func callRequest<T : MCModel>(request : Request, forCompletionHandler completionHandler : (model : T?, error : NSError?) -> Void) {
+    
+  func callRequest<T : MCModel>(request : Request, forCompletionHandler completionHandler : (model : T?, error : NSError?) -> Void) {
     request.responseJSON { (response : Response<AnyObject, NSError>) in
         
       self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
     }
   }
   
-  static func treatResponseCompletionHandler<T : MCModel>(response : Response<AnyObject, NSError>, withClientResponseHandler clientResponseHandler : (model : T?, error : NSError?) -> Void) {
+  func treatResponseCompletionHandler<T : MCModel>(response : Response<AnyObject, NSError>, withClientResponseHandler clientResponseHandler : (model : T?, error : NSError?) -> Void) {
 
     if response.result.isSuccess {
       let deserializerObject = BaseMobileConnectServiceDeserializer<T>(dictionary: response.result.value)

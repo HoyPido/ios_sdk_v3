@@ -27,14 +27,24 @@ extension BaseMobileConnectService : WebControllerDelegate {
   
   //MARK: Web view helpers
   
-  func isValidRedirectURL(url : NSURL, inController controller : BaseWebController) -> Bool {
+    func isValidRedirectURL(url : NSURL, inController controller : BaseWebController, redirect : NSURL? = nil) -> Bool {
+        
     var isTheSameHost : Bool = false
+    print("\(url.host)")
     
+    let redirectURL : NSURL
+        
+    if let redirect = redirect {
+       redirectURL = redirect
+    } else {
+        redirectURL = self.redirectURL
+    }
+        
     if let urlHost = url.host, redirectHost = redirectURL.host {
       isTheSameHost = urlHost == redirectHost
     }
     
-    let parameters : [NSObject : AnyObject] = keyValuesFromString(url.query)
+    let parameters : [NSObject : AnyObject] = BaseMobileConnectService.keyValuesFromString(url.query)
     
     if isTheSameHost && parameters.count > 0 {
       isAwaitingResponse = false
@@ -47,7 +57,7 @@ extension BaseMobileConnectService : WebControllerDelegate {
     return false
   }
   
-  func didReceiveResponseWithParameters(parameters : [NSObject : AnyObject], fromController controller : BaseWebController) {
+   func didReceiveResponseWithParameters(parameters : [NSObject : AnyObject], fromController controller : BaseWebController) {
     isAwaitingResponse = false
     
     treatWebRedirectParameters(parameters)
@@ -66,7 +76,7 @@ extension BaseMobileConnectService : WebControllerDelegate {
     }
   }
   
-  func keyValuesFromString(string : String?) -> [NSObject : AnyObject] {
+  class func keyValuesFromString(string : String?) -> [NSObject : AnyObject] {
     var keyValueDictionary : [NSObject : AnyObject] = [:]
     
     if let string = string {

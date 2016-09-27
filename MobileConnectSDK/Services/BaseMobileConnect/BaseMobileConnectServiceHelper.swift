@@ -16,7 +16,8 @@ class BaseMobileConnectServiceDeserializer<T:MCModel>: NSObject {
     if let dictionary = dictionary as? [NSObject : AnyObject] {
       self.modelDictionary = dictionary
     } else {
-      return nil
+        self.modelDictionary = [:]
+        
     }
   }
   

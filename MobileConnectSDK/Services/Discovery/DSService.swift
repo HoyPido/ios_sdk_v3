@@ -32,7 +32,7 @@ public typealias DiscoveryResponseBlock = (controller : BaseWebController?, oper
 public class DSService: NSObject {
     
     //MARK: iVars
-    let service : DiscoveryService = DiscoveryService()
+    var service : DiscoveryService = DiscoveryService()
 
     //MARK: Discovery service with no client data
     ///Gets operator data by showing a webview which will request data from client

@@ -19,6 +19,23 @@ class RequestConstructor: NSObject {
        
         let configuration : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         
+        //configuration.HTTPShouldSetCookies = false
+        
+//        if let cookieStorage = configuration.HTTPCookieStorage {
+//        cookieStorage.cookieAcceptPolicy = NSHTTPCookieAcceptPolicy.Never
+//            for cookie in cookieStorage.cookies! {
+//                
+//                if let cookie = cookie as? NSHTTPCookie {
+//                    //if(cookie.name.rangeOfString("Most-Recent-Selected-Operator") != nil) {
+//                        cookieStorage.deleteCookie(cookie)
+//                    //}
+//                    //print(cookie.name)
+//                }
+//            }
+//            print(cookieStorage)
+//        }
+        
+        
         let manager : Manager = Manager(configuration: configuration)
         
         manager.startRequestsImmediately = false

@@ -31,13 +31,13 @@ class TokenValidation : NSObject {
     func checkIdTokenIsValid(completionHandler: (NSError?) -> Void) {
         
         initialCheckTokenIsValid { (error) in
-            if let error = error
-            {
+            if let error = error {
                 completionHandler(error)
+                return
+            } else {
+                self.checkIfHasValidKeyWithCompletionHandler(completionHandler)
             }
         }
-        
-        checkIfHasValidKeyWithCompletionHandler(completionHandler)
     }
     
     func checkIfHasValidKeyWithCompletionHandler(completionHandler : (error : NSError?) -> Void)
@@ -47,7 +47,6 @@ class TokenValidation : NSObject {
             guard let key = key else
             {
                 completionHandler(error: error)
-                
                 return
             }
             
@@ -89,7 +88,8 @@ class TokenValidation : NSObject {
       do {
         let decodedToken = try DecodedTokenModel(dictionary: decodedTokenDictionary)
         if model.access_token == nil {
-          completion(MCErrorCode.InvalidAccessTokenError.error)
+           completion(MCErrorCode.InvalidAccessTokenError.error)
+           return
         }
         
         let authDate = NSDate(timeIntervalSince1970: decodedToken.auth_time)
@@ -97,56 +97,68 @@ class TokenValidation : NSObject {
         if let expiresIn = model.expires_in {
           if(authDate.timeIntervalSinceNow > Double(expiresIn)) {
             completion(MCErrorCode.TokenExpiredError.error)
+            return
           }
         }
         
         if(decodedToken.iss != metadata.issuer ) {
           completion(MCErrorCode.InvalidIssuerError.error)
+          return
         }
         
         if let aud = decodedToken.aud {
           if(aud[0] != configuration.clientKey) {
             completion(MCErrorCode.InvalidAudError.error)
+            return
           }
         } else {
           completion(MCErrorCode.InvalidAudError.error)
+          return
         }
         
         if let azp = decodedToken.azp {
           if(azp != configuration.clientKey) {
             completion(MCErrorCode.InvalidAzpError.error)
+            return
           }
         } else {
-          completion(MCErrorCode.InvalidAudError.error)
-        }
-        
-        if configuration.nonce != decodedToken.nonce {
-          completion(MCErrorCode.InvalidNonce.error)
+            completion(MCErrorCode.InvalidAudError.error)
+            return
         }
         
         if(authDate.timeIntervalSinceNow > Double(configuration.maxAge)) {
           completion(MCErrorCode.MaxAgeError.error)
+          return
+        }
+        
+        if configuration.nonce != decodedToken.nonce {
+            completion(MCErrorCode.InvalidNonce.error)
+            return
         }
         
       }
       catch {
       }
       
+    } else {
+        completion(MCErrorCode.InvalidAccessTokenError.error)
+        return
     }
     completion(nil)
   }
   
-  func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?)->Void) {
-    guard let jwksURL = configuration.metadata?.jwks_uri else {
-      return
-    }
+    func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?)->Void) {
+        guard let jwksURL = configuration.metadata?.jwks_uri else {
+            //completion(model: nil, error: MCErrorCode.Unknown.error)
+            return
+        }
+        
+        let requestJson = request(.GET, jwksURL, parameters: nil, encoding: .URL, headers: nil)
+        requestJson.responseJSON { (response:Response<AnyObject, NSError>) in
     
-    let requestJson = request(.GET, jwksURL, parameters: nil, encoding: .URL, headers: nil)
-    requestJson.responseJSON { (response:Response<AnyObject, NSError>) in
-    
-      let deserializerObject = BaseMobileConnectServiceDeserializer<PublicKeyModelArray>(dictionary: response.result.value)
-      deserializerObject?.deserializeModel(completion)
+            let deserializerObject = BaseMobileConnectServiceDeserializer<PublicKeyModelArray>(dictionary: response.result.value)
+            deserializerObject?.deserializeModel(completion)
+        }
     }
-  }
     
 }

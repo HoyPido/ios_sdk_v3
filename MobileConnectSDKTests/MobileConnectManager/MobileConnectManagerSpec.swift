@@ -72,6 +72,13 @@ class MobileConnectManagerSpec : QuickSpec
                 }
                 
             })
+            
+            describe("check Mobile Connect Manager object initializator", closure : {
+                it("should not be nil", closure : {
+                    expect(MobileConnectManager(delegate: nil)).notTo(beNil())
+                    expect(MobileConnectManager()).notTo(beNil())
+                })
+            })
         }
     }
     

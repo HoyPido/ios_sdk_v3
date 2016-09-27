@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>keys</key>
+	<array>
+		<dict>
+			<key>e</key>
+			<string>AQAB</string>
+			<key>n</key>
+			<string>ALyIC8vj1tqEIvAvpDMQfgosw13LpBS9Z2lsMmuaLDNJjN_FKIb-HVR2qtMj7AYC0-wYJhGxJpTXJTVRRDz-zLN7uredNxuhVj76vmU1tfvEN0Xq2INYoWeJ3d9fZtkBgKl7Enfkgz858DLAfZuJzDycOzuZXR5r29zXMDstT5F5</string>
+			<key>kid</key>
+			<string>PHPOP-00</string>
+			<key>use</key>
+			<string>sig</string>
+			<key>kty</key>
+			<string>RSA</string>
+		</dict>
+	</array>
+</dict>
+</plist>

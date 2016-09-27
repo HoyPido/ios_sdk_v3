@@ -20,6 +20,7 @@
 - (nullable NSString*)linkForParameter:(nonnull NSString*)parameter;
 - (nullable NSString*)premiumInfo;
 - (nullable NSString*)tokenRevocation;
+- (nullable NSString*)tokenRefresh;
 - (nullable NSString*)JSONWebTokenValidation;
 
 @end

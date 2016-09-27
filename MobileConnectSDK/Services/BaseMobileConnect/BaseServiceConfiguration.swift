@@ -10,7 +10,7 @@ import UIKit
 
 public class BaseServiceConfiguration: NSObject {
     
-    let clientKey : String
+    var clientKey : String
     let clientSecret : String
     let redirectURL : NSURL
     

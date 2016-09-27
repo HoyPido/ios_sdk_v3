@@ -15,6 +15,7 @@
 #define kOpenIdConfiguration @"openid-configuration"
 #define kPremiumInfo @"premiuminfo"
 #define kTokenRevoke @"tokenrevoke"
+#define kTokenRefresh @"tokenrefresh"
 #define kJSONValidation @"jwks"
 
 @implementation OperatorIdModel
@@ -52,6 +53,10 @@
 - (nullable NSString*)tokenRevocation
 {
     return [self linkForParameter:kTokenRevoke];
+}
+
+- (nullable NSString*)tokenRefresh {
+    return [self linkForParameter:kTokenRefresh];
 }
 
 - (nullable NSString*)JSONWebTokenValidation

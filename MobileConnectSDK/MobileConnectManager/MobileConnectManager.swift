@@ -130,6 +130,37 @@ public class MobileConnectManager: NSObject {
     }
     
     /**
+     Will revoke token that user requests
+     - Parameter tokenResponseModel: The response object that client gets after getting the access token
+     - Parameter revokedToken: Token string that the user wants to be revoked; can be access token or refresh token
+     - Parameter completionHandler: The closure in which the eventual revocation error will be return
+     - Parameter isRefreshToken: The boolean value in which user specifies if is a refresh token or not
+     */
+    
+    public func revokeToken(revokedToken : String , tokenResponseModel : TokenResponseModel, isRefreshToken : Bool = false, completionHandler : (error : NSError?)->Void) {
+        
+        let revokeService = RevokeTokenService(revokedToken: revokedToken, tokenResponseModel: tokenResponseModel, isRefreshToken: isRefreshToken)
+        revokeService.getRevokeToken {
+            (responseModel : AnyObject?, error : NSError?) -> Void in
+            completionHandler(error: error)
+        }
+    }
+    
+    /**
+     Will reresh token with provided token model will return a new token refresh model
+     - Parameter tokenResponseModel: The response object that client gets after getting the access token
+     - Parameter completionHandler: The closure in which the new token refresh model or eventual refresh error will be return
+     */
+    
+    public func refreshToken(tokenResponseModel : TokenResponseModel, withStringValueScopes scopes : [String]? = nil, completionHandler : (model : RefreshTokenModel?, error : NSError?)->Void) {
+        
+        let refreshService = RefreshTokenService(tokenResponseModel: tokenResponseModel, scopes: scopes)
+        refreshService.getRefreshToken { (responseModel, error) in
+            completionHandler(model: responseModel, error: error)
+        }
+    }
+    
+    /**
      Will get the token with client's phone number. By providing the number the only web view presented will be that of the sms confirmation. Will use both Discovery and Mobile Connect services underneath.
      Will automatically try to retrieve and merge the Metadata.
      This methods allows passing string values for the scopes array.
@@ -173,6 +204,24 @@ public class MobileConnectManager: NSObject {
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes, config: config,  completionHandler: completionHandler)
     }
+    
+    
+    public func getAttributeServiceResponseWithPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ) {
+        
+        getAuthorizationTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withScopes: scopes, context: context, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+            guard let tokenResponseModel = tokenResponseModel  else {
+                completionHandler(response: nil, error: error)
+                return
+            }
+            
+            let attributeService = AttributeService(tokenResponse: tokenResponseModel)
+            
+            attributeService.getAttributeInformation({ (responseModel, error) in
+                completionHandler(response: responseModel, error: error)
+            })
+        }
+    }
+    
   
     public func getAttributeServiceResponse(controller: UIViewController, context : String, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){
         

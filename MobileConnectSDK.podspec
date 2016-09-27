@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name = "MobileConnectSDK"
-spec.version = "3.2"
+spec.version = "3.2.1"
 spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
 spec.homepage = "https://developer.mobileconnect.io"
 spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
@@ -19,6 +19,14 @@ spec.subspec 'Services' do |services|
 
 services.subspec 'AttributeService' do |attributeservice|
 attributeservice.source_files = 'MobileConnectSDK/Services/AttributeService/*.swift'
+end
+
+services.subspec 'RefreshToken' do |refreshtoken|
+refreshtoken.source_files = 'MobileConnectSDK/Services/RefreshToken/*.swift'
+end
+
+services.subspec 'RevokeToken' do |revoketoken|
+revoketoken.source_files = 'MobileConnectSDK/Services/RevokeToken/*.swift'
 end
 
 services.subspec 'BaseMobileConnect' do |basemobileconnect|

@@ -131,6 +131,5 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
             }
         }
         return false
-    }
-    
+    }    
 }

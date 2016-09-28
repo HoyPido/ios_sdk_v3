@@ -52,6 +52,6 @@ public class DSService: NSObject {
     //Gets operator data by using client's phone number. It will return a subscriber_id.
     public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
     {
-        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, shouldProvideMetadata: shouldProvideMetadata,completionHandler: completionHandler)
+        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
 }

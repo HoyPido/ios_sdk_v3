@@ -137,7 +137,7 @@ public class MobileConnectManager: NSObject {
      - Parameter isRefreshToken: The boolean value in which user specifies if is a refresh token or not
      */
     
-    public func revokeToken(revokedToken : String , tokenResponseModel : TokenResponseModel, isRefreshToken : Bool = false, completionHandler : (error : NSError?)->Void) {
+    public func revokeToken(revokedToken : String, tokenResponseModel : TokenResponseModel, isRefreshToken : Bool = false, completionHandler : (error : NSError?) -> Void) {
         
         let revokeService = RevokeTokenService(revokedToken: revokedToken, tokenResponseModel: tokenResponseModel, isRefreshToken: isRefreshToken)
         revokeService.getRevokeToken {
@@ -152,7 +152,7 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the new token refresh model or eventual refresh error will be return
      */
     
-    public func refreshToken(tokenResponseModel : TokenResponseModel, withStringValueScopes scopes : [String]? = nil, completionHandler : (model : RefreshTokenModel?, error : NSError?)->Void) {
+    public func refreshToken(tokenResponseModel : TokenResponseModel, withStringValueScopes scopes : [String]? = nil, completionHandler : (model : RefreshTokenModel?, error : NSError?) -> Void) {
         
         let refreshService = RefreshTokenService(tokenResponseModel: tokenResponseModel, scopes: scopes)
         refreshService.getRefreshToken { (responseModel, error) in
@@ -184,7 +184,7 @@ public class MobileConnectManager: NSObject {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil,context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes.map({$0.stringValue}), config: config, completionHandler: completionHandler)
     }
@@ -202,7 +202,7 @@ public class MobileConnectManager: NSObject {
      */
     public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes, config: config,  completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes:  scopes, config: config, completionHandler: completionHandler)
     }
     
     
@@ -255,7 +255,7 @@ public class MobileConnectManager: NSObject {
                 self.checkDiscoveryResponse(controller, operatorsData: operatorsData, error: error)(context: context, scopes : scopes, config : config, bindingMessage : bindingMessage)
             })
             
-            },presenter: presenterController, withCompletition: completionHandler)
+            }, presenter: presenterController, withCompletition: completionHandler)
     }
     
     func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withContext context : String? = nil, bindingMessage : String? = nil, scopes : [String]? = nil, config : AuthorizationConfigurationParameters? = nil, completionHandler : MobileConnectResponse?)
@@ -290,12 +290,10 @@ public class MobileConnectManager: NSObject {
             
             var configuration : MobileConnectServiceConfiguration
             
-            if let context = context
-            {
+            if let context = context {
+                
                 configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config)
-            }
-            else
-            {
+            } else {
                 configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [])
             }
             
@@ -314,13 +312,10 @@ public class MobileConnectManager: NSObject {
             if isAuthorization
             {
                 mobileConnectService.getAuthorizationTokenInController(presenter, completionHandler: checkMobileConnectResponse(operatorsData))
-            }
-            else
-            {
+            } else {
                 mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponse(operatorsData))
             }
-        }
-        else
+        } else
         {
             finishWithResponse(webController, model: nil, error: MCErrorCode.Unknown.error)
         }
@@ -348,8 +343,8 @@ public class MobileConnectManager: NSObject {
     {
         currentResponse = completionHandler
         
-        if !isRunning
-        {
+        if !isRunning {
+            
             isRunning = true
             
             delegate?.mobileConnectWillStart?()
@@ -357,9 +352,7 @@ public class MobileConnectManager: NSObject {
             currentPresenter = presenter
             
             handler()
-        }
-        else
-        {
+        } else {
             finishWithResponse(nil, model: nil, error: MCErrorCode.Concurrency.error)
         }
     }

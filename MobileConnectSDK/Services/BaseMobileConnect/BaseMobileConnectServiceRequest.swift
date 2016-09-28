@@ -23,8 +23,7 @@ class BaseMobileConnectServiceRequest {
     if response.result.isSuccess {
       let deserializerObject = BaseMobileConnectServiceDeserializer<T>(dictionary: response.result.value)
       deserializerObject?.deserializeModel(clientResponseHandler)
-    }
-    else {
+    } else {
       clientResponseHandler(model: nil, error: response.result.error)
     }
   }

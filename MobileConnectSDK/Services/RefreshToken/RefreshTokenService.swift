@@ -34,7 +34,7 @@ class RefreshTokenService : NSObject {
     
     func getRefreshToken(serviceRequest : BaseMobileConnectServiceRequest? = nil, completionHandler: (responseModel : RefreshTokenModel?, error : NSError?) -> Void) {
         
-        if(tokenResponseModel.tokenData?.refresh_token == nil) {
+        if tokenResponseModel.tokenData?.refresh_token == nil {
             completionHandler(responseModel: nil, error: MCErrorCode.InvalidRefreshToken.error)
             return
         }

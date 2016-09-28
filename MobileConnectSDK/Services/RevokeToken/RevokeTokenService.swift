@@ -31,9 +31,9 @@ class RevokeTokenService : NSObject {
         let revokeTokenURL : String = tokenResponseModel.discoveryResponse?.tokenRevocation ?? ""
         
         if let serviceRequest = serviceRequest {
-            serviceRequest.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken), forCompletionHandler: completionHandler)
+            serviceRequest.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken, clientID: (self.tokenResponseModel.discoveryResponse?.response?.client_id), clientSecret: (self.tokenResponseModel.discoveryResponse?.response?.client_secret)), forCompletionHandler: completionHandler)
         } else {
-            self.connectService.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken), forCompletionHandler: completionHandler)
+            self.connectService.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken, clientID: (self.tokenResponseModel.discoveryResponse?.response?.client_id)!, clientSecret: (self.tokenResponseModel.discoveryResponse?.response?.client_secret)!), forCompletionHandler: completionHandler)
         }
     }
     

@@ -63,8 +63,7 @@ class WebController: BaseWebController {
         if let localRequest = requestToLoad
         {
             self.webView.loadRequest(localRequest)
-        }
-        else
+        } else
         {
             delegate?.webController(self, failedLoadingRequestWithError: MCErrorCode.NoRequestToLoad.error)
         }
@@ -76,8 +75,7 @@ class WebController: BaseWebController {
         if let url = navigationAction.request.URL, delegate = delegate
         {
             decisionHandler(delegate.webController(self, shouldRedirectToURL: url) ? WKNavigationActionPolicy.Allow : WKNavigationActionPolicy.Cancel)
-        }
-        else
+        } else
         {
             decisionHandler(WKNavigationActionPolicy.Allow)
         }

@@ -43,7 +43,7 @@ extension TokenValidation
             }.first
     }
     
-    func getValidKeyWithCompletionHandler(handler : (key : PublicKeyModel? ,error : NSError?) -> Void)
+    func getValidKeyWithCompletionHandler(handler : (key : PublicKeyModel?, error : NSError?) -> Void)
     {
         getPublicKeys { (model, error) in
             guard let model = model, publicKeys = model.keys as? [PublicKeyModel] else {

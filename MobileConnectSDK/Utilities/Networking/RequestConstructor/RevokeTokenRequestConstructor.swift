@@ -15,15 +15,21 @@ private let kTokenHintTypeRefreshValue : String = "refresh_token"
 
 class RevokeTokenRequestConstructor : NSObject {
     
-    func generateRevokeRequest(withURL: String, withTokenId token : String, isRefreshToken : Bool) -> Request {
+    func generateRevokeRequest(withURL: String, withTokenId token : String, isRefreshToken : Bool, clientID : String?, clientSecret : String?) -> Request {
         
         var parameters : Dictionary = [kTokenKey : token]
         
-        if(isRefreshToken) {
+        if isRefreshToken {
             parameters[kTokenHintTypeKey] = kTokenHintTypeRefreshValue
         }
         
-        let credentialsString : String = "\(MobileConnectSDK.getClientKey()):\(MobileConnectSDK.getClientSecret())"
+        let credentialsString : String
+        
+        if let clientID = clientID, clientSecret = clientSecret {
+            credentialsString = "\(clientID):\(clientSecret)"
+        } else {
+            credentialsString = "\(MobileConnectSDK.getClientKey()):\(MobileConnectSDK.getClientSecret())"
+        }
         
         var headers : Dictionary = ["Content-Type":"application/x-www-form-urlencoded"]
         
@@ -34,6 +40,5 @@ class RevokeTokenRequestConstructor : NSObject {
         }
         
         return request(.POST, withURL, parameters: parameters, encoding: .URLEncodedInURL, headers: headers)
-    }
-    
+    }    
 }

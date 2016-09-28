@@ -22,8 +22,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         if let requestConstructor = requestConstructor
         {
             self.requestConstructor = requestConstructor
-        }
-        else
+        } else
         {
             self.requestConstructor = MCRequestConstructor(configuration: configuration, scopeValidator: ScopeValidator(metadata: configuration.metadata))
         }
@@ -55,8 +54,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         if let request = requestConstructor.authorizationRequest
         {
             startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
-        }
-        else
+        } else
         {
             completionHandler(controller: nil, tokenModel: nil, error: MCErrorCode.RequiresAuthorizationConfiguration.error)
         }

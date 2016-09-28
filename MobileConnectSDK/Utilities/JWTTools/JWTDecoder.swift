@@ -97,8 +97,7 @@ private let kSignatureComponentIndex : Int = 2
         do
         {
             return try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? [NSObject : AnyObject]
-        }
-        catch
+        } catch
         {
             return nil
         }

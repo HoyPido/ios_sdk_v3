@@ -34,8 +34,7 @@ class ProductVersion
         {
             self.key = key
             version = VersionGenerator(stringValue: value).version
-        }
-        else
+        } else
         {
             return nil
         }

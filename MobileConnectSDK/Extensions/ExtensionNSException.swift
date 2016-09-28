@@ -32,7 +32,7 @@ extension NSException
     {
         if controller == .None
         {
-            NSException(name: Localizator.nilPresenterName, reason:Localizator.nilPresenterMessage , userInfo: [NSLocalizedDescriptionKey : Localizator.nilPresenterMessage]).raise()
+            NSException(name: Localizator.nilPresenterName, reason:Localizator.nilPresenterMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.nilPresenterMessage]).raise()
         }
     }
     

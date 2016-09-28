@@ -35,15 +35,13 @@ class BaseMobileConnectServiceDeserializer<T:MCModel>: NSObject {
         return model
     }
     
-  func deserializeModel(completionHandler : (model : T? , error : NSError?) -> Void) {
+  func deserializeModel(completionHandler : (model : T?, error : NSError?) -> Void) {
     do
     {
         completionHandler(model: try seriallyDeserializeModel(), error: nil)
-    }
-    catch
+    } catch
     {
         completionHandler(model: nil, error: error as NSError)
     }
-  }
-  
+  }  
 }

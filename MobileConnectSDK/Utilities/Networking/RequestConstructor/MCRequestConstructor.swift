@@ -106,9 +106,9 @@ class MCRequestConstructor: RequestConstructor {
             }
             
             if let subscriberId = subscriberId {
-                if(config.loginHint == .MSISDN) {
+                if config.loginHint == .MSISDN {
                     parameters[kLoginHint] = String(format: kLoginHintFormatMSISDN, subscriberId)
-                } else if(config.loginHint == .MSISDNEncrypted) {
+                } else if config.loginHint == .MSISDNEncrypted {
                     parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
                 } else {
                     parameters[kLoginHint] = String(format: kLoginHintFormatPCR, subscriberId)
@@ -132,19 +132,19 @@ class MCRequestConstructor: RequestConstructor {
     func checkLoginHint(loginHint : String) -> Bool {
         
         if let configuration = configuration as? MCAuthorizationConfiguration {
-            if(loginHint == "MSISDN") {
+            if loginHint == "MSISDN" {
                 if configuration.isLoginHintMSISDNSupported() {
                     return true
                 }
             }
             
-            if(loginHint == "ENCR_MSISDN") {
+            if loginHint == "ENCR_MSISDN" {
                 if configuration.isLoginHintEncryptedMSISDNSupported() {
                     return true
                 }
             }
             
-            if(loginHint == "PCR") {
+            if loginHint == "PCR" {
                 if configuration.isLoginHintPCRSupported() {
                     return true
                 }

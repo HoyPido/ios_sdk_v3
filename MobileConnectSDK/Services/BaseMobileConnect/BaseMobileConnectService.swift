@@ -86,8 +86,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         
         if canStartRequesting {
             handler()
-        }
-        else {
+        } else {
             completionHandler(error: MCErrorCode.Concurrency.error)
         }
     }

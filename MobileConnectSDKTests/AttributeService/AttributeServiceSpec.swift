@@ -57,7 +57,7 @@ class AttributeServiceSpec : BaseServiceSpec {
     context("get premium info details ", closure: {
         
         let requestConstructor = self.createMockAttributeRequest()
-        var connectService = BaseMobileConnectServiceRequestMock()
+        let connectService = BaseMobileConnectServiceRequestMock()
         
         let mockService = AttributeServiceMock(connectService: connectService, requestConstructor: requestConstructor!, tokenResponse: Mocker.tokenResponseModel)
         

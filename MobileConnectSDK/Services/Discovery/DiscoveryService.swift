@@ -32,8 +32,7 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         if let requestConstructor = requestConstructor
         {
             self.requestConstructor = requestConstructor
-        }
-        else
+        } else
         {
             self.requestConstructor = DiscoveryRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, applicationEndpoint: configuration.applicationEndpoint)
         }

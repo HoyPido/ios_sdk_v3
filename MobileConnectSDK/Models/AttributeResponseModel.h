@@ -32,6 +32,10 @@
 @property (nullable) NSString *locale;
 @property (nullable) NSString *picture;
 @property BOOL email_verified;
+@property (nullable) NSString *nickname;
+@property (nullable) NSString *zoneinfo;
+@property (nullable) NSString *name;
+@property (nullable) NSString *middle_name;
 
 @end
 

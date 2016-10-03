@@ -206,41 +206,41 @@ public class MobileConnectManager: NSObject {
     }
     
     
-    public func getAttributeServiceResponseWithPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ) {
+    public func getAttributeServiceResponseWithPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : (attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void ) {
         
         getAuthorizationTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withScopes: scopes, context: context, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
             guard let tokenResponseModel = tokenResponseModel  else {
-                completionHandler(response: nil, error: error)
+                completionHandler(attributeResponseModel: nil, tokenResponseModel: nil, error: error)
                 return
             }
             
             let attributeService = AttributeService(tokenResponse: tokenResponseModel)
             
             attributeService.getAttributeInformation({ (responseModel, error) in
-                completionHandler(response: responseModel, error: error)
+                completionHandler(attributeResponseModel: responseModel, tokenResponseModel: tokenResponseModel, error: error)
             })
         }
     }
     
   
-    public func getAttributeServiceResponse(controller: UIViewController, context : String, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){
+    public func getAttributeServiceResponse(controller: UIViewController, context : String, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void ){
         
         getAuthorizationTokenInPresenterController(controller, withContext: context, withStringValueScopes: stringScopes, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
     
             guard let tokenResponseModel = tokenResponseModel  else {
-                withCompletionHandler(response: nil, error: error)
+                withCompletionHandler(attributeResponseModel: nil, tokenResponseModel: nil, error: error)
                 return
             }
             
             let attributeService = AttributeService(tokenResponse: tokenResponseModel)
             
             attributeService.getAttributeInformation({ (responseModel, error) in
-                withCompletionHandler(response: responseModel, error: error)
+                withCompletionHandler(attributeResponseModel: responseModel, tokenResponseModel: tokenResponseModel, error: error)
             })
         }
     }
     
-    public func getAttributeServiceResponse(controller: UIViewController, context : String, scopes : [ProductType], bindingMessage : String? = nil, withCompletionHandler : (response: AttributeResponseModel?, error : NSError?) -> Void ){
+    public func getAttributeServiceResponse(controller: UIViewController, context : String, scopes : [ProductType], bindingMessage : String? = nil, withCompletionHandler : (attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void ){
       
         self.getAttributeServiceResponse(controller, context: context, stringScopes: scopes.flatMap({$0.stringValue}), withCompletionHandler: withCompletionHandler)
     }

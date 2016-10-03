@@ -89,7 +89,7 @@ class IdentityPhoneNumberViewController : UIViewController {
     
     //MARK: Navigation
     
-    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, error : NSError?) {
+    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
         self.performSegueWithIdentifier("showResult", sender: nil)

@@ -72,7 +72,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          stringAuthorizationScopes : [String],
          config : AuthorizationConfigurationParameters?)
     {
-        let localClientName : String = discoveryResponse.applicationShortName ?? ""
+        let localClientName : String = discoveryResponse.clientName ?? ""
         
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         

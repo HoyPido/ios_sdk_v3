@@ -55,8 +55,8 @@ extension DiscoveryResponse {
         return ((metadata?.refresh_endpoint) != nil) ? response?.apis?.operatorid?.tokenRefresh() : metadata?.token_endpoint ?? response?.apis?.operatorid?.tokenLink()
     }
     
-    public var applicationShortName : String?
+    public var clientName : String?
     {
-        return response?.applicationShortName
+        return response?.client_name
     }
 }

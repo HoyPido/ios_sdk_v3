@@ -110,7 +110,7 @@ class AuthorizationViewController : UIViewController {
                 if model["message"] == nil {
                     model["message"] = "Success"
                 }
-                model["application short name"] = tokenResponse.discoveryResponse?.applicationShortName ?? ""
+                model["client name"] = tokenResponse.discoveryResponse?.clientName ?? ""
                 model["access token"] = tokenResponse.tokenData?.access_token
                 model["token id"] = tokenResponse.tokenData?.id_token
             }

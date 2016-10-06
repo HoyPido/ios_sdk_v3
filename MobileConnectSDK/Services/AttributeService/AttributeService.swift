@@ -11,16 +11,16 @@ import Alamofire
 
 public class AttributeService : NSObject {
   
-  let requestConstructor : AttributeRequestConstructor
+  let requestConstructor : InfoRequestConstructor
   let tokenResponseModel : TokenResponseModel
   let connectService : BaseMobileConnectServiceRequest
     
   public convenience init(tokenResponse : TokenResponseModel)
   {
-    self.init(requestConstructor: AttributeRequestConstructor(accessToken: tokenResponse.tokenData?.access_token ?? ""), tokenResponse: tokenResponse)
+    self.init(requestConstructor: InfoRequestConstructor(accessToken: tokenResponse.tokenData?.access_token ?? ""), tokenResponse: tokenResponse)
   }
   
-  init(connectService : BaseMobileConnectServiceRequest = BaseMobileConnectServiceRequest(), requestConstructor: AttributeRequestConstructor, tokenResponse : TokenResponseModel) {
+  init(connectService : BaseMobileConnectServiceRequest = BaseMobileConnectServiceRequest(), requestConstructor: InfoRequestConstructor, tokenResponse : TokenResponseModel) {
     self.tokenResponseModel = tokenResponse
     self.requestConstructor = requestConstructor
     self.connectService = connectService
@@ -28,7 +28,7 @@ public class AttributeService : NSObject {
   
   public func getAttributeInformation(completionHandler : (responseModel : AttributeResponseModel?, error : NSError?) -> Void) {
     let premiumInfoURL : String = tokenResponseModel.discoveryResponse?.premiumInfoEndpoint ?? ""
-    self.connectService.callRequest(requestConstructor.generatePremiumInfoRequest(premiumInfoURL), forCompletionHandler: completionHandler)
+    self.connectService.callRequest(requestConstructor.generateInfoRequest(premiumInfoURL), forCompletionHandler: completionHandler)
   }
   
 }

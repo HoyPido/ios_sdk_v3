@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias MobileConnectResponseWithUserInfo = (userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void
+
 public typealias MobileConnectResponse = (tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void
 
 ///This protocol allows catching events which occur while using the MobileConnectButton or MobileConnectManager class
@@ -68,9 +70,13 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      - Parameter scopes: The scopes to be authorized
      */
-    public func getTokenInPresenterController(presenterController: UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
+    public func getTokenInPresenterController(presenterController: UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getToken(presenterController, loginHint : loginHint, scopes : (scopes ?? []).map({$0.stringValue}), withCompletionHandler: completionHandler)
+        let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
+        getToken(presenterController, loginHint: loginHint, scopes : scopesArray) { (tokenResponseModel, error) in
+            
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
+        }
     }
     
     /**
@@ -81,9 +87,12 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      - Parameter scopes: The scopes to be authorized
      */
-    public func getTokenInPresenterController(presenterController: UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
+    public func getTokenInPresenterController(presenterController: UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getToken(presenterController, loginHint : loginHint, scopes : scopes, withParameters: config, withCompletionHandler: completionHandler)
+        getToken(presenterController, loginHint : loginHint, scopes : scopes, withParameters: config){ (tokenResponseModel, error) in
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
+        }
+
     }
     
     /**
@@ -96,9 +105,11 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes.map({$0.stringValue}), withParameters: config, bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
+        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes.map({$0.stringValue}), withParameters: config, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes.map({$0.stringValue}), completionHandler: completionHandler)
+        }
     }
     
     /**
@@ -112,9 +123,11 @@ public class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenInPresenterController(presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes, withParameters: config, bindingMessage: bindingMessage, withCompletionHandler: completionHandler)
+        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes, withParameters: config, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
+        }
     }
     
     /**
@@ -124,9 +137,15 @@ public class MobileConnectManager: NSObject {
      - Parameter presenterController: The controller which will present the Mobile Connect web view controller
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponse?)
+    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, scopes : (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
+        let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, scopes : scopesArray) { (tokenResponseModel, error) in
+            
+            
+            
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes:  (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
+        }
     }
     
     /**
@@ -169,9 +188,12 @@ public class MobileConnectManager: NSObject {
      - Parameter scopes: The scopes to be authorized
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withCompletionHandler completionHandler : MobileConnectResponse?)
+    public func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, scopes : scopes, completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, scopes : scopes) { (tokenResponseModel, error) in
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
+        }
+
     }
     
     /**
@@ -184,9 +206,11 @@ public class MobileConnectManager: NSObject {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController,loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, loginHint : loginHint, scopes:  scopes.map({$0.stringValue}), config: config, completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, loginHint : loginHint, scopes:  scopes.map({$0.stringValue}), config: config) { (tokenResponseModel, error) in
+           self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes.map({$0.stringValue}), completionHandler: completionHandler)
+        }
     }
     
     /**
@@ -200,15 +224,43 @@ public class MobileConnectManager: NSObject {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponse?)
+    public func getAuthorizationTokenForPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, loginHint : loginHint, scopes:  scopes, config: config, completionHandler: completionHandler)
+        getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, loginHint : loginHint, scopes:  scopes, config: config) { (tokenResponseModel, error) in
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
+        }
+
     }
     
-
+    func processUserInfoCompletionHandler( tokenResponseModel : TokenResponseModel?, error : NSError?, scopes : [String]?, completionHandler : MobileConnectResponseWithUserInfo?) {
+        
+        if let completionHandler = completionHandler {
+            if let scopes = scopes {
+                
+                let scopesFiltered = scopes.filter({$0 != MobileConnectIdentityPhone && $0 != MobileConnectIdentitySignup && $0 != MobileConnectIdentityNationalID})
+                if scopesFiltered.count > 0 {
+                    guard let tokenResponseModel = tokenResponseModel else {
+                        completionHandler(userInfo: nil, tokenResponseModel: nil, error: error)
+                        return
+                    }
+                    
+                    let userInfoService = UserInfoService(tokenResponse: tokenResponseModel)
+                    
+                    userInfoService.getUserInformation({ (responseModel, error) in
+                        completionHandler(userInfo: responseModel, tokenResponseModel: tokenResponseModel, error: error)
+                    })
+                } else {
+                    completionHandler(userInfo: nil, tokenResponseModel: tokenResponseModel, error: error)
+                }
+            } else {
+                completionHandler(userInfo: nil, tokenResponseModel: tokenResponseModel, error: error)
+            }
+        }
+    }
+    
     public func getAttributeServiceResponseWithPhoneNumber(phoneNumber : String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : (attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void ) {
         
-        getAuthorizationTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, withScopes: scopes, context: context, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+        getAuthorizationTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, withScopes: scopes, context: context, bindingMessage: bindingMessage) { (userInfo, tokenResponseModel, error) in
             guard let tokenResponseModel = tokenResponseModel  else {
                 completionHandler(attributeResponseModel: nil, tokenResponseModel: nil, error: error)
                 return
@@ -225,7 +277,7 @@ public class MobileConnectManager: NSObject {
   
     public func getAttributeServiceResponse(controller: UIViewController, context : String, loginHint : String? = nil, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void ){
         
-        getAuthorizationTokenInPresenterController(controller, withContext: context, loginHint : loginHint, withStringValueScopes: stringScopes, bindingMessage: bindingMessage) { (tokenResponseModel, error) in
+        getAuthorizationTokenInPresenterController(controller, withContext: context, loginHint : loginHint, withStringValueScopes: stringScopes, bindingMessage: bindingMessage) { (userInfo, tokenResponseModel, error) in
     
             guard let tokenResponseModel = tokenResponseModel  else {
                 withCompletionHandler(attributeResponseModel: nil, tokenResponseModel: nil, error: error)
@@ -311,9 +363,9 @@ public class MobileConnectManager: NSObject {
             
             if isAuthorization
             {
-                mobileConnectService.getAuthorizationTokenInController(presenter, completionHandler: checkMobileConnectResponse(operatorsData))
+                mobileConnectService.getAuthorizationTokenInController(presenter, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
             } else {
-                mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponse(operatorsData))
+                mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
             }
         } else
         {
@@ -322,7 +374,7 @@ public class MobileConnectManager: NSObject {
     }
     
     //MARK: Mobile connect methods
-    func checkMobileConnectResponse(operatorData : DiscoveryResponse?) -> (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void
+    func checkMobileConnectResponseWithUserInfo(operatorData : DiscoveryResponse?) -> (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void
     {
         return { (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void in
             
@@ -374,7 +426,7 @@ public class MobileConnectManager: NSObject {
         delegate?.mobileConnectWillDismissWebController?()
         controller?.dismissViewControllerAnimated(true, completion: nil)
         
-        currentResponse?( tokenResponseModel: model, error: error)
+        currentResponse?(tokenResponseModel: model, error: error)
         
         currentResponse = nil
         currentPresenter = nil

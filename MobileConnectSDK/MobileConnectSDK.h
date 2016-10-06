@@ -29,3 +29,4 @@ FOUNDATION_EXPORT const unsigned char MobileConnectSDKVersionString[];
 #import "AuthorizationConfigurationParameters.h"
 #import "PublicKeyModel.h"
 #import "RefreshTokenModel.h"
+#import "UserInfoResponse.h"

@@ -88,7 +88,7 @@ class AuthorizationViewController : UIViewController {
     }
     
     //MARK: Navigation
-    func launchTokenViewerWithTokenResponseModel(tokenResponseModel : TokenResponseModel?, error : NSError?)
+    func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
     {   
         currentTokenResponse = tokenResponseModel
         currentError = error

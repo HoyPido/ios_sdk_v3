@@ -20,6 +20,8 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let scopes : [String]
     var maxAge = 3600
     let nonce = NSUUID.randomUUID
+    let loginHint : String?
+    
     /**
      This constructor may change with addition of new features in future versions.
      It is recommended to use the init with discovery response if possible.
@@ -36,7 +38,8 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                          assuranceLevel : MCLevelOfAssurance,
                          subscriberId : String?,
                          metadata : MetadataModel?,
-                         authorizationScopes : [String])
+                         authorizationScopes : [String],
+                         loginHint : String?)
     {
         self.authorizationURLString = authorizationURLString
         self.tokenURLString = tokenURLString
@@ -44,11 +47,12 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         self.subscriberId = subscriberId
         self.metadata = metadata
         scopes = authorizationScopes + [MobileConnectAuthentication]
+        self.loginHint = loginHint
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     
-    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, authorizationScopes : [String])
+    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, authorizationScopes : [String], loginHint : String?)
     {
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         
@@ -69,6 +73,40 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                   assuranceLevel: assuranceLevel,
                   subscriberId : localSubscriberId,
                   metadata: localMetadata,
-                  authorizationScopes: authorizationScopes)
+                  authorizationScopes: authorizationScopes,
+                  loginHint: loginHint)
+    }
+    
+    public func isLoginHintMSISDNSupported() -> Bool {
+        if let metadata = metadata {
+            if let methodSupported = metadata.login_hint_methods_supported {
+                if methodSupported.contains("MSISDN") {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    public func isLoginHintEncryptedMSISDNSupported() -> Bool {
+        if let metadata = metadata {
+            if let methodSupported = metadata.login_hint_methods_supported {
+                if methodSupported.contains("ENCR_MSISDN") {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    public func isLoginHintPCRSupported() -> Bool {
+        if let metadata = metadata {
+            if let methodSupported = metadata.login_hint_methods_supported {
+                if methodSupported.contains("PCR") {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

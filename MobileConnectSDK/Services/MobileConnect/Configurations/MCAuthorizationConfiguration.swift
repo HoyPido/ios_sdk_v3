@@ -28,7 +28,8 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          clientName : String,
          context : String,
          bindingMessage : String?,
-         config : AuthorizationConfigurationParameters?)
+         config : AuthorizationConfigurationParameters?,
+         loginHint : String?)
     {
         NSException.checkClientName(clientName)
         NSException.checkContext(context)
@@ -47,7 +48,8 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                    assuranceLevel: assuranceLevel,
                    subscriberId: subscriberId,
                    metadata: metadata,
-                   authorizationScopes: stringValuedScopes)
+                   authorizationScopes: stringValuedScopes,
+                   loginHint: loginHint)
     }
     
     convenience public init(discoveryResponse : DiscoveryResponse,
@@ -55,14 +57,16 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                             context : String,
                             bindingMessage : String?,
                             authorizationScopes : [ProductType],
-                            config : AuthorizationConfigurationParameters?)
+                            config : AuthorizationConfigurationParameters?,
+                            loginHint : String?)
     {
         self.init(discoveryResponse : discoveryResponse,
                   assuranceLevel: assuranceLevel,
                   context:  context,
                   bindingMessage: bindingMessage,
                   stringAuthorizationScopes: authorizationScopes.map({$0.stringValue}),
-                  config: config)
+                  config: config,
+                  loginHint: loginHint)
     }
     
     convenience public init(discoveryResponse : DiscoveryResponse,
@@ -70,7 +74,8 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          context : String,
          bindingMessage : String?,
          stringAuthorizationScopes : [String],
-         config : AuthorizationConfigurationParameters?)
+         config : AuthorizationConfigurationParameters?,
+         loginHint: String?)
     {
         let localClientName : String = discoveryResponse.clientName ?? ""
         
@@ -97,39 +102,8 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   clientName : localClientName,
                   context : context,
                   bindingMessage: bindingMessage,
-                  config: config)
+                  config: config,
+                  loginHint: loginHint)
     }
     
-    public func isLoginHintMSISDNSupported() -> Bool {
-        if let metadata = metadata {
-            if let methodSupported = metadata.login_hint_methods_supported {
-                if methodSupported.contains("MSISDN") {
-                    return true
-                }
-            }
-        }
-        return false
-    }
-    
-    public func isLoginHintEncryptedMSISDNSupported() -> Bool {
-        if let metadata = metadata {
-            if let methodSupported = metadata.login_hint_methods_supported {
-                if methodSupported.contains("ENCR_MSISDN") {
-                    return true
-                }
-            }
-        }
-        return false
-    }
-    
-    public func isLoginHintPCRSupported() -> Bool {
-        if let metadata = metadata {
-            if let methodSupported = metadata.login_hint_methods_supported {
-                if methodSupported.contains("PCR") {
-                    return true
-                }
-            }
-        }
-        return false
-    }    
 }

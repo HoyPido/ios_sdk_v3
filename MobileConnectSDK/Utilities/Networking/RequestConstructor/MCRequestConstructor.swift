@@ -103,8 +103,8 @@ class MCRequestConstructor: RequestConstructor {
             
         }
         
-        if !getLoginHintParameter().isEmpty {
-            parameters[kLoginHint] = getLoginHintParameter()
+        if let loginHint = configuration.loginHint {
+            parameters[kLoginHint] = loginHint
         }
         
         if let context = context
@@ -117,27 +117,6 @@ class MCRequestConstructor: RequestConstructor {
         }
         
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
-    }
-    
-    func getLoginHintParameter() -> String {
-        
-        if let loginHint = configuration.loginHint {
-            if loginHint.containsString(kLoginHintMSISDN) {
-                if checkLoginHint(kLoginHintMSISDN) {
-                    return loginHint
-                }
-            } else if loginHint.containsString(kLoginHintENCRMSISDN) {
-                if checkLoginHint(kLoginHintENCRMSISDN) {
-                    return loginHint
-                }
-            } else if loginHint.containsString(kLoginHintPCR) {
-                if checkLoginHint(kLoginHintPCR) {
-                    return loginHint
-                }
-            }
-        }
-        
-        return ""
     }
     
     func checkLoginHint(loginHint : String) -> Bool {

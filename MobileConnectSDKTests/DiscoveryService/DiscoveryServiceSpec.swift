@@ -159,7 +159,7 @@ class DiscoveryServiceSpec: BaseServiceSpec {
         }
     }
     
-    //MARK: Helpers
+    // MARK: Helpers
     func checkMetadataValue(metadataValue : String?, againstMockValue mockValue : String?)
     {
         expect(metadataValue == mockValue).to(beTrue())

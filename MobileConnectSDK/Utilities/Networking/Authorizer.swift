@@ -31,10 +31,8 @@ class Authorizer: NSObject {
         if let encodedData : NSData = credentialsString.dataUsingEncoding(NSUTF8StringEncoding)
         {
             let encodedCredentials : String = encodedData.base64EncodedStringWithOptions([])
-            
             return ["Authorization" : "Basic \(encodedCredentials)"]
-        }
-        else
+        } else
         {
             print("failed while encoding developers credentials")
         }

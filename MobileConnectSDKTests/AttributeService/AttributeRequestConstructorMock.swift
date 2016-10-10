@@ -13,13 +13,13 @@ import Alamofire
 
 @testable import MobileConnectSDK
 
-class AttributeRequestConstructorMock : AttributeRequestConstructor  {
+class AttributeRequestConstructorMock : InfoRequestConstructor  {
   
   var getPremiumInfoMethodAccessed: Bool = false
   
-  override func generatePremiumInfoRequest(withURL: String) -> Request {
+  override func generateInfoRequest(withURL: String) -> Request {
     self.getPremiumInfoMethodAccessed = true
-    return super.generatePremiumInfoRequest(withURL)
+    return super.generateInfoRequest(withURL)
   }
   
 }

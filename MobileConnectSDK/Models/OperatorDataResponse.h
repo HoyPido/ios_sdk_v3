@@ -22,6 +22,6 @@
 @property (nullable) NSString *currency;
 @property (nullable) NSString *serving_operator;
 @property (nullable) NSString *subscriber_id;
-@property (nullable) NSString *applicationShortName;
+@property (nullable) NSString *client_name;
 
 @end

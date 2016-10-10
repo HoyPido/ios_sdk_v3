@@ -224,7 +224,7 @@ class TokenValidationSpec : QuickSpec {
                 publicKey.kty = nil
             }
             
-            let key = getTokenValidationMock(true, expectedModel: .NoChange).getKeyForAlgorithm(algorithm, fromKeys: [publicKey as! PublicKeyModel])
+            let key = getTokenValidationMock(true, expectedModel: .NoChange).getKeyForAlgorithm(algorithm, fromKeys: [publicKey])
         
             if(algorithm != nil) {
                 if(publicKey.kty != nil) {

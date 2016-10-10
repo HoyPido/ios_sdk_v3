@@ -44,7 +44,7 @@ class AuthenticationViewController : UIViewController {
 
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
-        if(isCalledDiscoveryWithPhoneNumber) {
+        if isCalledDiscoveryWithPhoneNumber {
             manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
         } else {
             manager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
@@ -53,13 +53,13 @@ class AuthenticationViewController : UIViewController {
     
     @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
         
-        if(segmentedControll.selectedSegmentIndex == 0) {
+        if segmentedControll.selectedSegmentIndex == 0 {
             self.phoneNumberTextField.becomeFirstResponder()
             self.controllDistance.constant = 108
             self.view.setNeedsUpdateConstraints()
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = false
                     }, completion: nil)
                 
@@ -73,7 +73,7 @@ class AuthenticationViewController : UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = true
                     }, completion: nil)
             })
@@ -86,8 +86,8 @@ class AuthenticationViewController : UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: Navigation
-    func launchTokenViewerWithTokenResponseModel(tokenResponseModel : TokenResponseModel?, error : NSError?)
+    // MARK: Navigation
+    func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
     {
         currentTokenResponse = tokenResponseModel
         currentError = error
@@ -106,10 +106,10 @@ class AuthenticationViewController : UIViewController {
             
             if let tokenResponse = currentTokenResponse
             {
-                if(model["message"] == nil) {
+                if model["message"] == nil {
                     model["message"] = "Success"
                 }
-                model["application short name"] = tokenResponse.discoveryResponse?.applicationShortName ?? ""
+                model["client name"] = tokenResponse.discoveryResponse?.clientName ?? ""
                 model["access token"] = tokenResponse.tokenData?.access_token
                 model["token id"] = tokenResponse.tokenData?.id_token
             }
@@ -119,7 +119,7 @@ class AuthenticationViewController : UIViewController {
     }
     
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "AuthenticationViewController", message: "AuthenticationViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
@@ -133,5 +133,4 @@ class AuthenticationViewController : UIViewController {
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }

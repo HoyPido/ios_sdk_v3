@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-//MARK: Local constants
+// MARK: Local constants
 private let kClientId : String = "client_id"
 private let kResponseType : String =  "response_type"
 private let kResponseTypeValue : String = "code"
@@ -20,9 +20,9 @@ private let kAssuranceKey : String = "acr_values"
 private let kState : String = "state"
 private let kNonce : String = "nonce"
 private let kLoginHint : String = "login_hint"
-private let kLoginHintFormat : String = "ENCR_MSISDN:%@"
-private let kLoginHintFormatPCR : String = "PCR:%@"
-private let kLoginHintFormatMSISDN : String = "MSISDN:%@"
+private let kLoginHintENCRMSISDN : String = "ENCR_MSISDN"
+private let kLoginHintPCR : String = "PCR"
+private let kLoginHintMSISDN : String = "MSISDN"
 
 private let kCodeKey : String = "code"
 private let kGrantTypeKey : String = "grant_type"
@@ -60,10 +60,6 @@ class MCRequestConstructor: RequestConstructor {
         let state : String = NSUUID.randomUUID
         
         var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : configuration.nonce]
-        
-        if let subscriberId = subscriberId {
-            parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
-        }
         
         if let clientName = clientName
         {
@@ -105,16 +101,10 @@ class MCRequestConstructor: RequestConstructor {
                 parameters[kMaxAgeKey] = maxAge
             }
             
-            if let subscriberId = subscriberId {
-                if(config.loginHint == .MSISDN) {
-                    parameters[kLoginHint] = String(format: kLoginHintFormatMSISDN, subscriberId)
-                } else if(config.loginHint == .MSISDNEncrypted) {
-                    parameters[kLoginHint] = String(format: kLoginHintFormat, subscriberId)
-                } else {
-                    parameters[kLoginHint] = String(format: kLoginHintFormatPCR, subscriberId)
-                }
-            }
-            
+        }
+        
+        if let loginHint = configuration.loginHint {
+            parameters[kLoginHint] = loginHint
         }
         
         if let context = context
@@ -129,26 +119,25 @@ class MCRequestConstructor: RequestConstructor {
         return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
     }
     
-    func checkLoginHint(login_hint : String) -> Bool {
+    func checkLoginHint(loginHint : String) -> Bool {
         
-        if let configuration = configuration as? MCAuthorizationConfiguration {
-            if(login_hint == "MSISDN") {
-                if configuration.isLoginHintMSISDNSupported() {
-                    return true
-                }
+        if loginHint == kLoginHintMSISDN {
+            if configuration.isLoginHintMSISDNSupported() {
+                return true
+            }
+        }
+        
+        if loginHint == kLoginHintENCRMSISDN {
+            if configuration.isLoginHintEncryptedMSISDNSupported() {
+                return true
+            }
+        }
+        
+        if loginHint == kLoginHintPCR {
+            if configuration.isLoginHintPCRSupported() {
+                return true
             }
             
-            if(login_hint == "ENCR_MSISDN") {
-                if configuration.isLoginHintEncryptedMSISDNSupported() {
-                    return true
-                }
-            }
-            
-            if(login_hint == "PCR") {
-                if configuration.isLoginHintPCRSupported() {
-                    return true
-                }
-            }
         }
         
         return false

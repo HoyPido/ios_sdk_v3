@@ -18,12 +18,12 @@ import Alamofire
 
 class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorDataRedirectModel> {
     
-    //MARK: iVars
+    // MARK: iVars
     let configuration : DiscoveryServiceConfiguration
     
     let requestConstructor : DiscoveryRequestConstructor
     
-    //MARK: init
+    // MARK: init
     ///This initializer will take all the needed discovery service data from the MobileConnectSDK data that is required to be provided by the developer
     init(configuration : DiscoveryServiceConfiguration = DiscoveryServiceConfiguration(), webController : BaseWebController? = WebController.existingTemplate, requestConstructor : DiscoveryRequestConstructor? = nil)
     {
@@ -32,8 +32,7 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         if let requestConstructor = requestConstructor
         {
             self.requestConstructor = requestConstructor
-        }
-        else
+        } else
         {
             self.requestConstructor = DiscoveryRequestConstructor(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL, applicationEndpoint: configuration.applicationEndpoint)
         }
@@ -41,13 +40,13 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         super.init(webController: webController)
     }
     
-    //MARK: Inherited
+    // MARK: Inherited
     override var redirectURL: NSURL
     {
         return configuration.redirectURL
     }
     
-    //MARK: Discovery service with no client data
+    // MARK: Discovery service with no client data
     /**
      Gets operator data by showing a webview which will request data from client.
      By default it will also retrieve the metadata and update the discovery response according to the metadata information.
@@ -70,7 +69,7 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         })
     }
 
-    //MARK: Discovery service with client Country Code and Mobile Network Code
+    // MARK: Discovery service with client Country Code and Mobile Network Code
     /**
      Gets operator data by using client's operator country code and network code.
      It will not return a subscriber_id inside the Discovery response as for the subcriber_id, one should provide the concrete phone number.
@@ -87,7 +86,7 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         processRequest(requestConstructor.requestWithCountryCode(countryCode, networkCode: networkCode), withParameters: [(countryCode, MCErrorCode.NilCountryCode ), (networkCode, MCErrorCode.NilNetworkCode)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
     }
     
-    //MARK: Discovery service with phone number
+    // MARK: Discovery service with phone number
     /**
      Gets operator data by using client's phone number.
      It will return a subscriber_id inside the Discovery response.
@@ -102,7 +101,7 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber), withParameters: [(phoneNumber, MCErrorCode.NilPhoneNumber)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
     }
     
-    //MARK: Metadata
+    // MARK: Metadata
     func getMetadataWithDiscoveryControllerResponse(shouldRequireMetadata : Bool = true, handler : DiscoveryResponseBlock) -> DiscoveryResponseBlock
     {
         let wrappedClosure = { (controller : BaseWebController?, operatorsData : DiscoveryResponse?, localError : NSError?) -> Void in

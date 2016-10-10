@@ -33,7 +33,7 @@ class TokenRevokeSpec : QuickSpec {
         let revokeTokenReqConstructor = RevokeTokenRequestConstructor()
         context("check generate refresh request ", closure: {
             it("expect not nil object", closure: {
-                expect(revokeTokenReqConstructor.generateRevokeRequest("", withTokenId: "", isRefreshToken: true)).toNot(beNil())
+                expect(revokeTokenReqConstructor.generateRevokeRequest("", withTokenId: "", isRefreshToken: true, clientID: "", clientSecret: "")).toNot(beNil())
             })
         })
     }

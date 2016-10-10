@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MobileConnectSDKProtocol {
-    //MARK: SDK setters
+    // MARK: SDK setters
     static func setClientKey(clientKey : String)
     static func setClientSecret(clientSecret : String)
     static func setRedirect(redirectURL : NSURL)
@@ -24,7 +24,7 @@ public class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
     private static var redirectURL : NSURL!
     private static var delegate : MobileConnectManagerDelegate?
     
-    //MARK: SDK setters
+    // MARK: SDK setters
     ///Mobile connect client key
     public static func setClientKey(clientKey : String)
     {

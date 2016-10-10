@@ -31,27 +31,27 @@ public typealias DiscoveryResponseBlock = (controller : BaseWebController?, oper
  */
 public class DSService: NSObject {
     
-    //MARK: iVars
+    // MARK: iVars
     var service : DiscoveryService = DiscoveryService()
 
-    //MARK: Discovery service with no client data
+    // MARK: Discovery service with no client data
     ///Gets operator data by showing a webview which will request data from client
     public func startOperatorDiscoveryInController(controller : UIViewController, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryResponseBlock)
     {
         service.startOperatorDiscoveryInController(controller, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
     
-    //MARK: Discovery service with client Country Code and Mobile Network Code
+    // MARK: Discovery service with client Country Code and Mobile Network Code
     //Gets operator data by using client's operator country code and network code. It will not return a subscriber_id as for the subcriber_id one should provide the concrete phone number.
     public func startOperatorDiscoveryWithCountryCode(countryCode : String, networkCode : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
     {
         service.startOperatorDiscoveryWithCountryCode(countryCode, networkCode: networkCode, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
     
-    //MARK: Discovery service with phone number
+    // MARK: Discovery service with phone number
     //Gets operator data by using client's phone number. It will return a subscriber_id.
     public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
     {
-        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, shouldProvideMetadata: shouldProvideMetadata,completionHandler: completionHandler)
+        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
 }

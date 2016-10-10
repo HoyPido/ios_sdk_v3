@@ -14,7 +14,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     let configuration : MobileConnectServiceConfiguration
     let requestConstructor : MCRequestConstructor
     
-    //MARK: init
+    // MARK: init
     required init(configuration : MobileConnectServiceConfiguration, requestConstructor : MCRequestConstructor? = nil)
     {
         self.configuration = configuration
@@ -22,8 +22,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         if let requestConstructor = requestConstructor
         {
             self.requestConstructor = requestConstructor
-        }
-        else
+        } else
         {
             self.requestConstructor = MCRequestConstructor(configuration: configuration, scopeValidator: ScopeValidator(metadata: configuration.metadata))
         }
@@ -31,7 +30,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         super.init()
     }
     
-    //MARK: Main mobile connect service method
+    // MARK: Main mobile connect service method
     /**
      Gets the token which allows logging in[authenticating] by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
@@ -55,14 +54,13 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         if let request = requestConstructor.authorizationRequest
         {
             startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
-        }
-        else
+        } else
         {
             completionHandler(controller: nil, tokenModel: nil, error: MCErrorCode.RequiresAuthorizationConfiguration.error)
         }
     }
     
-    //MARK: Secondary methods
+    // MARK: Secondary methods
     func getTokenWithCode(code : String, completionHandler : MobileConnectDataResponse)
     {
       
@@ -86,7 +84,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         }
     }
     
-    //MARK: WebController methods
+    // MARK: WebController methods
     override var redirectURL : NSURL
     {
         return configuration.redirectURL
@@ -100,7 +98,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         }
     }
     
-    //MARK: Helper
+    // MARK: Helper
     override func startInHandler(handler: () -> Void, withParameters parameters: [(String?, MCErrorCode)], completionHandler: (error: NSError) -> Void)
     {
         let localParameters : [(String?, MCErrorCode)] = parameters + [(configuration.clientKey, MCErrorCode.NilClientId), (configuration.authorizationURLString, MCErrorCode.NilAuthorizationURL), (configuration.tokenURLString, MCErrorCode.NilTokenURL)]

@@ -44,7 +44,7 @@ class IdentityPhoneNumberViewController : UIViewController {
     
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
-        if(isCalledDiscoveryWithPhoneNumber) {
+        if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityPhoneNumber], context: "MC", bindingMessage: nil, completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityPhoneNumber], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
@@ -53,14 +53,14 @@ class IdentityPhoneNumberViewController : UIViewController {
     
     @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
         
-        if(segmentedControll.selectedSegmentIndex == 0) {
+        if segmentedControll.selectedSegmentIndex == 0 {
             self.phoneNumberTextField.becomeFirstResponder()
             self.controllDistance.constant = 108
             self.view.setNeedsUpdateConstraints()
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                    self.phoneNumberTextField.hidden = false
                     }, completion: nil)
                 
@@ -74,7 +74,7 @@ class IdentityPhoneNumberViewController : UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = true
                     }, completion: nil)
             })
@@ -87,9 +87,9 @@ class IdentityPhoneNumberViewController : UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: Navigation
+    // MARK: Navigation
     
-    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, error : NSError?) {
+    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
         self.performSegueWithIdentifier("showResult", sender: nil)
@@ -116,7 +116,7 @@ class IdentityPhoneNumberViewController : UIViewController {
         }
     }
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "IdentityPhoneNumberViewController", message: "IdentityPhoneNumberViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
@@ -130,5 +130,4 @@ class IdentityPhoneNumberViewController : UIViewController {
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
 }

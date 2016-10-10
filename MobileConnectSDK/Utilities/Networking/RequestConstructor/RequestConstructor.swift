@@ -57,7 +57,7 @@ class RequestConstructor: NSObject {
         super.init()
     }
     
-    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible , parameters : [String : AnyObject]?, encoding : ParameterEncoding, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
+    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible, parameters : [String : AnyObject]?, encoding : ParameterEncoding, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
         var headers : [String : String] = authorizer.headers
         

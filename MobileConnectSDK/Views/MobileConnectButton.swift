@@ -14,7 +14,7 @@ import UIKit
 */
 public class MobileConnectButton: UIButton {
 
-    //MARK: init
+    // MARK: init
     override public init(frame: CGRect) {
         super.init(frame: frame)
         configureButton()
@@ -31,7 +31,7 @@ public class MobileConnectButton: UIButton {
         configureButton()
     }
     
-    //MARK: Configuration
+    // MARK: Configuration
     func configureButton()
     {
         configureView()
@@ -44,7 +44,7 @@ public class MobileConnectButton: UIButton {
         sizeToFit()
     }
     
-    //MARK: Events
+    // MARK: Events
     @objc private func buttonTouched()
     {
         guard let presenter = containerController else
@@ -57,7 +57,7 @@ public class MobileConnectButton: UIButton {
         MobileConnectManager().getTokenInPresenterController(presenter, withCompletionHandler: nil)
     }
     
-    //MARK: Helpers
+    // MARK: Helpers
     private var containerController : UIViewController?
     {
         var localResponder : UIResponder? = self

@@ -14,15 +14,15 @@ private let kWebControllerIdentifier : String = "WebController"
 
 protocol WebControllerProtocol : UIToolbarDelegate, WKNavigationDelegate
 {
-    //MARK: iVars
+    // MARK: iVars
     var delegate : WebControllerDelegate? {get set}
     var requestToLoad : NSURLRequest? {get set}
     
-    //MARK: Factory methods
+    // MARK: Factory methods
     static func controllerWithDelegate(delegate : WebControllerDelegate?, requestToLoad : NSURLRequest?) -> BaseWebController?
     static var existingTemplate : BaseWebController? {get}
     
-    //MARK: Storyboard creation datasource
+    // MARK: Storyboard creation datasource
     static var controllerIdentifier : String {get}
     static var storyboardName : String {get}
 }

@@ -23,13 +23,13 @@ class MobileConnectManagerMock: MobileConnectManager {
         
         if let context = context, scopes = scopes
         {
-            let configuration : MCAuthorizationConfiguration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: "bla bla", authorizationScopes: scopes, config: nil)
+            let configuration : MCAuthorizationConfiguration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: "bla bla", authorizationScopes: scopes, config: nil, loginHint: nil)
             
             mobileConnectServiceMock = MobileConnectServiceMock(configuration: configuration)
         }
         else
         {
-            mobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : []))
+            mobileConnectServiceMock = MobileConnectServiceMock(configuration: MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : [], loginHint: nil))
         }
         
         if let error = error

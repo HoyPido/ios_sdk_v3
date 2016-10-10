@@ -1,4 +1,4 @@
- //
+//
 //  TokenValidation.swift
 //  MobileConnectSDK
 //
@@ -68,15 +68,14 @@ class TokenValidation : NSObject {
             let validKey : Bool = try self.verifier.verifyWithPublicKey(PublicKey(exponentString: exponent, modulusString: modulus))
             
             completionHandler(error: validKey ? nil : MCErrorCode.InvalidKey.error)
-        }
-        catch
+        } catch
         {
             completionHandler(error: error as NSError)
         }
     }
     
   
-  func initialCheckTokenIsValid(completion:(NSError?)->Void) {
+  func initialCheckTokenIsValid(completion:(NSError?) -> Void) {
     
     if let decodedTokenDictionary = verifier.decoder.decodedDictionary {
         
@@ -95,19 +94,19 @@ class TokenValidation : NSObject {
         let authDate = NSDate(timeIntervalSince1970: decodedToken.auth_time)
         
         if let expiresIn = model.expires_in {
-          if(authDate.timeIntervalSinceNow > Double(expiresIn)) {
+          if authDate.timeIntervalSinceNow > Double(expiresIn) {
             completion(MCErrorCode.TokenExpiredError.error)
             return
           }
         }
         
-        if(decodedToken.iss != metadata.issuer ) {
+        if decodedToken.iss != metadata.issuer {
           completion(MCErrorCode.InvalidIssuerError.error)
           return
         }
         
         if let aud = decodedToken.aud {
-          if(aud[0] != configuration.clientKey) {
+          if aud[0] != configuration.clientKey {
             completion(MCErrorCode.InvalidAudError.error)
             return
           }
@@ -117,7 +116,7 @@ class TokenValidation : NSObject {
         }
         
         if let azp = decodedToken.azp {
-          if(azp != configuration.clientKey) {
+          if azp != configuration.clientKey {
             completion(MCErrorCode.InvalidAzpError.error)
             return
           }
@@ -126,7 +125,7 @@ class TokenValidation : NSObject {
             return
         }
         
-        if(authDate.timeIntervalSinceNow > Double(configuration.maxAge)) {
+        if authDate.timeIntervalSinceNow > Double(configuration.maxAge) {
           completion(MCErrorCode.MaxAgeError.error)
           return
         }
@@ -136,9 +135,7 @@ class TokenValidation : NSObject {
             return
         }
         
-      }
-      catch {
-      }
+      } catch {}
       
     } else {
         completion(MCErrorCode.InvalidAccessTokenError.error)
@@ -147,7 +144,7 @@ class TokenValidation : NSObject {
     completion(nil)
   }
   
-    func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?)->Void) {
+    func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?) -> Void) {
         guard let jwksURL = configuration.metadata?.jwks_uri else {
             //completion(model: nil, error: MCErrorCode.Unknown.error)
             return
@@ -160,5 +157,4 @@ class TokenValidation : NSObject {
             deserializerObject?.deserializeModel(completion)
         }
     }
-    
 }

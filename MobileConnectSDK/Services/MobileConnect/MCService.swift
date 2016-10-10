@@ -31,19 +31,19 @@ public typealias MobileConnectControllerResponse = (controller : BaseWebControll
  */
 public class MCService: NSObject {
     
-    //MARK: iVars
+    // MARK: iVars
     let service : MobileConnectService
     
     init(service : MobileConnectService) {
         self.service = service
     }
     
-    //MARK: init
+    // MARK: init
     public convenience init(configuration : MobileConnectServiceConfiguration) {
         self.init(service: MobileConnectService(configuration: configuration))
     }
     
-    //MARK: Main mobile connect service method
+    // MARK: Main mobile connect service method
     /**
      Gets the token by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller

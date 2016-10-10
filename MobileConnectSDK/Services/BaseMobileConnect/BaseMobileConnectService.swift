@@ -12,7 +12,7 @@ import Alamofire
 ///Parent class of Mobile Connect and Discovery service. Deals with web view delegate methods, deserialization tasks and redirects.
 class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>: NSObject {
     
-    //MARK: iVars
+    // MARK: iVars
     var isAwaitingResponse : Bool = false
     
     var controllerResponse : ((controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void)?
@@ -21,7 +21,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     var isFirstResponse : Bool = true
     
-    //MARK: init
+    // MARK: init
     required init(webController : BaseWebController? = WebController.existingTemplate) {
         
         self.webController = webController
@@ -44,7 +44,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         
     }
     
-    //MARK: Web view additional methods
+    // MARK: Web view additional methods
     func presentWebControllerWithRequest(request : NSURLRequest?, inController controller : UIViewController, errorHandler : (error : NSError) -> Void) {
         guard let webController = webController else {
             errorHandler(error: MCErrorCode.WebControllerNil.error)
@@ -61,7 +61,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         controller.presentViewController(webController, animated: true, completion: nil)
     }
   
-    //MARK: Pre-request stage
+    // MARK: Pre-request stage
     func startServiceInController(controller : UIViewController, withRequest request : Request, completionHandler : (controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void) {
         //start in handler basically checks for concurrency error in this case, but with reusing the same logic as for other requests
         startInHandler({
@@ -86,13 +86,12 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         
         if canStartRequesting {
             handler()
-        }
-        else {
+        } else {
             completionHandler(error: MCErrorCode.Concurrency.error)
         }
     }
     
-    //MARK: Generic request treatment method
+    // MARK: Generic request treatment method
     func processRequest(request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : (model : ResponseModel?, error : NSError?) -> Void) {
         processSpecificRequest(request, withParameters: parameters, inHandler: localHandler)
     }
@@ -110,7 +109,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         }
     }
   
-    //MARK: Checks
+    // MARK: Checks
     var canStartRequesting : Bool {
         let localCanStartRequesting : Bool = !isAwaitingResponse
         

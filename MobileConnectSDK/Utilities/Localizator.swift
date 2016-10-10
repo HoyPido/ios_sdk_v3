@@ -66,7 +66,7 @@ private let kRequiresAuthorizationConfiguration : String = "Using authorization 
 
 private let kNoTokenIdInJWT : String = "There was no token id token response"
 
-//MARK: Token validation errors
+// MARK: Token validation errors
 
 private let kInvalidDiscoveryMetadata : String = "Invalid discovery metadata"
 private let kInvalidAccessToken: String = "Invalid access token"
@@ -88,7 +88,7 @@ class Localizator: NSObject {
         return localized(kKeyAlgorithmNotSupported)
     }
     
-    //MARK: Exception related strings
+    // MARK: Exception related strings
     class var requiresAuthorizationConfiguration : String
     {
         return localized(kRequiresAuthorizationConfiguration)
@@ -194,7 +194,7 @@ class Localizator: NSObject {
         return localized(kNilParameterMessage)
     }
     
-    //MARK: Error related messages
+    // MARK: Error related messages
     class var invalidKey : String
     {
         return localized(kInvalidKey)
@@ -291,13 +291,13 @@ class Localizator: NSObject {
         return localized(kNilTokenURL)
     }
     
-    //MARK: main method
+    // MARK: main method
     private class func localized(key : String) -> String
     {
         return NSLocalizedString(key, comment: "")
     }
   
-    //MARK: Token validation error
+    // MARK: Token validation error
   
     class var invalidDiscoveryMetadata : String {
       return localized(kInvalidDiscoveryMetadata)

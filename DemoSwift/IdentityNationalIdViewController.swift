@@ -44,7 +44,7 @@ class IdentityNationalIdViewController: UIViewController {
     
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
-        if(isCalledDiscoveryWithPhoneNumber) {
+        if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityNationalID], context: "MC", bindingMessage: nil, completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityNationalID], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
@@ -53,13 +53,13 @@ class IdentityNationalIdViewController: UIViewController {
     
     @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
         
-        if(segmentedControll.selectedSegmentIndex == 0) {
+        if segmentedControll.selectedSegmentIndex == 0 {
             self.phoneNumberTextField.becomeFirstResponder()
             self.controllDistance.constant = 108
             self.view.setNeedsUpdateConstraints()
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = false
                     }, completion: nil)
                 
@@ -73,7 +73,7 @@ class IdentityNationalIdViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = true
                     }, completion: nil)
             })
@@ -86,8 +86,8 @@ class IdentityNationalIdViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: Navigation
-    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, error : NSError?) {
+    // MARK: Navigation
+    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
         self.performSegueWithIdentifier("showResult", sender: nil)
@@ -107,15 +107,18 @@ class IdentityNationalIdViewController: UIViewController {
             {
                 model["message"] = "Success"
                 model["sub"] = currentResponse.sub ?? ""
-                model["nationa_identifier"] = currentResponse.national_ID ?? ""
+                model["national_identifier"] = currentResponse.national_ID ?? ""
                 model["updated_at"] = currentResponse.updated_at ?? ""
+                model["address"] = currentResponse.address?.formatted ?? ""
+                model["birth_date"] = currentResponse.birth_date ?? ""
+                model["given_name"] = currentResponse.given_name ?? ""
+                model["family_name"] = currentResponse.family_name ?? ""
             }
-            
             controller.datasource = model
         }
     }
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "IdentityNationalIdViewController", message: "IdentityNationalIdViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
@@ -129,5 +132,4 @@ class IdentityNationalIdViewController: UIViewController {
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
 }

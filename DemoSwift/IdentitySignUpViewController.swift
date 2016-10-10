@@ -44,7 +44,7 @@ class IdentitySignUpViewController : UIViewController {
     
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
-        if(isCalledDiscoveryWithPhoneNumber) {
+        if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: nil, completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentitySignUp], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
@@ -53,13 +53,13 @@ class IdentitySignUpViewController : UIViewController {
     
     @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
         
-        if(segmentedControll.selectedSegmentIndex == 0) {
+        if segmentedControll.selectedSegmentIndex == 0 {
             self.phoneNumberTextField.becomeFirstResponder()
             self.controllDistance.constant = 108
             self.view.setNeedsUpdateConstraints()
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = false
                     }, completion: nil)
                 
@@ -73,7 +73,7 @@ class IdentitySignUpViewController : UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve , animations: {
+                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                     self.phoneNumberTextField.hidden = true
                     }, completion: nil)
             })
@@ -85,9 +85,9 @@ class IdentitySignUpViewController : UIViewController {
     @IBAction func tapGestureAction() {
         self.view.endEditing(true)
     }
-    //MARK: Navigation
+    // MARK: Navigation
     
-    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, error : NSError?) {
+    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
         self.performSegueWithIdentifier("showResult", sender: nil)
@@ -122,7 +122,7 @@ class IdentitySignUpViewController : UIViewController {
         }
     }
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "IdentitySignUpViewController", message: "IdentitySignUpViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
@@ -136,5 +136,4 @@ class IdentitySignUpViewController : UIViewController {
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
 }

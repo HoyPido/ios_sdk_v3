@@ -1,25 +1,19 @@
 //
-//  AttributeResponseModel.h
+//  UserInfoResponse.h
 //  MobileConnectSDK
 //
-//  Created by Mircea Grecu on 16/08/2016.
+//  Created by Mircea Grecu on 06/10/2016.
 //  Copyright © 2016 GSMA. All rights reserved.
 //
 
-#import "MCModel.h"
+#import <MobileConnectSDK/MobileConnectSDK.h>
+#import "AttributeResponseModel.h"
 
-@interface AddressModel : MCModel
-
-@property (nullable) NSString *formatted;
-
-@end
-
-@interface AttributeResponseModel : MCModel
+@interface UserInfoResponse : MCModel
 
 @property (nullable) NSString *sub;
 @property (nullable) NSString *family_name;
 @property (nullable) NSString *given_name;
-@property (nullable) NSString *national_ID;
 @property (nullable) NSString *phone_number;
 @property BOOL phone_number_verified;
 @property (nullable) NSString *updated_at;
@@ -38,5 +32,3 @@
 @property (nullable) NSString *middle_name;
 
 @end
-
-

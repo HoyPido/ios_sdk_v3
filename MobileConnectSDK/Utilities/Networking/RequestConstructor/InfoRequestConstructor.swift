@@ -1,5 +1,5 @@
 //
-//  AttributeRequestConstructor.swift
+//  InfoRequestConstructor.swift
 //  MobileConnectSDK
 //
 //  Created by Mircea Grecu on 12/08/2016.
@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class AttributeRequestConstructor: NSObject {
+class InfoRequestConstructor: NSObject {
   
   let accessToken: String
   
@@ -21,7 +21,7 @@ class AttributeRequestConstructor: NSObject {
     self.accessToken = accessToken
   }
   
-  func generatePremiumInfoRequest(withURL: String) -> Request {
+  func generateInfoRequest(withURL: String) -> Request {
     return request(.GET, withURL, encoding: .URLEncodedInURL, headers: headers)
   }
   

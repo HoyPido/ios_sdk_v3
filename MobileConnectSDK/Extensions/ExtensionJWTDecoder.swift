@@ -20,8 +20,7 @@ extension JWTDecoder
         do
         {
             return try deserializer.seriallyDeserializeModel()
-        }
-        catch
+        } catch
         {
             return nil
         }

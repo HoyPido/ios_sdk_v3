@@ -82,7 +82,11 @@
 		6C4C054F1D64C311008B1AB7 /* HelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */; };
 		6C552BF41D81645A00395A4E /* AuthorizationConfigurationParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C552BF21D81645A00395A4E /* AuthorizationConfigurationParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C552BF51D81645A00395A4E /* AuthorizationConfigurationParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C552BF31D81645A00395A4E /* AuthorizationConfigurationParameters.m */; };
-		6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */; };
+		6C5C7ED61D5DC357003D1F7B /* InfoRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C7ED51D5DC357003D1F7B /* InfoRequestConstructor.swift */; };
+		6CA790761DA64FE100581CB6 /* LoginHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA790751DA64FE100581CB6 /* LoginHint.swift */; };
+		6CA790791DA68B2D00581CB6 /* UserInfoResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA790771DA68B2D00581CB6 /* UserInfoResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CA7907A1DA68B2D00581CB6 /* UserInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA790781DA68B2D00581CB6 /* UserInfoResponse.m */; };
+		6CA7907D1DA68EF500581CB6 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA7907C1DA68EF500581CB6 /* UserInfoService.swift */; };
 		6CB619301D89826A000D01F5 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB619291D89826A000D01F5 /* AuthenticationViewController.swift */; };
 		6CB619311D89826A000D01F5 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6192A1D89826A000D01F5 /* AuthorizationViewController.swift */; };
 		6CB619321D89826A000D01F5 /* IdentityNationalIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6192B1D89826A000D01F5 /* IdentityNationalIdViewController.swift */; };
@@ -296,7 +300,11 @@
 		6C4C054E1D64C311008B1AB7 /* HelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperSpec.swift; sourceTree = "<group>"; };
 		6C552BF21D81645A00395A4E /* AuthorizationConfigurationParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationConfigurationParameters.h; sourceTree = "<group>"; };
 		6C552BF31D81645A00395A4E /* AuthorizationConfigurationParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationConfigurationParameters.m; sourceTree = "<group>"; };
-		6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeRequestConstructor.swift; sourceTree = "<group>"; };
+		6C5C7ED51D5DC357003D1F7B /* InfoRequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoRequestConstructor.swift; sourceTree = "<group>"; };
+		6CA790751DA64FE100581CB6 /* LoginHint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHint.swift; sourceTree = "<group>"; };
+		6CA790771DA68B2D00581CB6 /* UserInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoResponse.h; sourceTree = "<group>"; };
+		6CA790781DA68B2D00581CB6 /* UserInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoResponse.m; sourceTree = "<group>"; };
+		6CA7907C1DA68EF500581CB6 /* UserInfoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
 		6CB619291D89826A000D01F5 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		6CB6192A1D89826A000D01F5 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		6CB6192B1D89826A000D01F5 /* IdentityNationalIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityNationalIdViewController.swift; sourceTree = "<group>"; };
@@ -483,6 +491,8 @@
 				6C552BF31D81645A00395A4E /* AuthorizationConfigurationParameters.m */,
 				6C3ECA531D99117C00A58D40 /* RefreshTokenModel.h */,
 				6C3ECA541D99117C00A58D40 /* RefreshTokenModel.m */,
+				6CA790771DA68B2D00581CB6 /* UserInfoResponse.h */,
+				6CA790781DA68B2D00581CB6 /* UserInfoResponse.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -532,6 +542,7 @@
 		3C72CF051D05E7A500A095ED /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6CA7907B1DA68ECC00581CB6 /* UserInfoService */,
 				6C3ECA301D93F3C700A58D40 /* RefreshToken */,
 				6CB619371D8AB4F9000D01F5 /* RevokeToken */,
 				6C4C05251D5E2D2B008B1AB7 /* AttributeService */,
@@ -590,7 +601,7 @@
 				3C8F38141D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift */,
 				3C8F38151D086FBB0051BBB1 /* RequestConstructor.swift */,
 				3C36EF051D0A3EFF00297A17 /* MCRequestConstructor.swift */,
-				6C5C7ED51D5DC357003D1F7B /* AttributeRequestConstructor.swift */,
+				6C5C7ED51D5DC357003D1F7B /* InfoRequestConstructor.swift */,
 				6CB6193A1D8ADB49000D01F5 /* RevokeTokenRequestConstructor.swift */,
 				6C3ECA2E1D93F03100A58D40 /* RefreshTokenRequestConstructor.swift */,
 			);
@@ -618,6 +629,7 @@
 				3C8F38101D0868ED0051BBB1 /* Resources.swift */,
 				3C72CF161D064BF100A095ED /* Localizator.swift */,
 				3C36EEFF1D09FC3100297A17 /* MobileConnectSDK.swift */,
+				6CA790751DA64FE100581CB6 /* LoginHint.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -693,6 +705,14 @@
 				6CB6D4701D75E893009FDD82 /* BaseMobileConnectServiceSpec.swift */,
 			);
 			path = BaseServiceHelper;
+			sourceTree = "<group>";
+		};
+		6CA7907B1DA68ECC00581CB6 /* UserInfoService */ = {
+			isa = PBXGroup;
+			children = (
+				6CA7907C1DA68EF500581CB6 /* UserInfoService.swift */,
+			);
+			path = UserInfoService;
 			sourceTree = "<group>";
 		};
 		6CB619371D8AB4F9000D01F5 /* RevokeToken */ = {
@@ -866,6 +886,7 @@
 			files = (
 				3C401A331D0EB36700F73EA5 /* TokenModel.h in Headers */,
 				6C552BF41D81645A00395A4E /* AuthorizationConfigurationParameters.h in Headers */,
+				6CA790791DA68B2D00581CB6 /* UserInfoResponse.h in Headers */,
 				A6B5803D1D24304200640E17 /* MetadataModel.h in Headers */,
 				3C401A2B1D0EB36700F73EA5 /* MCModel.h in Headers */,
 				A6E6E9E81D75CC6100DD64B3 /* DecodedTokenModel.h in Headers */,
@@ -1205,7 +1226,7 @@
 				A6E6E9E21D75CC3600DD64B3 /* JWTManager.swift in Sources */,
 				3C401A221D0EB36700F73EA5 /* AuthorizationModel.m in Sources */,
 				3C401A241D0EB36700F73EA5 /* DiscoveryResponse.m in Sources */,
-				6C5C7ED61D5DC357003D1F7B /* AttributeRequestConstructor.swift in Sources */,
+				6C5C7ED61D5DC357003D1F7B /* InfoRequestConstructor.swift in Sources */,
 				3C8F38171D086FBB0051BBB1 /* RequestConstructor.swift in Sources */,
 				3C401A321D0EB36700F73EA5 /* OperatorIdModel.m in Sources */,
 				3C8F38161D086FBB0051BBB1 /* DiscoveryRequestConstructor.swift in Sources */,
@@ -1227,7 +1248,9 @@
 				3C401A301D0EB36700F73EA5 /* OperatorDataResponse.m in Sources */,
 				3C8F38191D086FE00051BBB1 /* Authorizer.swift in Sources */,
 				3C36EF001D09FC3100297A17 /* MobileConnectSDK.swift in Sources */,
+				6CA7907A1DA68B2D00581CB6 /* UserInfoResponse.m in Sources */,
 				3C401A281D0EB36700F73EA5 /* MCError.m in Sources */,
+				6CA7907D1DA68EF500581CB6 /* UserInfoService.swift in Sources */,
 				A6E6E9F41D75CD6000DD64B3 /* TokenIdHeaderModel.swift in Sources */,
 				6C3ECA561D99117C00A58D40 /* RefreshTokenModel.m in Sources */,
 				3C36EF041D0A19D200297A17 /* MobileConnectService.swift in Sources */,
@@ -1244,6 +1267,7 @@
 				3CD791721D0571250023FD0A /* WebController.swift in Sources */,
 				6C3ECA2F1D93F03100A58D40 /* RefreshTokenRequestConstructor.swift in Sources */,
 				3C8F38111D0868ED0051BBB1 /* Resources.swift in Sources */,
+				6CA790761DA64FE100581CB6 /* LoginHint.swift in Sources */,
 				A6B5803A1D241E5700640E17 /* ExtensionDiscoveryResponse.swift in Sources */,
 				3C401A2C1D0EB36700F73EA5 /* MCModel.m in Sources */,
 			);

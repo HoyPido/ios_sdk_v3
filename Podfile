@@ -7,8 +7,8 @@ end
 
 target 'MobileConnectSDKTests' do
   use_frameworks!
-  pod 'Quick'
-  pod 'Nimble'
+  pod 'Quick', '~> 0.9.3'
+  pod 'Nimble', '~> 4.1.0'
   pod 'JSONModel', '~> 1.2.0'
   pod 'Alamofire', '~> 3.4'
   pod 'Heimdall', '~> 1.0.0'

@@ -75,7 +75,7 @@ class Mocker: NSObject {
         return try! T(dictionary: dictionary as [NSObject : AnyObject])
     }
     
-    //MARK: Metadata mocks
+    // MARK: Metadata mocks
     class var metadataServicesMock : [String]
     {
         return ["service1", "service2"]

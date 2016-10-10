@@ -41,7 +41,7 @@ public class MobileConnectManager: NSObject {
     
     var isRunning : Bool = false
     
-    //MARK: init
+    // MARK: init
     override public convenience init() {
         self.init(delegate: nil)
     }
@@ -62,7 +62,7 @@ public class MobileConnectManager: NSObject {
         super.init()
     }
     
-    //MARK: SDK main methods
+    // MARK: SDK main methods
     /**
      Will get the token without any info needed from the client. Will use both Discovery and Mobile Connect services underneath. First the Discovery web controller will be presented which will require client's phone number or operator information. Afterwards the Mobile Connect Service will present its web view controller. In case the client did not provide a phone number, Mobile Connect will first ask the client for a phone number and then present the waiting for sms confirmation screen.
      Will automatically try to retrieve and merge the Metadata.
@@ -322,7 +322,7 @@ public class MobileConnectManager: NSObject {
             }, presenter: presenterController, withCompletition: completionHandler)
     }
     
-    //MARK: Discovery methods
+    // MARK: Discovery methods
     func checkDiscoveryResponse(controller : BaseWebController?, loginHint : String?, operatorsData : DiscoveryResponse?, error : NSError?) -> (context : String?, scopes : [String]?, config : AuthorizationConfigurationParameters?, bindingMessage : String?) -> Void
     {
         return { (context : String?, scopes : [String]?, config : AuthorizationConfigurationParameters?, bindingMessage : String?) -> Void in
@@ -373,7 +373,7 @@ public class MobileConnectManager: NSObject {
         }
     }
     
-    //MARK: Mobile connect methods
+    // MARK: Mobile connect methods
     func checkMobileConnectResponseWithUserInfo(operatorData : DiscoveryResponse?) -> (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void
     {
         return { (controller : BaseWebController?, tokenModel : TokenModel?, error: NSError?) -> Void in
@@ -390,7 +390,7 @@ public class MobileConnectManager: NSObject {
         }
     }
     
-    //MARK: Helpers
+    // MARK: Helpers
     func startDiscoveryInHandler(handler : () -> Void, presenter : UIViewController, withCompletition completionHandler : MobileConnectResponse?)
     {
         currentResponse = completionHandler

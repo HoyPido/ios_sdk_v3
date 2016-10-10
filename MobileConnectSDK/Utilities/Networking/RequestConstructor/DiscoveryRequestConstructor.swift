@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-//MARK: Local constants
+// MARK: Local constants
 private let kRedirectURL : String = "Redirect_URL"
 private let kKeyPhone : String = "MSISDN"
 private let kKeyCountryCode : String = "Selected-MCC"
@@ -17,10 +17,10 @@ private let kKeyNetworkCode : String = "Selected-MNC"
 
 class DiscoveryRequestConstructor : RequestConstructor
 {
-    //MARK: iVars
+    // MARK: iVars
     let applicationEndpoint : String
     
-    //MARK: init
+    // MARK: init
     init(clientKey: String, clientSecret: String, redirectURL: URLStringConvertible, applicationEndpoint : String){
         
         NSException.checkEndpoint(applicationEndpoint)
@@ -30,7 +30,7 @@ class DiscoveryRequestConstructor : RequestConstructor
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: redirectURL)
     }
     
-    //MARK: Request factory
+    // MARK: Request factory
     var noOperatorDataRequest : Request
     {
         return genericDiscoveryRequestWithParameters([:], shouldNotStartImmediately : true)

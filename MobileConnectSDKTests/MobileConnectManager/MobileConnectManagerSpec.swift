@@ -14,7 +14,7 @@ import Nimble
 
 class MobileConnectManagerSpec : QuickSpec
 {
-    //MARK: iVars
+    // MARK: iVars
     lazy var discoveryService : DiscoveryServiceMock = {
         MobileConnectSDK.setClientKey(kClientKey)
         MobileConnectSDK.setClientSecret(kClientSecret)
@@ -28,7 +28,7 @@ class MobileConnectManagerSpec : QuickSpec
     var manager : MobileConnectManagerMock!
     let viewController : UIViewController = UIViewController()
     
-    //MARK: Quick template functions
+    // MARK: Quick template functions
     override func spec() {
         
         manager = MobileConnectManagerMock(delegate: mockDelegate, discoveryService: discoveryService)
@@ -166,7 +166,7 @@ class MobileConnectManagerSpec : QuickSpec
         })
     }
     
-    //MARK: Helpers
+    // MARK: Helpers
     func tryResponse(tokenResponseModel : TokenResponseModel?, expectedResponseModel : TokenResponseModel?, error : NSError?, withExpectedError expectedError : NSError?, mockDelegate : MobileConnectManagerDelegateMock?)
     {
         itBehavesLike(kNameDefaultMobileConnectManagerConfiguration) { () -> (NSDictionary) in

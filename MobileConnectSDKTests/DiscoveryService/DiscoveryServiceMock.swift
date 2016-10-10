@@ -21,7 +21,7 @@ class DiscoveryServiceMock: DiscoveryService {
     var withDelay : Bool = false
     var shouldCallSuper : Bool = false
     
-    //MARK: Main functions
+    // MARK: Main functions
     override func startOperatorDiscoveryInController(controller: UIViewController, shouldProvideMetadata: Bool = true, completionHandler: DiscoveryResponseBlock) {
         
         if shouldCallSuper {
@@ -49,7 +49,7 @@ class DiscoveryServiceMock: DiscoveryService {
         }
     }
     
-    //MARK: Mock any request
+    // MARK: Mock any request
     override func processRequest(request: Request, withParameters parameters: [(String?, MCErrorCode)], inHandler localHandler: (model: DiscoveryResponse?, error: NSError?) -> Void) {
         
         var result : Alamofire.Result<AnyObject, NSError>
@@ -68,12 +68,12 @@ class DiscoveryServiceMock: DiscoveryService {
         }
     }
     
-    //MARK: Metadata mock
+    // MARK: Metadata mock
     override func getMetadataForOperatorData(operatorsData: DiscoveryResponse?, inHandler handler: (model: MetadataModel?, error: NSError?) -> Void) {
         handler(model: self.metadata, error: error)
     }
     
-    //MARK: Helper testing functions
+    // MARK: Helper testing functions
     func callHandlerWithDelay(handler : () -> Void)
     {
         if withDelay

@@ -21,7 +21,7 @@ private let kSignatureComponentIndex : Int = 2
         self.tokenString = tokenString
     }
     
-    //MARK: Properties
+    // MARK: Properties
     public var decodedHeader : [NSObject : AnyObject]?
     {
         return deserializeNullableComponentData(decodedHeaderValue)
@@ -81,7 +81,7 @@ private let kSignatureComponentIndex : Int = 2
     }
     
     
-    //MARK: Helpers
+    // MARK: Helpers
     func deserializeNullableComponentData(data : NSData?) -> [NSObject : AnyObject]?
     {
         guard let data = data else

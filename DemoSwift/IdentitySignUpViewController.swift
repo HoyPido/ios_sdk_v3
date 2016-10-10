@@ -85,7 +85,7 @@ class IdentitySignUpViewController : UIViewController {
     @IBAction func tapGestureAction() {
         self.view.endEditing(true)
     }
-    //MARK: Navigation
+    // MARK: Navigation
     
     func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
@@ -122,7 +122,7 @@ class IdentitySignUpViewController : UIViewController {
         }
     }
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "IdentitySignUpViewController", message: "IdentitySignUpViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)

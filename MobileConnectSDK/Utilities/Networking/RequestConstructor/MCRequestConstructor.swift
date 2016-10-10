@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-//MARK: Local constants
+// MARK: Local constants
 private let kClientId : String = "client_id"
 private let kResponseType : String =  "response_type"
 private let kResponseTypeValue : String = "code"

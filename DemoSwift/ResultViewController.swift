@@ -21,7 +21,7 @@ class ResultViewController : UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.title = "Mobile Connect Example App"
     }
     
-    //MARK: table view delegate methods
+    // MARK: table view delegate methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count

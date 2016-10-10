@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: Local constants
+// MARK: Local constants
 private let kResourceBundleIdentifier : String = "com.GSMA.MobileConnectSDK"
 private let kImageName : String = "mobileConnectButtonImage"
 

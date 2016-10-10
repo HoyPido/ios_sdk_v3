@@ -86,7 +86,7 @@ class AuthenticationViewController : UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: Navigation
+    // MARK: Navigation
     func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
     {
         currentTokenResponse = tokenResponseModel
@@ -119,7 +119,7 @@ class AuthenticationViewController : UIViewController {
     }
     
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "AuthenticationViewController", message: "AuthenticationViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)

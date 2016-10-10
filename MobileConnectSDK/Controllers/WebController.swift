@@ -30,10 +30,10 @@ public class BaseWebController : UIViewController, WebControllerProtocol {
 
 class WebController: BaseWebController {
 
-    //MARK: Outlets
+    // MARK: Outlets
     @IBOutlet weak var webViewContainer: UIView!
     
-    //MARK: iVars
+    // MARK: iVars
     
     lazy var webView : WKWebView = {
         
@@ -56,7 +56,7 @@ class WebController: BaseWebController {
         return localWebView
     }()
     
-    //MARK: View life cycle methods
+    // MARK: View life cycle methods
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -69,7 +69,7 @@ class WebController: BaseWebController {
         }
     }
     
-    //MARK: Web view delegate methods
+    // MARK: Web view delegate methods
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void)
     {
         if let url = navigationAction.request.URL, delegate = delegate
@@ -85,7 +85,7 @@ class WebController: BaseWebController {
         delegate?.webController(self, failedLoadingRequestWithError: error)
     }
     
-    //MARK: Events
+    // MARK: Events
     @IBAction func cancelAction(sender: AnyObject) {
         delegate?.webControllerDidCancel(self)
     }

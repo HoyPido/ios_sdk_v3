@@ -25,7 +25,7 @@ extension BaseMobileConnectService : WebControllerDelegate {
     controllerResponse?(controller : nil, model: nil, error: error)
   }
   
-  //MARK: Web view helpers
+  // MARK: Web view helpers
   
     func isValidRedirectURL(url : NSURL, inController controller : BaseWebController, redirect : NSURL? = nil) -> Bool {
         

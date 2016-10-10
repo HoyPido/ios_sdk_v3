@@ -86,7 +86,7 @@ class IdentityNationalIdViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: Navigation
+    // MARK: Navigation
     func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
@@ -107,15 +107,18 @@ class IdentityNationalIdViewController: UIViewController {
             {
                 model["message"] = "Success"
                 model["sub"] = currentResponse.sub ?? ""
-                model["nationa_identifier"] = currentResponse.national_ID ?? ""
+                model["national_identifier"] = currentResponse.national_ID ?? ""
                 model["updated_at"] = currentResponse.updated_at ?? ""
+                model["address"] = currentResponse.address?.formatted ?? ""
+                model["birth_date"] = currentResponse.birth_date ?? ""
+                model["given_name"] = currentResponse.given_name ?? ""
+                model["family_name"] = currentResponse.family_name ?? ""
             }
-            
             controller.datasource = model
         }
     }
     
-    //MARK: Handle display/dismiss alert view
+    // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
         let alert = UIAlertController(title: "IdentityNationalIdViewController", message: "IdentityNationalIdViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)

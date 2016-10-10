@@ -44,14 +44,20 @@ class MobileConnectManagerSpec : QuickSpec
             {
                 self.startTesting(){ (completionHandler) in
                     
-                    self.manager.getTokenInPresenterController(self.viewController, withCompletionHandler: completionHandler)
+                    self.manager.getTokenInPresenterController(self.viewController, withCompletionHandler: { (userInfo, tokenResponseModel, error) in
+                      completionHandler(tokenResponseModel: tokenResponseModel, error: error)
+                    })
+                    
                 }
             }
             
             describe("gets token with phone number", closure: {
                 self.startTesting(){ (completionHandler) in
                     
-                    self.manager.getTokenForPhoneNumber("", inPresenterController: self.viewController, withCompletionHandler: completionHandler)
+                    self.manager.getTokenForPhoneNumber("", inPresenterController: self.viewController, withCompletionHandler: { (userInfo, tokenResponseModel, error) in
+                        completionHandler(tokenResponseModel: tokenResponseModel, error: error)
+                    })
+                    
                 }
             })
              
@@ -59,7 +65,10 @@ class MobileConnectManagerSpec : QuickSpec
                 
                 self.startTesting(true){ (completionHandler) in
                     
-                    self.manager.getAuthorizationTokenInPresenterController(self.viewController, withContext: "asdasd", withScopes: [ProductType.Address], bindingMessage: "test", completionHandler: completionHandler)
+                    self.manager.getAuthorizationTokenInPresenterController(self.viewController, withContext: "asdasd", withScopes: [ProductType.Address], bindingMessage: "test", completionHandler: { (userInfo, tokenResponseModel, error) in
+                        completionHandler(tokenResponseModel: tokenResponseModel, error: error)
+                    })
+                    
                 }
                 
             })
@@ -68,7 +77,10 @@ class MobileConnectManagerSpec : QuickSpec
                 
                 self.startTesting(true){ (completionHandler) in
                     
-                    self.manager.getAuthorizationTokenForPhoneNumber("", inPresenterController: self.viewController, withScopes: [ProductType.Address], context: "test", bindingMessage: nil, completionHandler: completionHandler)
+                    self.manager.getAuthorizationTokenForPhoneNumber("", inPresenterController: self.viewController, withScopes: [ProductType.Address], context: "test", bindingMessage: nil, completionHandler: { (userInfo, tokenResponseModel, error) in
+                        completionHandler(tokenResponseModel: tokenResponseModel, error: error)
+                    })
+                    
                 }
                 
             })
@@ -146,7 +158,7 @@ class MobileConnectManagerSpec : QuickSpec
                 
                 action(completionHandler: { (tokenResponseModel, error) in
                     
-                    self.tryResponse(tokenResponseModel, expectedResponseModel: Mocker.tokenResponseModel, error: error, withExpectedError: nil, mockDelegate: self.mockDelegate)
+                    self.tryResponse(tokenResponseModel, expectedResponseModel: Mocker.tokenResponseModel, error: nil, withExpectedError: nil, mockDelegate: self.mockDelegate)
                     
                     done()
                 })

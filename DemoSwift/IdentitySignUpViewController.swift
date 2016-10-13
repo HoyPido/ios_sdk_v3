@@ -113,7 +113,11 @@ class IdentitySignUpViewController : UIViewController {
                 model["email"] = currentResponse.email ?? ""
                 model["email_verified"] = currentResponse.email_verified.description
                 model["updated_at"] = currentResponse.updated_at ?? ""
-                model["birth_date"] = currentResponse.birthdate ?? ""
+                model["state"] = currentResponse.state ?? ""
+                model["postal_code"] = currentResponse.postal_code ?? ""
+                model["city"] = currentResponse.city ?? ""
+                model["street_address"] = currentResponse.street_address ?? ""
+                model["country"] = currentResponse.country ?? ""
             }
 
             controller.datasource = model

@@ -109,10 +109,15 @@ class IdentityNationalIdViewController: UIViewController {
                 model["sub"] = currentResponse.sub ?? ""
                 model["national_identifier"] = currentResponse.national_identifier ?? ""
                 model["updated_at"] = currentResponse.updated_at ?? ""
-                model["address"] = currentResponse.address?.formatted ?? ""
-                model["birth_date"] = currentResponse.birthdate ?? ""
+                model["birthdate"] = currentResponse.birthdate ?? ""
                 model["given_name"] = currentResponse.given_name ?? ""
                 model["family_name"] = currentResponse.family_name ?? ""
+                model["state"] = currentResponse.state ?? ""
+                model["city"] = currentResponse.city ?? ""
+                model["street_address"] = currentResponse.street_address ?? ""
+                model["postal_code"] = currentResponse.postal_code ?? ""
+                model["country"] = currentResponse.country ?? ""
+                
             }
             controller.datasource = model
         }

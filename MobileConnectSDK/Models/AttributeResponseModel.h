@@ -10,8 +10,11 @@
 
 @interface AddressModel : MCModel
 
-@property (nullable) NSString *formatted;
-
+@property (nullable) NSString *state;
+@property (nullable) NSString *city;
+@property (nullable) NSString *country;
+@property (nullable) NSString *postal_code;
+@property (nullable) NSString *street_address;
 @end
 
 @interface AttributeResponseModel : MCModel
@@ -22,14 +25,12 @@
 @property (nullable) NSString *national_identifier;
 @property (nullable) NSString *phone_number;
 @property (nullable) NSString *phone_number_alternate;
-@property BOOL phone_number_verified;
 @property (nullable) NSString *updated_at;
-@property (nullable) AddressModel *address;
+@property (nullable) NSString *street_address;
+@property (nullable) NSString *city;
+@property (nullable) NSString *country;
 @property (nullable) NSString *state;
 @property (nullable) NSString *postal_code;
-@property (nullable) NSString *city;
-@property (nullable) NSString *street_address;
-@property (nullable) NSString *country;
 @property (nullable) NSString *birthdate;
 @property (nullable) NSString *preferred_username;
 @property (nullable) NSString *email;

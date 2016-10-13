@@ -46,6 +46,10 @@ services.subspec 'Discovery' do |discovery|
 discovery.source_files = 'MobileConnectSDK/Services/Discovery/*.swift'
 end
 
+services.subspec 'UserInfoService' do |userInfo|
+userInfo.source_files = 'MobileConnectSDK/Services/UserInfoService/*.swift'
+end
+
 services.source_files = 'MobileConnectSDK/Services/*.swift'
 end
 

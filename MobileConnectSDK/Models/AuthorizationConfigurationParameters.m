@@ -11,10 +11,9 @@
 
 @implementation AuthorizationConfigurationParameters
 
--(id)initWithVersion:(NSString *)version prompt:(NSString *)prompt uiLocale:(NSString *)uiLocale idTokenHint:(NSString *)idTokenHint loginHintToken:(NSString *)loginHintToken responseMode:(NSString *)responseMode claims:(NSString *)claims maxAge:(nullable NSString*)maxAge {
+-(id)initWithPrompt:(NSString *)prompt uiLocale:(NSString *)uiLocale idTokenHint:(NSString *)idTokenHint loginHintToken:(NSString *)loginHintToken responseMode:(NSString *)responseMode claims:(NSString *)claims maxAge:(nullable NSString*)maxAge {
     self = [super init];
     if(self) {
-        self.version = version;
         self.prompt = prompt;
         self.ui_locales = uiLocale;
         self.id_token_hint = idTokenHint;

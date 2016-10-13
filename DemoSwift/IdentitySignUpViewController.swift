@@ -45,7 +45,7 @@ class IdentitySignUpViewController : UIViewController {
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
-            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: nil, completionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentitySignUp], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
@@ -112,10 +112,8 @@ class IdentitySignUpViewController : UIViewController {
                 model["given_name"] = currentResponse.given_name ?? ""
                 model["email"] = currentResponse.email ?? ""
                 model["email_verified"] = currentResponse.email_verified.description
-                model["gender"] = currentResponse.gender ?? ""
-                model["locale"] = currentResponse.locale ?? ""
                 model["updated_at"] = currentResponse.updated_at ?? ""
-                model["birth_date"] = currentResponse.birth_date ?? ""
+                model["birth_date"] = currentResponse.birthdate ?? ""
             }
 
             controller.datasource = model

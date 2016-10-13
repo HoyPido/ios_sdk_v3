@@ -61,15 +61,18 @@ class MCRequestConstructor: RequestConstructor {
         
         var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : configuration.nonce]
         
-        if let clientName = clientName
-        {
+        if(scopes.contains(MobileConnectAuthorization)) {
+            let productVersion = scopeValidator.versionPairsForStringValues([MobileConnectAuthorization])
+            if let version = productVersion.first?.versionString() {
+                parameters[kVersionKey] = "\(version)"
+            }
+        }
+        
+        if let clientName = clientName {
             parameters[kClientNameKey] = clientName
         }
         
         if let config = config {
-            if let version = config.version {
-                parameters[kVersionKey] = version
-            }
             
             if let prompt = config.prompt {
                 parameters[kPromptKey] = prompt

@@ -39,6 +39,14 @@ class ProductVersion
             return nil
         }
     }
+    
+    func versionString()->String? {
+        if let version = version {
+            let roundedVersion = Double(Int(10*version))/10
+            return "mc_v\(roundedVersion)"
+        }
+        return nil
+    }
 }
 
 class ScopeValidator: NSObject {

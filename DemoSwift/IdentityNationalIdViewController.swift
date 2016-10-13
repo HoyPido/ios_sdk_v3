@@ -45,7 +45,7 @@ class IdentityNationalIdViewController: UIViewController {
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
-            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityNationalID], context: "MC", bindingMessage: nil, completionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityNationalID], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityNationalID], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
@@ -107,10 +107,10 @@ class IdentityNationalIdViewController: UIViewController {
             {
                 model["message"] = "Success"
                 model["sub"] = currentResponse.sub ?? ""
-                model["national_identifier"] = currentResponse.national_ID ?? ""
+                model["national_identifier"] = currentResponse.national_identifier ?? ""
                 model["updated_at"] = currentResponse.updated_at ?? ""
                 model["address"] = currentResponse.address?.formatted ?? ""
-                model["birth_date"] = currentResponse.birth_date ?? ""
+                model["birth_date"] = currentResponse.birthdate ?? ""
                 model["given_name"] = currentResponse.given_name ?? ""
                 model["family_name"] = currentResponse.family_name ?? ""
             }

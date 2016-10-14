@@ -47,7 +47,7 @@ class IdentityNationalIdViewController: UIViewController {
         if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityNationalID], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
-            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityNationalID], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityNationalID], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
     }
     

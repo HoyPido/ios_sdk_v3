@@ -47,7 +47,7 @@ class IdentityPhoneNumberViewController : UIViewController {
         if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityPhoneNumber], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
-            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityPhoneNumber], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityPhoneNumber], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
     }
     

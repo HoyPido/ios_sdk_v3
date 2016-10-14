@@ -47,7 +47,7 @@ class IdentitySignUpViewController : UIViewController {
         if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
-            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentitySignUp], withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentitySignUp], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
     }
     

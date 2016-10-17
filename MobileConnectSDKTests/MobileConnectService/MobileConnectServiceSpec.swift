@@ -193,7 +193,7 @@ class MobileConnectServiceSpec: BaseServiceSpec {
     }
     
     func checkMCRequest() {
-        let config : AuthorizationConfigurationParameters = AuthorizationConfigurationParameters(version: "1", prompt: "a", uiLocale: "en", idTokenHint: "auth", loginHintToken: "PCR", responseMode: "", claims: "", maxAge: "")
+        let config : AuthorizationConfigurationParameters = AuthorizationConfigurationParameters(prompt: "a", uiLocale: "en", idTokenHint: "auth", loginHintToken: "PCR", responseMode: "", claims: "", maxAge: "")
         
         context("check request constructor") {
             it("not to be nil", closure: {

@@ -21,6 +21,7 @@ private let kState : String = "state"
 private let kNonce : String = "nonce"
 private let kLoginHint : String = "login_hint"
 private let kLoginHintENCRMSISDN : String = "ENCR_MSISDN"
+private let kLoginHintENCRMSISDNFormat : String = "ENCR_MSISDN:%@"
 private let kLoginHintPCR : String = "PCR"
 private let kLoginHintMSISDN : String = "MSISDN"
 
@@ -113,6 +114,10 @@ class MCRequestConstructor: RequestConstructor {
         
         if let loginHint = configuration.loginHint {
             parameters[kLoginHint] = loginHint
+        } else {
+            if let subscriberId = subscriberId {
+                parameters[kLoginHint] = String(format: kLoginHintENCRMSISDNFormat, subscriberId)
+            }
         }
         
         if let context = context

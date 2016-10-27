@@ -68,7 +68,7 @@ private let kNoTokenIdInJWT : String = "There was no token id token response"
 
 // MARK: Token validation errors
 
-private let kInvalidDiscoveryMetadata : String = "Invalid discovery metadata"
+private let kInvalidDiscoveryMetadata : String = "Validation skipped because metadata not supported by provider."
 private let kInvalidAccessToken: String = "Invalid access token"
 private let kTokenExpiredError: String = "Token expired"
 private let kInvalidIssuer: String = "Invalid issuer"

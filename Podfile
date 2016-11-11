@@ -1,7 +1,7 @@
 target 'DemoSwift' do
   use_frameworks!
   pod 'JSONModel', '~> 1.2.0'
-  pod 'Alamofire', '~> 3.5'
+  pod 'Alamofire', '3.5'
   pod 'Heimdall', '~> 1.0.0'
 end
 
@@ -10,7 +10,7 @@ target 'MobileConnectSDKTests' do
   pod 'Quick', '~> 0.9.3'
   pod 'Nimble', '~> 4.1.0'
   pod 'JSONModel', '~> 1.2.0'
-  pod 'Alamofire', '~> 3.5'
+  pod 'Alamofire', '3.5'
   pod 'Heimdall', '~> 1.0.0'
 end
 
@@ -19,7 +19,7 @@ target 'MobileConnectSDK' do
   use_frameworks!
   pod 'Heimdall', '~> 1.0.0'
   pod 'JSONModel', '~> 1.2.0'
-  pod 'Alamofire', '~> 3.5'
+  pod 'Alamofire', '3.5'
   # Pods for MobileConnectSDK
   
 end

@@ -19,7 +19,7 @@ target 'MobileConnectSDK' do
   use_frameworks!
   pod 'Heimdall', '~> 1.0.0'
   pod 'JSONModel', '~> 1.2.0'
-  pod 'Alamofire', '3.5'
+  pod 'Alamofire', ‘~> 3.5’
   # Pods for MobileConnectSDK
   
 end

@@ -21,7 +21,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     var maxAge = 3600
     let nonce = NSUUID.randomUUID
     let loginHint : String?
-    
+   
     /**
      This constructor may change with addition of new features in future versions.
      It is recommended to use the init with discovery response if possible.
@@ -57,7 +57,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         
         let localClientSecret : String = discoveryResponse.response?.client_secret ?? ""
-        
+
         let localAuthorizationURLString : String = discoveryResponse.authorizationEndpoint ?? ""
         
         let localTokenURLString : String = discoveryResponse.tokenEndpoint ?? ""

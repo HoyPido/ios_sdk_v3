@@ -59,7 +59,6 @@ extension BaseMobileConnectService : WebControllerDelegate {
   
    func didReceiveResponseWithParameters(parameters : [NSObject : AnyObject], fromController controller : BaseWebController) {
     isAwaitingResponse = false
-    
     treatWebRedirectParameters(parameters)
   }
   

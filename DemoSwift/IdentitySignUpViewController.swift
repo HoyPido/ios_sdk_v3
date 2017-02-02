@@ -20,6 +20,9 @@ class IdentitySignUpViewController : UIViewController {
     var isCalledDiscoveryWithPhoneNumber : Bool = true
     var currentResponse : AttributeResponseModel?
     var currentError : NSError?
+    var discoveryResponse: DiscoveryResponse = DiscoveryResponse()
+
+    var currentTokenResponse : TokenResponseModel?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,6 +30,37 @@ class IdentitySignUpViewController : UIViewController {
         self.navigationItem.title = "Mobile Connect Example App"
         commonInit()
     }
+    
+    @IBAction func testbutton(sender: AnyObject) {
+        let subId: String = "subid"
+        let clientSecret: String = "secret="
+        let clientName: String = "a1qa1"
+        let clientId: String = "consumer=="
+        
+        let discoveryResponseLinks: OperatorIdModel = OperatorIdModel()
+
+        discoveryResponseLinks.setAuthorizationLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/authorize")
+        discoveryResponseLinks.setTokenLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/accesstoken")
+        discoveryResponseLinks.setUserInfoLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/userinfo")
+        discoveryResponseLinks.setPremiumInfo("https://operator-a.integration.sandbox.mobileconnect.io/oidc/premiuminfo")
+        discoveryResponseLinks.setTokenRefresh("https://toby.valimo.com/idp/frontcontroller/mobileconnect/token")
+        discoveryResponseLinks.revokeTokenLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/revoke")
+
+        let withoutCallManager: MobileConnectManagerWithoutCall = MobileConnectManagerWithoutCall()
+        
+        discoveryResponse = withoutCallManager.makeDiscoveryResponse(subId, clientSecret: clientSecret, clientKey: clientId, name: clientName, linksRecieved: discoveryResponseLinks)
+        withoutCallManager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
+
+    }
+    
+    func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
+    {
+        currentTokenResponse = tokenResponseModel
+        currentError = error
+        self.performSegueWithIdentifier("showResult", sender: nil)
+    }
+    
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,15 +73,18 @@ class IdentitySignUpViewController : UIViewController {
         self.viewControllerNameLabel.text = "IdentitySignUpViewController"
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
+        
         getTokenButton.layer.borderColor = UIColor.blackColor().CGColor
     }
     
+   
+
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
             manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
-            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentitySignUp], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponse(self, context: "", scopes: [ProductType.IdentitySignUp], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
     }
     
@@ -85,8 +122,8 @@ class IdentitySignUpViewController : UIViewController {
     @IBAction func tapGestureAction() {
         self.view.endEditing(true)
     }
-    // MARK: Navigation
     
+    // MARK: Navigation
     func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error

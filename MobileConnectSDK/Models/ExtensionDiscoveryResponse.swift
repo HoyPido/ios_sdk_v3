@@ -24,7 +24,7 @@ extension DiscoveryResponse {
         
         return searchedServices.filter({existingServices.contains($0)}).count == searchedServices.count
     }
-    
+
     public var authorizationEndpoint : String?
     {
         return metadata?.authorization_endpoint ?? response?.apis?.operatorid?.authorizationLink()

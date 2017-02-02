@@ -39,7 +39,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     func getAuthenticationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
     {
         let request : Request = requestConstructor.authenticationRequest
-        
+  
         startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
     }
     
@@ -106,4 +106,5 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         super.startInHandler(handler, withParameters: localParameters, completionHandler: completionHandler)
     }
   
+    
 }

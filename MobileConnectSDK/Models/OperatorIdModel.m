@@ -17,6 +17,7 @@
 #define kTokenRevoke @"tokenrevoke"
 #define kTokenRefresh @"tokenrefresh"
 #define kJSONValidation @"jwks"
+#define kScopeSupported @"scope"
 
 @implementation OperatorIdModel
 
@@ -64,7 +65,7 @@
     return [self linkForParameter:kJSONValidation];
 }
 
-- (nullable NSString*)linkForParameter:(NSString*)parameter
+- (nullable NSString*)linkForParameter: (NSString*)parameter
 {
     return ((LinkModel*)[[self.link filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         
@@ -72,6 +73,96 @@
         
         return [link.rel isEqualToString:parameter];
     }]] firstObject]).href;
+}
+
+- (void) setAuthorizationLink: (NSString*) linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kAuthorizationLink;
+    _authenticationLink = link;
+}
+
+- (void) setTokenLink:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kTokenLink;
+    _tokenlink = link;
+}
+
+- (void) setOpenIdLink:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kOpenIdConfiguration;
+    _metadatalink = link;
+}
+
+- (void) setPremiumInfo:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kPremiumInfo;
+    _premiumInfoLink = link;
+}
+
+- (void) setUserInfoLink:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kUserInfoLink;
+    _userinfolink = link;
+}
+
+- (void) setJSONWebTokenValidation:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kJSONValidation;
+    _jsonwebtokenlink = link;
+}
+
+- (void) setTokenRefresh:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kTokenRefresh;
+    _refreshtokenlink = link;
+    
+}
+
+- (void) revokeTokenLink:(NSString *)linkRequest {
+    LinkModel *link = [[LinkModel alloc] init];
+    link.href = linkRequest;
+    link.rel = kTokenRevoke;
+    _revokeTokenLink = link;
+    
+}
+
+- (LinkModel*) getAuthLink {
+    return _authenticationLink;
+}
+
+- (LinkModel*) getOpenIdLink {
+    return _metadatalink;
+}
+
+- (LinkModel*) getPremiumInfoLink {
+    return _premiumInfoLink;
+}
+
+- (LinkModel*) getUserInfoLink {
+    return _userinfolink;
+}
+
+- (LinkModel*) getJsonWebTokenValidationLink {
+    return _jsonwebtokenlink;
+}
+
+- (LinkModel*) getTokenRefreshLink {
+    return _refreshtokenlink;
+}
+
+- (LinkModel*) getTokenLink {
+    return _tokenlink;
+}
+
+- (LinkModel*) getRevokeTokenLink {
+    return _revokeTokenLink;
 }
 
 @end

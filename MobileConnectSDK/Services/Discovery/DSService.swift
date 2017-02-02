@@ -54,4 +54,12 @@ public class DSService: NSObject {
     {
         service.startOperatorDiscoveryForPhoneNumber(phoneNumber, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
+    
+    // MARK: Discovery service without call
+    public func startOperatorWithoutCallDiscovery(controller : UIViewController, shouldProvideMetadata : Bool = true, discoveryResponse: DiscoveryResponse, completionHandler : DiscoveryResponseBlock)
+    {
+        service.startOperatorWithoutDiscoveryCall(controller, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler, discoveryResponse: discoveryResponse)
+    }
+    
+
 }

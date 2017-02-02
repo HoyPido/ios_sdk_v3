@@ -61,6 +61,15 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         controller.presentViewController(webController, animated: true, completion: nil)
     }
   
+    func presentWebControllerWithoutRequest(inController controller : UIViewController, errorHandler : (error : NSError) -> Void) {
+        guard let webController = webController else {
+            errorHandler(error: MCErrorCode.WebControllerNil.error)
+            return
+        }
+
+        controller.presentViewController(webController, animated: true, completion: nil)
+    }
+    
     // MARK: Pre-request stage
     func startServiceInController(controller : UIViewController, withRequest request : Request, completionHandler : (controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void) {
         //start in handler basically checks for concurrency error in this case, but with reusing the same logic as for other requests
@@ -70,6 +79,26 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
             self.controllerResponse = completionHandler
             
             self.presentWebControllerWithRequest(request.request, inController: controller, errorHandler: { (error) in
+                self.isAwaitingResponse = false
+                self.controllerResponse?(controller: self.webController, model: nil, error: error)
+            })
+            
+        }, withParameters: []) { (error) in
+            completionHandler(controller: nil, model: nil, error: error)
+        }
+    }
+    
+    // MARK: Pre-request stage
+    func startServiceInControllerWithoutCall(controller : UIViewController, withRequest request : Request, completionHandler : (controller : BaseWebController?, model : ResponseModel?, error : NSError?) -> Void) {
+        //start in handler basically checks for concurrency error in this case, but with reusing the same logic as for other requests
+        startInHandler({
+            
+            //saving completition block for later when the server response comes
+            self.controllerResponse = completionHandler
+            
+            self.controllerResponse?(controller: self.webController, model:  nil, error: nil)
+
+            self.presentWebControllerWithoutRequest(inController: controller, errorHandler: { (error) in
                 self.isAwaitingResponse = false
                 self.controllerResponse?(controller: self.webController, model: nil, error: error)
             })
@@ -98,7 +127,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     func processSpecificRequest<T : MCModel>(request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : (model : T?, error : NSError?) -> Void) {
         startInHandler({
-              
           BaseMobileConnectServiceRequest().callRequest(request, forCompletionHandler: { (model : T?, error : NSError?) in
             self.isAwaitingResponse = false
             localHandler(model: model, error: error)
@@ -109,6 +137,13 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
         }
     }
   
+    func processSpecificRequestWithoutDiscoveryCall<T : MCModel>(request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : (model : T?, error : NSError?) -> Void) {
+        BaseMobileConnectServiceRequest().callRequest(request, forCompletionHandler: { (model : T?, error : NSError?) in
+                self.isAwaitingResponse = false
+            
+                localHandler(model: model, error: error)
+            })
+    }
     // MARK: Checks
     var canStartRequesting : Bool {
         let localCanStartRequesting : Bool = !isAwaitingResponse

@@ -9,6 +9,6 @@
 import Foundation
 
 let kReferenceEndpoint : String = "https://discovery.integration.sandbox.mobileconnect.io/v2/discovery"
-let kReferenceRedirect : NSURL =  NSURL(string: "http://localhost:8001/mobileconnect.html")!
-let kReferenceClientId : String = "31ef91db-9e65-4e1f-9037-54367d00d373"
-let kReferenceClientSecret : String = "c7a2a795-1af3-48ac-aabe-ecaff243a4a1"
+let kReferenceRedirect : NSURL =  NSURL(string: "https://example.com")!
+let kReferenceClientId : String = "73c2b8fc-8e18-419f-995a-019b8c35d7c9"
+let kReferenceClientSecret : String = "d9fc908f-b63a-468b-a65e-280e1454a73b"

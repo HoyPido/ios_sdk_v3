@@ -141,4 +141,61 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
         
         processSpecificRequest(getMetadataRequest, withParameters: [], inHandler: handler)
     }
+    
+    // MARK: Discovery service without call
+    /**
+     Gets operator data by using client's phone number.
+     It will return a subscriber_id inside the Discovery response.
+     By default it will also retrieve the metadata and update the discovery response according to the metadata information.
+     In case this behavior is not needed just call the function with the provideMetadata argument set to false.
+     - Parameter phoneNumber: The user's phone number.
+     - Parameter shouldProvideMetadata: Setting this flag to false, will disable updating the operators data with metadata information.
+     - Parameter completionHandler: This is the closure in which the respone of the function will be sent
+     */
+    func startOperatorWithoutDiscoveryCall(controller : UIViewController, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryResponseBlock, discoveryResponse: DiscoveryResponse)
+    {
+        
+        startServiceInControllerWithoutCall(controller, withRequest: self.requestConstructor.noOperatorDataRequest, completionHandler: getMetadataWithDiscoveryHandlerWithoutCall(shouldProvideMetadata, handler: completionHandler, discoveryResponse: discoveryResponse))
+    }
+
+    
+    func getMetadataForOperatorDataWithFakeDiscovery(operatorsData : DiscoveryResponse?, inHandler handler : (model : MetadataModel?, error : NSError?) -> Void)
+    {
+        let getMetadataRequest : Request;
+        if (operatorsData?.linksInformation?.getOpenIdLink()?.href == nil) {
+            operatorsData?.metadata = MetadataModel()
+            operatorsData?.metadata?.authorization_endpoint = operatorsData!.response?.apis?.operatorid?.authenticationLink!.href
+            operatorsData?.metadata?.token_endpoint = operatorsData!.response?.apis?.operatorid?.tokenlink!.href
+            operatorsData?.metadata?.userinfo_endpoint = operatorsData!.response?.apis?.operatorid?.userinfolink!.href
+            operatorsData?.metadata?.premiuminfo_endpoint = operatorsData!.response?.apis?.operatorid?.premiumInfoLink!.href
+            operatorsData?.metadata?.refresh_endpoint = operatorsData!.response?.apis?.operatorid?.refreshtokenlink!.href
+            operatorsData?.metadata?.revoke_endpoint = operatorsData!.response?.apis?.operatorid?.revokeTokenLink!.href
+            handler(model: operatorsData?.metadata, error: nil)
+        } else  {
+            getMetadataRequest = request(.GET, operatorsData?.linksInformation?.getOpenIdLink()?.href ?? "")
+            processSpecificRequestWithoutDiscoveryCall(getMetadataRequest, withParameters: [], inHandler: handler)
+        }
+        
+    }
+    
+    func completeOperatorDataWithoutCall(operatorsData : DiscoveryResponse?, withMetadataInHandler handler : (completedOperatorsData : DiscoveryResponse?, error : NSError?) -> Void)
+    {
+        getMetadataForOperatorDataWithFakeDiscovery(operatorsData) { (model, error) in
+            operatorsData?.metadata = model
+            handler(completedOperatorsData: operatorsData, error: error)
+        }
+    }
+    
+    func getMetadataWithDiscoveryHandlerWithoutCall(shouldRequireMetadata : Bool = true, handler : DiscoveryResponseBlock, discoveryResponse: DiscoveryResponse) -> DiscoveryResponseBlock
+    {
+        let wrappedClosure = { (controller : BaseWebController?, operatorsData : DiscoveryResponse?, localError : NSError?) -> Void in
+            self.completeOperatorDataWithoutCall(discoveryResponse, withMetadataInHandler: { (completedOperatorsData, error) in
+                handler(controller: controller, operatorsData: completedOperatorsData, error: localError ?? error)
+            })
+     
+        }
+        
+        return shouldRequireMetadata ? wrappedClosure : handler
+    }
+    
 }

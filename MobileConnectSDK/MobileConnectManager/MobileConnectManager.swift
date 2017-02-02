@@ -142,8 +142,6 @@ public class MobileConnectManager: NSObject {
         let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, loginHint : loginHint, scopes : scopesArray) { (tokenResponseModel, error) in
             
-            
-            
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes:  (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
         }
     }
@@ -229,11 +227,9 @@ public class MobileConnectManager: NSObject {
         getTokenForPhoneNumber(phoneNumber, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, loginHint : loginHint, scopes:  scopes, config: config) { (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
         }
-
     }
     
-    func processUserInfoCompletionHandler( tokenResponseModel : TokenResponseModel?, error : NSError?, scopes : [String]?, completionHandler : MobileConnectResponseWithUserInfo?) {
-        
+    public func processUserInfoCompletionHandler( tokenResponseModel : TokenResponseModel?, error : NSError?, scopes : [String]?, completionHandler : MobileConnectResponseWithUserInfo?) {
         if let completionHandler = completionHandler {
             if let scopes = scopes {
                 
@@ -250,6 +246,7 @@ public class MobileConnectManager: NSObject {
                         completionHandler(userInfo: responseModel, tokenResponseModel: tokenResponseModel, error: error)
                     })
                 } else {
+                    
                     completionHandler(userInfo: nil, tokenResponseModel: tokenResponseModel, error: error)
                 }
             } else {
@@ -274,7 +271,6 @@ public class MobileConnectManager: NSObject {
         }
     }
     
-  
     public func getAttributeServiceResponse(controller: UIViewController, context : String, loginHint : String? = nil, stringScopes : [String], bindingMessage : String? = nil, withCompletionHandler : (attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) -> Void ){
         
         getAuthorizationTokenInPresenterController(controller, withContext: context, loginHint : loginHint, withStringValueScopes: stringScopes, bindingMessage: bindingMessage) { (userInfo, tokenResponseModel, error) in
@@ -302,6 +298,7 @@ public class MobileConnectManager: NSObject {
         startDiscoveryInHandler({
             
             self.delegate?.mobileConnectWillPresentWebController?()
+        
             self.discovery.startOperatorDiscoveryInController(presenterController, completionHandler: {
               (controller, operatorsData, error) in
                 self.checkDiscoveryResponse(controller, loginHint: loginHint, operatorsData: operatorsData, error: error)(context: context, scopes : scopes, config : config, bindingMessage : bindingMessage)
@@ -309,7 +306,7 @@ public class MobileConnectManager: NSObject {
             
             }, presenter: presenterController, withCompletition: completionHandler)
     }
-    
+   
     func getTokenForPhoneNumber(phoneNumber: String, inPresenterController presenterController : UIViewController, withContext context : String? = nil, bindingMessage : String? = nil, loginHint : String?, scopes : [String]? = nil, config : AuthorizationConfigurationParameters? = nil, completionHandler : MobileConnectResponse?)
     {
         startDiscoveryInHandler({

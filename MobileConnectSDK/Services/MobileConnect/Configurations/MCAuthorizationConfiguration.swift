@@ -105,5 +105,5 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   config: config,
                   loginHint: loginHint)
     }
-    
+
 }

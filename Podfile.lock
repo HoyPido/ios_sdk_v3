@@ -1,24 +1,24 @@
 PODS:
   - Alamofire (3.5.1)
-  - Heimdall (1.0.0)
+  - Heimdall (0.2.5)
   - JSONModel (1.2.0)
   - Nimble (4.1.0)
   - Quick (0.9.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
-  - Heimdall (~> 1.0.0)
+  - Heimdall (~> 0.2.5)
   - JSONModel (~> 1.2.0)
   - Nimble (~> 4.1.0)
   - Quick (~> 0.9.3)
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
-  Heimdall: 15b1b23a07213f02808fe0ef6007daf1c563d4e7
+  Heimdall: e388795a9bb50c8403e27cbc48093b9b0380c879
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
 
-PODFILE CHECKSUM: a3e31dced14fb7ec68c263542c997445c7df3e39
+PODFILE CHECKSUM: 3d444c17b6461c3cda1713eb972606a6994df97a
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0.rc.1

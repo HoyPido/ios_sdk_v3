@@ -30,6 +30,7 @@ public class UserInfoService : NSObject {
         
         let userInfoURL : String = tokenResponseModel.discoveryResponse?.userInfoEndpoint ?? ""
         self.connectService.callRequest(requestConstructor.generateInfoRequest(userInfoURL), forCompletionHandler: completionHandler)
+
     }
     
 }

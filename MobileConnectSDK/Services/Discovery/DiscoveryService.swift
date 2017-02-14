@@ -168,7 +168,6 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
             operatorsData?.metadata?.token_endpoint = operatorsData!.response?.apis?.operatorid?.tokenlink!.href
             operatorsData?.metadata?.userinfo_endpoint = operatorsData!.response?.apis?.operatorid?.userinfolink!.href
             operatorsData?.metadata?.premiuminfo_endpoint = operatorsData!.response?.apis?.operatorid?.premiumInfoLink!.href
-            operatorsData?.metadata?.refresh_endpoint = operatorsData!.response?.apis?.operatorid?.refreshtokenlink!.href
             operatorsData?.metadata?.revoke_endpoint = operatorsData!.response?.apis?.operatorid?.revokeTokenLink!.href
             handler(model: operatorsData?.metadata, error: nil)
         } else  {

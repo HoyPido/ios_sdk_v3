@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>authorization</key>
+	<string>https://authorize</string>
+	<key>token</key>
+	<string>https://accesstoken</string>
+	<key>userinfo</key>
+	<string>https://userinfo</string>
+	<key>tokenrevoke</key>
+	<string>https://revoke</string>
+	<key>premiuminfo</key>
+	<string>https://premiuminfo</string>
+	<key>openid-configuration</key>
+	<string>https://openid-configuration</string>
+</dict>
+</plist>

@@ -52,6 +52,13 @@ class IdentitySignUpProviderMetadataViewController : UIViewController {
     
     func commonInit() {
         self.viewControllerNameLabel.text = "signUpWithProviderMetadata"
+        let pathToConfigutationFile = NSBundle.mainBundle().pathForResource("config", ofType: "plist")
+        let itemsDictionaryRoot = NSDictionary(contentsOfFile: pathToConfigutationFile!)
+        subscriberIdField.text = itemsDictionaryRoot?.valueForKey("subscriberId") as? String
+        clientSecretField.text = itemsDictionaryRoot?.valueForKey("clientSecret") as? String
+        clientIDField.text = itemsDictionaryRoot?.valueForKey("clientId") as? String
+        appNameField.text = itemsDictionaryRoot?.valueForKey("applicationName") as? String
+        
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
         

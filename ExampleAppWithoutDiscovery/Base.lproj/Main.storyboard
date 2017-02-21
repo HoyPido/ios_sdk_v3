@@ -117,23 +117,27 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Client ID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9i9-Uj-9WA">
-                                <rect key="frame" x="55" y="210" width="209" height="30"/>
+                                <rect key="frame" x="55" y="167" width="209" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="clientId"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Subscriber ID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blj-go-RFp">
-                                <rect key="frame" x="55" y="166" width="209" height="30"/>
+                                <rect key="frame" x="55" y="129" width="209" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="subscriberId"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Client Secret" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ff-qy-vTi">
-                                <rect key="frame" x="55" y="253" width="209" height="30"/>
+                                <rect key="frame" x="56" y="205" width="209" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="clientSecret"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uxy-gU-1rd">
-                                <rect key="frame" x="77" y="320" width="165" height="61"/>
+                                <rect key="frame" x="77" y="253" width="165" height="61"/>
                                 <color key="backgroundColor" red="0.081419564783573151" green="0.06308109313249588" blue="0.43195563554763794" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="getToken"/>
                                 <state key="normal" title="Get token">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -205,6 +209,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Al0-qg-U8x">
                                                     <rect key="frame" x="15" y="28" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="sub"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -264,9 +269,50 @@
                                     <action selector="alertViewDisplay" destination="BIt-QY-dkH" eventType="touchUpInside" id="uTs-GX-La0"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Subscriber ID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DKc-Yf-Sdj">
+                                <rect key="frame" x="56" y="129" width="209" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="subscriberId"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fqm-dz-sML"/>
+                                    <constraint firstAttribute="width" constant="209" id="qyn-cd-Gmv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Client Secret..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4br-JF-HFF">
+                                <rect key="frame" x="56" y="225" width="209" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="clientSecret"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="gi2-d4-ESS"/>
+                                    <constraint firstAttribute="height" constant="40" id="mZQ-Zh-0ag"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Application Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bdc-7G-xgm">
+                                <rect key="frame" x="56" y="273" width="209" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="appName"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7FA-kA-FYS"/>
+                                    <constraint firstAttribute="width" constant="209" id="KcZ-vR-rqj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Client ID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-ww-PcY">
+                                <rect key="frame" x="56" y="177" width="209" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="clientId"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ERA-n2-cLK"/>
+                                    <constraint firstAttribute="width" constant="209" id="Q3x-eo-2RP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq2-ef-8lk">
-                                <rect key="frame" x="70" y="398" width="165" height="61"/>
+                                <rect key="frame" x="70" y="321" width="165" height="61"/>
                                 <color key="backgroundColor" red="0.1159028485417366" green="0.0" blue="0.50719165802001953" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="getToken"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="FI4-99-zBi"/>
                                     <constraint firstAttribute="width" constant="165" id="SPD-xp-Lu8"/>
@@ -278,42 +324,6 @@
                                     <action selector="getToken" destination="BIt-QY-dkH" eventType="touchUpInside" id="Pgo-pP-y9W"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Subscriber ID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DKc-Yf-Sdj">
-                                <rect key="frame" x="56" y="177" width="209" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="fqm-dz-sML"/>
-                                    <constraint firstAttribute="width" constant="209" id="qyn-cd-Gmv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Client Secret..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4br-JF-HFF">
-                                <rect key="frame" x="56" y="275" width="209" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="209" id="gi2-d4-ESS"/>
-                                    <constraint firstAttribute="height" constant="40" id="mZQ-Zh-0ag"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Application Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bdc-7G-xgm">
-                                <rect key="frame" x="56" y="323" width="209" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7FA-kA-FYS"/>
-                                    <constraint firstAttribute="width" constant="209" id="KcZ-vR-rqj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Client ID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-ww-PcY">
-                                <rect key="frame" x="56" y="227" width="209" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ERA-n2-cLK"/>
-                                    <constraint firstAttribute="width" constant="209" id="Q3x-eo-2RP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -371,6 +381,6 @@
         <image name="mobile_connect_title" width="227" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1w8-53-1Ju"/>
+        <segue reference="Yi0-La-S9y"/>
     </inferredMetricsTieBreakers>
 </document>

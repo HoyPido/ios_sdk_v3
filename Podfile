@@ -11,13 +11,6 @@ target ‘ExampleAppWithoutDiscovery’ do
     pod 'JSONModel', '~> 1.2.0'
     pod 'Alamofire', '~> 3.4'
     pod 'Heimdall', '~> 0.2.5’
-    target ‘ExampleAppWithoutDiscoveryUITests’ do
-        inherit! :search_paths
-        pod 'JSONModel', '~> 1.2.0'
-        pod 'Alamofire', '~> 3.4'
-        pod 'Heimdall', '~> 0.2.5’
-    end
- 
 end
 
 target ‘ExampleAppWithoutDiscoveryTests’ do

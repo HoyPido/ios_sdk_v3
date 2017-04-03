@@ -50,9 +50,9 @@ public class DSService: NSObject {
     
     // MARK: Discovery service with phone number
     //Gets operator data by using client's phone number. It will return a subscriber_id.
-    public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
+    public func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, clientIP : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
     {
-        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
+        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, clientIP: clientIP, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
     
     // MARK: Discovery service without call

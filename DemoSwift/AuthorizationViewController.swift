@@ -45,7 +45,7 @@ class AuthorizationViewController : UIViewController {
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber  {
-            manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withScopes: [], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: "", inPresenterController: self, withScopes: [], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
         } else {
             manager.getAuthorizationTokenInPresenterController(self, withContext: "MC", withScopes: [], bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
         }

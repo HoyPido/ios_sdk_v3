@@ -64,7 +64,7 @@ class IdentitySignUpViewController : UIViewController {
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
-            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "", scopes: [ProductType.IdentitySignUp], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }

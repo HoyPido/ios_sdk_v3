@@ -22,9 +22,22 @@ public class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
     private static var clientSecret : String!
     private static var applicationEndpoint : String!
     private static var redirectURL : NSURL!
+    private static var xRedirect : String!
     private static var delegate : MobileConnectManagerDelegate?
     
     // MARK: SDK setters
+    ///Mobile connect xRedirect
+    
+    public static func setXRedirect(xRedirect : String)
+    {
+        MobileConnectSDK.xRedirect = xRedirect
+    }
+    
+    public static func getXRedirect() -> String
+    {
+        return xRedirect
+    }
+    
     ///Mobile connect client key
     public static func setClientKey(clientKey : String)
     {

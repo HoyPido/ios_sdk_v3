@@ -45,7 +45,7 @@ class AuthenticationViewController : UIViewController {
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
-            manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: "", inPresenterController: self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
         } else {
             manager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel)
         }

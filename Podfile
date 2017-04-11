@@ -3,7 +3,13 @@ target 'DemoSwift' do
   pod 'JSONModel', '~> 1.2.0'
   pod 'Alamofire', '~> 3.4'
   pod 'Heimdall', '~> 0.2.5’
+  
 end
+
+target ‘ExampleAppWithoutDiscovery’ do
+    use_frameworks!
+end
+
 
 target 'MobileConnectSDKTests' do
   use_frameworks!

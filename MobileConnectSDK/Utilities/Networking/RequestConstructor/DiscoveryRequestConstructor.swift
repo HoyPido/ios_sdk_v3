@@ -36,18 +36,23 @@ class DiscoveryRequestConstructor : RequestConstructor
         return genericDiscoveryRequestWithParameters([:], shouldNotStartImmediately : true)
     }
     
-    func requestWithCountryCode(countryCode : String, networkCode : String) -> Request
-    {
-        return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode, kKeyNetworkCode : networkCode], additionalHeaders: ["Accept":"application/json"])
+    func requestNoOperatorDataRequest(clientIP: String) -> Request {
+        return genericDiscoveryRequestWithParameters([:], additionalHeaders: ["X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()], shouldNotStartImmediately : true)
     }
     
-    func requestWithPhoneNumber(phoneNumber : String) -> Request
+    func requestWithCountryCode(countryCode : String, networkCode : String) -> Request
     {
-        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.stringByReplacingOccurrencesOfString("+", withString: "")], isPhoneRequest: true, additionalHeaders: ["Content-Type":"application/x-www-form-urlencoded"])
+        return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode, kKeyNetworkCode : networkCode], additionalHeaders: ["Accept":"application/json", "X-Redirect":MobileConnectSDK.getXRedirect()])
+    }
+    
+    func requestWithPhoneNumber(phoneNumber : String, clientIP : String) -> Request
+    {
+        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.stringByReplacingOccurrencesOfString("+", withString: "")], isPhoneRequest: true, additionalHeaders: ["Content-Type":"application/x-www-form-urlencoded", "X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()])
     }
     
     private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject], isPhoneRequest : Bool = false, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
+        print(additionalHeaders)
         let method : Alamofire.Method = isPhoneRequest  ? .POST : .GET
         let encoding : ParameterEncoding = isPhoneRequest ? ParameterEncoding.URL : ParameterEncoding.URLEncodedInURL
         

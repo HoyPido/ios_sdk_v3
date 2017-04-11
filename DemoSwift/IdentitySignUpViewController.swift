@@ -32,25 +32,7 @@ class IdentitySignUpViewController : UIViewController {
     }
     
     @IBAction func testbutton(sender: AnyObject) {
-        let subId: String = "subid"
-        let clientSecret: String = "secret="
-        let clientName: String = "a1qa1"
-        let clientId: String = "consumer=="
         
-        let discoveryResponseLinks: OperatorIdModel = OperatorIdModel()
-
-        discoveryResponseLinks.setAuthorizationLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/authorize")
-        discoveryResponseLinks.setTokenLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/accesstoken")
-        discoveryResponseLinks.setUserInfoLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/userinfo")
-        discoveryResponseLinks.setPremiumInfo("https://operator-a.integration.sandbox.mobileconnect.io/oidc/premiuminfo")
-        discoveryResponseLinks.setTokenRefresh("https://toby.valimo.com/idp/frontcontroller/mobileconnect/token")
-        discoveryResponseLinks.revokeTokenLink("https://operator-a.integration.sandbox.mobileconnect.io/oidc/revoke")
-
-        let withoutCallManager: MobileConnectManagerWithoutCall = MobileConnectManagerWithoutCall()
-        
-        discoveryResponse = withoutCallManager.makeDiscoveryResponse(subId, clientSecret: clientSecret, clientKey: clientId, name: clientName, linksRecieved: discoveryResponseLinks)
-        withoutCallManager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
-
     }
     
     func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
@@ -82,7 +64,7 @@ class IdentitySignUpViewController : UIViewController {
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
-            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: "", inPresenterController: self, withStringValueScopes: [ProductType.IdentitySignUp], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
             manager.getAttributeServiceResponse(self, context: "", scopes: [ProductType.IdentitySignUp], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }

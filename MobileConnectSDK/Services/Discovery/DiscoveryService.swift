@@ -96,9 +96,9 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
      - Parameter shouldProvideMetadata: Setting this flag to false, will disable updating the operators data with metadata information.
      - Parameter completionHandler: This is the closure in which the respone of the function will be sent
      */
-    func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
+    func startOperatorDiscoveryForPhoneNumber(phoneNumber : String, clientIP : String, shouldProvideMetadata : Bool = true, completionHandler : DiscoveryDataResponse)
     {
-        processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber), withParameters: [(phoneNumber, MCErrorCode.NilPhoneNumber)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
+        processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber, clientIP: clientIP), withParameters: [(phoneNumber, MCErrorCode.NilPhoneNumber)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
     }
     
     // MARK: Metadata
@@ -168,7 +168,6 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
             operatorsData?.metadata?.token_endpoint = operatorsData!.response?.apis?.operatorid?.tokenlink!.href
             operatorsData?.metadata?.userinfo_endpoint = operatorsData!.response?.apis?.operatorid?.userinfolink!.href
             operatorsData?.metadata?.premiuminfo_endpoint = operatorsData!.response?.apis?.operatorid?.premiumInfoLink!.href
-            operatorsData?.metadata?.refresh_endpoint = operatorsData!.response?.apis?.operatorid?.refreshtokenlink!.href
             operatorsData?.metadata?.revoke_endpoint = operatorsData!.response?.apis?.operatorid?.revokeTokenLink!.href
             handler(model: operatorsData?.metadata, error: nil)
         } else  {

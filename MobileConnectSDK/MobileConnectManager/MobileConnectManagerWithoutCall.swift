@@ -419,7 +419,12 @@ public class MobileConnectManagerWithoutCall: NSObject {
         operatorDataResponse.apis = apis
         operatorDataResponse.client_name = operatorDictionaryValue.valueForKey("client_name") as? String
         
-        discoveryResponse.subscriber_id = json.valueForKey("subscriber_id") as? String
+        if (subscriberId == "") {
+            discoveryResponse.subscriber_id = nil
+        } else {
+            discoveryResponse.subscriber_id = json.valueForKey("subscriber_id") as? String
+        }
+        
         discoveryResponse.response = operatorDataResponse
         
         return discoveryResponse

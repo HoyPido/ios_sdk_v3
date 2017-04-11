@@ -61,8 +61,6 @@ class MCRequestConstructor: RequestConstructor {
         let state : String = UUID.randomUUID
         var parameters : [String : Any] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL , kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : configuration.nonce]
         
-        print("---parameters---")
-        print(parameters)
         if scopes.contains(MobileConnectAuthorization) {
             let productVersion = scopeValidator.versionPairsForStringValues([MobileConnectAuthorization])
             if let version = productVersion.first?.versionString() {

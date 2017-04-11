@@ -12,11 +12,7 @@ import Alamofire
 class BaseMobileConnectServiceRequest {
     
     func callRequest<T : MCModel>(request : DataRequest, forCompletionHandler completionHandler : @escaping (_ model : T?, _ error : NSError?) -> Void) {
-        print("inside")
-        print(request)
         request.responseJSON { (response) in
-            print("----response---")
-            print(response)
             self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
         }
     }

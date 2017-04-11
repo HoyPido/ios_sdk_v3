@@ -323,8 +323,6 @@ open class MobileConnectManager: NSObject {
     func checkDiscoveryResponse(_ controller : BaseWebController?, loginHint : String?, operatorsData : DiscoveryResponse?, error : NSError?) -> (_ context : String?, _ scopes : [String]?, _ config : AuthorizationConfigurationParameters?, _ bindingMessage : String?) -> Void
     {
         return { (context : String?, scopes : [String]?, config : AuthorizationConfigurationParameters?, bindingMessage : String?) -> Void in
-            print("discoveryResponse")
-            print(operatorsData)
             guard let operatorsData = operatorsData else
             {
                 self.finishWithResponse(controller, model: nil, error: error ?? MCErrorCode.unknown.error)

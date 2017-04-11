@@ -77,9 +77,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
             
             //saving completition block for later when the server response comes
             self.controllerResponse = completionHandler
-            print("reeeequest")
-            print(request.request)
-            print("=================================================================================================")
             self.presentWebControllerWithRequest(request.request, inController: controller, errorHandler: { (error) in
                 self.isAwaitingResponse = false
                 self.controllerResponse?(self.webController, nil, error)
@@ -129,8 +126,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     func processSpecificRequest<T : MCModel>(_ request : Request, withParameters parameters : [(String?, MCErrorCode)], inHandler localHandler : @escaping (_ model : T?, _ error : NSError?) -> Void) {
         startInHandler({
-            print("----request----")
-            print(request)
             BaseMobileConnectServiceRequest().callRequest(request: request as! DataRequest, forCompletionHandler: { (model : T?, error : NSError?) in
                 self.isAwaitingResponse = false
                 localHandler(model, error)

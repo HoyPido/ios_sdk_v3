@@ -74,8 +74,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
                 completionHandler(nil, error)
                 return
             }
-            print("model")
-            print(model)
+
             guard let tokenValidator = TokenValidation(configuration: self.configuration, model: model) else
             {
                 completionHandler(nil, MCErrorCode.noTokenID.error)
@@ -98,8 +97,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     override func didReceiveResponseFromController(_ webController: BaseWebController?, withRedirectModel redirectModel: AuthorizationModel?, error: NSError?)
     {
         //the server causes redirect with code parameter even after sending the token, which causes the relaunch of this method
-        print("redirectmodel")
-        print(redirectModel)
+
         getTokenWithCode(redirectModel?.code ?? "") { (tokenModel, error) in
             self.controllerResponse?(webController, tokenModel, error)
         }

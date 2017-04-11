@@ -100,8 +100,8 @@ end
 
 spec.source_files = 'MobileConnectSDK/*.{h,plist,swift}'
 
-spec.dependency 'JSONModel', '~> 1.7.0’
-spec.dependency 'Alamofire', '~> 4.4’
-spec.dependency 'Heimdall', '~> 1.1.3’
+spec.dependency 'JSONModel', '~> 1.7.0'
+spec.dependency 'Alamofire', '~> 4.4'
+spec.dependency 'Heimdall', '~> 1.1.3'
 
 end

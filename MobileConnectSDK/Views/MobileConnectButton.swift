@@ -12,7 +12,7 @@ import UIKit
     Can be used directly in Storyboards or XIB files and at touchUpInside events will start the token obtaining process in Mobile Connect.
     In order to receive the Mobile Connect response, make sure to implement MobileConnectManagerDelegate
 */
-public class MobileConnectButton: UIButton {
+open class MobileConnectButton: UIButton {
 
     // MARK: init
     override public init(frame: CGRect) {
@@ -22,7 +22,7 @@ public class MobileConnectButton: UIButton {
     
     convenience public init(type buttonType: UIButtonType)
     {
-        self.init(frame: CGRectMake(0, 0, 0, 0))
+        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         configureButton()
     }
     
@@ -35,17 +35,17 @@ public class MobileConnectButton: UIButton {
     func configureButton()
     {
         configureView()
-        addTarget(self, action: #selector(MobileConnectButton.buttonTouched), forControlEvents: UIControlEvents.TouchUpInside)
+        addTarget(self, action: #selector(MobileConnectButton.buttonTouched), for: UIControlEvents.touchUpInside)
     }
     
     func configureView()
     {
-        setBackgroundImage(Resources.mobileConnectImage, forState: UIControlState.Normal)
+        setBackgroundImage(Resources.mobileConnectImage, for: UIControlState.normal)
         sizeToFit()
     }
     
     // MARK: Events
-    @objc private func buttonTouched()
+    @objc fileprivate func buttonTouched()
     {
         guard let presenter = containerController else
         {
@@ -58,12 +58,12 @@ public class MobileConnectButton: UIButton {
     }
     
     // MARK: Helpers
-    private var containerController : UIViewController?
+    fileprivate var containerController : UIViewController?
     {
         var localResponder : UIResponder? = self
         
         while !(localResponder is UIViewController) {
-            localResponder = localResponder?.nextResponder()
+            localResponder = localResponder?.next
         }
         
         return localResponder as? UIViewController

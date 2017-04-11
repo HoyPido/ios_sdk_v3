@@ -10,37 +10,37 @@ import Foundation
 
 @objc public enum ProductType : Int
 {
-    case Authentication
-    case Authorization
-    case IdentityPhoneNumber
-    case IdentitySignUp
-    case IdentitySignUpPlus
-    case IdentityNationalID
-    case Unknown
-    case Phone
-    case Address
-    case Profile
-    case Email
+    case authentication
+    case authorization
+    case identityPhoneNumber
+    case identitySignUp
+    case identitySignUpPlus
+    case identityNationalID
+    case unknown
+    case phone
+    case address
+    case profile
+    case email
 }
 
 extension ProductType
 {
     init(stringValue : String)
     {
-        if let indexOfKeySet = ProductType.keySets.indexOf({$0.contains(stringValue)})
+        if let indexOfKeySet = ProductType.keySets.index(where: {$0.contains(stringValue)})
         {
             assert(ProductType.enumValues.count == ProductType.keySets.count, "The enum values array should reflect the enum values of the strings arrays inside the keysets property. Please check in the product type enum!!!")
             
             self = ProductType.enumValues[indexOfKeySet]
         } else
         {
-            self = .Unknown
+            self = .unknown
         }
     }
     
     var stringValue : String
     {
-        if let indexOfKeySet = ProductType.enumValues.indexOf(self)
+        if let indexOfKeySet = ProductType.enumValues.index(of: self)
         {
             assert(ProductType.enumValues.count == ProductType.keySets.count, "The enum values array should reflect the enum values of the strings arrays inside the keysets property. Please check in the product type enum!!!")
             
@@ -50,9 +50,9 @@ extension ProductType
         return ""
     }
     
-    private var enumIndex : Int?
+    fileprivate var enumIndex : Int?
     {
-        return ProductType.enumValues.indexOf(self)
+        return ProductType.enumValues.index(of: self)
     }
     
     var keySet : [String]
@@ -65,12 +65,12 @@ extension ProductType
         return []
     }
     
-    private static var enumValues : [ProductType]
+    fileprivate static var enumValues : [ProductType]
     {
-        return [.Authentication, .Authorization, .IdentityPhoneNumber, .IdentitySignUp, .IdentitySignUpPlus, .IdentityPhoneNumber, .IdentityNationalID, .Phone, .Address, .Profile, .Email]
+        return [.authentication, .authorization, .identityPhoneNumber, .identitySignUp, .identitySignUpPlus, .identityPhoneNumber, .identityNationalID, .phone, .address, .profile, .email]
     }
     
-    private static var keySets : [[String]]
+    fileprivate static var keySets : [[String]]
     {
         return [[MobileConnect, MobileConnectAuthentication], [MobileConnectAuthorization], [MobileConnectIdentityPhone], [MobileConnectIdentitySignup], [MobileConnectIdentitySignupPlus], [MobileConnectIdentityPhone], [MobileConnectIdentityNationalID], [MobileConnectPhone], [MobileConnectAddress], [MobileConnectProfile], [MobileConnectEmail]]
     }

@@ -13,7 +13,7 @@ private let kDataComponentIndex : Int = 1
 private let kSignatureComponentIndex : Int = 2
 
 ///Decodes the java web token
-@objc public class JWTDecoder : NSObject
+@objc open class JWTDecoder : NSObject
 {
     let tokenString : String
     
@@ -22,27 +22,27 @@ private let kSignatureComponentIndex : Int = 2
     }
     
     // MARK: Properties
-    public var decodedHeader : [NSObject : AnyObject]?
+    open var decodedHeader : [AnyHashable: Any]?
     {
         return deserializeNullableComponentData(decodedHeaderValue)
     }
     
-    public var decodedDictionary : [NSObject : AnyObject]?
+    open var decodedDictionary : [AnyHashable: Any]?
     {
         return deserializeNullableComponentData(decodedValue)
     }
     
-    public var decodedHeaderValue : NSData?
+    open var decodedHeaderValue : Data?
     {
         return decodeComponent(header ?? "")
     }
     
-    var decodedValue : NSData?
+    var decodedValue : Data?
     {
         return decodeComponent(dataComponent ?? "")
     }
     
-    public var message : String?
+    open var message : String?
     {
         guard let header = headerToken else
         {
@@ -82,7 +82,7 @@ private let kSignatureComponentIndex : Int = 2
     
     
     // MARK: Helpers
-    func deserializeNullableComponentData(data : NSData?) -> [NSObject : AnyObject]?
+    func deserializeNullableComponentData(_ data : Data?) -> [AnyHashable: Any]?
     {
         guard let data = data else
         {
@@ -92,30 +92,30 @@ private let kSignatureComponentIndex : Int = 2
         return deserializeComponentData(data)
     }
     
-    func deserializeComponentData(data : NSData) -> [NSObject : AnyObject]?
+    func deserializeComponentData(_ data : Data) -> [AnyHashable: Any]?
     {
         do
         {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? [NSObject : AnyObject]
+            return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [AnyHashable: Any]
         } catch
         {
             return nil
         }
     }
     
-    func decodeComponent(string : String) -> NSData?
+    func decodeComponent(_ string : String) -> Data?
     {
-        return NSData(base64EncodedString: string, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        return Data(base64Encoded: string, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
     }
     
-    func convertedComponentAtIndex(index : Int) -> String?
+    func convertedComponentAtIndex(_ index : Int) -> String?
     {
         return componentAtIndex(index)?.convertFromBase64URLToBase64()
     }
     
-    func componentAtIndex(index : Int) -> String?
+    func componentAtIndex(_ index : Int) -> String?
     {
-        let tokenComponents : [String] = tokenString.componentsSeparatedByString(".")
+        let tokenComponents : [String] = tokenString.components(separatedBy: ".")
         
         if tokenComponents.count > index
         {

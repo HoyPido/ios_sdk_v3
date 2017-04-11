@@ -30,13 +30,17 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
         super.init()
     }
     
+    required init(webController: BaseWebController?) {
+        fatalError("init(webController:) has not been implemented")
+    }
+    
     // MARK: Main mobile connect service method
     /**
      Gets the token which allows logging in[authenticating] by presenting the loading web view Mobile Connect controller. In case a subscriber id is not provided the user will first see a page for entering his phone number.
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getAuthenticationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
+    func getAuthenticationTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
     {
         let request : Request = requestConstructor.authenticationRequest
   
@@ -49,59 +53,62 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getAuthorizationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
+    func getAuthorizationTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
     {
         if let request = requestConstructor.authorizationRequest
         {
             startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
         } else
         {
-            completionHandler(controller: nil, tokenModel: nil, error: MCErrorCode.RequiresAuthorizationConfiguration.error)
+            completionHandler(nil, nil, MCErrorCode.requiresAuthorizationConfiguration.error)
         }
     }
     
     // MARK: Secondary methods
-    func getTokenWithCode(code : String, completionHandler : MobileConnectDataResponse)
+    func getTokenWithCode(_ code : String, completionHandler : @escaping MobileConnectDataResponse)
     {
       
-        processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.NilCode)]) { (model, error) in
+        processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.nilCode)]) { (model, error) in
           
             guard let model = model else {
-                completionHandler(tokenModel: nil, error: error)
+                completionHandler(nil, error)
                 return
             }
-            
+            print("model")
+            print(model)
             guard let tokenValidator = TokenValidation(configuration: self.configuration, model: model) else
             {
-                completionHandler(tokenModel: nil, error: MCErrorCode.NoTokenID.error)
+                completionHandler(nil, MCErrorCode.noTokenID.error)
                 
                 return
             }
             
             tokenValidator.checkIdTokenIsValid({ (error) in
-                completionHandler(tokenModel: model, error: error)
+                completionHandler(model, error)
             })
         }
     }
     
     // MARK: WebController methods
-    override var redirectURL : NSURL
+    override var redirectURL : URL
     {
-        return configuration.redirectURL
+        return configuration.redirectURL as URL
     }
     
-    override func didReceiveResponseFromController(webController: BaseWebController?, withRedirectModel redirectModel: AuthorizationModel?, error: NSError?)
+    override func didReceiveResponseFromController(_ webController: BaseWebController?, withRedirectModel redirectModel: AuthorizationModel?, error: NSError?)
     {
         //the server causes redirect with code parameter even after sending the token, which causes the relaunch of this method
+        print("redirectmodel")
+        print(redirectModel)
         getTokenWithCode(redirectModel?.code ?? "") { (tokenModel, error) in
-            self.controllerResponse?(controller: webController, model: tokenModel, error: error)
+            self.controllerResponse?(webController, tokenModel, error)
         }
     }
     
     // MARK: Helper
-    override func startInHandler(handler: () -> Void, withParameters parameters: [(String?, MCErrorCode)], completionHandler: (error: NSError) -> Void)
+    override func startInHandler(_ handler: () -> Void, withParameters parameters: [(String?, MCErrorCode)], completionHandler: (_ error: NSError) -> Void)
     {
-        let localParameters : [(String?, MCErrorCode)] = parameters + [(configuration.clientKey, MCErrorCode.NilClientId), (configuration.authorizationURLString, MCErrorCode.NilAuthorizationURL), (configuration.tokenURLString, MCErrorCode.NilTokenURL)]
+        let localParameters : [(String?, MCErrorCode)] = parameters + [(configuration.clientKey, MCErrorCode.nilClientId), (configuration.authorizationURLString, MCErrorCode.nilAuthorizationURL), (configuration.tokenURLString, MCErrorCode.nilTokenURL)]
         
         super.startInHandler(handler, withParameters: localParameters, completionHandler: completionHandler)
     }

@@ -28,9 +28,9 @@ class Authorizer: NSObject {
     {
         let credentialsString : String = "\(self.clientKey):\(self.clientSecret)"
         
-        if let encodedData : NSData = credentialsString.dataUsingEncoding(NSUTF8StringEncoding)
+        if let encodedData : Data = credentialsString.data(using: String.Encoding.utf8)
         {
-            let encodedCredentials : String = encodedData.base64EncodedStringWithOptions([])
+            let encodedCredentials : String = encodedData.base64EncodedString(options: [])
             return ["Authorization" : "Basic \(encodedCredentials)"]
         } else
         {

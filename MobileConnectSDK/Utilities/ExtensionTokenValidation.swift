@@ -10,7 +10,7 @@ import Foundation
 
 extension TokenValidation
 {
-    func getKeysWithId(keyId : String?, fromKeys keys : [PublicKeyModel]) -> [PublicKeyModel]
+    func getKeysWithId(_ keyId : String?, fromKeys keys : [PublicKeyModel]) -> [PublicKeyModel]
     {
         let identifiedKeys : [PublicKeyModel] = keys.filter({ (publicKey : PublicKeyModel) -> Bool in
             
@@ -25,7 +25,7 @@ extension TokenValidation
         return identifiedKeys
     }
     
-    func getKeyForAlgorithm(algorithm : String?, fromKeys keys : [PublicKeyModel]) -> PublicKeyModel?
+    func getKeyForAlgorithm(_ algorithm : String?, fromKeys keys : [PublicKeyModel]) -> PublicKeyModel?
     {
         guard let algorithm = algorithm else
         {
@@ -43,11 +43,11 @@ extension TokenValidation
             }.first
     }
     
-    func getValidKeyWithCompletionHandler(handler : (key : PublicKeyModel?, error : NSError?) -> Void)
+    func getValidKeyWithCompletionHandler(_ handler : @escaping (_ key : PublicKeyModel?, _ error : NSError?) -> Void)
     {
         getPublicKeys { (model, error) in
-            guard let model = model, publicKeys = model.keys as? [PublicKeyModel] else {
-                handler(key: nil, error: MCErrorCode.NoValidKeyFound.error      )
+            guard let model = model, let publicKeys = model.keys as? [PublicKeyModel] else {
+                handler(nil, MCErrorCode.noValidKeyFound.error      )
                 return
             }
             
@@ -55,19 +55,19 @@ extension TokenValidation
             
             guard identifiedKeys.count != 0 else
             {
-                handler(key: nil, error: MCErrorCode.NoValidKeyFound.error)
+                handler(nil, MCErrorCode.noValidKeyFound.error)
                 
                 return
             }
             
             guard let validKey = self.getKeyForAlgorithm(self.verifier.decoder.headerModel?.alg, fromKeys: identifiedKeys) else
             {
-                handler(key: identifiedKeys.first, error: MCErrorCode.NoValidAlgorithmFound.error)
+                handler(identifiedKeys.first, MCErrorCode.noValidAlgorithmFound.error)
                 
                 return
             }
             
-            handler(key: validKey, error: nil)
+            handler(validKey, nil)
         }
     }
 }

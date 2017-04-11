@@ -27,13 +27,13 @@ class RevokeTokenService : NSObject {
         super.init()
     }
     
-    func getRevokeToken(serviceRequest : BaseMobileConnectServiceRequest? = nil, completionHandler : (responseModel : AnyObject?, error : NSError?) -> Void) {
+    func getRevokeToken(_ serviceRequest : BaseMobileConnectServiceRequest? = nil, completionHandler : @escaping (_ responseModel : AnyObject?, _ error : NSError?) -> Void) {
         let revokeTokenURL : String = tokenResponseModel.discoveryResponse?.tokenRevocation ?? ""
         
         if let serviceRequest = serviceRequest {
-            serviceRequest.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken, clientID: (self.tokenResponseModel.discoveryResponse?.response?.client_id), clientSecret: (self.tokenResponseModel.discoveryResponse?.response?.client_secret)), forCompletionHandler: completionHandler)
+            serviceRequest.callRequest(request: requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken, clientID: (self.tokenResponseModel.discoveryResponse?.response?.client_id), clientSecret: (self.tokenResponseModel.discoveryResponse?.response?.client_secret)) as! DataRequest, forCompletionHandler: completionHandler)
         } else {
-            self.connectService.callRequest(requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken, clientID: (self.tokenResponseModel.discoveryResponse?.response?.client_id)!, clientSecret: (self.tokenResponseModel.discoveryResponse?.response?.client_secret)!), forCompletionHandler: completionHandler)
+            self.connectService.callRequest(request: requestConstructor.generateRevokeRequest(revokeTokenURL, withTokenId: self.revokedToken ?? "", isRefreshToken: isRefreshToken, clientID: (self.tokenResponseModel.discoveryResponse?.response?.client_id)!, clientSecret: (self.tokenResponseModel.discoveryResponse?.response?.client_secret)!) as! DataRequest, forCompletionHandler: completionHandler)
         }
     }
     

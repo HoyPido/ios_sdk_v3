@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PublicKey : NSObject
+open class PublicKey : NSObject
 {
     let exponent : String
     let modulus : String
@@ -21,18 +21,18 @@ public class PublicKey : NSObject
         super.init()
     }
     
-    var modulusData : NSData?
+    var modulusData : Data?
     {
         return encodeAndTransformToData(modulus)
     }
     
-    var exponentData : NSData?
+    var exponentData : Data?
     {
         return encodeAndTransformToData(exponent)
     }
     
-    func encodeAndTransformToData(string : String) -> NSData?
+    func encodeAndTransformToData(_ string : String) -> Data?
     {
-        return NSData(base64EncodedString: string.convertFromBase64URLToBase64(), options: [])
+        return Data(base64Encoded: string.convertFromBase64URLToBase64(), options: [])
     }
 }

@@ -28,21 +28,21 @@ class IdentitySignUpWithoutMetadataViewController : UIViewController {
     var currentTokenResponse : TokenResponseModel?
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = "Mobile Connect Example App"
         commonInit()
     }
     
-    func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
+    func launchTokenViewerWithTokenResponseModel(_ userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
     {
         currentTokenResponse = tokenResponseModel
         currentError = error
-        self.performSegueWithIdentifier("showResult", sender: nil)
+        self.performSegue(withIdentifier: "showResult", sender: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
     }
@@ -50,16 +50,16 @@ class IdentitySignUpWithoutMetadataViewController : UIViewController {
     func commonInit() {
         self.viewControllerNameLabel.text = "signUpWithoutProviderMetadata"
         
-        let pathToConfigutationFile = NSBundle.mainBundle().pathForResource("config", ofType: "plist")
+        let pathToConfigutationFile = Bundle.main.path(forResource: "config", ofType: "plist")
         let itemsDictionaryRoot = NSDictionary(contentsOfFile: pathToConfigutationFile!)
-        subscriberIdField.text = itemsDictionaryRoot?.valueForKey("subscriberId") as? String
-        clientSecretField.text = itemsDictionaryRoot?.valueForKey("clientSecret") as? String
-        clientIDField.text = itemsDictionaryRoot?.valueForKey("clientId") as? String
+        subscriberIdField.text = itemsDictionaryRoot?.value(forKey: "subscriberId") as? String
+        clientSecretField.text = itemsDictionaryRoot?.value(forKey: "clientSecret") as? String
+        clientIDField.text = itemsDictionaryRoot?.value(forKey: "clientId") as? String
         
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
         
-        getTokenButton.layer.borderColor = UIColor.blackColor().CGColor
+        getTokenButton.layer.borderColor = UIColor.black.cgColor
     }
     
     
@@ -73,14 +73,14 @@ class IdentitySignUpWithoutMetadataViewController : UIViewController {
         
         let discoveryResponseLinks: OperatorIdModel = OperatorIdModel()
         
-        let pathToOperatorUrls = NSBundle.mainBundle().pathForResource("operatorUrls", ofType: "plist")
+        let pathToOperatorUrls = Bundle.main.path(forResource: "operatorUrls", ofType: "plist")
         let itemsDictionaryRoot = NSDictionary(contentsOfFile: pathToOperatorUrls!)
         
-        discoveryResponseLinks.setAuthorizationLink(itemsDictionaryRoot!.valueForKey("authorization") as? String)
-        discoveryResponseLinks.setTokenLink(itemsDictionaryRoot!.valueForKey("token") as? String)
-        discoveryResponseLinks.setUserInfoLink(itemsDictionaryRoot!.valueForKey("userinfo") as? String)
-        discoveryResponseLinks.setPremiumInfo(itemsDictionaryRoot!.valueForKey("premiuminfo") as? String)
-        discoveryResponseLinks.revokeTokenLink(itemsDictionaryRoot!.valueForKey("tokenrevoke") as? String)
+        discoveryResponseLinks.setAuthorizationLink(itemsDictionaryRoot!.value(forKey: "authorization") as? String)
+        discoveryResponseLinks.setTokenLink(itemsDictionaryRoot!.value(forKey: "token") as? String)
+        discoveryResponseLinks.setUserInfoLink(itemsDictionaryRoot!.value(forKey: "userinfo") as? String)
+        discoveryResponseLinks.setPremiumInfo(itemsDictionaryRoot!.value(forKey: "premiuminfo") as? String)
+        discoveryResponseLinks.revokeTokenLink(itemsDictionaryRoot!.value(forKey: "tokenrevoke") as? String)
         
         let withoutCallManager: MobileConnectManagerWithoutCall = MobileConnectManagerWithoutCall()
         
@@ -88,7 +88,7 @@ class IdentitySignUpWithoutMetadataViewController : UIViewController {
         withoutCallManager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
     }
     
-    @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
+    @IBAction func segmentedControllTapped(_ segmentedControll : UISegmentedControl) {
         
     }
     
@@ -97,15 +97,15 @@ class IdentitySignUpWithoutMetadataViewController : UIViewController {
     }
     
     // MARK: Navigation
-    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
+    func launchTokenViewerWithAttributeServiceResponse(_ attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
-        self.performSegueWithIdentifier("showResult", sender: nil)
+        self.performSegue(withIdentifier: "showResult", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let controller = segue.destinationViewController as? ResultViewController {
+        if let controller = segue.destination as? ResultViewController {
             var model : [String : String] = [:]
              
             if let currentResponse = currentTokenResponse
@@ -121,15 +121,15 @@ class IdentitySignUpWithoutMetadataViewController : UIViewController {
     // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
-        let alert = UIAlertController(title: "signUpWithoutProviderMetadata", message: "signUpWithoutProviderMetadata -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
-        self.presentViewController(alert, animated: true, completion:{
-            alert.view.superview?.userInteractionEnabled = true
+        let alert = UIAlertController(title: "signUpWithoutProviderMetadata", message: "signUpWithoutProviderMetadata -  represents the view controller file name in Project navigator.", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
         })
     }
     
     func alertControllerBackgroundTapped()
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

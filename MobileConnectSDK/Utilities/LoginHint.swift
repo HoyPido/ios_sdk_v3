@@ -12,9 +12,9 @@ private let kPCRLoginHintPrefix = "PCR:"
 private let kMSISDNLoginHintPrefix = "MSISDN:"
 private let kENCRMSISDLoginHintPrefix = "ENCR_MSISDN:"
 
-public class LoginHint {
+open class LoginHint {
     
-    public class func generatePCRLoginHint(pcr:String) -> String {
+    open class func generatePCRLoginHint(_ pcr:String) -> String {
         if(!pcr.isEmpty) {
             return (kPCRLoginHintPrefix + pcr)
         } else {
@@ -22,7 +22,7 @@ public class LoginHint {
         }
     }
     
-    public class func generateMSISDNLoginHint(msisdn:String) -> String {
+    open class func generateMSISDNLoginHint(_ msisdn:String) -> String {
         if(!msisdn.isEmpty) {
             return (kMSISDNLoginHintPrefix + msisdn)
         } else {
@@ -30,7 +30,7 @@ public class LoginHint {
         }
     }
     
-    public class func generateENCRMSISDNLoginHint(encrMsisdn:String) -> String {
+    open class func generateENCRMSISDNLoginHint(_ encrMsisdn:String) -> String {
         if(!encrMsisdn.isEmpty) {
             return (kENCRMSISDLoginHintPrefix + encrMsisdn)
         } else {

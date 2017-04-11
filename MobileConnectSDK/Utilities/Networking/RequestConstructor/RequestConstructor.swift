@@ -13,11 +13,11 @@ class RequestConstructor: NSObject {
     
     let clientKey : String
     let clientSecret : String
-    let redirectURL : URLStringConvertible
+    let redirectURL : URLConvertible
     
-    lazy var lazyManager : Manager = {
+    lazy var lazyManager : SessionManager = {
        
-        let configuration : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let configuration : URLSessionConfiguration = URLSessionConfiguration.default
         
         //configuration.HTTPShouldSetCookies = false
         
@@ -36,7 +36,7 @@ class RequestConstructor: NSObject {
 //        }
         
         
-        let manager : Manager = Manager(configuration: configuration)
+        let manager : SessionManager = SessionManager(configuration: configuration)
         
         manager.startRequestsImmediately = false
         
@@ -48,7 +48,7 @@ class RequestConstructor: NSObject {
         return Authorizer(clientKey: self.clientKey, clientSecret: self.clientSecret)
     }()
     
-    init(clientKey : String, clientSecret : String, redirectURL : URLStringConvertible) {
+    init(clientKey : String, clientSecret : String, redirectURL : URLConvertible) {
         
         self.clientKey = clientKey
         self.clientSecret = clientSecret
@@ -57,7 +57,7 @@ class RequestConstructor: NSObject {
         super.init()
     }
     
-    func requestWithMethod(method : Alamofire.Method, url : URLStringConvertible, parameters : [String : AnyObject]?, encoding : ParameterEncoding, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
+    func requestWithMethod(_ method : HTTPMethod, url : URLConvertible, parameters : [String : AnyObject]?, encoding : ParameterEncoding, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
         var headers : [String : String] = authorizer.headers
         
@@ -69,10 +69,10 @@ class RequestConstructor: NSObject {
         //the requests loaded in a webview should not be launched at creation 
         if shouldNotStartImmediately
         {
-            return lazyManager.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            return lazyManager.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
         }
         
-        let requestObject = request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+        let requestObject = request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
         
         return requestObject
     }

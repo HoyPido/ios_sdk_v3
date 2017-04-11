@@ -21,14 +21,14 @@ class IdentityPhoneNumberViewController : UIViewController {
     var currentResponse : AttributeResponseModel?
     var currentError : NSError?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = "Mobile Connect Example App"
         commonInit()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if isCalledDiscoveryWithPhoneNumber{
             self.phoneNumberTextField.becomeFirstResponder()
@@ -39,29 +39,29 @@ class IdentityPhoneNumberViewController : UIViewController {
         self.viewControllerNameLabel.text = "IdentityPhoneNumberViewController"
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
-        getTokenButton.layer.borderColor = UIColor.blackColor().CGColor
+        getTokenButton.layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func getToken() {
         let manager : MobileConnectManager = MobileConnectManager()
         if isCalledDiscoveryWithPhoneNumber {
-            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: "", inPresenterController: self, withStringValueScopes: [ProductType.IdentityPhoneNumber], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: "", inPresenterController: self, withStringValueScopes: [ProductType.identityPhoneNumber], context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
         } else {
-            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.IdentityPhoneNumber], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
+            manager.getAttributeServiceResponse(self, context: "MC", scopes: [ProductType.identityPhoneNumber], bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
         }
     }
     
-    @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
+    @IBAction func segmentedControllTapped(_ segmentedControll : UISegmentedControl) {
         
         if segmentedControll.selectedSegmentIndex == 0 {
             self.phoneNumberTextField.becomeFirstResponder()
             self.controllDistance.constant = 108
             self.view.setNeedsUpdateConstraints()
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    self.phoneNumberTextField.hidden = false
+                UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    self.phoneNumberTextField.isHidden = false
                     }, completion: nil)
                 
             })
@@ -71,11 +71,11 @@ class IdentityPhoneNumberViewController : UIViewController {
             self.phoneNumberTextField.resignFirstResponder()
             self.controllDistance.constant = 60
             self.view.setNeedsUpdateConstraints()
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    self.phoneNumberTextField.hidden = true
+                UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    self.phoneNumberTextField.isHidden = true
                     }, completion: nil)
             })
             
@@ -89,15 +89,15 @@ class IdentityPhoneNumberViewController : UIViewController {
     
     // MARK: Navigation
     
-    func launchTokenViewerWithAttributeServiceResponse(attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
+    func launchTokenViewerWithAttributeServiceResponse(_ attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
         currentError = error
-        self.performSegueWithIdentifier("showResult", sender: nil)
+        self.performSegue(withIdentifier: "showResult", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let controller = segue.destinationViewController as? ResultViewController {
+        if let controller = segue.destination as? ResultViewController {
             var model : [String : String] = [:]
             
             if let error = currentError {
@@ -118,15 +118,15 @@ class IdentityPhoneNumberViewController : UIViewController {
     // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
-        let alert = UIAlertController(title: "IdentityPhoneNumberViewController", message: "IdentityPhoneNumberViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
-        self.presentViewController(alert, animated: true, completion:{
-            alert.view.superview?.userInteractionEnabled = true
+        let alert = UIAlertController(title: "IdentityPhoneNumberViewController", message: "IdentityPhoneNumberViewController -  represents the view controller file name in Project navigator.", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
         })
     }
     
     func alertControllerBackgroundTapped()
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

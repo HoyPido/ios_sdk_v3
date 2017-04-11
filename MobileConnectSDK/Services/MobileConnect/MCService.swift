@@ -13,7 +13,7 @@ import UIKit
  - Parameter tokenModel: The data received from the Mobile Connect service. Can be nil in case an error occured.
  - Parameter error: The error which is sent in case the operatorsData is nil.
  */
-public typealias MobileConnectDataResponse = (tokenModel : TokenModel?, error : NSError?) -> Void
+public typealias MobileConnectDataResponse = (_ tokenModel : TokenModel?, _ error : NSError?) -> Void
 
 /**
  The Mobile Connect response received in methods which require a presenter view controller
@@ -21,7 +21,7 @@ public typealias MobileConnectDataResponse = (tokenModel : TokenModel?, error : 
  - Parameter tokenModel: The data received from the Mobile Connect service. Can be nil in case an error occured.
  - Parameter error: The error which is sent in case the operatorsData is nil.
  */
-public typealias MobileConnectControllerResponse = (controller : BaseWebController?, tokenModel : TokenModel?, error : NSError?) -> Void
+public typealias MobileConnectControllerResponse = (_ controller : BaseWebController?, _ tokenModel : TokenModel?, _ error : NSError?) -> Void
 
 /**
  Provides access to all needed Mobile Connect services.
@@ -29,7 +29,7 @@ public typealias MobileConnectControllerResponse = (controller : BaseWebControll
  Allows getting token data by providing a subscriber id in which case a web view will be presented.
  The webview will require client's phone number.
  */
-public class MCService: NSObject {
+open class MCService: NSObject {
     
     // MARK: iVars
     let service : MobileConnectService
@@ -49,7 +49,7 @@ public class MCService: NSObject {
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    public func getTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
+    open func getTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
     {
         service.getAuthenticationTokenInController(controller, completionHandler: completionHandler)
     }
@@ -59,7 +59,7 @@ public class MCService: NSObject {
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    public func getAuthorizationTokenInController(controller : UIViewController, completionHandler : MobileConnectControllerResponse)
+    open func getAuthorizationTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
     {
         service.getAuthorizationTokenInController(controller, completionHandler: completionHandler)
     }

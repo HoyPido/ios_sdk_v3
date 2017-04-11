@@ -10,7 +10,7 @@ import UIKit
 
 //In the future the Objective C available new and init constructors should be disallowed
 ///Configuration needed for instantiating the MCService instance
-public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
+open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     
     let authorizationURLString : String
     let tokenURLString : String
@@ -19,7 +19,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let subscriberId : String?
     let scopes : [String]
     var maxAge = 3600
-    let nonce = NSUUID.randomUUID
+    let nonce = UUID.randomUUID
     let loginHint : String?
    
     /**
@@ -52,7 +52,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     
-    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2, authorizationScopes : [String], loginHint : String?)
+    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2, authorizationScopes : [String], loginHint : String?)
     {
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         
@@ -77,7 +77,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                   loginHint: loginHint)
     }
     
-    public func isLoginHintMSISDNSupported() -> Bool {
+    open func isLoginHintMSISDNSupported() -> Bool {
         if let metadata = metadata {
             if let methodSupported = metadata.login_hint_methods_supported {
                 if methodSupported.contains("MSISDN") {
@@ -88,7 +88,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         return false
     }
     
-    public func isLoginHintEncryptedMSISDNSupported() -> Bool {
+    open func isLoginHintEncryptedMSISDNSupported() -> Bool {
         if let metadata = metadata {
             if let methodSupported = metadata.login_hint_methods_supported {
                 if methodSupported.contains("ENCR_MSISDN") {
@@ -99,7 +99,7 @@ public class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         return false
     }
     
-    public func isLoginHintPCRSupported() -> Bool {
+    open func isLoginHintPCRSupported() -> Bool {
         if let metadata = metadata {
             if let methodSupported = metadata.login_hint_methods_supported {
                 if methodSupported.contains("PCR") {

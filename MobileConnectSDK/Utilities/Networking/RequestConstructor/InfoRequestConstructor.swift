@@ -21,8 +21,9 @@ class InfoRequestConstructor: NSObject {
     self.accessToken = accessToken
   }
   
-  func generateInfoRequest(withURL: String) -> Request {
-    return request(.GET, withURL, encoding: .URLEncodedInURL, headers: headers)
+  func generateInfoRequest(_ withURL: String) -> Request {
+
+    return request(withURL, method: .get, parameters: [:], encoding: URLEncoding.methodDependent, headers: headers)
   }
   
 }

@@ -21,21 +21,21 @@ class JWTManager : NSObject
         super.init()
     }
     
-    func verifyWithPublicKey(publicKey : PublicKey) throws -> Bool
+    func verifyWithPublicKey(_ publicKey : PublicKey) throws -> Bool
     {
-        guard let modulusData = publicKey.modulusData, exponentData = publicKey.exponentData  where publicKey.modulus != "" && publicKey.exponent != "" else
+        guard let modulusData = publicKey.modulusData, let exponentData = publicKey.exponentData, publicKey.modulus != "" && publicKey.exponent != "" else
         {
-            throw JWTErrorCode.InvalidPublicKey.error
+            throw JWTErrorCode.invalidPublicKey.error
         }
         
-        guard let message = decoder.message, signature = decoder.signature else
+        guard let message = decoder.message, let signature = decoder.signature else
         {
-            throw JWTErrorCode.InvalidToken.error
+            throw JWTErrorCode.invalidToken.error
         }
         
         guard let verifier = Heimdall(publicTag: kJWTToolsTag, publicKeyModulus: modulusData, publicKeyExponent: exponentData) else
         {
-            throw JWTErrorCode.Unknown.error
+            throw JWTErrorCode.unknown.error
         }
         
         return verifier.verify(message, signatureBase64: signature, urlEncoded: true)

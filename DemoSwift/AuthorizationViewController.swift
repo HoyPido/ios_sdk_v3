@@ -21,14 +21,14 @@ class AuthorizationViewController : UIViewController {
     var currentTokenResponse : TokenResponseModel?
     var currentError : NSError?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = "Mobile Connect Example App"
         commonInit()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if isCalledDiscoveryWithPhoneNumber{
             self.phoneNumberTextField.becomeFirstResponder()
@@ -39,7 +39,7 @@ class AuthorizationViewController : UIViewController {
         self.viewControllerNameLabel.text = "AuthorizationViewController"
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
-        getTokenButton.layer.borderColor = UIColor.blackColor().CGColor
+        getTokenButton.layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func getToken() {
@@ -51,16 +51,16 @@ class AuthorizationViewController : UIViewController {
         }
     }
     
-    @IBAction func segmentedControllTapped(segmentedControll : UISegmentedControl) {
+    @IBAction func segmentedControllTapped(_ segmentedControll : UISegmentedControl) {
         
         if segmentedControll.selectedSegmentIndex == 0 {
             self.phoneNumberTextField.becomeFirstResponder()
             self.controllDistance.constant = 108
             self.view.setNeedsUpdateConstraints()
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    self.phoneNumberTextField.hidden = false
+                UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    self.phoneNumberTextField.isHidden = false
                     }, completion: nil)
                 
             })
@@ -70,11 +70,11 @@ class AuthorizationViewController : UIViewController {
             self.phoneNumberTextField.resignFirstResponder()
             self.controllDistance.constant = 60
             self.view.setNeedsUpdateConstraints()
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
                 
-                UIView.transitionWithView(self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    self.phoneNumberTextField.hidden = true
+                UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    self.phoneNumberTextField.isHidden = true
                     }, completion: nil)
             })
             
@@ -88,16 +88,16 @@ class AuthorizationViewController : UIViewController {
     }
     
     // MARK: Navigation
-    func launchTokenViewerWithTokenResponseModel(userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
+    func launchTokenViewerWithTokenResponseModel(_ userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
     {   
         currentTokenResponse = tokenResponseModel
         currentError = error
-        self.performSegueWithIdentifier("showResult", sender: nil)
+        self.performSegue(withIdentifier: "showResult", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let controller = segue.destinationViewController as? ResultViewController {
+        if let controller = segue.destination as? ResultViewController {
             var model : [String : String] = [:]
             
             if let error = currentError
@@ -122,15 +122,15 @@ class AuthorizationViewController : UIViewController {
     // MARK: Handle display/dismiss alert view
     
     @IBAction func alertViewDisplay() {
-        let alert = UIAlertController(title: "AuthorizationViewController", message: "AuthorizationViewController -  represents the view controller file name in Project navigator.", preferredStyle: .Alert)
-        self.presentViewController(alert, animated: true, completion:{
-            alert.view.superview?.userInteractionEnabled = true
+        let alert = UIAlertController(title: "AuthorizationViewController", message: "AuthorizationViewController -  represents the view controller file name in Project navigator.", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
         })
     }
     
     func alertControllerBackgroundTapped()
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }    
 }

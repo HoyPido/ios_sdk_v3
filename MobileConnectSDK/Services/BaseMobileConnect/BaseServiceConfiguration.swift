@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class BaseServiceConfiguration: NSObject {
+open class BaseServiceConfiguration: NSObject {
     
     var clientKey : String
     let clientSecret : String
-    let redirectURL : NSURL
+    let redirectURL : URL
     
-    init(clientKey : String = MobileConnectSDK.getClientKey(), clientSecret : String = MobileConnectSDK.getClientSecret(), redirectURL : NSURL = MobileConnectSDK.getRedirectURL()) {
+    init(clientKey : String = MobileConnectSDK.getClientKey(), clientSecret : String = MobileConnectSDK.getClientSecret(), redirectURL : URL = MobileConnectSDK.getRedirectURL() as URL) {
     
         NSException.checkClientKey(clientKey)
         NSException.checkClientSecret(clientSecret)

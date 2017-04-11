@@ -16,10 +16,10 @@ protocol WebControllerProtocol : UIToolbarDelegate, WKNavigationDelegate
 {
     // MARK: iVars
     var delegate : WebControllerDelegate? {get set}
-    var requestToLoad : NSURLRequest? {get set}
+    var requestToLoad : URLRequest? {get set}
     
     // MARK: Factory methods
-    static func controllerWithDelegate(delegate : WebControllerDelegate?, requestToLoad : NSURLRequest?) -> BaseWebController?
+    static func controllerWithDelegate(_ delegate : WebControllerDelegate?, requestToLoad : URLRequest?) -> BaseWebController?
     static var existingTemplate : BaseWebController? {get}
     
     // MARK: Storyboard creation datasource
@@ -41,10 +41,10 @@ extension WebControllerProtocol
   
     static var existingTemplate : BaseWebController?
     {
-        return UIStoryboard(name: storyboardName, bundle: Resources.bundle).instantiateViewControllerWithIdentifier(controllerIdentifier) as? BaseWebController
+        return UIStoryboard(name: storyboardName, bundle: Resources.bundle).instantiateViewController(withIdentifier: controllerIdentifier) as? BaseWebController
     }
     
-    static func controllerWithDelegate(delegate : WebControllerDelegate?, requestToLoad : NSURLRequest? = nil) -> BaseWebController?
+    static func controllerWithDelegate(_ delegate : WebControllerDelegate?, requestToLoad : URLRequest? = nil) -> BaseWebController?
     {
         guard let controller = existingTemplate else
         {

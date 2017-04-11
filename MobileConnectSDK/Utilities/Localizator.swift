@@ -292,7 +292,7 @@ class Localizator: NSObject {
     }
     
     // MARK: main method
-    private class func localized(key : String) -> String
+    fileprivate class func localized(_ key : String) -> String
     {
         return NSLocalizedString(key, comment: "")
     }

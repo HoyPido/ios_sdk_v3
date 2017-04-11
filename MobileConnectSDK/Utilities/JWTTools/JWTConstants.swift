@@ -12,9 +12,9 @@ let kJWTToolsTag : String = "com.carpemeid.JWTTools"
 
 @objc public enum JWTErrorCode : Int
 {
-    case InvalidPublicKey
-    case InvalidToken
-    case Unknown
+    case invalidPublicKey
+    case invalidToken
+    case unknown
 }
 
 extension JWTErrorCode
@@ -28,7 +28,7 @@ extension JWTErrorCode
     ///The error message related to the MCErrorCode enum value
     public var message : String
     {
-        guard let index = JWTErrorCode.errors.indexOf(self) else
+        guard let index = JWTErrorCode.errors.index(of: self) else
         {
             return "Unknown error has occured"
         }
@@ -38,13 +38,13 @@ extension JWTErrorCode
         return JWTErrorCode.messages[index]
     }
     
-    static private var messages : [String]
+    static fileprivate var messages : [String]
     {
         return ["Invalid public key provided", "Invalid token provided", "Unknown error occured"]
     }
     
-    static private var errors : [JWTErrorCode]
+    static fileprivate var errors : [JWTErrorCode]
     {
-        return [InvalidPublicKey, InvalidToken, Unknown]
+        return [invalidPublicKey, invalidToken, unknown]
     }
 }

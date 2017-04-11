@@ -10,68 +10,68 @@ import Foundation
 
 extension NSException
 {
-    class func checkContext(context : String?)
+    class func checkContext(_ context : String?)
     {
-        checkParameters([context], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
+        checkParameters([context as AnyObject], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
     }
     
-    class func checkClientName(clientName : String?)
+    class func checkClientName(_ clientName : String?)
     {
-        checkParameters([clientName], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
+        checkParameters([clientName as AnyObject], withErrorMessage: Localizator.nilContext, exceptionName: Localizator.nilContextMessage)
     }
     
-    class func checkAuthorizationProperty(property : String?, withErrorName errorName : String, andErrorMessage errorMessage : String)
+    class func checkAuthorizationProperty(_ property : String?, withErrorName errorName : String, andErrorMessage errorMessage : String)
     {
-        if property == .None
+        if property == .none
         {
-            NSException(name: errorName, reason: errorMessage, userInfo: [NSLocalizedDescriptionKey : errorMessage]).raise()
+            NSException(name: NSExceptionName(rawValue: errorName), reason: errorMessage, userInfo: [NSLocalizedDescriptionKey : errorMessage]).raise()
         }
     }
     
-    class func checkController(controller : UIViewController?)
+    class func checkController(_ controller : UIViewController?)
     {
-        if controller == .None
+        if controller == .none
         {
-            NSException(name: Localizator.nilPresenterName, reason:Localizator.nilPresenterMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.nilPresenterMessage]).raise()
+            NSException(name: NSExceptionName(rawValue: Localizator.nilPresenterName), reason:Localizator.nilPresenterMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.nilPresenterMessage]).raise()
         }
     }
     
-    class func checkDelegate(delegate : Any?)
+    class func checkDelegate(_ delegate : Any?)
     {
         if let delegate = delegate
         {
             if !(delegate is MobileConnectManagerDelegate)
             {
-                NSException(name: Localizator.incorrectDelegateName, reason: Localizator.incorrectDelegateMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.incorrectDelegateMessage]).raise()
+                NSException(name: NSExceptionName(rawValue: Localizator.incorrectDelegateName), reason: Localizator.incorrectDelegateMessage, userInfo: [NSLocalizedDescriptionKey : Localizator.incorrectDelegateMessage]).raise()
             }
         }
     }
     
-    class func checkRedirect(redirect : NSURL?)
+    class func checkRedirect(_ redirect : URL?)
     {
-        checkParameters([redirect], withErrorMessage: Localizator.nilRedirectMessage, exceptionName: Localizator.nilRedirectName)
+        checkParameters([redirect as AnyObject], withErrorMessage: Localizator.nilRedirectMessage, exceptionName: Localizator.nilRedirectName)
     }
     
-    class func checkEndpoint(endpoint : String?)
+    class func checkEndpoint(_ endpoint : String?)
     {
-        checkParameters([endpoint], withErrorMessage: Localizator.nilApplicationEndpointMessage, exceptionName: Localizator.nilApplicationEndpointName)
+        checkParameters([endpoint as AnyObject], withErrorMessage: Localizator.nilApplicationEndpointMessage, exceptionName: Localizator.nilApplicationEndpointName)
     }
     
-    class func checkClientKey(clientKey : String?)
+    class func checkClientKey(_ clientKey : String?)
     {
-        checkParameters([clientKey], withErrorMessage: Localizator.nilClientKeyMessage, exceptionName: Localizator.nilClientKeyName)
+        checkParameters([clientKey as AnyObject], withErrorMessage: Localizator.nilClientKeyMessage, exceptionName: Localizator.nilClientKeyName)
     }
     
-    class func checkClientSecret(clientSecret : String?)
+    class func checkClientSecret(_ clientSecret : String?)
     {
-        checkParameters([clientSecret], withErrorMessage: Localizator.nilClientSecretMessage, exceptionName: Localizator.nilClientKeyName)
+        checkParameters([clientSecret as AnyObject], withErrorMessage: Localizator.nilClientSecretMessage, exceptionName: Localizator.nilClientKeyName)
     }
     
-    class func checkParameters(parameters : [AnyObject?], withErrorMessage message : String, exceptionName : String)
+    class func checkParameters(_ parameters : [AnyObject?], withErrorMessage message : String, exceptionName : String)
     {
         guard !(parameters.filter({$0 == nil}).count > 0) else
         {
-            NSException(name: exceptionName, reason: message, userInfo: [NSLocalizedDescriptionKey : message]).raise()
+            NSException(name: NSExceptionName(rawValue: exceptionName), reason: message, userInfo: [NSLocalizedDescriptionKey : message]).raise()
             
             return
         }

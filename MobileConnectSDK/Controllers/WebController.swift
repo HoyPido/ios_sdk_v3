@@ -12,19 +12,19 @@ import Alamofire
 
 protocol WebControllerDelegate
 {
-    func webControllerDidCancel(controller : BaseWebController)
-    func webController(controller : BaseWebController, shouldRedirectToURL url : NSURL) -> Bool
-    func webController(controller : BaseWebController, failedLoadingRequestWithError error : NSError?)
+    func webControllerDidCancel(_ controller : BaseWebController)
+    func webController(_ controller : BaseWebController, shouldRedirectToURL url : URL) -> Bool
+    func webController(_ controller : BaseWebController, failedLoadingRequestWithError error : NSError?)
 }
 
 ///The mobile connect controller which is responsible for presenting and manipulating the web view.
-public class BaseWebController : UIViewController, WebControllerProtocol {
+open class BaseWebController : UIViewController, WebControllerProtocol {
     var delegate: WebControllerDelegate?
-    var requestToLoad: NSURLRequest?
+    var requestToLoad: URLRequest?
     
     //unfortunately this cannot be provided in the protocol extension, as protocol extensions can't be accessed by obj c runtime at the time of writing [Swift 2.2]
-    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return UIBarPosition.TopAttached
+    open func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.topAttached
     }
 }
 
@@ -47,7 +47,7 @@ class WebController: BaseWebController {
         
         configuration.preferences = preferences
         
-        let localWebView : WKWebView = WKWebView(frame: self?.webViewContainer.bounds ?? CGRectMake(0, 0, 0, 0), configuration: configuration)
+        let localWebView : WKWebView = WKWebView(frame: self?.webViewContainer.bounds ?? CGRect(x: 0, y: 0, width: 0, height: 0), configuration: configuration)
         
         localWebView.navigationDelegate = self
         
@@ -57,36 +57,36 @@ class WebController: BaseWebController {
     }()
     
     // MARK: View life cycle methods
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if let localRequest = requestToLoad
         {
-            self.webView.loadRequest(localRequest)
+            self.webView.load(localRequest)
         } else
         {
-            delegate?.webController(self, failedLoadingRequestWithError: MCErrorCode.NoRequestToLoad.error)
+            delegate?.webController(self, failedLoadingRequestWithError: MCErrorCode.noRequestToLoad.error)
         }
     }
     
     // MARK: Web view delegate methods
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void)
+    func webView(_ webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void)
     {
-        if let url = navigationAction.request.URL, delegate = delegate
+        if let url = navigationAction.request.url, let delegate = delegate
         {
-            decisionHandler(delegate.webController(self, shouldRedirectToURL: url) ? WKNavigationActionPolicy.Allow : WKNavigationActionPolicy.Cancel)
+            decisionHandler(delegate.webController(self, shouldRedirectToURL: url) ? WKNavigationActionPolicy.allow : WKNavigationActionPolicy.cancel)
         } else
         {
-            decisionHandler(WKNavigationActionPolicy.Allow)
+            decisionHandler(WKNavigationActionPolicy.allow)
         }
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
         delegate?.webController(self, failedLoadingRequestWithError: error)
     }
     
     // MARK: Events
-    @IBAction func cancelAction(sender: AnyObject) {
+    @IBAction func cancelAction(_ sender: AnyObject) {
         delegate?.webControllerDidCancel(self)
     }
 }

@@ -56,12 +56,13 @@ class MCRequestConstructor: RequestConstructor {
         super.init(clientKey: configuration.clientKey, clientSecret: configuration.clientSecret, redirectURL: configuration.redirectURL)
     }
     
-    func mobileConnectRequestWithAssuranceLevel(assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], config : AuthorizationConfigurationParameters? = nil, url : String, clientName : String? = nil, context : String? = nil, bindingMessage : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
+    func mobileConnectRequestWithAssuranceLevel(_ assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], config : AuthorizationConfigurationParameters? = nil, url : String, clientName : String? = nil, context : String? = nil, bindingMessage : String? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
-        let state : String = NSUUID.randomUUID
+        let state : String = UUID.randomUUID
+        var parameters : [String : Any] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL , kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : configuration.nonce]
         
-        var parameters : [String : String] = [kClientId : clientKey, kResponseType : kResponseTypeValue, kRedirectURI : redirectURL.URLString, kScope : scopeValidator.validatedScopes(scopes), kAssuranceKey : "\(assuranceLevel.rawValue)", kState : state, kNonce : configuration.nonce]
-        
+        print("---parameters---")
+        print(parameters)
         if scopes.contains(MobileConnectAuthorization) {
             let productVersion = scopeValidator.versionPairsForStringValues([MobileConnectAuthorization])
             if let version = productVersion.first?.versionString() {
@@ -128,11 +129,11 @@ class MCRequestConstructor: RequestConstructor {
         if let bindingMessage = bindingMessage {
             parameters[kBindingMessageKey] = bindingMessage
         }
-        
-        return requestWithMethod(.GET, url: url, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL, shouldNotStartImmediately : shouldNotStartImmediately)
+
+        return requestWithMethod(.get, url: url, parameters: parameters as [String : AnyObject]?, encoding: URLEncoding.methodDependent, shouldNotStartImmediately : shouldNotStartImmediately)
     }
     
-    func checkLoginHint(loginHint : String) -> Bool {
+    func checkLoginHint(_ loginHint : String) -> Bool {
         
         if loginHint == kLoginHintMSISDN {
             if configuration.isLoginHintMSISDNSupported() {
@@ -172,8 +173,8 @@ class MCRequestConstructor: RequestConstructor {
         return nil
     }
     
-    func tokenRequestAtURL(url : String, withCode code : String) -> Request
+    func tokenRequestAtURL(_ url : String, withCode code : String) -> Request
     {
-        return requestWithMethod(.POST, url: url, parameters: [kCodeKey : code, kGrantTypeKey : kGrantTypeValue, kRedirectURI : redirectURL.URLString], encoding: ParameterEncoding.URL, additionalHeaders:  ["Content-Type":"application/x-www-form-urlencoded"])
+        return requestWithMethod(.post, url: url, parameters: [kCodeKey : code as AnyObject, kGrantTypeKey : kGrantTypeValue as AnyObject, kRedirectURI : redirectURL as AnyObject], encoding: URLEncoding.default, additionalHeaders:  ["Content-Type":"application/x-www-form-urlencoded"])
     }
 }

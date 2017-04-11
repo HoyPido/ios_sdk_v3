@@ -10,36 +10,36 @@ import UIKit
 
 protocol MobileConnectSDKProtocol {
     // MARK: SDK setters
-    static func setClientKey(clientKey : String)
-    static func setClientSecret(clientSecret : String)
-    static func setRedirect(redirectURL : NSURL)
-    static func setApplicationEndpoint(applicationEndpoint : String)
+    static func setClientKey(_ clientKey : String)
+    static func setClientSecret(_ clientSecret : String)
+    static func setRedirect(_ redirectURL : URL)
+    static func setApplicationEndpoint(_ applicationEndpoint : String)
 }
 
 ///Is used for supplying the Mobile Connect services with needed credentials/resources (such as clientKey, clientSecret, applicationEndpoint redirectURL and the delegate responsible for catching Mobile Connect responses)
-public class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
-    private static var clientKey : String!
-    private static var clientSecret : String!
-    private static var applicationEndpoint : String!
-    private static var redirectURL : NSURL!
-    private static var xRedirect : String!
-    private static var delegate : MobileConnectManagerDelegate?
+open class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
+    fileprivate static var clientKey : String!
+    fileprivate static var clientSecret : String!
+    fileprivate static var applicationEndpoint : String!
+    fileprivate static var redirectURL : URL!
+    fileprivate static var xRedirect : String! = "APP"
+    fileprivate static var delegate : MobileConnectManagerDelegate?
     
     // MARK: SDK setters
     ///Mobile connect xRedirect
     
-    public static func setXRedirect(xRedirect : String)
+    open static func setXRedirect(_ xRedirect : String)
     {
         MobileConnectSDK.xRedirect = xRedirect
     }
     
-    public static func getXRedirect() -> String
+    open static func getXRedirect() -> String
     {
         return xRedirect
     }
     
     ///Mobile connect client key
-    public static func setClientKey(clientKey : String)
+    open static func setClientKey(_ clientKey : String)
     {
         NSException.checkClientKey(clientKey)
         MobileConnectSDK.clientKey = clientKey
@@ -53,7 +53,7 @@ public class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
     }
     
     ///Mobile connect client secret
-    public static func setClientSecret(clientSecret : String)
+    open static func setClientSecret(_ clientSecret : String)
     {
         NSException.checkClientSecret(clientSecret)
         MobileConnectSDK.clientSecret = clientSecret
@@ -66,20 +66,20 @@ public class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
     }
     
     ///Mobile connect redirect url set in Mobile Connect dashboard
-    public static func setRedirect(redirectURL : NSURL)
+    open static func setRedirect(_ redirectURL : URL)
     {
         NSException.checkRedirect(redirectURL)
         MobileConnectSDK.redirectURL = redirectURL
     }
     
-    static func getRedirectURL() -> NSURL
+    static func getRedirectURL() -> URL
     {
         NSException.checkRedirect(redirectURL)
         return redirectURL
     }
     
     ///The url of you Mobile Connect application set in the Dashboard
-    public static func setApplicationEndpoint(applicationEndpoint : String)
+    open static func setApplicationEndpoint(_ applicationEndpoint : String)
     {
         NSException.checkEndpoint(applicationEndpoint)
         self.applicationEndpoint = applicationEndpoint
@@ -92,7 +92,7 @@ public class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
     }
     
     ///The delegate which will catch all the publicly available MobileConnectManager events
-    public static func setDelegate(delegate : MobileConnectManagerDelegate)
+    open static func setDelegate(_ delegate : MobileConnectManagerDelegate)
     {
         NSException.checkDelegate(delegate)
         self.delegate = delegate

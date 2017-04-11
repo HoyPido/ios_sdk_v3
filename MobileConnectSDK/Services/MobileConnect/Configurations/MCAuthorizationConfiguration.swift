@@ -10,7 +10,7 @@ import Foundation
 
 //In the future the Objective C available new and init constructors should be disallowed
 ///Use this class to create MobileConnect service for getting Authorization products (phone, email, etc.)
-public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
+open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
 {
     let clientName : String //aka application short name from discovery response
     let context : String //context value required while authorizing
@@ -53,7 +53,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
     }
     
     convenience public init(discoveryResponse : DiscoveryResponse,
-                            assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
+                            assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2,
                             context : String,
                             bindingMessage : String?,
                             authorizationScopes : [ProductType],
@@ -70,7 +70,7 @@ public class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
     }
     
     convenience public init(discoveryResponse : DiscoveryResponse,
-         assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.Level2,
+         assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2,
          context : String,
          bindingMessage : String?,
          stringAuthorizationScopes : [String],

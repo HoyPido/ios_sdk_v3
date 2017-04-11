@@ -25,7 +25,7 @@ class RefreshTokenRequestConstructor : NSObject {
         self.scopes = scopes
     }
     
-    func generateRefreshRequest(withURL: String, withRefreshToken token : String) -> Request {
+    func generateRefreshRequest(_ withURL: String, withRefreshToken token : String) -> Request {
         
         var parameters : Dictionary = [kGrantTypeKey : kGrantTypeValue, kRefreshTokenKey : token]
         
@@ -37,13 +37,13 @@ class RefreshTokenRequestConstructor : NSObject {
         
         var headers : Dictionary = ["Content-Type":"application/x-www-form-urlencoded"]
         
-        if let encodedData : NSData = credentialsString.dataUsingEncoding(NSUTF8StringEncoding)
+        if let encodedData : Data = credentialsString.data(using: String.Encoding.utf8)
         {
-            let encodedCredentials : String = encodedData.base64EncodedStringWithOptions([])
+            let encodedCredentials : String = encodedData.base64EncodedString(options: [])
             headers["Authorization"] = "Basic \(encodedCredentials)"
-        } 
+        }
         
-        return request(.POST, withURL, parameters: parameters, encoding: .URLEncodedInURL, headers: headers)
+        return request(withURL, method: .post, parameters: parameters, encoding: URLEncoding.methodDependent, headers: headers)
     }
 
 }

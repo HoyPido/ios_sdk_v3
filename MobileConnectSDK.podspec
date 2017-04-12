@@ -4,7 +4,7 @@ spec.version = "3.3.0"
 spec.summary = "MobileConnectSDK is a framework for accessing Mobile Connect services for fast login."
 spec.homepage = "https://developer.mobileconnect.io"
 spec.license = { type: 'MIT', file: 'Metadata/LICENSE' }
-spec.authors = { "Dan Andoni" => 'dan.andoni@bjss.com' }
+spec.authors = { "Dmitry Maretsky" => 'd.maretsky@a1qa.com' }
 spec.social_media_url = "https://developer.mobileconnect.io"
 
 spec.platform = :ios, "9.0"

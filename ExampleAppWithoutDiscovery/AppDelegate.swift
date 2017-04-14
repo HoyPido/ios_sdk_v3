@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MobileConnectSDK.setClientSecret(kReferenceClientSecret)
         MobileConnectSDK.setRedirect(kReferenceRedirect as URL)
         MobileConnectSDK.setApplicationEndpoint(kReferenceEndpoint)
+        MobileConnectSDK.setXRedirect(kReferenceXRedirect)
         
         return true
     }

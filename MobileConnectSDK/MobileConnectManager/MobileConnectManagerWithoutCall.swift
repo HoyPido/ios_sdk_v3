@@ -250,7 +250,7 @@ open class MobileConnectManagerWithoutCall: NSObject {
                 
                 configuration = MCAuthorizationConfiguration(discoveryResponse: operatorTest!, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config, loginHint: loginHint)
             } else {
-                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorTest!, authorizationScopes : scopes ?? [], loginHint : loginHint)
+                    configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorTest!, authorizationScopes : scopes ?? [], config: config, loginHint : loginHint)
             }
             
             let mobileConnect : MobileConnectService = MobileConnectService(configuration: configuration)

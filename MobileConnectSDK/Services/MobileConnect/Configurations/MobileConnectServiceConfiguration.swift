@@ -20,7 +20,8 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let scopes : [String]
     var maxAge = 3600
     let nonce = UUID.randomUUID
-    let loginHint : String?
+    var config : AuthorizationConfigurationParameters?
+    var loginHint : String?
    
     /**
      This constructor may change with addition of new features in future versions.
@@ -39,6 +40,7 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                          subscriberId : String?,
                          metadata : MetadataModel?,
                          authorizationScopes : [String],
+                         config : AuthorizationConfigurationParameters?,
                          loginHint : String?)
     {
         self.authorizationURLString = authorizationURLString
@@ -48,11 +50,12 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         self.metadata = metadata
         scopes = authorizationScopes + [MobileConnectAuthentication]
         self.loginHint = loginHint
+        self.config = config
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     
-    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2, authorizationScopes : [String], loginHint : String?)
+    public convenience init(discoveryResponse : DiscoveryResponse, assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2, authorizationScopes : [String], config: AuthorizationConfigurationParameters?, loginHint : String?)
     {
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         
@@ -74,6 +77,7 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                   subscriberId : localSubscriberId,
                   metadata: localMetadata,
                   authorizationScopes: authorizationScopes,
+                  config: config,
                   loginHint: loginHint)
     }
     

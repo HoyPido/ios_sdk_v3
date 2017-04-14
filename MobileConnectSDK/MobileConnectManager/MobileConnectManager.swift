@@ -70,7 +70,7 @@ open class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      - Parameter scopes: The scopes to be authorized
      */
-    open func getTokenInPresenterController(_ presenterController: UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getTokenInPresenterController(_ presenterController: UIViewController, loginHint : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
         let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
         getToken(presenterController, loginHint: loginHint, scopes : scopesArray) { (tokenResponseModel, error) in
@@ -137,7 +137,7 @@ open class MobileConnectManager: NSObject {
      - Parameter presenterController: The controller which will present the Mobile Connect web view controller
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    open func getTokenForPhoneNumber(_ phoneNumber: String, clientIP : String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getTokenForPhoneNumber(_ phoneNumber: String, clientIP : String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
         let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
         getTokenForPhoneNumber(phoneNumber, clientIP: clientIP, inPresenterController: presenterController, loginHint : loginHint, scopes : scopesArray) { (tokenResponseModel, error) in
@@ -186,7 +186,7 @@ open class MobileConnectManager: NSObject {
      - Parameter scopes: The scopes to be authorized
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    open func getTokenForPhoneNumber(_ phoneNumber: String, clientIP: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getTokenForPhoneNumber(_ phoneNumber: String, clientIP: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, withStringValueScopes scopes : [String], withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
     {
         getTokenForPhoneNumber(phoneNumber, clientIP: clientIP, inPresenterController: presenterController, loginHint : loginHint, scopes : scopes) { (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
@@ -255,7 +255,7 @@ open class MobileConnectManager: NSObject {
         }
     }
     
-    open func getAttributeServiceResponseWithPhoneNumber(_ phoneNumber : String, clientIP: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ) {
+    open func getAttributeServiceResponseWithPhoneNumber(_ phoneNumber : String, clientIP: String, inPresenterController presenterController : UIViewController, loginHint : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, withStringValueScopes scopes : [ProductType], context : String, bindingMessage : String?, completionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ) {
         
         getAuthorizationTokenForPhoneNumber(phoneNumber, clientIP: clientIP, inPresenterController: presenterController, loginHint : loginHint, withScopes: scopes, context: context, bindingMessage: bindingMessage) { (userInfo, tokenResponseModel, error) in
             guard let tokenResponseModel = tokenResponseModel  else {
@@ -288,7 +288,7 @@ open class MobileConnectManager: NSObject {
         }
     }
     
-    open func getAttributeServiceResponse(_ controller: UIViewController, context : String, loginHint : String? = nil, scopes : [ProductType], bindingMessage : String? = nil, withCompletionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ){
+    open func getAttributeServiceResponse(_ controller: UIViewController, context : String, loginHint : String? = nil, scopes : [ProductType], bindingMessage : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, withCompletionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ){
       
         self.getAttributeServiceResponse(controller, context: context, loginHint : loginHint, stringScopes: scopes.flatMap({$0.stringValue}), bindingMessage: bindingMessage, withCompletionHandler: withCompletionHandler)
     }
@@ -338,11 +338,15 @@ open class MobileConnectManager: NSObject {
             
             var configuration : MobileConnectServiceConfiguration
             
+            var loginHintValue = loginHint
+            if (config?.login_hint_token?.isEmpty == false) {
+                loginHintValue = nil
+            }
+            
             if let context = context {
-                
-                configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config, loginHint: loginHint)
+                configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config, loginHint: loginHintValue)
             } else {
-                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [], loginHint : loginHint)
+                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [], config: config, loginHint : loginHintValue)
             }
             
             let mobileConnect : MobileConnectService = MobileConnectService(configuration: configuration)

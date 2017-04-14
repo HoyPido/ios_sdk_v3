@@ -20,9 +20,9 @@ protocol MobileConnectSDKProtocol {
 open class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
     fileprivate static var clientKey : String!
     fileprivate static var clientSecret : String!
-    fileprivate static var applicationEndpoint : String! = "https://discovery.integration.sandbox.mobileconnect.io/v2/discovery"
+    fileprivate static var applicationEndpoint : String!
     fileprivate static var redirectURL : URL!
-    fileprivate static var xRedirect : String! = "APP"
+    fileprivate static var xRedirect : String!
     fileprivate static var delegate : MobileConnectManagerDelegate?
     
     // MARK: SDK setters

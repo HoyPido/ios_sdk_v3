@@ -119,6 +119,7 @@ class MCRequestConstructor: RequestConstructor {
             }
         }
         
+        
         if let context = context
         {
             parameters[kContextKey] = context
@@ -165,6 +166,10 @@ class MCRequestConstructor: RequestConstructor {
     {
         if let configuration = configuration as? MCAuthorizationConfiguration
         {
+            if (configuration.config?.login_hint_token?.isEmpty == false) {
+                configuration.loginHint = ""
+            }
+            
             return mobileConnectRequestWithAssuranceLevel(configuration.assuranceLevel, subscriberId: configuration.subscriberId, scopes: configuration.scopes, config: configuration.config, url: configuration.authorizationURLString, clientName: configuration.clientName, context: configuration.context, bindingMessage: configuration.bindingMessage, shouldNotStartImmediately : true)
         }
         

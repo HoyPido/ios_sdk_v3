@@ -15,7 +15,6 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
     let clientName : String //aka application short name from discovery response
     let context : String //context value required while authorizing
     let bindingMessage : String?
-    let config : AuthorizationConfigurationParameters?
     
     public init(clientKey: String,
          clientSecret: String,
@@ -37,7 +36,6 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.bindingMessage = bindingMessage
         self.clientName = clientName
         self.context = context
-        self.config = config
         
         let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
         
@@ -49,6 +47,7 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                    subscriberId: subscriberId,
                    metadata: metadata,
                    authorizationScopes: stringValuedScopes,
+                   config: config,
                    loginHint: loginHint)
     }
     

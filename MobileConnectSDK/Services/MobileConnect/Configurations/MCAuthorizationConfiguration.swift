@@ -51,6 +51,42 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                    loginHint: loginHint)
     }
     
+    
+    //login_hint_token init
+    public init(clientKey: String,
+                clientSecret: String,
+                authorizationURLString: String,
+                tokenURLString: String,
+                assuranceLevel: MCLevelOfAssurance,
+                subscriberId: String?,
+                metadata: MetadataModel?,
+                authorizationScopes : [String],
+                clientName : String,
+                context : String,
+                bindingMessage : String?,
+                config : AuthorizationConfigurationParameters?)
+    {
+        NSException.checkClientName(clientName)
+        NSException.checkContext(context)
+        
+        self.bindingMessage = bindingMessage
+        self.clientName = clientName
+        self.context = context
+        
+        let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
+        
+        super.init(clientKey: clientKey,
+                   clientSecret: clientSecret,
+                   authorizationURLString: authorizationURLString,
+                   tokenURLString: tokenURLString,
+                   assuranceLevel: assuranceLevel,
+                   subscriberId: subscriberId,
+                   metadata: metadata,
+                   authorizationScopes: stringValuedScopes,
+                   config: config)
+    }
+    
+    
     convenience public init(discoveryResponse : DiscoveryResponse,
                             assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2,
                             context : String,
@@ -104,5 +140,40 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   config: config,
                   loginHint: loginHint)
     }
-
+    
+    //login_hint_token constructor
+    convenience public init(discoveryResponse : DiscoveryResponse,
+                            assuranceLevel : MCLevelOfAssurance = MCLevelOfAssurance.level2,
+                            context : String,
+                            bindingMessage : String?,
+                            stringAuthorizationScopes : [String],
+                            config : AuthorizationConfigurationParameters?)
+    {
+        let localClientName : String = discoveryResponse.clientName ?? ""
+        
+        let localClientKey : String = discoveryResponse.response?.client_id ?? ""
+        
+        let localClientSecret : String = discoveryResponse.response?.client_secret ?? ""
+        
+        let localAuthorizationURLString : String = discoveryResponse.authorizationEndpoint ?? ""
+        
+        let localTokenURLString : String = discoveryResponse.tokenEndpoint ?? ""
+        
+        let localSubscriberId : String? = discoveryResponse.subscriber_id
+        
+        let localMetadata : MetadataModel? = discoveryResponse.metadata
+        
+        self.init(clientKey: localClientKey,
+                  clientSecret: localClientSecret,
+                  authorizationURLString: localAuthorizationURLString,
+                  tokenURLString: localTokenURLString,
+                  assuranceLevel: assuranceLevel,
+                  subscriberId: localSubscriberId,
+                  metadata: localMetadata,
+                  authorizationScopes : stringAuthorizationScopes,
+                  clientName : localClientName,
+                  context : context,
+                  bindingMessage: bindingMessage,
+                  config: config)
+    }
 }

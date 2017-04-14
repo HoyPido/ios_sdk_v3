@@ -338,15 +338,18 @@ open class MobileConnectManager: NSObject {
             
             var configuration : MobileConnectServiceConfiguration
             
-            var loginHintValue = loginHint
             if (config?.login_hint_token?.isEmpty == false) {
-                loginHintValue = nil
-            }
-            
-            if let context = context {
-                configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config, loginHint: loginHintValue)
+                if let context = context {
+                    configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config)
+                } else {
+                    configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [], config: config)
+                }
             } else {
-                configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [], config: config, loginHint : loginHintValue)
+                if let context = context {
+                    configuration = MCAuthorizationConfiguration(discoveryResponse: operatorsData, context: context, bindingMessage: bindingMessage, stringAuthorizationScopes: scopes ?? [], config: config, loginHint: loginHint)
+                } else {
+                    configuration = MobileConnectServiceConfiguration(discoveryResponse: operatorsData, authorizationScopes : scopes ?? [], config: config, loginHint : loginHint)
+                }
             }
             
             let mobileConnect : MobileConnectService = MobileConnectService(configuration: configuration)

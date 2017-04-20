@@ -12,7 +12,7 @@ class DiscoveryServiceConfiguration: BaseServiceConfiguration {
     
     let applicationEndpoint : String
     
-    init(applicationEndpoint : String = MobileConnectSDK.getApplicationEndpoint(), clientKey : String = MobileConnectSDK.getClientKey(), clientSecret : String = MobileConnectSDK.getClientSecret(), redirectURL :  NSURL = MobileConnectSDK.getRedirectURL())
+init(applicationEndpoint : String = MobileConnectSDK.getApplicationEndpoint(), clientKey : String = MobileConnectSDK.getClientKey(), clientSecret : String = MobileConnectSDK.getClientSecret(), redirectURL :  URL = MobileConnectSDK.getRedirectURL())
     {
         NSException.checkEndpoint(applicationEndpoint)
         

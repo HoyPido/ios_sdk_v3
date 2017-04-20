@@ -8,10 +8,10 @@
 
 import Foundation
 
-extension NSUUID
+extension UUID
 {
-    class var randomUUID : String
+    static var randomUUID : String
     {
-        return NSUUID().UUIDString.stringByReplacingOccurrencesOfString("-", withString: "")
+        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
     }
 }

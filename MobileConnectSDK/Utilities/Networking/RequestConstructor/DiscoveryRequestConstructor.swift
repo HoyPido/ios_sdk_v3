@@ -21,7 +21,7 @@ class DiscoveryRequestConstructor : RequestConstructor
     let applicationEndpoint : String
     
     // MARK: init
-    init(clientKey: String, clientSecret: String, redirectURL: URLStringConvertible, applicationEndpoint : String){
+    init(clientKey: String, clientSecret: String, redirectURL: URLConvertible, applicationEndpoint : String){
         
         NSException.checkEndpoint(applicationEndpoint)
         
@@ -36,26 +36,28 @@ class DiscoveryRequestConstructor : RequestConstructor
         return genericDiscoveryRequestWithParameters([:], shouldNotStartImmediately : true)
     }
     
-    func requestNoOperatorDataRequest(clientIP: String) -> Request {
+    func requestNoOperatorDataRequest(_ clientIP: String) -> Request {
         return genericDiscoveryRequestWithParameters([:], additionalHeaders: ["X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()], shouldNotStartImmediately : true)
     }
     
-    func requestWithCountryCode(countryCode : String, networkCode : String) -> Request
+    func requestWithCountryCode(_ countryCode : String, networkCode : String) -> Request
     {
-        return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode, kKeyNetworkCode : networkCode], additionalHeaders: ["Accept":"application/json", "X-Redirect":MobileConnectSDK.getXRedirect()])
+        return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode as AnyObject, kKeyNetworkCode : networkCode as AnyObject], additionalHeaders: ["Accept":"application/json", "X-Redirect":MobileConnectSDK.getXRedirect()])
     }
     
-    func requestWithPhoneNumber(phoneNumber : String, clientIP : String) -> Request
+    func requestWithPhoneNumber(_ phoneNumber : String, clientIP : String) -> Request
     {
-        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.stringByReplacingOccurrencesOfString("+", withString: "")], isPhoneRequest: true, additionalHeaders: ["Content-Type":"application/x-www-form-urlencoded", "X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()])
+        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.replacingOccurrences(of: "+", with: "") as AnyObject], isPhoneRequest: true, additionalHeaders: ["Content-Type":"application/x-www-form-urlencoded", "X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()])
     }
     
-    private func genericDiscoveryRequestWithParameters(parameters : [String : AnyObject], isPhoneRequest : Bool = false, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
+    fileprivate func genericDiscoveryRequestWithParameters(_ parameters : [String : AnyObject], isPhoneRequest : Bool = false, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
     {
-        print(additionalHeaders)
-        let method : Alamofire.Method = isPhoneRequest  ? .POST : .GET
-        let encoding : ParameterEncoding = isPhoneRequest ? ParameterEncoding.URL : ParameterEncoding.URLEncodedInURL
         
-        return requestWithMethod(method, url: applicationEndpoint, parameters: [kRedirectURL : redirectURL.URLString] + parameters, encoding: encoding, additionalHeaders: additionalHeaders, shouldNotStartImmediately : shouldNotStartImmediately)
+        var parametersNewDictionary = parameters
+        parametersNewDictionary[kRedirectURL] = redirectURL as AnyObject?
+        let method : HTTPMethod = isPhoneRequest ?  .post : .get
+        let encoding : ParameterEncoding = isPhoneRequest ? URLEncoding.default : URLEncoding.methodDependent
+        
+        return requestWithMethod(method, url: applicationEndpoint, parameters: parametersNewDictionary, encoding: encoding, additionalHeaders: additionalHeaders, shouldNotStartImmediately : shouldNotStartImmediately)
     }
 }

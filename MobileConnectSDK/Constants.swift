@@ -15,123 +15,123 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
 {
     //Web controller
     ///In case the request provided to Mobile Connect web controllers was nil
-    case NoRequestToLoad
+    case noRequestToLoad
     ///In case user cancelled
-    case UserCancelled
+    case userCancelled
     ///In case it was not possible to create Mobile Connect's web controllers
-    case WebControllerNil
+    case webControllerNil
     
     //Generic
     ///In case the response received does not correspond to the expected model
-    case SerializationError
+    case serializationError
     ///In case the same service is launched twice or more times while an existing service is already running
-    case Concurrency
+    case concurrency
     ///In case one or more of the required parameters provided were nil
-    case NilParameter
-    case Unknown
+    case nilParameter
+    case unknown
     
     //Discovery parameters
     /**
         Discovery error
         In case the provided country code was nil
     */
-    case NilCountryCode
+    case nilCountryCode
     /**
         Discovery error
         In case the provided network code was nil
      */
-    case NilNetworkCode
+    case nilNetworkCode
     /**
         Discovery error
         In case the provided phone number was nil
      */
-    case NilPhoneNumber
+    case nilPhoneNumber
     
     //Mobile connect
     /**
         Mobile Connect error
         In case the provided level of assurance was nil
      */
-    case NilLevelOfAssurance
+    case nilLevelOfAssurance
     /**
         Mobile Connect error
         In case the client id which is expected from the Discovery response is nil
      */
-    case NilClientId
+    case nilClientId
     /**
         Mobile Connect error
         In case the Authorization URL which is expected from the Discovery response is nil
      */
-    case NilAuthorizationURL
+    case nilAuthorizationURL
     /**
         Mobile Connect error
         In case the Token URL which is expected from the Discovery response is nil
      */
-    case NilTokenURL
+    case nilTokenURL
     /**
         Mobile Connect error
         In case the Subscriber id which is expected from the Discovery response is nil
      */
-    case NilSubcriberId
+    case nilSubcriberId
     /**
         Mobile Connect error
         In case the Code which is expected from the Mobile connect authorization service is nil
      */
-    case NilCode
+    case nilCode
     
     ///In case an error from the server was received
-    case ServerResponse
+    case serverResponse
     
     ///In case the discovery does not return a metadata URL
-    case NilMetadataURL
+    case nilMetadataURL
     
     ///In case MobileConnectService tries to access authorization request with incorrect configuration
-    case RequiresAuthorizationConfiguration
+    case requiresAuthorizationConfiguration
     
     //Token validation errors
     
     //Invalid metadata
-    case MetadataInvalidError
+    case metadataInvalidError
     
     //Invalid token
-    case InvalidAccessTokenError
+    case invalidAccessTokenError
     
     //Token expired
-    case TokenExpiredError
+    case tokenExpiredError
     
     //Invalid issuer
-    case InvalidIssuerError
+    case invalidIssuerError
     
     //Invalid Aud
-    case InvalidAudError
+    case invalidAudError
     
     //Invalid Azp
-    case InvalidAzpError
+    case invalidAzpError
     
     //Invalid nonce
-    case InvalidNonce
+    case invalidNonce
     
     //Max_age expired
-    case MaxAgeError
+    case maxAgeError
     
     //Invalid signature
-    case InvalidSignature
+    case invalidSignature
     
-    case NoTokenID
+    case noTokenID
     
-    case NoValidKeyFound
+    case noValidKeyFound
     
-    case NoValidAlgorithmFound
+    case noValidAlgorithmFound
     
-    case InvalidKey
+    case invalidKey
     
-    case InvalidRefreshToken
+    case invalidRefreshToken
 }
 
 @objc public enum MCLevelOfAssurance : Int
 {
-    case Level2 = 2
-    case Level3 = 3
+    case level2 = 2
+    case level3 = 3
 }
 
 extension MCErrorCode
@@ -145,7 +145,7 @@ extension MCErrorCode
     ///The error message related to the MCErrorCode enum value
     public var message : String
     {
-        guard let index = MCErrorCode.errors.indexOf(self) else
+        guard let index = MCErrorCode.errors.index(of: self) else
         {
             return Localizator.unknownError
         }
@@ -155,13 +155,13 @@ extension MCErrorCode
         return MCErrorCode.messages[index]
     }
     
-    static private var messages : [String]
+    static fileprivate var messages : [String]
     {
         return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL, "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.noKeyFound, Localizator.keyAlgorithmNotSupported, Localizator.invalidKey, Localizator.invalidDiscoveryMetadata, Localizator.invalidAccessToken, Localizator.tokenExpiredError, Localizator.invalidIssuer, Localizator.invalidAud, Localizator.invalidAzp, Localizator.invalidNonce, Localizator.maxAgeError, Localizator.refreshToken]
     }
     
-    static private var errors : [MCErrorCode]
+    static fileprivate var errors : [MCErrorCode]
     {
-        return [NoRequestToLoad, UserCancelled, SerializationError, WebControllerNil, NilCountryCode, NilNetworkCode, NilPhoneNumber, Concurrency, NilParameter, NilLevelOfAssurance, NilClientId, NilAuthorizationURL, NilTokenURL, ServerResponse, NilSubcriberId, NilCode, Unknown, NilMetadataURL, RequiresAuthorizationConfiguration, MCErrorCode.NoTokenID, MCErrorCode.NoValidKeyFound, MCErrorCode.NoValidAlgorithmFound, MCErrorCode.InvalidKey, .MetadataInvalidError, .InvalidAccessTokenError, .TokenExpiredError, .InvalidIssuerError, .InvalidAudError, .InvalidAzpError, .InvalidNonce, .MaxAgeError, .InvalidRefreshToken]
+        return [noRequestToLoad, userCancelled, serializationError, webControllerNil, nilCountryCode, nilNetworkCode, nilPhoneNumber, concurrency, nilParameter, nilLevelOfAssurance, nilClientId, nilAuthorizationURL, nilTokenURL, serverResponse, nilSubcriberId, nilCode, unknown, nilMetadataURL, requiresAuthorizationConfiguration, MCErrorCode.noTokenID, MCErrorCode.noValidKeyFound, MCErrorCode.noValidAlgorithmFound, MCErrorCode.invalidKey, .metadataInvalidError, .invalidAccessTokenError, .tokenExpiredError, .invalidIssuerError, .invalidAudError, .invalidAzpError, .invalidNonce, .maxAgeError, .invalidRefreshToken]
     }
 }

@@ -14,9 +14,9 @@ private let kImageName : String = "mobileConnectButtonImage"
 
 class Resources
 {
-    class var bundle : NSBundle?
+    class var bundle : Bundle?
     {
-        return NSBundle(forClass: WebController.classForCoder())
+        return Bundle(for: WebController.classForCoder())
     }
     
     class var mobileConnectImage : UIImage?
@@ -26,6 +26,6 @@ class Resources
             return nil
         }
         
-        return UIImage(named: kImageName, inBundle: bundle, compatibleWithTraitCollection: nil)
+        return UIImage(named: kImageName, in: bundle, compatibleWith: nil)
     }
 }

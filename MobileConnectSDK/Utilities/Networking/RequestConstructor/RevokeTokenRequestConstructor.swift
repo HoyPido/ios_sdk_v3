@@ -15,7 +15,7 @@ private let kTokenHintTypeRefreshValue : String = "refresh_token"
 
 class RevokeTokenRequestConstructor : NSObject {
     
-    func generateRevokeRequest(withURL: String, withTokenId token : String, isRefreshToken : Bool, clientID : String?, clientSecret : String?) -> Request {
+    func generateRevokeRequest(_ withURL: String, withTokenId token : String, isRefreshToken : Bool, clientID : String?, clientSecret : String?) -> Request {
         
         var parameters : Dictionary = [kTokenKey : token]
         
@@ -25,7 +25,7 @@ class RevokeTokenRequestConstructor : NSObject {
         
         let credentialsString : String
         
-        if let clientID = clientID, clientSecret = clientSecret {
+        if let clientID = clientID, let clientSecret = clientSecret {
             credentialsString = "\(clientID):\(clientSecret)"
         } else {
             credentialsString = "\(MobileConnectSDK.getClientKey()):\(MobileConnectSDK.getClientSecret())"
@@ -33,12 +33,12 @@ class RevokeTokenRequestConstructor : NSObject {
         
         var headers : Dictionary = ["Content-Type":"application/x-www-form-urlencoded"]
         
-        if let encodedData : NSData = credentialsString.dataUsingEncoding(NSUTF8StringEncoding)
+        if let encodedData : Data = credentialsString.data(using: String.Encoding.utf8)
         {
-            let encodedCredentials : String = encodedData.base64EncodedStringWithOptions([])
+            let encodedCredentials : String = encodedData.base64EncodedString(options: [])
             headers["Authorization"] = "Basic \(encodedCredentials)"
         }
         
-        return request(.POST, withURL, parameters: parameters, encoding: .URLEncodedInURL, headers: headers)
+        return request(withURL, method: .post, parameters: parameters, encoding: URLEncoding.methodDependent, headers: headers)
     }    
 }

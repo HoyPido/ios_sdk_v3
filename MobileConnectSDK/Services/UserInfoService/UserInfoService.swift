@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public class UserInfoService : NSObject {
+open class UserInfoService : NSObject {
     
     let requestConstructor : InfoRequestConstructor
     let tokenResponseModel : TokenResponseModel
@@ -26,10 +26,10 @@ public class UserInfoService : NSObject {
         self.connectService = connectService
     }
     
-    public func getUserInformation(completionHandler : (responseModel : UserInfoResponse?, error : NSError?) -> Void) {
+    open func getUserInformation(_ completionHandler : @escaping (_ responseModel : UserInfoResponse?, _ error : NSError?) -> Void) {
         
         let userInfoURL : String = tokenResponseModel.discoveryResponse?.userInfoEndpoint ?? ""
-        self.connectService.callRequest(requestConstructor.generateInfoRequest(userInfoURL), forCompletionHandler: completionHandler)
+        self.connectService.callRequest(request: requestConstructor.generateInfoRequest(userInfoURL) as! DataRequest, forCompletionHandler: completionHandler)
 
     }
     

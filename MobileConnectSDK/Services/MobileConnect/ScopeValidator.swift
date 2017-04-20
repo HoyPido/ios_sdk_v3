@@ -19,7 +19,7 @@ class VersionGenerator
     
     var version : Float?
     {
-        return Float(stringValue.stringByReplacingOccurrencesOfString("mc_v", withString: ""))
+        return Float(stringValue.replacingOccurrences(of: "mc_v", with: ""))
     }
 }
 
@@ -28,9 +28,9 @@ class ProductVersion
     var key : String
     var version : Float?
     
-    init?(dictionary : [NSObject : AnyObject])
+    init?(dictionary : [AnyHashable: Any])
     {
-        if let first = dictionary.first, key = first.0 as? String, value = first.1 as? String
+        if let first = dictionary.first, let key = first.0 as? String, let value = first.1 as? String
         {
             self.key = key
             version = VersionGenerator(stringValue: value).version
@@ -62,19 +62,19 @@ class ScopeValidator: NSObject {
     
     //given a scope string identifies the other possible values and searches them in the metadata
     //returns the scope with the highest supported version
-    func scopeForStringValue(stringValue : String) -> String
+    func scopeForStringValue(_ stringValue : String) -> String
     {
         //if passed values is openid, change to openid mc_authn if supported by metadata
         if stringValue == MobileConnect || stringValue == MobileConnectAuthentication
         {
-            return (metadata?.supportedVersionsPairs.contains({$0.key == MobileConnectAuthentication}) ?? false) ? MobileConnectAuthentication : MobileConnect
+            return (metadata?.supportedVersionsPairs.contains(where: {$0.key == MobileConnectAuthentication}) ?? false) ? MobileConnectAuthentication : MobileConnect
         }
         
         //create a product from the passed scope
         let productType : ProductType = ProductType(stringValue: stringValue)
         
         //define the scopes which are equivalent with the passed one
-        let productScopes : [String] = productType == .Unknown ? [stringValue] : productType.keySet
+        let productScopes : [String] = productType == .unknown ? [stringValue] : productType.keySet
         
         //check the equivalent scopes against metadata
         let versionPairs : [ProductVersion] = versionPairsForStringValues(productScopes)
@@ -86,24 +86,24 @@ class ScopeValidator: NSObject {
         }
         
         //check if there are both openid and openid mc_auth
-        let authenticationKeySet : [String] = ProductType.Authentication.keySet
+        let authenticationKeySet : [String] = ProductType.authentication.keySet
         
         if versionPairs.filter({authenticationKeySet.contains($0.key)}).count == authenticationKeySet.count
         {
             return MobileConnectAuthentication
         }
         
-        return versionPairs.maxElement({($1.version ?? 0) > ($0.version ?? 0)})?.key ?? ""
+        return versionPairs.max(by: {($1.version ?? 0) > ($0.version ?? 0)})?.key ?? ""
     }
     
     //checks the metadata for passed scopes and extracts pairs of scope : version
-    func versionPairsForStringValues(productScopes : [String]) -> [ProductVersion]
+    func versionPairsForStringValues(_ productScopes : [String]) -> [ProductVersion]
     {
         return metadata?.supportedVersionsPairs.filter({productScopes.contains($0.key)}) ?? []
     }
     
-    func validatedScopes(scopes : [String]) -> String
+    func validatedScopes(_ scopes : [String]) -> String
     {
-        return scopes.map({scopeForStringValue($0)}).joinWithSeparator(" ")
+        return scopes.map({scopeForStringValue($0)}).joined(separator: " ")
     }
 }

@@ -32,19 +32,19 @@ class RefreshTokenService : NSObject {
         super.init()
     }
     
-    func getRefreshToken(serviceRequest : BaseMobileConnectServiceRequest? = nil, completionHandler: (responseModel : RefreshTokenModel?, error : NSError?) -> Void) {
+    func getRefreshToken(_ serviceRequest : BaseMobileConnectServiceRequest? = nil, completionHandler: @escaping (_ responseModel : RefreshTokenModel?, _ error : NSError?) -> Void) {
         
         if tokenResponseModel.tokenData?.refresh_token == nil {
-            completionHandler(responseModel: nil, error: MCErrorCode.InvalidRefreshToken.error)
+            completionHandler(nil, MCErrorCode.invalidRefreshToken.error)
             return
         }
         
         let refreshTokenURL : String = tokenResponseModel.discoveryResponse?.tokenRefresh ?? ""
         
         if let serviceRequest = serviceRequest {
-            serviceRequest.callRequest(requestConstructor.generateRefreshRequest(refreshTokenURL, withRefreshToken: tokenResponseModel.tokenData?.refresh_token ?? ""), forCompletionHandler: completionHandler)
+            serviceRequest.callRequest(request: requestConstructor.generateRefreshRequest(refreshTokenURL, withRefreshToken: tokenResponseModel.tokenData?.refresh_token ?? "") as! DataRequest, forCompletionHandler: completionHandler)
         } else {
-            self.connectService.callRequest(requestConstructor.generateRefreshRequest(refreshTokenURL, withRefreshToken: tokenResponseModel.tokenData?.refresh_token ?? ""), forCompletionHandler: completionHandler)
+            self.connectService.callRequest(request: requestConstructor.generateRefreshRequest(refreshTokenURL, withRefreshToken: tokenResponseModel.tokenData?.refresh_token ?? "") as! DataRequest, forCompletionHandler: completionHandler)
         }
     }
 }

@@ -11,44 +11,45 @@ import Foundation
 //BaseMobileConnectService extension where I separate the logic for dealing with WebControllerDelegate methods
 extension BaseMobileConnectService : WebControllerDelegate {
   
-  func webControllerDidCancel(controller : BaseWebController) {
+  func webControllerDidCancel(_ controller : BaseWebController) {
     isAwaitingResponse = false
-    controllerResponse?(controller: webController, model : nil, error: MCErrorCode.UserCancelled.error)
+    controllerResponse?(webController, nil, MCErrorCode.userCancelled.error)
   }
   
-  func webController(controller : BaseWebController, shouldRedirectToURL url : NSURL) -> Bool {
+  func webController(_ controller : BaseWebController, shouldRedirectToURL url : URL) -> Bool {
     return !isValidRedirectURL(url, inController: controller)
   }
   
-  func webController(controller : BaseWebController, failedLoadingRequestWithError error : NSError?) {
+  func webController(_ controller : BaseWebController, failedLoadingRequestWithError error : NSError?) {
     isAwaitingResponse = false
-    controllerResponse?(controller : nil, model: nil, error: error)
+    controllerResponse?(nil, nil, error)
   }
   
   // MARK: Web view helpers
   
-    func isValidRedirectURL(url : NSURL, inController controller : BaseWebController, redirect : NSURL? = nil) -> Bool {
+    func isValidRedirectURL(_ url : URL, inController controller : BaseWebController, redirect : URL? = nil) -> Bool {
         
     var isTheSameHost : Bool = false
     print("\(url.host)")
     
-    let redirectURL : NSURL
+    let redirectURL : URL
         
     if let redirect = redirect {
        redirectURL = redirect
     } else {
-        redirectURL = self.redirectURL
+        redirectURL = self.redirectURL as URL
     }
         
-    if let urlHost = url.host, redirectHost = redirectURL.host {
+    if let urlHost = url.host, let redirectHost = redirectURL.host {
       isTheSameHost = urlHost == redirectHost
     }
     
-    let parameters : [NSObject : AnyObject] = BaseMobileConnectService.keyValuesFromString(url.query)
+        
+        
+    let parameters : [AnyHashable: Any] = BaseMobileConnectService.keyValuesFromString(url.query)
     
     if isTheSameHost && parameters.count > 0 {
       isAwaitingResponse = false
-      
       didReceiveResponseWithParameters(parameters, fromController: controller)
       
       return true
@@ -57,38 +58,36 @@ extension BaseMobileConnectService : WebControllerDelegate {
     return false
   }
   
-   func didReceiveResponseWithParameters(parameters : [NSObject : AnyObject], fromController controller : BaseWebController) {
+   func didReceiveResponseWithParameters(_ parameters : [AnyHashable: Any], fromController controller : BaseWebController) {
     isAwaitingResponse = false
     treatWebRedirectParameters(parameters)
   }
   
-  func treatWebRedirectParameters(parameters : [NSObject : AnyObject]) {
-    
-    let deserializeObject = BaseMobileConnectServiceDeserializer<RedirectModel>(dictionary: parameters)
+  func treatWebRedirectParameters(_ parameters : [AnyHashable: Any]) {
+    let deserializeObject = BaseMobileConnectServiceDeserializer<RedirectModel>(dictionary: parameters as AnyObject?)
     
     deserializeObject?.deserializeModel { (model : RedirectModel?, error : NSError?) in
       guard let model = model else {
-        self.controllerResponse?(controller: self.webController, model: nil, error : error)
+        self.controllerResponse?(self.webController, nil, error)
         return
       }
       self.didReceiveResponseFromController(self.webController, withRedirectModel: model, error: error)
     }
   }
   
-  class func keyValuesFromString(string : String?) -> [NSObject : AnyObject] {
-    var keyValueDictionary : [NSObject : AnyObject] = [:]
+  class func keyValuesFromString(_ string : String?) -> [AnyHashable: Any] {
+    var keyValueDictionary : [AnyHashable: Any] = [:]
     
     if let string = string {
-      let components : [[String]] = string.componentsSeparatedByString("&").map({$0.componentsSeparatedByString("=")})
+      let components : [[String]] = string.components(separatedBy: "&").map({$0.components(separatedBy: "=")})
       
       components.forEach { (component : [String]) in
         
-        if let first = component.first, last = component.last {
+        if let first = component.first, let last = component.last {
           keyValueDictionary[first] = last
         }
       }
     }
-    
     return keyValueDictionary
   }
   

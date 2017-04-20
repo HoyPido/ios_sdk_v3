@@ -11,20 +11,20 @@ import Alamofire
 
 class BaseMobileConnectServiceRequest {
     
-  func callRequest<T : MCModel>(request : Request, forCompletionHandler completionHandler : (model : T?, error : NSError?) -> Void) {
-     request.responseJSON { (response : Response<AnyObject, NSError>) in
-        
-      self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
+    func callRequest<T : MCModel>(request : DataRequest, forCompletionHandler completionHandler : @escaping (_ model : T?, _ error : NSError?) -> Void) {
+        request.responseJSON { (response) in
+            self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
+        }
     }
-  }
+    
+    
   
-  func treatResponseCompletionHandler<T : MCModel>(response : Response<AnyObject, NSError>, withClientResponseHandler clientResponseHandler : (model : T?, error : NSError?) -> Void) {
-
+  func treatResponseCompletionHandler<T : MCModel>(_ response : DataResponse<Any>, withClientResponseHandler clientResponseHandler : (_ model : T?, _ error : NSError?) -> Void) {
     if response.result.isSuccess {
-      let deserializerObject = BaseMobileConnectServiceDeserializer<T>(dictionary: response.result.value)
-      deserializerObject?.deserializeModel(clientResponseHandler)
+        let deserializerObject = BaseMobileConnectServiceDeserializer<T>(dictionary: response.result.value as AnyObject?)
+        deserializerObject?.deserializeModel(clientResponseHandler)
     } else {
-      clientResponseHandler(model: nil, error: response.result.error)
+        clientResponseHandler(nil, response.result.error as NSError?)
     }
   }
 }

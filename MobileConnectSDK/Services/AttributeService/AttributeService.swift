@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public class AttributeService : NSObject {
+open class AttributeService : NSObject {
   
   let requestConstructor : InfoRequestConstructor
   let tokenResponseModel : TokenResponseModel
@@ -26,9 +26,9 @@ public class AttributeService : NSObject {
     self.connectService = connectService
   }
   
-  public func getAttributeInformation(completionHandler : (responseModel : AttributeResponseModel?, error : NSError?) -> Void) {
+  open func getAttributeInformation(_ completionHandler : @escaping (_ responseModel : AttributeResponseModel?, _ error : NSError?) -> Void) {
     let premiumInfoURL : String = tokenResponseModel.discoveryResponse?.premiumInfoEndpoint ?? ""
-    self.connectService.callRequest(requestConstructor.generateInfoRequest(premiumInfoURL), forCompletionHandler: completionHandler)
+    self.connectService.callRequest(request: requestConstructor.generateInfoRequest(premiumInfoURL) as! DataRequest, forCompletionHandler: completionHandler)
   }
   
 }

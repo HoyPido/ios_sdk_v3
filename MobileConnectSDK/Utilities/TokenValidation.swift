@@ -28,7 +28,7 @@ class TokenValidation : NSObject {
         verifier = JWTManager(JWTTokenString: tokenId)
     }
     
-    func checkIdTokenIsValid(completionHandler: (NSError?) -> Void) {
+    func checkIdTokenIsValid(_ completionHandler: @escaping (NSError?) -> Void) {
         
         initialCheckTokenIsValid { (error) in
             if let error = error {
@@ -40,13 +40,13 @@ class TokenValidation : NSObject {
         }
     }
     
-    func checkIfHasValidKeyWithCompletionHandler(completionHandler : (error : NSError?) -> Void)
+    func checkIfHasValidKeyWithCompletionHandler(_ completionHandler : @escaping (_ error : NSError?) -> Void)
     {
         getValidKeyWithCompletionHandler { (key, error) in
             
             guard let key = key else
             {
-                completionHandler(error: error)
+                completionHandler(error)
                 return
             }
             
@@ -54,107 +54,108 @@ class TokenValidation : NSObject {
         }
     }
     
-    func checkKey(key : PublicKeyModel, withCompletionHandler completionHandler : (error : NSError?) -> Void)
+    func checkKey(_ key : PublicKeyModel, withCompletionHandler completionHandler : (_ error : NSError?) -> Void)
     {
         do
         {
-            guard let exponent = key.e, modulus = key.n else
+            guard let exponent = key.e, let modulus = key.n else
             {
-                completionHandler(error: MCErrorCode.InvalidKey.error)
+                completionHandler(MCErrorCode.invalidKey.error)
                 
                 return
             }
             
             let validKey : Bool = try self.verifier.verifyWithPublicKey(PublicKey(exponentString: exponent, modulusString: modulus))
             
-            completionHandler(error: validKey ? nil : MCErrorCode.InvalidKey.error)
+            completionHandler(validKey ? nil : MCErrorCode.invalidKey.error)
         } catch
         {
-            completionHandler(error: error as NSError)
+            completionHandler(error as NSError)
         }
     }
     
   
-  func initialCheckTokenIsValid(completion:(NSError?) -> Void) {
-    
-    if let decodedTokenDictionary = verifier.decoder.decodedDictionary {
+    func initialCheckTokenIsValid(_ completion:(NSError?) -> Void) {
         
-      guard let metadata = configuration.metadata else {
-        completion(MCErrorCode.MetadataInvalidError.error)
-        return
-      }
-      
-      do {
-        let decodedToken = try DecodedTokenModel(dictionary: decodedTokenDictionary)
-        if model.access_token == nil {
-           completion(MCErrorCode.InvalidAccessTokenError.error)
-           return
-        }
-        
-        let authDate = NSDate(timeIntervalSince1970: decodedToken.auth_time)
-        
-        if let expiresIn = model.expires_in {
-          if authDate.timeIntervalSinceNow > Double(expiresIn) {
-            completion(MCErrorCode.TokenExpiredError.error)
-            return
-          }
-        }
-        
-        if decodedToken.iss != metadata.issuer {
-          completion(MCErrorCode.InvalidIssuerError.error)
-          return
-        }
-        
-        if let aud = decodedToken.aud {
-          if aud[0] != configuration.clientKey {
-            completion(MCErrorCode.InvalidAudError.error)
-            return
-          }
+        if let decodedTokenDictionary = verifier.decoder.decodedDictionary {
+            
+            guard let metadata = configuration.metadata else {
+                completion(MCErrorCode.metadataInvalidError.error)
+                return
+            }
+            
+            do {
+                let decodedToken = try DecodedTokenModel(dictionary: decodedTokenDictionary)
+                if model.access_token == nil {
+                    completion(MCErrorCode.invalidAccessTokenError.error)
+                    return
+                }
+                
+                let authDate = Date(timeIntervalSince1970: decodedToken.auth_time)
+                
+                if let expiresIn = model.expires_in {
+                    if authDate.timeIntervalSinceNow > (expiresIn as NSString).doubleValue {
+                        completion(MCErrorCode.tokenExpiredError.error)
+                        return
+                    }
+                }
+                
+                if decodedToken.iss != metadata.issuer {
+                    completion(MCErrorCode.invalidIssuerError.error)
+                    return
+                }
+                
+                if let aud = decodedToken.aud {
+                    if aud[0] != configuration.clientKey {
+                        completion(MCErrorCode.invalidAudError.error)
+                        return
+                    }
+                } else {
+                    completion(MCErrorCode.invalidAudError.error)
+                    return
+                }
+                
+                if let azp = decodedToken.azp {
+                    if azp != configuration.clientKey {
+                        completion(MCErrorCode.invalidAzpError.error)
+                        return
+                    }
+                } else {
+                    completion(MCErrorCode.invalidAudError.error)
+                    return
+                }
+                
+                if authDate.timeIntervalSinceNow > Double(configuration.maxAge) {
+                    completion(MCErrorCode.maxAgeError.error)
+                    return
+                }
+                
+                if configuration.nonce != decodedToken.nonce {
+                    completion(MCErrorCode.invalidNonce.error)
+                    return
+                }
+                
+            } catch {}
+            
         } else {
-          completion(MCErrorCode.InvalidAudError.error)
-          return
-        }
-        
-        if let azp = decodedToken.azp {
-          if azp != configuration.clientKey {
-            completion(MCErrorCode.InvalidAzpError.error)
-            return
-          }
-        } else {
-            completion(MCErrorCode.InvalidAudError.error)
+            completion(MCErrorCode.invalidAccessTokenError.error)
             return
         }
-        
-        if authDate.timeIntervalSinceNow > Double(configuration.maxAge) {
-          completion(MCErrorCode.MaxAgeError.error)
-          return
-        }
-        
-        if configuration.nonce != decodedToken.nonce {
-            completion(MCErrorCode.InvalidNonce.error)
-            return
-        }
-        
-      } catch {}
-      
-    } else {
-        completion(MCErrorCode.InvalidAccessTokenError.error)
-        return
+        completion(nil)
     }
-    completion(nil)
-  }
-  
-    func getPublicKeys(completion:(model:PublicKeyModelArray?, error:NSError?) -> Void) {
+
+    func getPublicKeys(completion:@escaping (_ model:PublicKeyModelArray?, _ error:NSError?) -> Void) {
         guard let jwksURL = configuration.metadata?.jwks_uri else {
             //completion(model: nil, error: MCErrorCode.Unknown.error)
             return
         }
         
-        let requestJson = request(.GET, jwksURL, parameters: nil, encoding: .URL, headers: nil)
-        requestJson.responseJSON { (response:Response<AnyObject, NSError>) in
-    
-            let deserializerObject = BaseMobileConnectServiceDeserializer<PublicKeyModelArray>(dictionary: response.result.value)
+        let requestJson = request(jwksURL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+        requestJson.responseJSON { (response: DataResponse<Any>) in
+            
+            let deserializerObject = BaseMobileConnectServiceDeserializer<PublicKeyModelArray>(dictionary: response.result.value as AnyObject?)
             deserializerObject?.deserializeModel(completion)
         }
     }
+    
 }

@@ -1,19 +1,11 @@
-//
-//  MainViewController.swift
-//  MobileConnectSDK
-//
-//  Created by Mircea Grecu on 02/09/2016.
-//  Copyright © 2016 GSMA. All rights reserved.
-//
-
 import UIKit
 
 class MainViewController : UIViewController {
     @IBOutlet weak var tableView : UITableView!
     
-    let availablSections = ["Authentication", "Authorisation", "Identity - SignUp", "Identity - NationalID", "Identity - PhoneNumber"]
+    let availablSections = ["Demo App", "Without discovery"]
     
-    let availableSegue = ["showAuthe", "showAuthz", "showIdentitySignUp", "showIdentityNationalId", "showIdentityPhoneNumber"]
+    let availableSegue = ["DemoApp", "ExampleApp"]
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true

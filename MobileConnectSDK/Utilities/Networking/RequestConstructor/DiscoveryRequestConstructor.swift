@@ -36,8 +36,8 @@ class DiscoveryRequestConstructor : RequestConstructor
         return genericDiscoveryRequestWithParameters([:], shouldNotStartImmediately : true)
     }
     
-    func requestNoOperatorDataRequest(_ clientIP: String) -> Request {
-        return genericDiscoveryRequestWithParameters([:], additionalHeaders: ["X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()], shouldNotStartImmediately : true)
+    func requestNoOperatorDataRequest(_ clientIP: String? = "") -> Request {
+        return genericDiscoveryRequestWithParameters([:], additionalHeaders: ["X-Source-IP":clientIP ?? "", "X-Redirect":MobileConnectSDK.getXRedirect()], shouldNotStartImmediately : true)
     }
     
     func requestWithCountryCode(_ countryCode : String, networkCode : String) -> Request
@@ -45,9 +45,9 @@ class DiscoveryRequestConstructor : RequestConstructor
         return genericDiscoveryRequestWithParameters([kKeyCountryCode : countryCode as AnyObject, kKeyNetworkCode : networkCode as AnyObject], additionalHeaders: ["Accept":"application/json", "X-Redirect":MobileConnectSDK.getXRedirect()])
     }
     
-    func requestWithPhoneNumber(_ phoneNumber : String, clientIP : String) -> Request
+    func requestWithPhoneNumber(_ phoneNumber : String, clientIP : String? = "") -> Request
     {
-        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.replacingOccurrences(of: "+", with: "") as AnyObject], isPhoneRequest: true, additionalHeaders: ["Content-Type":"application/x-www-form-urlencoded", "X-Source-IP":clientIP, "X-Redirect":MobileConnectSDK.getXRedirect()])
+        return genericDiscoveryRequestWithParameters([kKeyPhone : phoneNumber.replacingOccurrences(of: "+", with: "") as AnyObject], isPhoneRequest: true, additionalHeaders: ["Content-Type":"application/x-www-form-urlencoded", "X-Source-IP": clientIP ?? "", "X-Redirect":MobileConnectSDK.getXRedirect()])
     }
     
     fileprivate func genericDiscoveryRequestWithParameters(_ parameters : [String : AnyObject], isPhoneRequest : Bool = false, additionalHeaders : [String : String]? = nil, shouldNotStartImmediately : Bool = false) -> Request
@@ -57,7 +57,6 @@ class DiscoveryRequestConstructor : RequestConstructor
         parametersNewDictionary[kRedirectURL] = redirectURL as AnyObject?
         let method : HTTPMethod = isPhoneRequest ?  .post : .get
         let encoding : ParameterEncoding = isPhoneRequest ? URLEncoding.default : URLEncoding.methodDependent
-        
         return requestWithMethod(method, url: applicationEndpoint, parameters: parametersNewDictionary, encoding: encoding, additionalHeaders: additionalHeaders, shouldNotStartImmediately : shouldNotStartImmediately)
     }
 }

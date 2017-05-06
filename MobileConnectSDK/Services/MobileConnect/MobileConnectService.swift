@@ -97,7 +97,6 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     override func didReceiveResponseFromController(_ webController: BaseWebController?, withRedirectModel redirectModel: AuthorizationModel?, error: NSError?)
     {
         //the server causes redirect with code parameter even after sending the token, which causes the relaunch of this method
-
         getTokenWithCode(redirectModel?.code ?? "") { (tokenModel, error) in
             self.controllerResponse?(webController, tokenModel, error)
         }

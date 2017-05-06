@@ -13,12 +13,11 @@ class BaseMobileConnectServiceRequest {
     
     func callRequest<T : MCModel>(request : DataRequest, forCompletionHandler completionHandler : @escaping (_ model : T?, _ error : NSError?) -> Void) {
         request.responseJSON { (response) in
+            print(response)
             self.treatResponseCompletionHandler(response, withClientResponseHandler: completionHandler)
         }
     }
     
-    
-  
   func treatResponseCompletionHandler<T : MCModel>(_ response : DataResponse<Any>, withClientResponseHandler clientResponseHandler : (_ model : T?, _ error : NSError?) -> Void) {
     if response.result.isSuccess {
         let deserializerObject = BaseMobileConnectServiceDeserializer<T>(dictionary: response.result.value as AnyObject?)

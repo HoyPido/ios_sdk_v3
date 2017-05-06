@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  DemoSwift
-//
-//  Created by jenkins on 26/06/2016.
-//  Copyright © 2016 GSMA. All rights reserved.
-//
-
 import UIKit
 import MobileConnectSDK
 
@@ -17,13 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        MobileConnectSDK.setClientKey(kReferenceClientId)
-        MobileConnectSDK.setClientSecret(kReferenceClientSecret)
-        MobileConnectSDK.setRedirect(kReferenceRedirect)
-        MobileConnectSDK.setApplicationEndpoint(kReferenceEndpoint)
-        MobileConnectSDK.setXRedirect(kReferenceXRedirect)
-        
         return true
     }
 

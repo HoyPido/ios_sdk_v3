@@ -15,7 +15,6 @@ open class BaseServiceConfiguration: NSObject {
     let redirectURL : URL
     
     init(clientKey : String = MobileConnectSDK.getClientKey(), clientSecret : String = MobileConnectSDK.getClientSecret(), redirectURL : URL = MobileConnectSDK.getRedirectURL() as URL) {
-    
         NSException.checkClientKey(clientKey)
         NSException.checkClientSecret(clientSecret)
         NSException.checkRedirect(redirectURL)

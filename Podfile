@@ -6,11 +6,6 @@ target 'DemoSwift' do
   
 end
 
-target ‘ExampleAppWithoutDiscovery’ do
-    use_frameworks!
-end
-
-
 target 'MobileConnectSDKTests' do
   use_frameworks!
   pod 'Quick', '~> 1.1.0’

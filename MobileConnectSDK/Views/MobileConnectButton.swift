@@ -54,7 +54,7 @@ open class MobileConnectButton: UIButton {
             return
         }
         
-        MobileConnectManager().getTokenInPresenterController(presenter, withCompletionHandler: nil)
+        MobileConnectManager().getTokenInPresenterController(presenter, clientIP: "", withCompletionHandler: nil)
     }
     
     // MARK: Helpers

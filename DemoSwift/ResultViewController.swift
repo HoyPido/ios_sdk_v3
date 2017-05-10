@@ -28,8 +28,9 @@ class ResultViewController : UIViewController, UITableViewDelegate, UITableViewD
         
         let key = datasource.keys.map({$0})[indexPath.row]
         cell.textLabel?.text = key
+        cell.textLabel?.accessibilityIdentifier = "cellTitle"
         cell.detailTextLabel?.text = datasource[key]
-        
+        cell.detailTextLabel?.accessibilityIdentifier = "cellDetail"
         return cell
     }
     

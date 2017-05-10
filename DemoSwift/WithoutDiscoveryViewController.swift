@@ -127,7 +127,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
     
     // MARK: Handle display/dismiss alert view
     @IBAction func alertViewDisplay() {
-        let alert = UIAlertController(title: "Example App", message: "info", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Example App", message: "A successful call to the Mobile Connect Discovery endpoint returns the end user’s Mobile Network Operator (MNO) and describes the Mobile Connect services that MNO supports, via a URI to the MNO’s Provider Metadata. The metadata describes the Identity Gateway endpoints (Mobile Connect services) your application or service can use and how those endpoints are configured – for example, the response types an endpoint can return, the subject identifier types supported, or the Identity Services encryption algorithms in use.Although Provider Metadata is the primary source of information detailing the Identity Gateway configuration, it does not change often, so a cached version can be used without risk of expired data causing errors. The Mobile Connect SDK handles both the querying of the Provider Metadata and the caching.\n  1. If the Provider Metadata URI returns no data, the cached metadata is used.\n  2. Where the cached data is out of date (defaulting to 15-minute intervals) a subsequent query of the URI is attempted, and in the event of a second failed response, expired cached data is used.\n  3. Should neither the cached data nor the Provider Metadata URI return data (such as an error upon first user login) default values are used.\n Regardless of the source, the SDK parses the Provider Metadata into a discrete list of properties. See the OpenID Provider Metadata definition for a list of the metadata available, although you should note that Mobile Connect\'s implementation may not be exhaustive.", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
@@ -154,7 +154,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
     }
     
     func longPressEndpoints() {
-        let alert = UIAlertController(title: "Endpoints", message: "a bit info", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Endpoints", message: "When you use \'with providerMetadata\' method you need only metadata URL", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
@@ -162,7 +162,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
     }
     
     func longPressRequestParameters() {
-        let alert = UIAlertController(title: "Request parameters", message: "a bit info", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Request parameters", message: "Adds \'subscriber id\' to your request, used for headless auth(optional parameter)", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))

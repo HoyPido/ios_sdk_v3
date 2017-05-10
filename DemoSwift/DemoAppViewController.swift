@@ -132,7 +132,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     func launchTokenViewerWithTokenResponseModel(_ userInfo : UserInfoResponse?, tokenResponseModel : TokenResponseModel?, error : NSError?)
     {
         currentTokenResponse = tokenResponseModel
-        userInfoResponse = userInfo!
+        userInfoResponse = userInfo ?? nil
         currentError = error
         self.performSegue(withIdentifier: "showResult", sender: nil)
     }
@@ -167,6 +167,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                 
                 if let currentResponse = currentResponse
                 {
+                    
                     model["message"] = "Success"
                     model["sub"] = currentResponse.sub ?? nil
                     model["national_identifier"] = currentResponse.national_identifier ?? nil
@@ -176,13 +177,24 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                     model["family_name"] = currentResponse.family_name ?? nil
                     model["state"] = currentResponse.state ?? nil
                     model["city"] = currentResponse.city ?? nil
+                    model["phone_number_alternate"] = currentResponse.phone_number_alternate
                     model["street_address"] = currentResponse.street_address ?? nil
                     model["postal_code"] = currentResponse.postal_code ?? nil
                     model["country"] = currentResponse.country ?? nil
                     model["email"] = currentResponse.email ?? nil
+                    model["middle_name"] = currentResponse.middle_name ?? nil
                     model["email_verified"] = currentResponse.email_verified.description
                     model["preferred_username"] = currentResponse.preferred_username ?? nil
+                    model["title"] = currentResponse.title ?? nil
+                    model["phone number"] = currentResponse.phone_number ?? nil
                 }
+                
+                if let tokenResponse = currentTokenResponse {
+                    model["client name"] = tokenResponse.discoveryResponse?.clientName ?? nil
+                    model["id token"] = tokenResponse.tokenData?.id_token ?? nil
+                    model["access token"] = tokenResponse.tokenData?.access_token ?? nil
+                }
+                
                 controller.datasource = model
             }
         } else {
@@ -213,6 +225,9 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                     model["given name"] = userInfoResponse?.given_name ?? nil
                     model["preferred username"] = userInfoResponse?.preferred_username ?? nil
                     model["nickname"] = userInfoResponse?.nickname ?? nil
+                    model["name"] = userInfoResponse?.name ?? nil
+                    model["middle name"] = userInfoResponse?.middle_name ?? nil
+                    model["phone number"] = userInfoResponse?.phone_number ?? nil
                 }
                 controller.datasource = model
             }
@@ -221,13 +236,14 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     
     func launchTokenViewerWithAttributeServiceResponse(_ attributeResponseModel : AttributeResponseModel?, tokenResponseModel : TokenResponseModel?, error : NSError?) {
         currentResponse = attributeResponseModel
+        currentTokenResponse = tokenResponseModel
         currentError = error
         self.performSegue(withIdentifier: "showResult", sender: nil)
     }
     
     // MARK: Handle display/dismiss alert view
     @IBAction func alertViewDisplay() {
-        let alert = UIAlertController(title: "Demo app", message: "a bit info", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Demo app", message: "Provides 1FA, T2FA and PKI using the mobile phone as the authentication device.The Mobile Connect Authorisation product category provides two products: Simple and Two-factor. The user is authenticated as part of the flow to ensure that they have the right to provide the authorization", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
@@ -263,7 +279,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     
     // MARK: request parameters button dialog
     func longPressRequestParameters() {
-        let alert = UIAlertController(title: "Request parameters", message: "a bit info", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Request parameters", message: "You can change your default values from application.\nIp address of your device, used to identify your operator (optional parameter)", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
@@ -272,7 +288,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     
     // MARK: request options button dialog
     func longPressRequestOptions() {
-        let alert = UIAlertController(title: "Request options", message: "a bit info", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Request options", message: "Use it if you want get more info", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))

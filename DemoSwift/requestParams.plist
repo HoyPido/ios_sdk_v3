@@ -13,6 +13,6 @@
 	<key>redirectURL</key>
 	<string>https://example.com</string>
 	<key>XRedirect</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

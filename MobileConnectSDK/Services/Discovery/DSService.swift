@@ -36,9 +36,9 @@ open class DSService: NSObject {
 
     // MARK: Discovery service with no client data
     ///Gets operator data by showing a webview which will request data from client
-    open func startOperatorDiscoveryInController(_ controller : UIViewController, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryResponseBlock)
+    open func startOperatorDiscoveryInController(_ controller : UIViewController, clientIP: String, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryResponseBlock)
     {
-        service.startOperatorDiscoveryInController(controller, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
+        service.startOperatorDiscoveryInController(controller, clientIP: clientIP, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
     }
     
     // MARK: Discovery service with client Country Code and Mobile Network Code

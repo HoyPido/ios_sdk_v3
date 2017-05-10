@@ -71,7 +71,6 @@ class RequestConstructor: NSObject {
         {
             return lazyManager.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
         }
-        
         let requestObject = request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
         
         return requestObject

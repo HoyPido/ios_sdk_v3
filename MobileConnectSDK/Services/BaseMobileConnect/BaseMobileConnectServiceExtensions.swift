@@ -28,8 +28,11 @@ extension BaseMobileConnectService : WebControllerDelegate {
   // MARK: Web view helpers
   
     func isValidRedirectURL(_ url : URL, inController controller : BaseWebController, redirect : URL? = nil) -> Bool {
+       
         
     var isTheSameHost : Bool = false
+        print (redirect)
+
     print("\(url.host)")
     
     let redirectURL : URL
@@ -40,6 +43,12 @@ extension BaseMobileConnectService : WebControllerDelegate {
         redirectURL = self.redirectURL as URL
     }
         
+//                var test = url.absoluteString
+//                var test1 = redirectURL.absoluteString
+//                if test.hasPrefix(test1) {
+//                    isTheSameHost = true
+//                }
+//        print(redirectURL)
     if let urlHost = url.host, let redirectHost = redirectURL.host {
       isTheSameHost = urlHost == redirectHost
     }
@@ -64,8 +73,9 @@ extension BaseMobileConnectService : WebControllerDelegate {
   }
   
   func treatWebRedirectParameters(_ parameters : [AnyHashable: Any]) {
+    print("parameters")
+    print(parameters)
     let deserializeObject = BaseMobileConnectServiceDeserializer<RedirectModel>(dictionary: parameters as AnyObject?)
-    
     deserializeObject?.deserializeModel { (model : RedirectModel?, error : NSError?) in
       guard let model = model else {
         self.controllerResponse?(self.webController, nil, error)

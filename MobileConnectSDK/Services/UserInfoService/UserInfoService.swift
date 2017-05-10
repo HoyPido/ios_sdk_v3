@@ -27,7 +27,6 @@ open class UserInfoService : NSObject {
     }
     
     open func getUserInformation(_ completionHandler : @escaping (_ responseModel : UserInfoResponse?, _ error : NSError?) -> Void) {
-        
         let userInfoURL : String = tokenResponseModel.discoveryResponse?.userInfoEndpoint ?? ""
         self.connectService.callRequest(request: requestConstructor.generateInfoRequest(userInfoURL) as! DataRequest, forCompletionHandler: completionHandler)
 

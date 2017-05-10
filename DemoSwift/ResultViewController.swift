@@ -1,11 +1,3 @@
-//
-//  ResultViewController.swift
-//  MobileConnectSDK
-//
-//  Created by Mircea Grecu on 04/09/2016.
-//  Copyright © 2016 GSMA. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -36,8 +28,9 @@ class ResultViewController : UIViewController, UITableViewDelegate, UITableViewD
         
         let key = datasource.keys.map({$0})[indexPath.row]
         cell.textLabel?.text = key
+        cell.textLabel?.accessibilityIdentifier = "cellTitle"
         cell.detailTextLabel?.text = datasource[key]
-        
+        cell.detailTextLabel?.accessibilityIdentifier = "cellDetail"
         return cell
     }
     

@@ -34,6 +34,11 @@
 @property (nullable) NSString *birthdate;
 @property (nullable) NSString *preferred_username;
 @property (nullable) NSString *email;
+@property (nullable) NSString *client_name;
+@property (nullable) NSString *id_token;
+@property (nullable) NSString *access_token;
+@property (nullable) NSString *middle_name;
+@property (nullable) NSString *title;
 @property BOOL email_verified;
 
 @end

@@ -21,6 +21,7 @@
 @property (nullable) NSString *email;
 @property BOOL email_verified;
 @property (nullable) NSString *nickname;
+@property (nullable) NSString *middle_name;
 @property (nullable) NSString *name;
 
 @end

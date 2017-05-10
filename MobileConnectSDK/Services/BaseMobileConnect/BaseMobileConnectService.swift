@@ -55,7 +55,6 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
             errorHandler(MCErrorCode.noRequestToLoad.error)
             return
         }
-        
         webController.requestToLoad = request
         
         controller.present(webController, animated: true, completion: nil)

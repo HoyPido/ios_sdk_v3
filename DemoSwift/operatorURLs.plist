@@ -8,10 +8,6 @@
 	<string>https://operator-g.integration.sandbox.mobileconnect.io/oidc/accesstoken</string>
 	<key>userinfo</key>
 	<string>https://operator-g.integration.sandbox.mobileconnect.io/oidc/userinfo</string>
-	<key>tokenrevoke</key>
-	<string>https://operator-g.integration.sandbox.mobileconnect.io/oidc/revoke</string>
-	<key>premiuminfo</key>
-	<string>https://operator-g.integration.sandbox.mobileconnect.io/oidc/premiuminfo</string>
 	<key>openid-configuration</key>
 	<string>https://operator-g.integration.sandbox.mobileconnect.io/.well-known/openid-configuration</string>
 </dict>

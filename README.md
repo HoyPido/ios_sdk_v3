@@ -2,11 +2,15 @@
 
 ###### The library is written in swift with full support for Objective C code base.
 
+
 ## Requirements
 
 - iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 8.2+
-
+- Xcode:
+  - Latest version, installed from Apple App Store;
+  - Upgrades are undesirable;
+  - If you have outdated Xcode version - delete, or install in a different directory and make sure you install latest version via App Store.
+  
 ## Dependency Libraries
 The library uses Alamofire and JSONModel libraries for rest service calls and deserialization. And you'll get them preconfigured if you follow the cocoa pods installation procedure described below.
 
@@ -60,7 +64,7 @@ pod update
 
 ![Add the framework in your targets app Linked Frameworks and Libraries](https://cloud.githubusercontent.com/assets/19551956/16231365/d0c06eb4-37bd-11e6-80fa-eb6ce027aed9.png)
 
-Press the pluss and in the list select the MobileConnectSDK.framework and then press add
+Press the plus and in the list select the MobileConnectSDK.framework and then press add
 ![select the MobileConnectSDK.framework and then press add](https://cloud.githubusercontent.com/assets/19551956/16231442/2365a97c-37be-11e6-99e1-f3ca275a581b.png)
 
 As a result you'll have it added in the Linked Frameworks and Libraries section

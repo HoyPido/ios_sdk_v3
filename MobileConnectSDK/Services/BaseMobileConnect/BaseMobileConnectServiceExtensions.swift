@@ -43,12 +43,6 @@ extension BaseMobileConnectService : WebControllerDelegate {
         redirectURL = self.redirectURL as URL
     }
         
-//                var test = url.absoluteString
-//                var test1 = redirectURL.absoluteString
-//                if test.hasPrefix(test1) {
-//                    isTheSameHost = true
-//                }
-//        print(redirectURL)
     if let urlHost = url.host, let redirectHost = redirectURL.host {
       isTheSameHost = urlHost == redirectHost
     }
@@ -73,8 +67,6 @@ extension BaseMobileConnectService : WebControllerDelegate {
   }
   
   func treatWebRedirectParameters(_ parameters : [AnyHashable: Any]) {
-    print("parameters")
-    print(parameters)
     let deserializeObject = BaseMobileConnectServiceDeserializer<RedirectModel>(dictionary: parameters as AnyObject?)
     deserializeObject?.deserializeModel { (model : RedirectModel?, error : NSError?) in
       guard let model = model else {

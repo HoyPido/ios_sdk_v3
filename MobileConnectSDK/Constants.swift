@@ -126,6 +126,10 @@ let kMobileConnectErrorDomain : String = "com.GSMA.MobileConnect"
     case invalidKey
     
     case invalidRefreshToken
+    
+    case emptyUUID
+    
+    case differentUUID
 }
 
 @objc public enum MCLevelOfAssurance : Int
@@ -157,11 +161,11 @@ extension MCErrorCode
     
     static fileprivate var messages : [String]
     {
-        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL, "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.noKeyFound, Localizator.keyAlgorithmNotSupported, Localizator.invalidKey, Localizator.invalidDiscoveryMetadata, Localizator.invalidAccessToken, Localizator.tokenExpiredError, Localizator.invalidIssuer, Localizator.invalidAud, Localizator.invalidAzp, Localizator.invalidNonce, Localizator.maxAgeError, Localizator.refreshToken]
+        return [Localizator.nilRequestInWebView, Localizator.userCancelled, Localizator.serializationError, Localizator.nilWebController, Localizator.nilCountryCode, Localizator.nilNetworkCode, Localizator.nilPhoneNumber, Localizator.concurrencyError, Localizator.nilParameterMessage, Localizator.nilLevelOfAssurance, Localizator.nilClientId, Localizator.nilAuthorizationURL, Localizator.nilTokenURL, "", Localizator.nilSubscriberId, Localizator.nilCode, "", Localizator.nilMetadataURL, Localizator.requiresAuthorizationConfiguration, Localizator.noTokenIdInTokenResponse, Localizator.noKeyFound, Localizator.keyAlgorithmNotSupported, Localizator.invalidKey, Localizator.invalidDiscoveryMetadata, Localizator.invalidAccessToken, Localizator.tokenExpiredError, Localizator.invalidIssuer, Localizator.invalidAud, Localizator.invalidAzp, Localizator.invalidNonce, Localizator.maxAgeError, Localizator.refreshToken, Localizator.emptyUUID, Localizator.differentUUID]
     }
     
     static fileprivate var errors : [MCErrorCode]
     {
-        return [noRequestToLoad, userCancelled, serializationError, webControllerNil, nilCountryCode, nilNetworkCode, nilPhoneNumber, concurrency, nilParameter, nilLevelOfAssurance, nilClientId, nilAuthorizationURL, nilTokenURL, serverResponse, nilSubcriberId, nilCode, unknown, nilMetadataURL, requiresAuthorizationConfiguration, MCErrorCode.noTokenID, MCErrorCode.noValidKeyFound, MCErrorCode.noValidAlgorithmFound, MCErrorCode.invalidKey, .metadataInvalidError, .invalidAccessTokenError, .tokenExpiredError, .invalidIssuerError, .invalidAudError, .invalidAzpError, .invalidNonce, .maxAgeError, .invalidRefreshToken]
+        return [noRequestToLoad, userCancelled, serializationError, webControllerNil, nilCountryCode, nilNetworkCode, nilPhoneNumber, concurrency, nilParameter, nilLevelOfAssurance, nilClientId, nilAuthorizationURL, nilTokenURL, serverResponse, nilSubcriberId, nilCode, unknown, nilMetadataURL, requiresAuthorizationConfiguration, MCErrorCode.noTokenID, MCErrorCode.noValidKeyFound, MCErrorCode.noValidAlgorithmFound, MCErrorCode.invalidKey, .metadataInvalidError, .invalidAccessTokenError, .tokenExpiredError, .invalidIssuerError, .invalidAudError, .invalidAzpError, .invalidNonce, .maxAgeError, .invalidRefreshToken, .emptyUUID, .differentUUID]
     }
 }

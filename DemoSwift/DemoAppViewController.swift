@@ -58,9 +58,15 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         if isCalledDiscoveryWithPhoneNumber{
             self.phoneNumberTextField.becomeFirstResponder()
         }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func commonInit() {
@@ -87,14 +93,13 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
             if (scopes.contains(ProductType.identitySignUp) || scopes.contains(ProductType.identityPhoneNumber) || scopes.contains(ProductType.identityNationalID)) {
                 identity = true
                 if isCalledDiscoveryWithPhoneNumber {
-                    print(scopes.description)
                     manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
                 } else {
                     manager.getAttributeServiceResponse(self, clientIP: sourceIP, context: "MC", scopes: scopes, bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
                 }
             } else {
                 if isCalledDiscoveryWithPhoneNumber  {
-                   manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
+                    manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
                 } else {
                     manager.getAuthorizationTokenInPresenterController(self, clientIP: sourceIP, withContext: "MC", withScopes: scopes, bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
                 }
@@ -111,6 +116,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     @IBAction func segmentedControllTapped(_ segmentedControll : UISegmentedControl) {
         if segmentedControll.selectedSegmentIndex == 0 {
             UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+    
                 self.phoneNumberTextField.isHidden = true
             }, completion: nil)
             
@@ -167,7 +173,6 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                 
                 if let currentResponse = currentResponse
                 {
-                    
                     model["message"] = "Success"
                     model["sub"] = currentResponse.sub ?? nil
                     model["national_identifier"] = currentResponse.national_identifier ?? nil
@@ -208,7 +213,6 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                     if model["message"] == nil {
                         model["message"] = "Success"
                     }
-                    
                     model["client name"] = tokenResponse.discoveryResponse?.clientName ?? nil
                     model["access token"] = tokenResponse.tokenData?.access_token ?? nil
                     model["token id"] = tokenResponse.tokenData?.id_token ?? nil

@@ -19,23 +19,6 @@ class RequestConstructor: NSObject {
        
         let configuration : URLSessionConfiguration = URLSessionConfiguration.default
         
-        //configuration.HTTPShouldSetCookies = false
-        
-//        if let cookieStorage = configuration.HTTPCookieStorage {
-//        cookieStorage.cookieAcceptPolicy = NSHTTPCookieAcceptPolicy.Never
-//            for cookie in cookieStorage.cookies! {
-//                
-//                if let cookie = cookie as? NSHTTPCookie {
-//                    //if(cookie.name.rangeOfString("Most-Recent-Selected-Operator") != nil) {
-//                        cookieStorage.deleteCookie(cookie)
-//                    //}
-//                    //print(cookie.name)
-//                }
-//            }
-//            print(cookieStorage)
-//        }
-        
-        
         let manager : SessionManager = SessionManager(configuration: configuration)
         
         manager.startRequestsImmediately = false
@@ -72,7 +55,6 @@ class RequestConstructor: NSObject {
             return lazyManager.request(url, method: .get, parameters: parameters, encoding: encoding, headers: headers)
         }
         let requestObject = request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
-        
         return requestObject
     }
 

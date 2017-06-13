@@ -30,6 +30,9 @@ class RequestParametersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+
         popUpVIew.layer.cornerRadius = 10
         popUpVIew.layer.masksToBounds = true
         clientIDField.text = clientId
@@ -46,7 +49,11 @@ class RequestParametersViewController: UIViewController {
             xSourceIpField.text = getIPAddress()
         }
     }
-
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func closePopUp(_ sender: Any) {
         clientId = clientIDField.text!
         clientSecretValue = clientSecretField.text!

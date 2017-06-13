@@ -22,6 +22,9 @@ class RequestParamsWithoutDiscoveryViewController: UIViewController {
     var requestParametersDelegate: RequestParametersWithoutCall? = nil
     
     override func viewDidLoad() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         setValues()
         if counter == false {
             setValues()
@@ -51,7 +54,11 @@ class RequestParamsWithoutDiscoveryViewController: UIViewController {
             clientNameField.alpha = 1.0
         }
     }
-
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func subscriberIdSwitchTapped(_ sender: Any) {
         if subscriberIdSwitch.isOn {
             subscriberIdField.text = subscriberId

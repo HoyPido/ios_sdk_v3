@@ -70,11 +70,11 @@ open class MobileConnectManagerWithoutCall: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      - Parameter scopes: The scopes to be authorized
      */
-    open func getTokenInPresenterController(_ presenterController: UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?, discoveryResponse: DiscoveryResponse)
+    open func getTokenInPresenterController(_ presenterController: UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType]? = nil, correlationId: Bool? = false, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?, discoveryResponse: DiscoveryResponse)
     {
         let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
      
-        getToken(presenterController, loginHint: loginHint, scopes : scopesArray, discoveryResponse: discoveryResponse) { (tokenResponseModel, error) in
+        getToken(presenterController, loginHint: loginHint, scopes : scopesArray, discoveryResponse: discoveryResponse, correlationId: correlationId) { (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
         }
     }
@@ -87,9 +87,9 @@ open class MobileConnectManagerWithoutCall: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      - Parameter scopes: The scopes to be authorized
      */
-    open func getTokenInPresenterController(_ presenterController: UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?, discoveryResponse: DiscoveryResponse)
+    open func getTokenInPresenterController(_ presenterController: UIViewController, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, correlationId: Bool? = false, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?, discoveryResponse: DiscoveryResponse)
     {
-        getToken(presenterController, loginHint : loginHint, scopes : scopes, withParameters: config, discoveryResponse: discoveryResponse){ (tokenResponseModel, error) in
+        getToken(presenterController, loginHint : loginHint, scopes : scopes, withParameters: config, discoveryResponse: discoveryResponse, correlationId: correlationId){ (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
         }
         
@@ -105,9 +105,9 @@ open class MobileConnectManagerWithoutCall: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    open func getAuthorizationTokenInPresenterController(_ presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, discoveryResponse: DiscoveryResponse, completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getAuthorizationTokenInPresenterController(_ presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, discoveryResponse: DiscoveryResponse, correlationId: Bool? = false, completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes.map({$0.stringValue}), withParameters: config, bindingMessage: bindingMessage, discoveryResponse: discoveryResponse) { (tokenResponseModel, error) in
+        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes.map({$0.stringValue}), withParameters: config, bindingMessage: bindingMessage, discoveryResponse: discoveryResponse, correlationId: correlationId) { (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes.map({$0.stringValue}), completionHandler: completionHandler)
         }
     }
@@ -123,9 +123,9 @@ open class MobileConnectManagerWithoutCall: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    open func getAuthorizationTokenInPresenterController(_ presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, discoveryResponse: DiscoveryResponse, completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getAuthorizationTokenInPresenterController(_ presenterController : UIViewController, withContext context : String, loginHint : String? = nil, withStringValueScopes scopes : [String], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, correlationId: Bool? = false, discoveryResponse: DiscoveryResponse,completionHandler : MobileConnectResponseWithUserInfo?)
     {
-        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes, withParameters: config, bindingMessage: bindingMessage, discoveryResponse: discoveryResponse) { (tokenResponseModel, error) in
+        getToken(presenterController, context: context, loginHint : loginHint, scopes: scopes, withParameters: config, bindingMessage: bindingMessage, discoveryResponse: discoveryResponse, correlationId: correlationId) { (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes, completionHandler: completionHandler)
         }
     }
@@ -210,14 +210,14 @@ open class MobileConnectManagerWithoutCall: NSObject {
     }
     
     
-    func getToken(_ presenterController: UIViewController, context : String? = nil, loginHint : String?, scopes : [String]? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String? = nil, discoveryResponse: DiscoveryResponse, withCompletionHandler completionHandler : MobileConnectResponse?)
+    func getToken(_ presenterController: UIViewController, context : String? = nil, loginHint : String?, scopes : [String]? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String? = nil, discoveryResponse: DiscoveryResponse, correlationId: Bool?, withCompletionHandler completionHandler : MobileConnectResponse?)
     {
         startDiscoveryInHandler({
             
             self.delegate?.mobileConnectWillPresentWebController?()
             self.discovery.startOperatorWithoutDiscoveryCall(presenterController, completionHandler: {
                 (controller, operatorsData, error) in
-                self.checkDiscoveryResponse(controller, loginHint: loginHint, operatorsData: operatorsData, error: error)(context, scopes, config, bindingMessage)
+                self.checkDiscoveryResponse(controller, loginHint: loginHint, operatorsData: operatorsData, error: error, correlationId: correlationId)(context, scopes, config, bindingMessage)
             }, discoveryResponse: discoveryResponse)
             
             }, presenter: presenterController, withCompletition: completionHandler)
@@ -225,7 +225,7 @@ open class MobileConnectManagerWithoutCall: NSObject {
     }
     
     // MARK: Discovery methods
-    func checkDiscoveryResponse(_ controller : BaseWebController?, loginHint : String?, operatorsData : DiscoveryResponse?, error : NSError?) -> (_ context : String?, _ scopes : [String]?, _ config : AuthorizationConfigurationParameters?, _ bindingMessage : String?) -> Void
+    func checkDiscoveryResponse(_ controller : BaseWebController?, loginHint : String?, operatorsData : DiscoveryResponse?, error : NSError?, correlationId: Bool?) -> (_ context : String?, _ scopes : [String]?, _ config : AuthorizationConfigurationParameters?, _ bindingMessage : String?) -> Void
     {
         let operatorTest = operatorsData
 
@@ -255,11 +255,11 @@ open class MobileConnectManagerWithoutCall: NSObject {
             
             let mobileConnect : MobileConnectService = MobileConnectService(configuration: configuration)
             
-            self.getTokenWithMobileConnectService(mobileConnect, inWebController: controller, withOperatorsData: operatorTest!, isAuthorization: context != .none)
+            self.getTokenWithMobileConnectService(mobileConnect, inWebController: controller, withOperatorsData: operatorTest!, isAuthorization: context != .none, correlationId: correlationId!)
         }
     }
     
-    func getTokenWithMobileConnectService(_ mobileConnectService : MobileConnectService, inWebController webController : BaseWebController?, withOperatorsData operatorsData : DiscoveryResponse, isAuthorization : Bool = false)
+    func getTokenWithMobileConnectService(_ mobileConnectService : MobileConnectService, inWebController webController : BaseWebController?, withOperatorsData operatorsData : DiscoveryResponse, isAuthorization : Bool = false, correlationId: Bool)
     {
         if let presenter = currentPresenter
         {
@@ -267,9 +267,9 @@ open class MobileConnectManagerWithoutCall: NSObject {
             
             if isAuthorization
             {
-                mobileConnectService.getAuthorizationTokenInController(presenter, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
+                mobileConnectService.getAuthorizationTokenInController(presenter, correlationId: correlationId, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
             } else {
-                mobileConnectService.getAuthenticationTokenInController(presenter, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
+                mobileConnectService.getAuthenticationTokenInController(presenter, correlationId: correlationId, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
             }
         } else
         {
@@ -392,7 +392,7 @@ open class MobileConnectManagerWithoutCall: NSObject {
         return jsonobj
     }
     
-    open func makeDiscoveryResponse(_ subscriberId: String, clientSecret: String, clientKey: String, name: String, linksRecieved: OperatorIdModel) -> DiscoveryResponse {
+    open func makeDiscoveryResponse(_ subscriberId: String, clientSecret: String, clientKey: String, name: String, linksRecieved: OperatorIdModel, correlationId: Bool? = false) -> DiscoveryResponse {
         
         let discoveryOptions: DiscoveryOptions = DiscoveryOptions()
         discoveryOptions.setSubscriberId(subscriberId)
@@ -413,6 +413,10 @@ open class MobileConnectManagerWithoutCall: NSObject {
         
         operatorDataResponse.client_id = operatorDictionaryValue.value(forKey: "client_id") as? String
         operatorDataResponse.client_secret = operatorDictionaryValue.value(forKey: "client_secret") as? String
+        
+        if correlationId == true {
+            discoveryResponse.correlation_id = UUID().uuidString
+        }
         
         apis.operatorid = linksRecieved
         

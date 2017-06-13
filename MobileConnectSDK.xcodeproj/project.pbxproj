@@ -105,7 +105,6 @@
 		A6E6E9F41D75CD6000DD64B3 /* TokenIdHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F31D75CD6000DD64B3 /* TokenIdHeaderModel.swift */; };
 		A6E6E9F61D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6E9F51D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift */; };
 		A6F8D9671D33AD96000F1312 /* ScopeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */; };
-		A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */; };
 		A6F8D9911D34D56A000F1312 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D9901D34D56A000F1312 /* ProductType.swift */; };
 		A6F8D99C1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */; };
 		A6F8D99E1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */; };
@@ -113,6 +112,7 @@
 		CE42FAFD1E38AAF90029BE3B /* DiscoveryOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42FAED1E375E760029BE3B /* DiscoveryOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE42FAFF1E39DFAA0029BE3B /* OperatorIdModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A1B1D0EB36700F73EA5 /* OperatorIdModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE42FB001E39E4A50029BE3B /* OperatorDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C401A191D0EB36700F73EA5 /* OperatorDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE5BE18B1EDEEDD4005DA7DB /* DiscoveryServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5BE18A1EDEEDD4005DA7DB /* DiscoveryServiceConfiguration.swift */; };
 		CE74B7231E420D5600A7568D /* MobileConnectManagerWithoutCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74B7221E420D5600A7568D /* MobileConnectManagerWithoutCall.swift */; };
 		CE7677C01E9CB54E00D2C7B0 /* MobileConnectSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; };
 		CE7677C11E9CB54E00D2C7B0 /* MobileConnectSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3F82D21D04C7C8006EE8F4 /* MobileConnectSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -294,7 +294,6 @@
 		A6E6E9F31D75CD6000DD64B3 /* TokenIdHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenIdHeaderModel.swift; sourceTree = "<group>"; };
 		A6E6E9F51D75CD9B00DD64B3 /* ExtensionJWTDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionJWTDecoder.swift; sourceTree = "<group>"; };
 		A6F8D9661D33AD96000F1312 /* ScopeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScopeValidator.swift; sourceTree = "<group>"; };
-		A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscoveryServiceConfiguration.swift; path = ../DiscoveryServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D9901D34D56A000F1312 /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		A6F8D99B1D36DD69000F1312 /* MobileConnectServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectServiceConfiguration.swift; sourceTree = "<group>"; };
 		A6F8D99D1D36DE3A000F1312 /* MCAuthorizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationConfiguration.swift; sourceTree = "<group>"; };
@@ -302,6 +301,7 @@
 		CE272BE11E5C914C005D2F17 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "Pods/../build/Debug-iphoneos/JSONModel-iOS9.3/JSONModel.framework"; sourceTree = "<group>"; };
 		CE42FAED1E375E760029BE3B /* DiscoveryOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryOptions.h; sourceTree = "<group>"; };
 		CE42FAEE1E375E8E0029BE3B /* DiscoveryOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryOptions.m; sourceTree = "<group>"; };
+		CE5BE18A1EDEEDD4005DA7DB /* DiscoveryServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryServiceConfiguration.swift; sourceTree = "<group>"; };
 		CE74B7221E420D5600A7568D /* MobileConnectManagerWithoutCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileConnectManagerWithoutCall.swift; sourceTree = "<group>"; };
 		CE87177D1EA75266009A6179 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		CE87177E1EA752A1009A6179 /* BridgingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
@@ -493,7 +493,7 @@
 		3C72CF081D05E7CC00A095ED /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				6C427C211D54DA880008A744 /* Configuration */,
+				CE5BE18A1EDEEDD4005DA7DB /* DiscoveryServiceConfiguration.swift */,
 				3C72CF3A1D069D1100A095ED /* DiscoveryService.swift */,
 				3C24E7D31D0C323800D7634A /* DSService.swift */,
 			);
@@ -598,14 +598,6 @@
 				6C3ECA311D93F3E900A58D40 /* RefreshTokenService.swift */,
 			);
 			path = RefreshToken;
-			sourceTree = "<group>";
-		};
-		6C427C211D54DA880008A744 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				A6F8D96C1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift */,
-			);
-			path = Configuration;
 			sourceTree = "<group>";
 		};
 		6C427C631D58DACF0008A744 /* BaseMobileConnect */ = {
@@ -1070,7 +1062,6 @@
 				3C72CF401D06AD1900A095ED /* ExtensionNSException.swift in Sources */,
 				6C4C052B1D61FBE6008B1AB7 /* BaseMobileConnectServiceRequest.swift in Sources */,
 				6C4C052F1D632C34008B1AB7 /* AttributeResponseModel.m in Sources */,
-				A6F8D96D1D33C75F000F1312 /* DiscoveryServiceConfiguration.swift in Sources */,
 				A6B5803E1D24304200640E17 /* MetadataModel.m in Sources */,
 				3CCA570E1D64A846004CE16A /* BaseMobileConnectService.swift in Sources */,
 				3C72CF481D06D84900A095ED /* ExtensionDictionary.swift in Sources */,
@@ -1092,6 +1083,7 @@
 				A6E6E9F41D75CD6000DD64B3 /* TokenIdHeaderModel.swift in Sources */,
 				6C3ECA561D99117C00A58D40 /* RefreshTokenModel.m in Sources */,
 				3C36EF041D0A19D200297A17 /* MobileConnectService.swift in Sources */,
+				CE5BE18B1EDEEDD4005DA7DB /* DiscoveryServiceConfiguration.swift in Sources */,
 				3C36EF061D0A3EFF00297A17 /* MCRequestConstructor.swift in Sources */,
 				3CD791741D0571450023FD0A /* MobileConnectButton.swift in Sources */,
 				3C72CF0B1D05F77100A095ED /* WebControllerProtocol.swift in Sources */,
@@ -1215,10 +1207,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos10.1;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1262,10 +1254,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos10.1;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1291,6 +1283,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1318,6 +1311,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MobileConnectSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GSMA.MobileConnectSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1375,10 +1369,12 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DemoSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = a1qa.DemoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Models/BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1398,10 +1394,12 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DemoSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = a1qa.DemoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Models/BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

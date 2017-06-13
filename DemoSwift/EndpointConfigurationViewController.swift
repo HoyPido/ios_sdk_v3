@@ -19,7 +19,11 @@ class EndpointConfigurationViewController: UIViewController {
     var delegate: WithoutCallEndpoints? = nil
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
         if counterEndpoints == true {
             setEndpoints()
@@ -60,7 +64,11 @@ class EndpointConfigurationViewController: UIViewController {
             accessTokenURL.alpha = 0.2
         }
     }
-
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func closePopUp(_ sender: Any) {
         if withMetadataStatus == false {
             endpoints["authorizationEndpoint"] = authURL.text!

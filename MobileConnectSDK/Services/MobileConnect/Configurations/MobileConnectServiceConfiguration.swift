@@ -22,7 +22,7 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let nonce = UUID.randomUUID
     var config : AuthorizationConfigurationParameters?
     var loginHint : String? = nil
-   
+    
     /**
      This constructor may change with addition of new features in future versions.
      It is recommended to use the init with discovery response if possible.
@@ -51,7 +51,6 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         scopes = authorizationScopes + [MobileConnectAuthentication]
         self.loginHint = loginHint
         self.config = config
-        
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     

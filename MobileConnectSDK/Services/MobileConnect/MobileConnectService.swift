@@ -40,9 +40,9 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getAuthenticationTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
+    func getAuthenticationTokenInController(_ controller : UIViewController, correlationId: Bool, completionHandler : @escaping MobileConnectControllerResponse)
     {
-        let request : Request = requestConstructor.authenticationRequest
+        let request : Request = requestConstructor.authenticationRequest(correlationId: correlationId)
   
         startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
     }
@@ -53,9 +53,9 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    func getAuthorizationTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
+    func getAuthorizationTokenInController(_ controller : UIViewController, correlationId: Bool, completionHandler : @escaping MobileConnectControllerResponse)
     {
-        if let request = requestConstructor.authorizationRequest
+        if let request = requestConstructor.authorizationRequest(correlationId: correlationId)
         {
             startServiceInController(controller, withRequest: request, completionHandler: completionHandler)
         } else
@@ -69,7 +69,7 @@ class MobileConnectService: BaseMobileConnectService<TokenModel, AuthorizationMo
     {
       
         processRequest(requestConstructor.tokenRequestAtURL(configuration.tokenURLString, withCode: code), withParameters: [(code, MCErrorCode.nilCode)]) { (model, error) in
-          
+        
             guard let model = model else {
                 completionHandler(nil, error)
                 return

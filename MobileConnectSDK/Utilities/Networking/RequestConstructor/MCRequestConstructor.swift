@@ -63,7 +63,7 @@ class MCRequestConstructor: RequestConstructor {
     func mobileConnectRequestWithAssuranceLevel(_ assuranceLevel : MCLevelOfAssurance, subscriberId : String?, scopes : [String], config : AuthorizationConfigurationParameters? = nil, url : String, clientName : String? = nil, context : String? = nil, bindingMessage : String? = nil, shouldNotStartImmediately : Bool = false, correlationId: Bool) -> Request
     {
         if (correlationId == true) {
-            uuid = uuidValue
+            uuid = ""
         }
         
         let state : String = UUID.randomUUID
@@ -123,6 +123,12 @@ class MCRequestConstructor: RequestConstructor {
             }
             
         }
+        
+        
+        if let correlationId = configuration.correlationId {
+            parameters[kCorrelationId] = correlationId
+        }
+        
         
         if let loginHint = configuration.loginHint {
             parameters[kLoginHint] = loginHint

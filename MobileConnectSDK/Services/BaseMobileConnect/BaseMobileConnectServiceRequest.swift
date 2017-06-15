@@ -19,6 +19,9 @@ class BaseMobileConnectServiceRequest {
     
     func treatResponseCompletionHandler<T : MCModel>(_ response : DataResponse<Any>, withClientResponseHandler clientResponseHandler : (_ model : T?, _ error : NSError?) -> Void) {
         if response.result.isSuccess {
+            if correlationState {
+                try! isRightCorrelationID(response)
+            }
             let deserializerObject = BaseMobileConnectServiceDeserializer<T>(dictionary: response.result.value as AnyObject?)
             deserializerObject?.deserializeModel(clientResponseHandler)
         } else {
@@ -26,16 +29,18 @@ class BaseMobileConnectServiceRequest {
         }
     }
     
+    let discoveryRequestUUIDValue = DiscoveryRequestConstructor()
+    
     func isRightCorrelationID(_ response : DataResponse<Any>) throws {
         let checkCorrelationID: NSDictionary = response.result.value as! NSDictionary
         let correlationIDValue: String = checkCorrelationID.value(forKey: correlation) as! String? ?? ""
-        if (correlationIDValue == "") {
-            print("correlationd_id is nil")
+        if (correlationIDValue == nil) {
+            print("correlation_id failed")
             throw MCErrorCode.emptyUUID.error
-        } else if correlationIDValue == uuidValue {
-            print("correlationd_id is right")
+        } else if (correlationIDValue == discoveryRequestUUIDValue.uuidValue) {
+            print("correlation_id is ok")
         } else {
-            print("correlation_id is not the same")
+            print("correlation_id is not right")
             throw MCErrorCode.differentUUID.error
         }
     }

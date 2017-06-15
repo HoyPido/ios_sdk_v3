@@ -111,11 +111,10 @@ class ScopeValidator: NSObject {
     
     func validatedScopes(_ scopes : [String]) -> String
     {
-        print("---===ValidatedTemporaryScopes===---")
         let temporaryScopeValue = scopes.map({scopeForStringValue($0)}).joined(separator: " ")
-        //todo
         isDuplicatedScope(temporaryScopeValue)
         checkScopePosition(validatedScopeValue)
+        print(temporaryScopeValue)
         return validatedScopeValue
     }
 

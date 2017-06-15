@@ -21,6 +21,8 @@ public typealias MobileConnectResponse = (_ tokenResponseModel : TokenResponseMo
     @objc optional func mobileConnectFailedGettingTokenResponseWithError(_ error : NSError)
 }
 
+public var correlationState = false
+
 /**
  Abstracts the Discovery and Mobile Connect services by offering 2 convenience methods for directly getting the token. The token will be delivered in the supplied callbacks or delegate methods if set.
  */
@@ -34,8 +36,8 @@ open class MobileConnectManager: NSObject {
             NSException.checkDelegate(delegate)
         }
     }
-    let notificationName = Notification.Name("uuidNotification")
     
+    let discoveryRequestUUIDValue = DiscoveryRequestConstructor()
     
     let discovery : DiscoveryService
     var currentResponse : MobileConnectResponse?
@@ -261,7 +263,7 @@ open class MobileConnectManager: NSObject {
     }
     
     open func getAttributeServiceResponseWithPhoneNumber(_ phoneNumber : String, clientIP: String? = "", inPresenterController presenterController : UIViewController, loginHint : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, withScopes scopes : [ProductType], context : String, bindingMessage : String?, correlationId : Bool? = false, completionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ) {
-        
+        correlationState = correlationId!
         getAuthorizationTokenForPhoneNumber(phoneNumber, clientIP: clientIP, inPresenterController: presenterController, loginHint : loginHint, withScopes: scopes, context: context, bindingMessage: bindingMessage, correlationId: correlationId) { (userInfo, tokenResponseModel, error) in
             guard let tokenResponseModel = tokenResponseModel  else {
                 completionHandler(nil, nil, error)
@@ -277,7 +279,7 @@ open class MobileConnectManager: NSObject {
     }
     
     open func getAttributeServiceResponse(_ controller: UIViewController, clientIP: String? = "", context : String, loginHint : String? = nil, stringScopes : [String], bindingMessage : String? = nil, correlationId : Bool? = false, withCompletionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ){
-        
+        correlationState = correlationId!
         getAuthorizationTokenInPresenterController(controller, clientIP: clientIP, withContext: context, loginHint : loginHint, withStringValueScopes: stringScopes, bindingMessage: bindingMessage, correlationId: correlationId) { (userInfo, tokenResponseModel, error) in
     
             guard let tokenResponseModel = tokenResponseModel  else {
@@ -294,7 +296,7 @@ open class MobileConnectManager: NSObject {
     }
     
     open func getAttributeServiceResponse(_ controller: UIViewController, clientIP: String? = "", context : String, loginHint : String? = nil, scopes : [ProductType], bindingMessage : String? = nil, withParameters config : AuthorizationConfigurationParameters? = nil, correlationId : Bool? = false, withCompletionHandler : @escaping (_ attributeResponseModel : AttributeResponseModel?, _ tokenResponseModel : TokenResponseModel?, _ error : NSError?) -> Void ){
-      
+        correlationState = correlationId!
         self.getAttributeServiceResponse(controller, clientIP: clientIP, context: context, loginHint : loginHint, stringScopes: scopes.flatMap({$0.stringValue}), bindingMessage: bindingMessage, correlationId: correlationId, withCompletionHandler: withCompletionHandler)
     }
   
@@ -314,6 +316,7 @@ open class MobileConnectManager: NSObject {
    
     func getTokenForPhoneNumber(_ phoneNumber: String, clientIP: String? = "", inPresenterController presenterController : UIViewController, withContext context : String? = nil, bindingMessage : String? = nil, loginHint : String? = nil, scopes : [String]? = nil, config : AuthorizationConfigurationParameters? = nil, correlationId: Bool? = false, completionHandler : MobileConnectResponse?)
     {
+        correlationState = correlationId!
         startDiscoveryInHandler({
             self.discovery.startOperatorDiscoveryForPhoneNumber(phoneNumber, clientIP: clientIP, correlationId: correlationId, completionHandler: { (operatorsData, error) in
                 self.checkDiscoveryResponse(nil, loginHint: loginHint, operatorsData: operatorsData, correlationId: correlationId!, error: error)(context, scopes, config, bindingMessage)
@@ -326,7 +329,7 @@ open class MobileConnectManager: NSObject {
     func checkDiscoveryResponse(_ controller : BaseWebController?, loginHint : String?, operatorsData : DiscoveryResponse?, correlationId: Bool, error : NSError?) -> (_ context : String?, _ scopes : [String]?, _ config : AuthorizationConfigurationParameters?, _ bindingMessage : String?) -> Void
     {
         if (correlationId == true) {
-            try? self.checkCorrelationdId(correlationId, operatorsData?.correlation_id)
+            try! self.checkCorrelationdId(correlationId, operatorsData?.correlation_id)
         }
 
         return { (context : String?, scopes : [String]?, config : AuthorizationConfigurationParameters?, bindingMessage : String?) -> Void in
@@ -442,14 +445,16 @@ open class MobileConnectManager: NSObject {
     }
     
     func checkCorrelationdId(_ correlationId: Bool, _ correlationIdValue: String?) throws {
-        if (correlationIdValue == nil) {
-            print("correlation_id failed")
-            throw MCErrorCode.emptyUUID.error
-        } else if (correlationIdValue == uuidValue) {
-            print("correlation_id ok")
-        } else {
-            print("correlation_id failed is not right")
-            throw MCErrorCode.differentUUID.error
+        if correlationId {
+            if (correlationIdValue == nil) {
+                print("correlation_id failed")
+                throw MCErrorCode.emptyUUID.error
+            } else if (correlationIdValue == discoveryRequestUUIDValue.uuidValue) {
+                print("correlation_id ok")
+            } else {
+                print("correlation_id is not right")
+                throw MCErrorCode.differentUUID.error
+            }
         }
     }
 }

@@ -14,14 +14,15 @@ private let kRedirectURL : String = "Redirect_URL"
 private let kKeyPhone : String = "MSISDN"
 private let kKeyCountryCode : String = "Selected-MCC"
 private let kKeyNetworkCode : String = "Selected-MNC"
+private let uuidTest = NSUUID().uuidString
 public let correlation: String = "correlation_id"
-public let uuidValue: String = NSUUID().uuidString
 
 class DiscoveryRequestConstructor : RequestConstructor
 {
+    
     // MARK: iVars
     var applicationEndpoint : String = ""
-    
+    let uuidValue: String = uuidTest
     // MARK: init
     init(clientKey: String, clientSecret: String, redirectURL: URLConvertible, applicationEndpoint : String){
         
@@ -34,7 +35,6 @@ class DiscoveryRequestConstructor : RequestConstructor
     }
     
     convenience init() {
-        //self.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: redirectURL)
         self.init(clientKey: "", clientSecret: "", redirectURL: "", applicationEndpoint : "")
     }
 
@@ -71,10 +71,7 @@ class DiscoveryRequestConstructor : RequestConstructor
         
         if (correlationId == true) {
             parametersNewDictionary[correlation] = uuidValue as AnyObject?
-            print("--==Parameters New Dictionary==--")
-            print(parametersNewDictionary)
         }
-        
         let method : HTTPMethod = isPhoneRequest ?  .post : .get
         let encoding : ParameterEncoding = isPhoneRequest ? URLEncoding.default : URLEncoding.methodDependent
         

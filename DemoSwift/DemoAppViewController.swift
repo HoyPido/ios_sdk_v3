@@ -99,7 +99,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                 }
             } else {
                 if isCalledDiscoveryWithPhoneNumber  {
-                    manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
+                    manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC",completionHandler: launchTokenViewerWithTokenResponseModel)
                 } else {
                     manager.getAuthorizationTokenInPresenterController(self, clientIP: sourceIP, withContext: "MC", withScopes: scopes, bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
                 }

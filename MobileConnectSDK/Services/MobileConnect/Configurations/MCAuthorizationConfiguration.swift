@@ -37,8 +37,12 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.bindingMessage = bindingMessage
         self.clientName = clientName
         self.context = context
+
+        var stringValuedScopes : [String] = authorizationScopes
         
-        let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
+        if (authorizationScopes.count == 0) {
+            stringValuedScopes = [MobileConnectAuthorization]
+        }
         
         super.init(clientKey: clientKey,
                    clientSecret: clientSecret,
@@ -75,7 +79,11 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.clientName = clientName
         self.context = context
         
-        let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
+        var stringValuedScopes : [String] = authorizationScopes
+        
+        if (authorizationScopes.count == 0) {
+            stringValuedScopes = [MobileConnectAuthorization]
+        }
         
         super.init(clientKey: clientKey,
                    clientSecret: clientSecret,

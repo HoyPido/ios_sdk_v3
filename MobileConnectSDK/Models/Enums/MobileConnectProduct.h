@@ -21,3 +21,9 @@ extern NSString *const MobileConnectPhone;
 extern NSString *const MobileConnectAddress;
 extern NSString *const MobileConnectProfile;
 extern NSString *const MobileConnectEmail;
+
+//indian
+extern NSString *const MobileConnectIndian;
+extern NSString *const MobileConnectIndiaTC;
+extern NSString *const MobileConnectMNVValidate;
+extern NSString *const MobileConnectMNVValidatePlus;

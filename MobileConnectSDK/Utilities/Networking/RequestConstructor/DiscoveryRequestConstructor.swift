@@ -34,6 +34,16 @@ class DiscoveryRequestConstructor : RequestConstructor
         
     }
     
+    func setSDKVersion() -> String {
+        let pathToConfigutationFile = Bundle.main.path(forResource: "Info", ofType: "plist")
+        let itemsDictionaryRoot = NSDictionary(contentsOfFile: pathToConfigutationFile!)
+        var sdkVersion = (itemsDictionaryRoot?.value(forKey: "CFBundleShortVersionString") as? String)!
+        if (sdkVersion != SDKVersion ) {
+            sdkVersion = SDKVersion
+        }
+        return sdkVersion
+    }
+    
     convenience init() {
         self.init(clientKey: "", clientSecret: "", redirectURL: "", applicationEndpoint : "")
     }
@@ -68,6 +78,8 @@ class DiscoveryRequestConstructor : RequestConstructor
         
         var parametersNewDictionary = parameters
         parametersNewDictionary[kRedirectURL] = redirectURL as AnyObject?
+        var newAdditionalHeaders = additionalHeaders
+        newAdditionalHeaders?["SDK-Version"] = setSDKVersion()
         
         if (correlationId == true) {
             parametersNewDictionary[correlation] = uuidValue as AnyObject?
@@ -75,7 +87,7 @@ class DiscoveryRequestConstructor : RequestConstructor
         let method : HTTPMethod = isPhoneRequest ?  .post : .get
         let encoding : ParameterEncoding = isPhoneRequest ? URLEncoding.default : URLEncoding.methodDependent
         
-        return requestWithMethod(method, url: applicationEndpoint, parameters: parametersNewDictionary, encoding: encoding, additionalHeaders: additionalHeaders, shouldNotStartImmediately : shouldNotStartImmediately)
+        return requestWithMethod(method, url: applicationEndpoint, parameters: parametersNewDictionary, encoding: encoding, additionalHeaders: newAdditionalHeaders, shouldNotStartImmediately : shouldNotStartImmediately)
     }
     
 }

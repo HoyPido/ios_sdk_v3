@@ -1,11 +1,15 @@
 import UIKit
 
+public var demoAppFirstCall: Bool = true
+public var indianApplicationFirstCall: Bool = true
+public var withoutDiscoveryFirstCall: Bool = true
+
 class MainViewController : UIViewController {
     @IBOutlet weak var tableView : UITableView!
     
-    let availablSections = ["Demo App", "Without discovery"]
+    let availablSections = ["Demo App", "Without discovery", "Indian Application"]
     
-    let availableSegue = ["DemoApp", "ExampleApp"]
+    let availableSegue = ["DemoApp", "ExampleApp", "IndianApp"]
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -38,6 +42,8 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        demoAppFirstCall = true
+        indianApplicationFirstCall = true
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: availableSegue[indexPath.row], sender: nil)
     }

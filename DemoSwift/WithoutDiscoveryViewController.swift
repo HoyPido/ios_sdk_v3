@@ -43,10 +43,13 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
     }
     
     func commonInit() {
-        setEndpointsFromFile()
-        setRequestParametersValues()
-        setValues()
-        self.viewControllerNameLabel.text = "Example App"
+        if (withoutDiscoveryFirstCall) {
+            setEndpointsFromFile()
+            setRequestParametersValues()
+            setValues()
+            withoutDiscoveryFirstCall = false
+        }
+        self.viewControllerNameLabel.text = "Without Discovery app"
         let endpointsLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(WithoutDiscoveryViewController.longPressEndpoints))
         endPointButton.addGestureRecognizer(endpointsLongGesture)
         let requestParametersLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(WithoutDiscoveryViewController.longPressRequestParameters))

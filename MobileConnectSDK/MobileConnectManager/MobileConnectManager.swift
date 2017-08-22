@@ -64,6 +64,48 @@ open class MobileConnectManager: NSObject {
     
     // MARK: SDK main methods
     /**
+     Will get the authorization token with country code and network code.
+     Will automatically try to retrieve and merge the Metadata.
+     - Parameter countryCode: The user's phone's country code.
+     - Parameter networkCode: The user's phone's network code.
+     - Parameter presenterController: The controller which will present the Mobile Connect web view controller
+     - Parameter context: The context required for making authorization requests
+     - Parameter scopes: The scopes to be authorized
+     - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
+     - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
+     */
+    open func getAuthorizationTokenForMCCAndMNC(_ MCC: String, mnc: String, _ presenterController: UIViewController, context: String? = nil, bindingMessage: String? = nil, withScopes scopes : [ProductType]? = nil, withCompletionHandler completionHandler : MobileConnectResponseWithUserInfo?)
+    {
+        let scopesArray : [String]? = (scopes ?? []).map({$0.stringValue})
+        getTokenForMCCAndMNC(MCC, mnc: mnc, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, scopes : scopesArray, correlationId : false) { (tokenResponseModel, error) in
+            
+            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: (scopes ?? []).map({$0.stringValue}), completionHandler: completionHandler)
+        }
+    }
+    
+    /**
+     Will get the token withoperator country code and network code.
+     It will not return a subscriber_id inside the Discovery response as for the subcriber_id, one should provide the concrete phone number.
+     By default it will also retrieve the metadata and update the discovery response according to the metadata information.
+     In case this behavior is not needed just call the function with the provideMetadata argument set to false.
+     - Parameter countryCode: The user's phone's country code.
+     - Parameter networkCode: The user's phone's network code.
+     - Parameter shouldProvideMetadata: Setting this flag to false, will disable updating the operators data with metadata information.
+     - Parameter completionHandler: This is the closure in which the respone of the function will be sent
+     */
+    func getTokenForMCCAndMNC(_ MCC: String, mnc: String? = "", inPresenterController presenterController : UIViewController, withContext context : String? = nil, bindingMessage : String? = nil, loginHint : String? = nil, scopes : [String]? = nil, config : AuthorizationConfigurationParameters? = nil, correlationId: Bool? = false, completionHandler : MobileConnectResponse?)
+    {
+        startDiscoveryInHandler({
+            self.delegate?.mobileConnectWillPresentWebController?()
+            
+            self.discovery.startOperatorDiscoveryWithCountryCode(MCC, networkCode: mnc!, shouldProvideMetadata: false, correlationId: correlationId, completionHandler: { (operatorsData, error) in
+                self.checkDiscoveryResponse(nil, loginHint: loginHint, operatorsData: operatorsData, correlationId: correlationId!, error: error)(context, scopes, config, bindingMessage)
+            })
+            
+        }, presenter: presenterController, withCompletition: completionHandler)
+    }
+
+    /**
      Will get the token without any info needed from the client. Will use both Discovery and Mobile Connect services underneath. First the Discovery web controller will be presented which will require client's phone number or operator information. Afterwards the Mobile Connect Service will present its web view controller. In case the client did not provide a phone number, Mobile Connect will first ask the client for a phone number and then present the waiting for sms confirmation screen.
      Will automatically try to retrieve and merge the Metadata.
      - Parameter presenterController: The controller which will present the Mobile Connect web view controller
@@ -105,7 +147,7 @@ open class MobileConnectManager: NSObject {
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
     
-    open func getAuthorizationTokenInPresenterController(_ presenterController : UIViewController, clientIP: String? = "", withContext context : String, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String?, correlationId : Bool? = false, completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getAuthorizationTokenInPresenterController(_ presenterController : UIViewController, clientIP: String? = "", withContext context : String? = nil, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, bindingMessage : String? = nil, correlationId : Bool? = false, completionHandler : MobileConnectResponseWithUserInfo?)
     {
         getToken(presenterController, clientIP: clientIP, context: context, loginHint : loginHint, scopes: scopes.map({$0.stringValue}), withParameters: config, bindingMessage: bindingMessage, withCorrelationId : correlationId) { (tokenResponseModel, error) in
             self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes.map({$0.stringValue}), completionHandler: completionHandler)
@@ -213,7 +255,7 @@ open class MobileConnectManager: NSObject {
      - Parameter bindingMessage: The check message to be displayed in the web view while waiting for client's confirmation
      - Parameter completionHandler: The closure in which the Mobile Connect Token or error will be returned
      */
-    open func getAuthorizationTokenForPhoneNumber(_ phoneNumber : String, clientIP : String? = "", inPresenterController presenterController : UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, context : String, bindingMessage : String?, correlationId : Bool? = false, completionHandler : MobileConnectResponseWithUserInfo?)
+    open func getAuthorizationTokenForPhoneNumber(_ phoneNumber : String, clientIP : String? = "", inPresenterController presenterController : UIViewController, loginHint : String? = nil, withScopes scopes : [ProductType], withParameters config : AuthorizationConfigurationParameters? = nil, context : String? = nil, bindingMessage : String? = nil, correlationId : Bool? = false, completionHandler : MobileConnectResponseWithUserInfo?)
     {
         getTokenForPhoneNumber(phoneNumber, clientIP: clientIP, inPresenterController: presenterController, withContext: context, bindingMessage: bindingMessage, loginHint : loginHint, scopes:  scopes.map({$0.stringValue}), config: config, correlationId: correlationId) { (tokenResponseModel, error) in
            self.processUserInfoCompletionHandler(tokenResponseModel, error: error, scopes: scopes.map({$0.stringValue}), completionHandler: completionHandler)
@@ -325,13 +367,13 @@ open class MobileConnectManager: NSObject {
             }, presenter: presenterController, withCompletition: completionHandler)
     }
     
+    
     // MARK: Discovery methods
     func checkDiscoveryResponse(_ controller : BaseWebController?, loginHint : String?, operatorsData : DiscoveryResponse?, correlationId: Bool, error : NSError?) -> (_ context : String?, _ scopes : [String]?, _ config : AuthorizationConfigurationParameters?, _ bindingMessage : String?) -> Void
     {
         if (correlationId == true) {
             try! self.checkCorrelationdId(correlationId, operatorsData?.correlation_id)
         }
-
         return { (context : String?, scopes : [String]?, config : AuthorizationConfigurationParameters?, bindingMessage : String?) -> Void in
             
             guard let operatorsData = operatorsData else
@@ -379,8 +421,7 @@ open class MobileConnectManager: NSObject {
             } else {
                 mobileConnectService.getAuthenticationTokenInController(presenter, correlationId: correlationId, completionHandler: checkMobileConnectResponseWithUserInfo(operatorsData))
             }
-        } else
-        {
+        } else {
             finishWithResponse(webController, model: nil, error: MCErrorCode.unknown.error)
         }
     }

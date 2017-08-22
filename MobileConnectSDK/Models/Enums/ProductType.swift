@@ -21,6 +21,10 @@ import Foundation
     case address
     case profile
     case email
+    case indianOpenID
+    case indiaTC
+    case indiaMNVValidate
+    case indiaMNVValidatePlus
 }
 
 extension ProductType
@@ -67,11 +71,12 @@ extension ProductType
     
     fileprivate static var enumValues : [ProductType]
     {
-        return [.authentication, .authorization, .identityPhoneNumber, .identitySignUp, .identitySignUpPlus, .identityPhoneNumber, .identityNationalID, .phone, .address, .profile, .email]
+        return [.authentication, .authorization, .identityPhoneNumber, .identitySignUp, .identitySignUpPlus, .identityPhoneNumber, .identityNationalID, .phone, .address, .profile, .email, .indianOpenID, .indiaTC, .indiaMNVValidate, .indiaMNVValidatePlus]
     }
     
     fileprivate static var keySets : [[String]]
     {
-        return [[MobileConnect, MobileConnectAuthentication], [MobileConnectAuthorization], [MobileConnectIdentityPhone], [MobileConnectIdentitySignup], [MobileConnectIdentitySignupPlus], [MobileConnectIdentityPhone], [MobileConnectIdentityNationalID], [MobileConnectPhone], [MobileConnectAddress], [MobileConnectProfile], [MobileConnectEmail]]
+        return [[MobileConnect, MobileConnectAuthentication], [MobileConnectAuthorization], [MobileConnectIdentityPhone], [MobileConnectIdentitySignup], [MobileConnectIdentitySignupPlus], [MobileConnectIdentityPhone], [MobileConnectIdentityNationalID], [MobileConnectPhone], [MobileConnectAddress], [MobileConnectProfile], [MobileConnectEmail], [MobileConnectIndian], [MobileConnectIndiaTC], [MobileConnectMNVValidate], [MobileConnectMNVValidatePlus]]
     }
+    
 }

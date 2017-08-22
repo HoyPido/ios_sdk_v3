@@ -17,7 +17,7 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let assuranceLevel : MCLevelOfAssurance
     let metadata : MetadataModel?
     let subscriberId : String?
-    let scopes : [String]
+    var scopes : [String]
     var maxAge = 3600
     let nonce = UUID.randomUUID
     var config : AuthorizationConfigurationParameters?
@@ -50,7 +50,10 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
         self.metadata = metadata
-        scopes = authorizationScopes + [MobileConnectAuthentication]
+        scopes = authorizationScopes
+        if (authorizationScopes.count == 0) {
+            scopes = [MobileConnectAuthentication]
+        }
         self.loginHint = loginHint
         self.config = config
         self.correlationId = correlationId
@@ -81,7 +84,10 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
         self.metadata = metadata
-        scopes = authorizationScopes + [MobileConnectAuthentication]
+        scopes = authorizationScopes
+        if (authorizationScopes.count == 0) {
+            scopes = [MobileConnectAuthentication]
+        }
         self.config = config
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())

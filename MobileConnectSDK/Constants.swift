@@ -169,3 +169,5 @@ extension MCErrorCode
         return [noRequestToLoad, userCancelled, serializationError, webControllerNil, nilCountryCode, nilNetworkCode, nilPhoneNumber, concurrency, nilParameter, nilLevelOfAssurance, nilClientId, nilAuthorizationURL, nilTokenURL, serverResponse, nilSubcriberId, nilCode, unknown, nilMetadataURL, requiresAuthorizationConfiguration, MCErrorCode.noTokenID, MCErrorCode.noValidKeyFound, MCErrorCode.noValidAlgorithmFound, MCErrorCode.invalidKey, .metadataInvalidError, .invalidAccessTokenError, .tokenExpiredError, .invalidIssuerError, .invalidAudError, .invalidAzpError, .invalidNonce, .maxAgeError, .invalidRefreshToken, .emptyUUID, .differentUUID]
     }
 }
+
+public var SDKVersion: String = "3.3.3"

@@ -21,3 +21,9 @@ NSString *const MobileConnectPhone = @"phone";
 NSString *const MobileConnectAddress = @"address";
 NSString *const MobileConnectProfile = @"profile";
 NSString *const MobileConnectEmail = @"email";
+
+//Indian scopes
+NSString *const MobileConnectIndian = @"openid mc_identity_phonenumber_hashed";
+NSString *const MobileConnectIndiaTC = @"mc_india_tc mc_identity_phonenumber_hashed";
+NSString *const MobileConnectMNVValidate = @"mc_mnv_validate mc_identity_phonenumber_hashed";
+NSString *const MobileConnectMNVValidatePlus = @"mc_mnv_validate_plus mc_identity_phonenumber_hashed";

@@ -24,7 +24,6 @@ class RequestParametersViewController: UIViewController {
     var discoveryURLValue = String()
     var sourceIPValue = String()
     var state = Bool()
-    var reqParam = DemoAppViewController()
     
     var delegateRequestParameters: RequestParametersDeleagete? = nil
     
@@ -75,4 +74,6 @@ class RequestParametersViewController: UIViewController {
             xSourceIpField.text = ""
         }
     }
+    
+    
 }

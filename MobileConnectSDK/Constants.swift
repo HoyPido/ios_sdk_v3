@@ -170,4 +170,4 @@ extension MCErrorCode
     }
 }
 
-public var SDKVersion: String = "3.3.3"
+public var SDKVersion: String = "3.3.4"

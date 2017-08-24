@@ -2,7 +2,8 @@ import UIKit
 import MobileConnectSDK
 
 
-
+private var mncAndmccFirstCall: Bool = true
+private var msisdnSegmentFirstCall: Bool = true
 class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, RequestParametersIndianAppDeleagete {
     
     @IBOutlet weak var viewControllerLabel: UILabel!
@@ -68,8 +69,11 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
             mncLabel.isHidden = true
         } else if segmentedControll.selectedSegmentIndex == 1{
             msisdnLabel.isHidden = true
-            mncValueField.text = mncValue
-            mccValueTextField.text = mccValue
+            if (mncAndmccFirstCall) {
+                mncValueField.text = mncValue
+                mccValueTextField.text = mccValue
+                mncAndmccFirstCall = false
+            }
             phoneNumberLabel.isHidden = true
             msisdnTextField.isHidden = true
             mncLabel.isHidden = false
@@ -78,7 +82,11 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
             mccValueTextField.isHidden = false
         } else {
             msisdnLabel.isHidden = false
-            msisdnTextField.text = msisdn
+            if (msisdnSegmentFirstCall) {
+                msisdnTextField.text = msisdn
+                msisdnSegmentFirstCall = false
+            }
+            
             phoneNumberLabel.isHidden = false
             msisdnTextField.isHidden = false
             mncLabel.isHidden = true

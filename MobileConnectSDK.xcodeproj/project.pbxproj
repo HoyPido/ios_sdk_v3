@@ -1049,9 +1049,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DemoSwift/Pods-DemoSwift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS9.2/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Heimdall-iOS9.2/Heimdall.framework",
-				"${BUILT_PRODUCTS_DIR}/JSONModel-iOS9.2/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS10.0/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Heimdall-iOS10.0/Heimdall.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-iOS10.0/JSONModel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS9.0/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Heimdall-iOS9.0/Heimdall.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONModel-iOS9.0/JSONModel.framework",

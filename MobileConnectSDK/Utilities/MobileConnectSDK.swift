@@ -18,11 +18,11 @@ protocol MobileConnectSDKProtocol {
 
 ///Is used for supplying the Mobile Connect services with needed credentials/resources (such as clientKey, clientSecret, applicationEndpoint redirectURL and the delegate responsible for catching Mobile Connect responses)
 open class MobileConnectSDK: NSObject, MobileConnectSDKProtocol {
-    fileprivate static var clientKey : String!
-    fileprivate static var clientSecret : String!
-    fileprivate static var applicationEndpoint : String!
-    fileprivate static var redirectURL : URL!
-    fileprivate static var xRedirect : String!
+    fileprivate static var clientKey : String = ""
+    fileprivate static var clientSecret : String = ""
+    fileprivate static var applicationEndpoint : String = ""
+    fileprivate static var redirectURL : URL! = URL(string: "https://example.com")
+    fileprivate static var xRedirect : String = ""
     fileprivate static var delegate : MobileConnectManagerDelegate?
     
     // MARK: SDK setters

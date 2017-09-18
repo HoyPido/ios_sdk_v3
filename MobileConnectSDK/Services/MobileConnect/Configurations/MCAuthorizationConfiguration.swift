@@ -42,6 +42,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         
         if (authorizationScopes.count == 0) {
             stringValuedScopes = [MobileConnectAuthorization]
+        } else if (!authorizationScopes.contains(MobileConnectAuthorization)) {
+            stringValuedScopes.append(MobileConnectAuthorization)
         }
         
         super.init(clientKey: clientKey,
@@ -83,6 +85,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         
         if (authorizationScopes.count == 0) {
             stringValuedScopes = [MobileConnectAuthorization]
+        } else if (!authorizationScopes.contains(MobileConnectAuthorization)) {
+            stringValuedScopes.append(MobileConnectAuthorization)
         }
         
         super.init(clientKey: clientKey,

@@ -53,6 +53,8 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         scopes = authorizationScopes
         if (authorizationScopes.count == 0) {
             scopes = [MobileConnectAuthentication]
+        } else if (!authorizationScopes.contains(MobileConnectAuthentication)) {
+            scopes.append(MobileConnectAuthentication)
         }
         self.loginHint = loginHint
         self.config = config
@@ -87,6 +89,8 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         scopes = authorizationScopes
         if (authorizationScopes.count == 0) {
             scopes = [MobileConnectAuthentication]
+        } else if (!authorizationScopes.contains(MobileConnectAuthentication)) {
+            scopes.append(MobileConnectAuthentication)
         }
         self.config = config
         

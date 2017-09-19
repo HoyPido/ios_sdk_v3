@@ -10,7 +10,9 @@
 ## Dependency Libraries
 The library uses Alamofire and JSONModel libraries for rest service calls and deserialization. And you'll get them preconfigured if you follow the cocoa pods installation procedure described below.
 
-
+## Contact
+If you have any issues, including deployment issues, please contact us:
+ dev-support@mobileconnect.io 
 ## Configuration
 
 #### 1) You'll have to have CocoaPods installed. In case you already installed it please pass to step 2

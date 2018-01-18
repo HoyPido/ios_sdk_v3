@@ -15,5 +15,5 @@
 @property (nullable) NSString *scope;
 @property (nullable) NSString *expires_in;
 @property (nullable) NSString *refresh_token;
-
+@property (nullable) NSString *correlation_id;
 @end

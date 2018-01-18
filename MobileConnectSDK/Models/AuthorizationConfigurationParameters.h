@@ -17,7 +17,8 @@
 @property (nullable) NSString* response_mode;
 @property (nullable) NSString* claims;
 @property (nullable) NSString* max_age;
+@property (nullable) NSString* correlation_id;
 
-- (id)initWithPrompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims maxAge:(nullable NSString*)maxAge;
+- (id)initWithPrompt:(nullable NSString*)prompt uiLocale:(nullable NSString*)uiLocale idTokenHint:(nullable NSString*)idTokenHint loginHintToken:(nullable NSString*)loginHintToken responseMode:(nullable NSString*)responseMode claims:(nullable NSString*)claims maxAge:(nullable NSString*)maxAge correlationId:(nullable NSString*)correlationId;
 
 @end

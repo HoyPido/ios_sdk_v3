@@ -17,7 +17,7 @@ private let kSignatureComponentIndex : Int = 2
 {
     let tokenString : String
     
-    public init(tokenString : String) {
+    @objc public init(tokenString : String) {
         self.tokenString = tokenString
     }
     
@@ -27,7 +27,7 @@ private let kSignatureComponentIndex : Int = 2
         return deserializeNullableComponentData(decodedHeaderValue)
     }
     
-    open var decodedDictionary : [AnyHashable: Any]?
+    @objc open var decodedDictionary : [AnyHashable: Any]?
     {
         return deserializeNullableComponentData(decodedValue)
     }

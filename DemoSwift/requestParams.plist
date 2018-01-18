@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>clientID</key>
-	<string>73c2b8fc-8e18-419f-995a-019b8c35d7c9</string>
+	<string>93d47e50-a3c3-45bd-9627-ee8391de3fc3</string>
 	<key>clientSecret</key>
-	<string>d9fc908f-b63a-468b-a65e-280e1454a73b</string>
+	<string>7f09bb4a-ce91-426e-9cd6-ce5da5779173</string>
 	<key>msisdn</key>
 	<string>+447700900907</string>
 	<key>discoveryURL</key>
-	<string>https://discovery.integration.sandbox.mobileconnect.io/v2/discovery</string>
+	<string>https://discovery.sandbox.mobileconnect.io/v2/discovery</string>
 	<key>redirectURL</key>
 	<string>https://example.com</string>
 	<key>XRedirect</key>

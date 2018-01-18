@@ -23,5 +23,6 @@
 @property (nullable) NSString *nickname;
 @property (nullable) NSString *middle_name;
 @property (nullable) NSString *name;
+@property (nullable) NSString *correlation_id;
 
 @end

@@ -49,9 +49,9 @@ open class MCService: NSObject {
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    open func getTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
+    open func getTokenInController(_ controller : UIViewController, correlationId: Bool, completionHandler : @escaping MobileConnectControllerResponse)
     {
-        service.getAuthenticationTokenInController(controller, completionHandler: completionHandler)
+        service.getAuthenticationTokenInController(controller, correlationId: correlationId, completionHandler: completionHandler)
     }
     
     /**
@@ -59,8 +59,8 @@ open class MCService: NSObject {
      - Parameter controller: the controller in which the Mobile Connect should present the web view controller
      - Parameter completionHandler: the closure which will be called upon the method completition in order to pass the resultant Mobile Connect data.
      */
-    open func getAuthorizationTokenInController(_ controller : UIViewController, completionHandler : @escaping MobileConnectControllerResponse)
+    open func getAuthorizationTokenInController(_ controller : UIViewController, correlationId: Bool, completionHandler : @escaping MobileConnectControllerResponse)
     {
-        service.getAuthorizationTokenInController(controller, completionHandler: completionHandler)
+        service.getAuthorizationTokenInController(controller, correlationId: correlationId, completionHandler: completionHandler)
     }
 }

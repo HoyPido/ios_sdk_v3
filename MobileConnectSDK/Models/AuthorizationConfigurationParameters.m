@@ -11,7 +11,7 @@
 
 @implementation AuthorizationConfigurationParameters
 
--(id)initWithPrompt:(NSString *)prompt uiLocale:(NSString *)uiLocale idTokenHint:(NSString *)idTokenHint loginHintToken:(NSString *)loginHintToken responseMode:(NSString *)responseMode claims:(NSString *)claims maxAge:(nullable NSString*)maxAge {
+-(id)initWithPrompt:(NSString *)prompt uiLocale:(NSString *)uiLocale idTokenHint:(NSString *)idTokenHint loginHintToken:(NSString *)loginHintToken responseMode:(NSString *)responseMode claims:(NSString *)claims maxAge:(nullable NSString*)maxAge correlationId:(nullable NSString *)correlationId{
     self = [super init];
     if(self) {
         self.prompt = prompt;
@@ -21,6 +21,7 @@
         self.login_hint_token = loginHintToken;
         self.claims = claims;
         self.max_age = maxAge;
+        self.correlation_id = correlationId;
     }
     
     return self;

@@ -17,12 +17,13 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
     let assuranceLevel : MCLevelOfAssurance
     let metadata : MetadataModel?
     let subscriberId : String?
-    let scopes : [String]
+    var scopes : [String]
     var maxAge = 3600
     let nonce = UUID.randomUUID
     var config : AuthorizationConfigurationParameters?
     var loginHint : String? = nil
-   
+    var correlationId: String? = nil
+    
     /**
      This constructor may change with addition of new features in future versions.
      It is recommended to use the init with discovery response if possible.
@@ -41,17 +42,23 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                          metadata : MetadataModel?,
                          authorizationScopes : [String],
                          config : AuthorizationConfigurationParameters?,
-                         loginHint : String?)
+                         loginHint : String?,
+                         correlationId : String?)
     {
         self.authorizationURLString = authorizationURLString
         self.tokenURLString = tokenURLString
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
         self.metadata = metadata
-        scopes = authorizationScopes + [MobileConnectAuthentication]
+        scopes = authorizationScopes
+        if (authorizationScopes.count == 0) {
+            scopes = [MobileConnectAuthentication]
+        } else if (!authorizationScopes.contains(MobileConnectAuthentication)) {
+            scopes.append(MobileConnectAuthentication)
+        }
         self.loginHint = loginHint
         self.config = config
-        
+        self.correlationId = correlationId
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
     }
     
@@ -79,7 +86,12 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         self.assuranceLevel = assuranceLevel
         self.subscriberId = subscriberId
         self.metadata = metadata
-        scopes = authorizationScopes + [MobileConnectAuthentication]
+        scopes = authorizationScopes
+        if (authorizationScopes.count == 0) {
+            scopes = [MobileConnectAuthentication]
+        } else if (!authorizationScopes.contains(MobileConnectAuthentication)) {
+            scopes.append(MobileConnectAuthentication)
+        }
         self.config = config
         
         super.init(clientKey: clientKey, clientSecret: clientSecret, redirectURL: MobileConnectSDK.getRedirectURL())
@@ -99,6 +111,8 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
         
         let localMetadata : MetadataModel? = discoveryResponse.metadata
         
+        let localCorrelationId : String? = discoveryResponse.correlation_id
+        
         self.init(clientKey: localClientKey,
                   clientSecret: localClientSecret,
                   authorizationURLString: localAuthorizationURLString,
@@ -108,7 +122,8 @@ open class MobileConnectServiceConfiguration: BaseServiceConfiguration {
                   metadata: localMetadata,
                   authorizationScopes: authorizationScopes,
                   config: config,
-                  loginHint: loginHint)
+                  loginHint: loginHint,
+                  correlationId: localCorrelationId)
     }
     
     //login_hint_token

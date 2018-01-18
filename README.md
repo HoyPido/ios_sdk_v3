@@ -2,19 +2,17 @@
 
 ###### The library is written in swift with full support for Objective C code base.
 
-
 ## Requirements
 
 - iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode:
-  - Latest version, installed from Apple App Store;
-  - Upgrades are undesirable;
-  - If you have outdated Xcode version - delete, or install in a different directory and make sure you install latest version via App Store.
-  
+- Xcode 7.3+
+
 ## Dependency Libraries
 The library uses Alamofire and JSONModel libraries for rest service calls and deserialization. And you'll get them preconfigured if you follow the cocoa pods installation procedure described below.
 
-
+## Contact
+If you have any issues, including deployment issues, please contact us:
+ dev-support@mobileconnect.io 
 ## Configuration
 
 #### 1) You'll have to have CocoaPods installed. In case you already installed it please pass to step 2
@@ -33,7 +31,7 @@ The library uses Alamofire and JSONModel libraries for rest service calls and de
 
 ```
 use_frameworks!
-  pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios_sdk_v3', :branch => 'master’
+  pod 'MobileConnectSDK', :git => 'https://github.com/Dan-Andoni-BJSS/testsdk', :branch => ’master’
 ```
 
 
@@ -41,14 +39,16 @@ Ex: In my case I have the target of the application is named "Test2" and the pod
 
 ```
 # Uncomment this line to define a global platform for your project
-# platform :ios, '10.2'
+# platform :ios, '9.0'
 
 target 'Test2' do
-    use_frameworks!
-    pod 'JSONModel', '~> 1.7.0'
-    pod 'Alamofire', '~> 4.4'
-    pod 'Heimdall', '~> 1.1.3'
-    pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios_sdk_v3', :branch => 'release/3.3.0’
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+  use_frameworks!
+  pod 'MobileConnectSDK', :git => 'https://github.com/Mobile-Connect/ios-sdk-v2', :branch => ’master’
+
+
+  # Pods for Test2
+
 end
 ```
 
@@ -64,7 +64,7 @@ pod update
 
 ![Add the framework in your targets app Linked Frameworks and Libraries](https://cloud.githubusercontent.com/assets/19551956/16231365/d0c06eb4-37bd-11e6-80fa-eb6ce027aed9.png)
 
-Press the plus and in the list select the MobileConnectSDK.framework and then press add
+Press the pluss and in the list select the MobileConnectSDK.framework and then press add
 ![select the MobileConnectSDK.framework and then press add](https://cloud.githubusercontent.com/assets/19551956/16231442/2365a97c-37be-11e6-99e1-f3ca275a581b.png)
 
 As a result you'll have it added in the Linked Frameworks and Libraries section
@@ -88,7 +88,7 @@ As a result you'll have it added in the Linked Frameworks and Libraries section
 ```
 
 
-#### Objective C:
+### Objective C:
 
 At the beginning of the .m file where you intend to use the framework add 
 
@@ -96,21 +96,20 @@ At the beginning of the .m file where you intend to use the framework add
 @import MobileConnectSDK;
 ```
 
-#### Swift:
+### Swift
 In the .swift file you intend to use the framework just add
 
 ```
 import MobileConnectSDK;
 ```
 
-#### Before being able to use the library in code you'll have to provide the main developer information in your code (Redirect URI, Integration endpoint [aka application endpoint], Integration key [aka client key], Integration secret [aka client secret], x-Redirect Header) like below:
+#### Before being able to use the library in code you'll have to provide the main developer information in your code (Redirect URI, Integration endpoint [aka application endpoint], Integration key [aka client key], Integration secret: [aka client secret] ) like below:
 
 ```
-MobileConnectSDK.setClientKey(clientIdValue)
-MobileConnectSDK.setClientSecret(clientSecretValue)
-MobileConnectSDK.setApplicationEndpoint(discoveryURLValue)
-MobileConnectSDK.setRedirect(URL(string: redirectURLValue)!)
-MobileConnectSDK.setXRedirect("APP")
+[MobileConnectSDK setClientKey:kClientKey];
+[MobileConnectSDK setClientSecret:kClientSecret];
+[MobileConnectSDK setApplicationEndpoint:kApplicationEndpoint];
+[MobileConnectSDK setRedirect:[NSURL URLWithString:kRedirectURL]];
 ```
 
 And that's it!
@@ -128,32 +127,18 @@ And that's it!
 1) Make sure the delegate conforms to protocol MobileConnectManagerDelegate
 
 
-#### Objective-C:
 ```
 @interface ViewController ()<MobileConnectManagerDelegate>
 ```
 
-#### Swift 3:
-```
-class ViewController : MobileConnectManagerDelegate
-```
 2) Implement the MobileConnectManagerDelegate in that class
 
-#### Objective-C:
 ```
 - (void)mobileConnectWillStart;
 - (void)mobileConnectWillPresentWebController;
 - (void)mobileConnectWillDismissWebController;
 - (void)mobileConnectDidGetTokenResponse:(TokenResponseModel * _Nonnull)tokenResponse;
 - (void)mobileConnectFailedGettingTokenResponseWithError:(NSError * _Nonnull)error;
-```
-#### Swift 3:
-```
-func mobileConnectWillStart()
-func mobileConnectWillPresentWebController()
-func mobileConnectWillDismissWebController()
-func mobileConnectDidGetTokenResponse(tokenResponse : TokenResponseModel)
-func mobileConnectFailedGettingTokenResponseWithError(error : NSError)
 ```
 
 3) Drag and drop a view in your storyboards and set it's class to MobileConnectManagerButton
@@ -165,77 +150,44 @@ You'll receive the token response or the error in the above specified delegate m
 * By using MobileConnectManager
 
 1) Create the MobileConnectManager instance
-
-#### Objective-C:
 ```
 MobileConnectManager *manager = [MobileConnectManager new];
 ```
-
-#### Swift 3:
-```
-let mobileConnectManager : MobileConnectManager = MobileConnectManager()
-```
-
 2) Call one of the below methods.
 
 If you don't have the client's phone number then just call the below method in which you have to provide a controller from which the framework will be able to present it's own web controller. 
-
-#### Objective-C:
 ```
 [manager getTokenInPresenterController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
         
 }];
 ```
-#### Swift 3:
-```
-mobileConnectManager.getTokenInPresenterController(<controllerToPresentTheWebviewController>, clientIP: <yourDeviceIP>) { (userInfoResponse, tokenResponseModel, error) in
-
-     }
-```
 
 If you have the client's phone number just provide it as a parameter as shown in the code below. But you'll still have to provide a controller which the framework will use for presenting it's own web controller.
     
-#### Objective-C:    
+    
 ```
 [manager getTokenForPhoneNumber:@"<clientPhoneNumberInsertHere>" inPresenterController:self withCompletitionHandler:^(TokenResponseModel * _Nullable tokenResponseModel, NSError * _Nullable error) {
         
 }];
 ```
-#### Swift 3:
-```
-mobileConnectManager.getTokenForPhoneNumber("clientPhoneNumberHere", clientIP: <yourDeviceIP>, inPresenterController: <controllerThatWillPresentTheWebViewController>) { 
-(userInfoResponse, tokenResponseModel, error) in
 
-     }
-```
+
 ### In case you need to specifically use the Discovery service:
 
 Create an instance of the DiscoveryService or DSService in Objective C code and use on of the the below methods. 
-#### Objective-C:
+
 ```
 DSService *discovery = [DSService new];
-```
-#### Swift 3:
-```
-let discovery : DSService = DSService()
 ```
 
 ##### If you don't have client's phone number:
 
 Don't forget to dismiss the controller which you receive in the callback method otherwise the web view will remain on the screen.
 
-#### Objective-C:
 ```
 [discovery startOperatorDiscoveryInController:<theControllerFromWhichYouWishtToLaunchMobileConnectInsertHere> completitionHandler:^(BaseWebController * _Nullable controller, DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
         
 }];
-```
-
-#### Swift 3:
-```
-discovery.startOperatorDiscoveryInController(<controllerToPresentWebViewController>, clientIP: <yourDeviceIP>) { (controller, operatorsData, error) in
-
-}
 ```
 
 ##### If you have client's phone number:
@@ -250,48 +202,24 @@ You don't need to offer a view controller because there is no need for a web pag
 
 ##### If you have the mobile operators country code and network code:
 
-#### Objective-C:
 ```
 [discovery startOperatorDiscoveryWithCountryCode:@"<insertCountryCodeHere>" networkCode:@"<insertNetworkCodeHere>" completitionHandler:^(DiscoveryResponse * _Nullable operatorsData, NSError * _Nullable error) {
         
 }];
 ```
 
-#### Swift 3:
-```
-discovery.startOperatorDiscoveryWithCountryCode("<clientOperatorCountryCode>", networkCode: "<clientOperatorNetworkCode>") { (operatorsData, error) in
-
-      }
-```
-
 ### In case you need to specifically use the Mobile Connect service:
 
 Create an instance of the MobileConnectService or MCService in Objective C. You'll have to provide the operator data which you would tipically get from the DiscoveryService class
 
-#### Objective-C
 ```
 MCService *mobileConnectService = [[MCService alloc] initWithClientId:@"<clientIdFromDiscoveryServiceGoesHere>" authorizationURL:@"<authorizationURLFromDiscoveryGoesHere>" tokenURL:@"<tokenURLFromDiscoveryGoesHere>"];
 ```
 
-#### Swift 3:
-```
-let service : MCService = MCService(configuration: configuration)
-```
-
 After creating the MobileConnect or MCService instance you can get the token by providing a subcriberId if you have it from the Discovery stage or just provide nil for subscriber id. You'll also have to offer a view controller which will be used by the framework to present the web view. Don't forget to dismiss the controller which you receive in the callback method otherwise the web view will remain on the screen.
 
-#### Objective-C
 ```
 [mobileConnectService getTokenInController:self subscriberId:@"<inCaseYouReceivedASubscriberIDFromDiscoveryIfNotLeaveNil>" completitionHandler:^(BaseWebController * _Nullable controller, TokenModel * _Nullable tokenModel, NSError * _Nullable error) {
         
 }];
 ```
-
-#### Swift 3:
-```
-service.getTokenInController(self, completionHandler: { (controller, tokenModel, error) in
-                
-     })
-```
-
-## <p align="center">more information on [integration portal](https://integration.developer.mobileconnect.io)</p>

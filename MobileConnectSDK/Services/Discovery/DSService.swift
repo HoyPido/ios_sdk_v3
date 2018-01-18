@@ -36,9 +36,9 @@ open class DSService: NSObject {
 
     // MARK: Discovery service with no client data
     ///Gets operator data by showing a webview which will request data from client
-    open func startOperatorDiscoveryInController(_ controller : UIViewController, clientIP: String, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryResponseBlock)
+    open func startOperatorDiscoveryInController(_ controller : UIViewController, clientIP: String, shouldProvideMetadata : Bool = true, correlationId: Bool? = false, completionHandler : @escaping DiscoveryResponseBlock)
     {
-        service.startOperatorDiscoveryInController(controller, clientIP: clientIP, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
+        service.startOperatorDiscoveryInController(controller, clientIP: clientIP, shouldProvideMetadata: shouldProvideMetadata, correlationId: correlationId, completionHandler: completionHandler)
     }
     
     // MARK: Discovery service with client Country Code and Mobile Network Code
@@ -50,9 +50,9 @@ open class DSService: NSObject {
     
     // MARK: Discovery service with phone number
     //Gets operator data by using client's phone number. It will return a subscriber_id.
-    open func startOperatorDiscoveryForPhoneNumber(_ phoneNumber : String, clientIP : String, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryDataResponse)
+    open func startOperatorDiscoveryForPhoneNumber(_ phoneNumber : String, clientIP : String, shouldProvideMetadata : Bool = true, correlationId: Bool? = false, completionHandler : @escaping DiscoveryDataResponse)
     {
-        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, clientIP: clientIP, shouldProvideMetadata: shouldProvideMetadata, completionHandler: completionHandler)
+        service.startOperatorDiscoveryForPhoneNumber(phoneNumber, clientIP: clientIP, shouldProvideMetadata: shouldProvideMetadata, correlationId: correlationId, completionHandler: completionHandler)
     }
     
     // MARK: Discovery service without call

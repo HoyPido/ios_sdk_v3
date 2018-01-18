@@ -28,7 +28,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          context : String,
          bindingMessage : String?,
          config : AuthorizationConfigurationParameters?,
-         loginHint : String?)
+         loginHint : String?,
+         correlationId: String?)
     {
         NSException.checkClientName(clientName)
         NSException.checkContext(context)
@@ -36,8 +37,14 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.bindingMessage = bindingMessage
         self.clientName = clientName
         self.context = context
+
+        var stringValuedScopes : [String] = authorizationScopes
         
-        let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
+        if (authorizationScopes.count == 0) {
+            stringValuedScopes = [MobileConnectAuthorization]
+        } else if (!authorizationScopes.contains(MobileConnectAuthorization)) {
+            stringValuedScopes.append(MobileConnectAuthorization)
+        }
         
         super.init(clientKey: clientKey,
                    clientSecret: clientSecret,
@@ -48,7 +55,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                    metadata: metadata,
                    authorizationScopes: stringValuedScopes,
                    config: config,
-                   loginHint: loginHint)
+                   loginHint: loginHint,
+                   correlationId: correlationId)
     }
     
     
@@ -73,7 +81,13 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         self.clientName = clientName
         self.context = context
         
-        let stringValuedScopes : [String] = authorizationScopes + [MobileConnectAuthorization]
+        var stringValuedScopes : [String] = authorizationScopes
+        
+        if (authorizationScopes.count == 0) {
+            stringValuedScopes = [MobileConnectAuthorization]
+        } else if (!authorizationScopes.contains(MobileConnectAuthorization)) {
+            stringValuedScopes.append(MobileConnectAuthorization)
+        }
         
         super.init(clientKey: clientKey,
                    clientSecret: clientSecret,
@@ -126,6 +140,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
         
         let localMetadata : MetadataModel? = discoveryResponse.metadata
         
+        let localCorrelationId : String? = discoveryResponse.correlation_id ?? ""
+        
         self.init(clientKey: localClientKey,
                   clientSecret: localClientSecret,
                   authorizationURLString: localAuthorizationURLString,
@@ -138,7 +154,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   context : context,
                   bindingMessage: bindingMessage,
                   config: config,
-                  loginHint: loginHint)
+                  loginHint: loginHint,
+                  correlationId: localCorrelationId)
     }
     
     //login_hint_token constructor

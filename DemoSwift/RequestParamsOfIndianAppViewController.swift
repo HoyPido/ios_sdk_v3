@@ -1,17 +1,16 @@
 import UIKit
 
-protocol RequestParametersDeleagete {
-    func sendRequestParametersData(clientID: String, clientSecret: String, discoveryURL: String, redirectURL: String, xSourceIP: String, xRedirect: Bool)
+protocol RequestParametersIndianAppDeleagete {
+    func sendRequestIndianParametersData(clientID: String, clientSecret: String, discoveryURL: String, redirectURL: String, xRedirect: Bool)
 }
-
-class RequestParametersViewController: UIViewController {
-
+private var IndianParametersFirstCall: Bool = true
+class RequestParamsOfIndianAppViewController: UIViewController {
+    
     @IBOutlet weak var clientIDField: UITextField!
     @IBOutlet weak var clientSecretField: UITextField!
     @IBOutlet weak var discoveryURLField: UITextField!
     @IBOutlet weak var redirectURLField: UITextField!
-    
-    @IBOutlet weak var popUpVIew: UIView!
+    @IBOutlet weak var popUpView: UIView!
     
     @IBOutlet weak var xRedirectState: UISwitch!
     
@@ -20,25 +19,24 @@ class RequestParametersViewController: UIViewController {
     var xRedirectValue = Bool()
     var clientSecretValue = String()
     var discoveryURLValue = String()
-    var sourceIPValue = String()
-    
-    var delegateRequestParameters: RequestParametersDeleagete? = nil
+    var mcc = String()
+    var mnc = String()
+    var delegateRequestParameters: RequestParametersIndianAppDeleagete? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        popUpView.layer.cornerRadius = 10
+        popUpView.layer.masksToBounds = true
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-
-        popUpVIew.layer.cornerRadius = 10
-        popUpVIew.layer.masksToBounds = true
         clientIDField.text = clientId
         clientSecretField.text = clientSecretValue
         discoveryURLField.text = discoveryURLValue
         redirectURLField.text = redirectURLValue
-        xRedirectState.isOn = xRedirectValue
     }
     
-    @objc func dismissKeyboard() {
+    func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -49,9 +47,8 @@ class RequestParametersViewController: UIViewController {
         redirectURLValue = redirectURLField.text!
         xRedirectValue = xRedirectState.isOn
         if delegateRequestParameters != nil {
-            delegateRequestParameters?.sendRequestParametersData(clientID: clientId, clientSecret: clientSecretValue, discoveryURL: discoveryURLValue, redirectURL: redirectURLValue, xSourceIP: sourceIPValue, xRedirect: xRedirectValue)
+            delegateRequestParameters?.sendRequestIndianParametersData(clientID: clientId, clientSecret: clientSecretValue, discoveryURL: discoveryURLValue, redirectURL: redirectURLValue, xRedirect: xRedirectValue)
         }
         dismiss(animated: true, completion: nil)
     }
-    
 }

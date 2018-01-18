@@ -81,6 +81,10 @@ private let kKeyAlgorithmNotSupported : String = "Key Algorithm is Not Supported
 private let kInvalidKey : String = "Invalid key"
 private let kInvalidRefreshTokenError : String = "Invalid refresh token"
 
+// MARK: UUID validation 
+private let kDifferentUUID : String = "UUID is different"
+private let kEmptyUUID : String = "UUID is empty"
+
 class Localizator: NSObject {
     
     class var invalidAlgorithm : String
@@ -332,6 +336,14 @@ class Localizator: NSObject {
     }
     
     class var refreshToken : String {
+        return localized(kInvalidRefreshTokenError)
+    }
+    
+    class var differentUUID : String {
+        return localized(kInvalidRefreshTokenError)
+    }
+    
+    class var emptyUUID : String {
         return localized(kInvalidRefreshTokenError)
     }
   

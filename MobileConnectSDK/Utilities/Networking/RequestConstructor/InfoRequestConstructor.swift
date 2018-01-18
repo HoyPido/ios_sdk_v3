@@ -22,7 +22,7 @@ class InfoRequestConstructor: NSObject {
   }
   
   func generateInfoRequest(_ withURL: String) -> Request {
-
+    
     return request(withURL, method: .get, parameters: [:], encoding: URLEncoding.methodDependent, headers: headers)
   }
   

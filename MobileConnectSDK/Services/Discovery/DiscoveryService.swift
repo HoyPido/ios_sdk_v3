@@ -59,9 +59,9 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
      - Parameter shouldProvideMetadata: Setting this flag to false, will disable updating the operators data with metadata information.
      - Parameter completionHandler: This is the closure in which the respone of the function will be sent
      */
-    func startOperatorDiscoveryInController(_ controller : UIViewController, clientIP: String?, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryResponseBlock)
+    func startOperatorDiscoveryInController(_ controller : UIViewController, clientIP: String?, shouldProvideMetadata : Bool = true, correlationId: Bool? = false, completionHandler : @escaping DiscoveryResponseBlock)
     {
-        startServiceInController(controller, withRequest: self.requestConstructor.requestNoOperatorDataRequest(clientIP), completionHandler: getMetadataWithDiscoveryControllerResponse(shouldProvideMetadata, handler: completionHandler))
+        startServiceInController(controller, withRequest: self.requestConstructor.requestNoOperatorDataRequest(clientIP, correlationId: correlationId), completionHandler: getMetadataWithDiscoveryControllerResponse(shouldProvideMetadata, handler: completionHandler))
     }
     
     override func didReceiveResponseFromController(_ controller: BaseWebController?, withRedirectModel redirectModel: OperatorDataRedirectModel?, error: NSError?)
@@ -85,9 +85,9 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
      - Parameter completionHandler: This is the closure in which the respone of the function will be sent
      */
 
-    func startOperatorDiscoveryWithCountryCode(_ countryCode : String, networkCode : String, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryDataResponse)
+    func startOperatorDiscoveryWithCountryCode(_ countryCode : String, networkCode : String, shouldProvideMetadata : Bool = true, correlationId: Bool? = false, completionHandler : @escaping DiscoveryDataResponse)
     {
-        processRequest(requestConstructor.requestWithCountryCode(countryCode, networkCode: networkCode), withParameters: [(countryCode, MCErrorCode.nilCountryCode ), (networkCode, MCErrorCode.nilNetworkCode)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
+        processRequest(requestConstructor.requestWithCountryCode(countryCode, networkCode: networkCode, correlationId: correlationId), withParameters: [(countryCode, MCErrorCode.nilCountryCode ), (networkCode, MCErrorCode.nilNetworkCode)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
     }
     
     // MARK: Discovery service with phone number
@@ -100,9 +100,9 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
      - Parameter shouldProvideMetadata: Setting this flag to false, will disable updating the operators data with metadata information.
      - Parameter completionHandler: This is the closure in which the respone of the function will be sent
      */
-    func startOperatorDiscoveryForPhoneNumber(_ phoneNumber : String, clientIP : String? = "", shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryDataResponse)
+    func startOperatorDiscoveryForPhoneNumber(_ phoneNumber : String, clientIP : String? = "", shouldProvideMetadata : Bool = true, correlationId : Bool? = false, completionHandler : @escaping DiscoveryDataResponse)
     {
-        processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber, clientIP: clientIP), withParameters: [(phoneNumber, MCErrorCode.nilPhoneNumber)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
+        processRequest(requestConstructor.requestWithPhoneNumber(phoneNumber, clientIP: clientIP, correlationId: correlationId), withParameters: [(phoneNumber, MCErrorCode.nilPhoneNumber)], inHandler: getMetadataWithDiscoveryHandler(shouldProvideMetadata, handler: completionHandler))
     }
     
     // MARK: Metadata
@@ -159,7 +159,7 @@ class DiscoveryService: BaseMobileConnectService<DiscoveryResponse, OperatorData
     func startOperatorWithoutDiscoveryCall(_ controller : UIViewController, shouldProvideMetadata : Bool = true, completionHandler : @escaping DiscoveryResponseBlock, discoveryResponse: DiscoveryResponse)
     {
         
-        startServiceInControllerWithoutCall(controller, withRequest: self.requestConstructor.noOperatorDataRequest, completionHandler: getMetadataWithDiscoveryHandlerWithoutCall(shouldProvideMetadata, handler: completionHandler, discoveryResponse: discoveryResponse))
+        startServiceInControllerWithoutCall(controller, withRequest: self.requestConstructor.noOperatorDataRequest(), completionHandler: getMetadataWithDiscoveryHandlerWithoutCall(shouldProvideMetadata, handler: completionHandler, discoveryResponse: discoveryResponse))
     }
 
     

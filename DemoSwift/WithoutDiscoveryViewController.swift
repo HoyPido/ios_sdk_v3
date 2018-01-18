@@ -43,10 +43,13 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
     }
     
     func commonInit() {
-        setEndpointsFromFile()
-        setRequestParametersValues()
-        setValues()
-        self.viewControllerNameLabel.text = "Example App"
+        if (withoutDiscoveryFirstCall) {
+            setEndpointsFromFile()
+            setRequestParametersValues()
+            setValues()
+            withoutDiscoveryFirstCall = false
+        }
+        self.viewControllerNameLabel.text = "Without Discovery app"
         let endpointsLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(WithoutDiscoveryViewController.longPressEndpoints))
         endPointButton.addGestureRecognizer(endpointsLongGesture)
         let requestParametersLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(WithoutDiscoveryViewController.longPressRequestParameters))
@@ -134,7 +137,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
         })
     }
     
-    func alertControllerBackgroundTapped()
+    @objc func alertControllerBackgroundTapped()
     {
         self.dismiss(animated: true, completion: nil)
     }
@@ -153,7 +156,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
         discoveryResponseLinks.setUserInfoLink(endpoints?["userInfoEndpoint"])
     }
     
-    func longPressEndpoints() {
+    @objc func longPressEndpoints() {
         let alert = UIAlertController(title: "Endpoints", message: "When you use \'with providerMetadata\' method you need only metadata URL", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
@@ -161,7 +164,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
         })
     }
     
-    func longPressRequestParameters() {
+    @objc func longPressRequestParameters() {
         let alert = UIAlertController(title: "Request parameters", message: "Adds \'subscriber id\' to your request, used for headless auth(optional parameter)", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>mcc</key>
+	<string>405</string>
+	<key>mnc</key>
+	<string>755</string>
+	<key>clientID</key>
+	<string>88ae3b5d-18f1-4fc5-a97e-a6c5eae9cd5a</string>
+	<key>clientSecret</key>
+	<string>5d6c7979-7851-4b45-a81a-1acb12ba334d</string>
+	<key>msisdn</key>
+	<string>8291137981</string>
+	<key>discoveryURL</key>
+	<string>https://india.discover.mobileconnect.io/gsma/v2/discovery</string>
+	<key>redirectURL</key>
+	<string>http://localhost:8080/MCIndiaDummy/callback</string>
+	<key>XRedirect</key>
+	<false/>
+</dict>
+</plist>

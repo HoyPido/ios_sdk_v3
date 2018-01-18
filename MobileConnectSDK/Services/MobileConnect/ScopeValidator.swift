@@ -53,6 +53,10 @@ class ScopeValidator: NSObject {
     
     var metadata : MetadataModel?
     
+    let openidScope = "openid"
+    let authorizationScope = "mc_authz"
+    let authenticationScope = "mc_authn"
+    
     init(metadata : MetadataModel?)
     {
         self.metadata = metadata
@@ -102,8 +106,51 @@ class ScopeValidator: NSObject {
         return metadata?.supportedVersionsPairs.filter({productScopes.contains($0.key)}) ?? []
     }
     
+    public var validatedScopeValue = ""
+    public var flag = true
+    
     func validatedScopes(_ scopes : [String]) -> String
     {
-        return scopes.map({scopeForStringValue($0)}).joined(separator: " ")
+        let temporaryScopeValue = scopes.map({scopeForStringValue($0)}).joined(separator: " ")
+        isDuplicatedScope(temporaryScopeValue)
+        checkScopePosition(validatedScopeValue)
+        print(validatedScopeValue)
+        return validatedScopeValue
+    }
+
+    func isDuplicatedScope(_ scopeValues: String) {
+        let array = scopeValues.components(separatedBy: " ")
+        for scope in array {
+            let arrayofscopes : [String] = validatedScopeValue.components(separatedBy: " ")
+            for arr in arrayofscopes {
+                if(arr.contains(scope)) {
+                    flag = false
+                    break
+                } else {
+                    flag = true
+                }
+            }
+            if (flag == true) {
+                if validatedScopeValue.count == 0 {
+                   validatedScopeValue += scope
+                } else {
+                    validatedScopeValue += " " + scope
+                }
+            }
+        }
+    }
+    
+    func checkScopePosition(_ scopeValues: String) {
+        var scopeArray = scopeValues.components(separatedBy: " ")
+        for (index, element) in scopeArray.enumerated() {
+            if (element.contains(openidScope)) {
+                scopeArray.remove(at: index)
+                scopeArray.insert(element, at: 0)
+            } else if (element.contains(authorizationScope) || element.contains(authenticationScope)) {
+                scopeArray.remove(at: index)
+                scopeArray.insert(element, at: 1)
+            }
+        }
+        validatedScopeValue = scopeArray.joined(separator: " ")
     }
 }

@@ -46,6 +46,7 @@ class BaseMobileConnectService<ResponseModel : MCModel, RedirectModel : MCModel>
     
     // MARK: Web view additional methods
     func presentWebControllerWithRequest(_ request : URLRequest?, inController controller : UIViewController, errorHandler : (_ error : NSError) -> Void) {
+        print(request)
         guard let webController = webController else {
             errorHandler(MCErrorCode.webControllerNil.error)
             return

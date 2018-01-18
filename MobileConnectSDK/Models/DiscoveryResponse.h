@@ -14,6 +14,7 @@
 @interface DiscoveryResponse : MCModel
 
 @property (nullable) OperatorDataResponse *response;
+@property (nullable) NSString *correlation_id;
 @property (nullable) NSString *subscriber_id;
 @property (nullable) NSNumber *ttl;
 @property (nullable, readonly) OperatorIdModel *linksInformation;

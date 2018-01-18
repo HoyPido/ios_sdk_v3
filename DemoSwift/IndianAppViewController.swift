@@ -2,24 +2,34 @@ import UIKit
 import MobileConnectSDK
 
 
-
-class DemoAppViewController : UIViewController, RequestParametersDeleagete, RequestOptionsDelegate {
+private var mncAndmccFirstCall: Bool = true
+private var msisdnSegmentFirstCall: Bool = true
+class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, RequestParametersIndianAppDeleagete {
     
-    @IBOutlet weak var segmentedControll : UISegmentedControl!
-    @IBOutlet weak var getTokenButton : UIButton!
-    @IBOutlet weak var phoneNumberTextField : UITextField!
-    @IBOutlet weak var viewControllerNameLabel : UILabel!
-    @IBOutlet weak var controllDistance : NSLayoutConstraint!
-    @IBOutlet weak var identityState: UISegmentedControl!
-    @IBOutlet weak var requstParametersButton: UIButton!
+    @IBOutlet weak var viewControllerLabel: UILabel!
+    @IBOutlet weak var segmentedControll: UISegmentedControl!
+    @IBOutlet weak var msisdnTextField: UITextField!
+    @IBOutlet weak var mncValueField: UITextField!
+    @IBOutlet weak var mccValueTextField: UITextField!
+    @IBOutlet weak var requestParametersButton: UIButton!
     @IBOutlet weak var requestOptionsButton: UIButton!
+    @IBOutlet weak var msisdnLabel: UILabel!
+    @IBOutlet weak var getTokenButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func closePopUp(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     var isCalledDiscoveryWithPhoneNumber : Bool = false
     var currentTokenResponse : TokenResponseModel?
     var currentResponse : AttributeResponseModel?
     var currentError : NSError?
     var identity = false
-    var scopes: [ProductType] = []
+    var scopes: [ProductType] = [ProductType.indianOpenID]
     
     // MARK: Request options
     var scopesSetDemoApp = [ProductType: Bool]()
@@ -31,20 +41,71 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     var msisdn: String = ""
     var clientSecretValue: String = ""
     var discoveryURLValue: String = ""
-    var sourceIP: String = ""
+    var mccValue: String = ""
+    var mncValue: String = ""
     
     var userInfoResponse: UserInfoResponse? = nil
     
-    func sendRequestParametersData(clientID: String, clientSecret: String, discoveryURL: String, redirectURL: String, xSourceIP: String, xRedirect: Bool) {
+    func sendRequestIndianParametersData(clientID: String, clientSecret: String, discoveryURL: String, redirectURL: String, xRedirect: Bool) {
         clientIdValue = clientID
         clientSecretValue = clientSecret
         discoveryURLValue = discoveryURL
         redirectURLValue = redirectURL
-        sourceIP = xSourceIP
         xRedirectValue = xRedirect
     }
     
-    func sendRequestOptionsData(_ scopesS: [ProductType: Bool]) {
+    @IBOutlet weak var mncLabel: UILabel!
+    @IBOutlet weak var mccLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    
+    @IBAction func segmentControllChanged(_ sender: Any) {
+        if segmentedControll.selectedSegmentIndex == 0 {
+            msisdnLabel.isHidden = true
+            phoneNumberLabel.isHidden = true
+            msisdnTextField.isHidden = true
+            mncValueField.isHidden = true
+            mccValueTextField.isHidden = true
+            mccLabel.isHidden = true
+            mncLabel.isHidden = true
+        } else if segmentedControll.selectedSegmentIndex == 1{
+            msisdnLabel.isHidden = true
+            if (mncAndmccFirstCall) {
+                mncValueField.text = mncValue
+                mccValueTextField.text = mccValue
+                mncAndmccFirstCall = false
+            }
+            phoneNumberLabel.isHidden = true
+            msisdnTextField.isHidden = true
+            mncLabel.isHidden = false
+            mncValueField.isHidden = false
+            mccLabel.isHidden = false
+            mccValueTextField.isHidden = false
+        } else {
+            msisdnLabel.isHidden = false
+            if (msisdnSegmentFirstCall) {
+                msisdnTextField.text = msisdn
+                msisdnSegmentFirstCall = false
+            }
+            
+            phoneNumberLabel.isHidden = false
+            msisdnTextField.isHidden = false
+            mncLabel.isHidden = true
+            mncValueField.isHidden = true
+            mccLabel.isHidden = true
+            mccValueTextField.isHidden = true
+        }
+        
+    }
+    
+    @IBAction func alerViewDisplay(_ sender: Any) {
+        let alert = UIAlertController(title: "Indian App", message: "Example application for Indian operators", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+    }
+    
+    func sendRequestIndianOptionsData(_ scopesS: [ProductType: Bool]) {
         scopesSetDemoApp = scopesS
     }
     
@@ -60,11 +121,8 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DemoAppViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(IndianAppViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        if isCalledDiscoveryWithPhoneNumber{
-            self.phoneNumberTextField.becomeFirstResponder()
-        }
     }
     
     @objc func dismissKeyboard() {
@@ -72,68 +130,43 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     }
     
     func commonInit() {
-        self.viewControllerNameLabel.text = "Demo App"
-        if (demoAppFirstCall) {
+        
+        self.viewControllerLabel.text = "Indian app"
+        if (indianApplicationFirstCall) {
             setRequestParametersValues()
-            demoAppFirstCall = false
+            indianApplicationFirstCall = false
         }
-        let requestParametersLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(DemoAppViewController.longPressRequestParameters))
-        let requestOptionsLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(DemoAppViewController.longPressRequestOptions))
-        requstParametersButton.addGestureRecognizer(requestParametersLongGesture)
+        
+        let requestParametersLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(IndianAppViewController.longPressRequestParameters))
+        let requestOptionsLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(IndianAppViewController.longPressRequestOptions))
+        requestParametersButton.addGestureRecognizer(requestParametersLongGesture)
         requestOptionsButton.addGestureRecognizer(requestOptionsLongGesture)
-        scopes = []
-        phoneNumberTextField.text = msisdn
-        requstParametersButton.layer.cornerRadius = 5
         requestOptionsButton.layer.cornerRadius = 5
+        requestParametersButton.layer.cornerRadius = 5
         getTokenButton.layer.cornerRadius = 5
         getTokenButton.layer.borderWidth = 1
         getTokenButton.layer.borderColor = UIColor.black.cgColor
     }
     
-    @IBAction func getToken() {
-        scopes = []
-        setScopes()
+    @IBAction func getToken(_ sender: Any) {
+        scopes = [ProductType.indianOpenID]
         setParameters()
+        setScopes()
         let manager : MobileConnectManager = MobileConnectManager()
-        if identityState.selectedSegmentIndex == 0 {
-            if (scopes.contains(ProductType.identitySignUp) || scopes.contains(ProductType.identityPhoneNumber) || scopes.contains(ProductType.identityNationalID)) {
-                identity = true
-                if isCalledDiscoveryWithPhoneNumber {
-                    manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
-                } else {
-                    manager.getAttributeServiceResponse(self, clientIP: sourceIP, context: "MC", scopes: scopes, bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
-                }
-            } else {
-                if isCalledDiscoveryWithPhoneNumber  {
-                    manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC",completionHandler: launchTokenViewerWithTokenResponseModel)
-                } else {
-                    manager.getAuthorizationTokenInPresenterController(self, clientIP: sourceIP, withContext: "MC", withScopes: scopes, bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
-                }
-            }
-        } else {
-            if isCalledDiscoveryWithPhoneNumber {
-                manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
-            } else {
-                manager.getTokenInPresenterController(self, clientIP: sourceIP, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
-            }
-        }
-    }
-    
-    @IBAction func segmentedControllTapped(_ segmentedControll : UISegmentedControl) {
+        //none
         if segmentedControll.selectedSegmentIndex == 0 {
-            UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-    
-                self.phoneNumberTextField.isHidden = true
-            }, completion: nil)
+            manager.getAuthorizationTokenInPresenterController(self, clientIP: "", withScopes: scopes, completionHandler: launchTokenViewerWithTokenResponseModel)
+            //mcc_mnc
+        } else if segmentedControll.selectedSegmentIndex == 1{
+            print(scopes)
+            manager.getAuthorizationTokenForMCCAndMNC(mccValueTextField.text!, mnc: mncValueField.text!, self, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
             
-            isCalledDiscoveryWithPhoneNumber = false
+            //with msisdn
         } else {
-            UIView.transition(with: self.phoneNumberTextField, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-                self.phoneNumberTextField.isHidden = false
-            }, completion: nil)
-            
-            isCalledDiscoveryWithPhoneNumber = true
+            print(scopes)
+            manager.getAuthorizationTokenForPhoneNumber("+91" + msisdnTextField.text! , clientIP: "", inPresenterController: self, withScopes: scopes, completionHandler: launchTokenViewerWithTokenResponseModel)
         }
+
     }
     
     @IBAction func tapGestureAction() {
@@ -148,26 +181,28 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
         currentError = error
         self.performSegue(withIdentifier: "showResult", sender: nil)
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // MARK: identity request parameters button
-        if segue.identifier == "requestParameters" {
-            let sending: RequestParametersViewController = segue.destination as! RequestParametersViewController
+        if segue.identifier == "requestIndianParameters" {
+            let sending: RequestParamsOfIndianAppViewController = segue.destination as! RequestParamsOfIndianAppViewController
             sending.delegateRequestParameters = self
             sending.clientId = clientIdValue
             sending.clientSecretValue = clientSecretValue
             sending.discoveryURLValue = discoveryURLValue
             sending.redirectURLValue = redirectURLValue
+            sending.mcc = mccValue
+            sending.mnc = mncValue
         }
         
         // MARK: identity request options button
-        if segue.identifier == "requestOptions" {
-            let sending: RequestOptionsViewController = segue.destination as! RequestOptionsViewController
+        if segue.identifier == "requestIndianOptions" {
+            let sending: RequestOptionsOfIndianAppViewController = segue.destination as! RequestOptionsOfIndianAppViewController
             sending.delegate = self
             sending.scopesSet = scopesSetDemoApp
         }
-    
+        
         if identity == true {
             if let controller = segue.destination as? ResultViewController {
                 var model : [String : String] = [:]
@@ -256,7 +291,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
         let alert = UIAlertController(title: "Demo app", message: "Provides 1FA, T2FA and PKI using the mobile phone as the authentication device.The Mobile Connect Authorisation product category provides two products: Simple and Two-factor. The user is authenticated as part of the flow to ensure that they have the right to provide the authorization", preferredStyle: .alert)
         self.present(alert, animated: true, completion:{
             alert.view.superview?.isUserInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (self.alertControllerBackgroundTapped)))
         })
     }
     
@@ -266,11 +301,31 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     }
     
     func setScopes(){
-        for key in scopesSetDemoApp.keys {
-            if scopesSetDemoApp[key] == true {
-                scopes.append(key)
+        if (scopesSetDemoApp.count > 0) {
+            for key in scopesSetDemoApp.keys {
+                if scopesSetDemoApp[key] == true {
+                    scopes.append(key)
+                }
             }
         }
+    }
+    
+    // MARK: request parameters button dialog
+    @objc func longPressRequestParameters() {
+        let alert = UIAlertController(title: "Request parameters", message: "You can change your default values from application.", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+    }
+    
+    // MARK: request options button dialog
+    @objc func longPressRequestOptions() {
+        let alert = UIAlertController(title: "Request options", message: "Use it if you want get more info", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
     }
     
     // MARK: parameters for request
@@ -287,27 +342,9 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
         }
     }
     
-    // MARK: request parameters button dialog
-    @objc func longPressRequestParameters() {
-        let alert = UIAlertController(title: "Request parameters", message: "You can change your default values from application.\n", preferredStyle: .alert)
-        self.present(alert, animated: true, completion:{
-            alert.view.superview?.isUserInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-        })
-    }
-    
-    // MARK: request options button dialog
-    @objc func longPressRequestOptions() {
-        let alert = UIAlertController(title: "Request options", message: "Use it if you want get more info", preferredStyle: .alert)
-        self.present(alert, animated: true, completion:{
-            alert.view.superview?.isUserInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-        })
-    }
-    
     // MARK: Request parameters from configure file
     func setRequestParametersValues() {
-        let pathToConfigutationFile = Bundle.main.path(forResource: "requestParams", ofType: "plist")
+        let pathToConfigutationFile = Bundle.main.path(forResource: "requestParamsIndianApp", ofType: "plist")
         let itemsDictionaryRoot = NSDictionary(contentsOfFile: pathToConfigutationFile!)
         clientIdValue = (itemsDictionaryRoot?.value(forKey: "clientID") as? String)!
         msisdn = (itemsDictionaryRoot?.value(forKey: "msisdn") as? String)!
@@ -315,6 +352,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
         discoveryURLValue = (itemsDictionaryRoot?.value(forKey: "discoveryURL") as? String)!
         redirectURLValue = (itemsDictionaryRoot?.value(forKey: "redirectURL") as? String)!
         xRedirectValue = ((itemsDictionaryRoot?.value(forKey: "XRedirect")) != nil)
+        mccValue = ((itemsDictionaryRoot?.value(forKey: "mcc")) as? String)!
+        mncValue = ((itemsDictionaryRoot?.value(forKey: "mnc")) as? String)!
     }
-    
 }

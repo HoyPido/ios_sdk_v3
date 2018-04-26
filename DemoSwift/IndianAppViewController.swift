@@ -9,6 +9,7 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
     @IBOutlet weak var viewControllerLabel: UILabel!
     @IBOutlet weak var segmentedControll: UISegmentedControl!
     @IBOutlet weak var msisdnTextField: UITextField!
+    @IBOutlet weak var clientNameTextField: UITextField!
     @IBOutlet weak var mncValueField: UITextField!
     @IBOutlet weak var mccValueTextField: UITextField!
     @IBOutlet weak var requestParametersButton: UIButton!
@@ -39,6 +40,7 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
     var redirectURLValue: String = ""
     var xRedirectValue: Bool = false
     var msisdn: String = ""
+    var clientName: String = ""
     var clientSecretValue: String = ""
     var discoveryURLValue: String = ""
     var mccValue: String = ""
@@ -57,6 +59,7 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
     @IBOutlet weak var mncLabel: UILabel!
     @IBOutlet weak var mccLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var clientNameLabel: UILabel!
     
     @IBAction func segmentControllChanged(_ sender: Any) {
         if segmentedControll.selectedSegmentIndex == 0 {
@@ -155,16 +158,16 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
         let manager : MobileConnectManager = MobileConnectManager()
         //none
         if segmentedControll.selectedSegmentIndex == 0 {
-            manager.getAuthorizationTokenInPresenterController(self, clientIP: "", withScopes: scopes, completionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getAuthorizationTokenInPresenterController(self, clientIP: "", clientName: clientNameTextField.text!, withScopes: scopes, completionHandler: launchTokenViewerWithTokenResponseModel)
             //mcc_mnc
         } else if segmentedControll.selectedSegmentIndex == 1{
             print(scopes)
-            manager.getAuthorizationTokenForMCCAndMNC(mccValueTextField.text!, mnc: mncValueField.text!, self, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getAuthorizationTokenForMCCAndMNC(mccValueTextField.text!, mnc: mncValueField.text!, clientName: clientNameTextField.text!, self, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
             
             //with msisdn
         } else {
             print(scopes)
-            manager.getAuthorizationTokenForPhoneNumber("+91" + msisdnTextField.text! , clientIP: "", inPresenterController: self, withScopes: scopes, completionHandler: launchTokenViewerWithTokenResponseModel)
+            manager.getAuthorizationTokenForPhoneNumber("+91" + msisdnTextField.text! , clientIP: "", clientName: clientNameTextField.text!, inPresenterController: self, withScopes: scopes, completionHandler: launchTokenViewerWithTokenResponseModel)
         }
 
     }
@@ -236,7 +239,6 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
                 }
                 
                 if let tokenResponse = currentTokenResponse {
-                    model["client name"] = tokenResponse.discoveryResponse?.clientName ?? nil
                     model["id token"] = tokenResponse.tokenData?.id_token ?? nil
                     model["access token"] = tokenResponse.tokenData?.access_token ?? nil
                 }
@@ -254,7 +256,6 @@ class IndianAppViewController: UIViewController, RequestIndianOptionsDelegate, R
                     if model["message"] == nil {
                         model["message"] = "Success"
                     }
-                    model["client name"] = tokenResponse.discoveryResponse?.clientName ?? nil
                     model["access token"] = tokenResponse.tokenData?.access_token ?? nil
                     model["token id"] = tokenResponse.tokenData?.id_token ?? nil
                     model["email"] = userInfoResponse?.email ?? nil

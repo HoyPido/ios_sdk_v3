@@ -107,7 +107,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                             bindingMessage : String?,
                             authorizationScopes : [ProductType],
                             config : AuthorizationConfigurationParameters?,
-                            loginHint : String?)
+                            loginHint : String?,
+                            clientName: String?)
     {
         self.init(discoveryResponse : discoveryResponse,
                   assuranceLevel: assuranceLevel,
@@ -115,7 +116,8 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                   bindingMessage: bindingMessage,
                   stringAuthorizationScopes: authorizationScopes.map({$0.stringValue}),
                   config: config,
-                  loginHint: loginHint)
+                  loginHint: loginHint,
+                  clientName:clientName)
     }
     
     convenience public init(discoveryResponse : DiscoveryResponse,
@@ -124,9 +126,10 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
          bindingMessage : String?,
          stringAuthorizationScopes : [String],
          config : AuthorizationConfigurationParameters?,
-         loginHint: String?)
+         loginHint: String?,
+         clientName: String?)
     {
-        let localClientName : String = discoveryResponse.clientName ?? ""
+        let localClientName : String = clientName ?? ""
         
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         
@@ -164,9 +167,10 @@ open class MCAuthorizationConfiguration : MobileConnectServiceConfiguration
                             context : String,
                             bindingMessage : String?,
                             stringAuthorizationScopes : [String],
-                            config : AuthorizationConfigurationParameters?)
+                            config : AuthorizationConfigurationParameters?,
+                            clientName: String?)
     {
-        let localClientName : String = discoveryResponse.clientName ?? ""
+        let localClientName : String = clientName ?? ""
         
         let localClientKey : String = discoveryResponse.response?.client_id ?? ""
         

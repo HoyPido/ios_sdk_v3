@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>clientID</key>
+	<string>123123</string>
+	<key>clientSecret</key>
+	<string>123123</string>
+	<key>discoveryURL</key>
+	<string>https://discovery.sandbox.mobileconnect.io/v2/discovery</string>
+	<key>redirectURL</key>
+	<string>http://example.com</string>
+	<key>xRedirect</key>
+	<true/>
+	<key>includeRequestIP</key>
+	<false/>
+	<key>apiVersion</key>
+	<string>mc_v1.2</string>
+	<key>scope</key>
+	<string>openid mc_authn</string>
+</dict>
+</plist>

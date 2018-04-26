@@ -14,5 +14,11 @@
 	<string>https://example.com</string>
 	<key>XRedirect</key>
 	<false/>
+	<key>clientName</key>
+	<string>testClientName</string>
+	<key>bindingMessage</key>
+	<string>testBindingMessage</string>
+	<key>context</key>
+	<string>testContext</string>
 </dict>
 </plist>

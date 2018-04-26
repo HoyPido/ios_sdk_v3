@@ -11,6 +11,8 @@ class RequestParamsWithoutDiscoveryViewController: UIViewController {
     @IBOutlet weak var clientIdField: UITextField!
     @IBOutlet weak var clientNameField: UITextField!
     @IBOutlet weak var subscriberIdField: UITextField!
+    @IBOutlet weak var bindingMessageField: UITextField!
+    @IBOutlet weak var contextField: UITextField!
     
     @IBOutlet weak var subscriberIdSwitch: UISwitch!
     var clientId = String()

@@ -10,6 +10,7 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
     @IBOutlet weak var requestParametersButton: UIButton!
     @IBOutlet weak var endPointButton: UIButton!
     @IBOutlet weak var phoneNumberTextField : UITextField!
+    @IBOutlet weak var clientNameField : UITextField!
     @IBOutlet weak var viewControllerNameLabel : UILabel!
     @IBOutlet weak var controllDistance : NSLayoutConstraint!
     
@@ -66,11 +67,11 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
         let manager : MobileConnectManagerWithoutCall = MobileConnectManagerWithoutCall()
         
         if withMetadataStatus  {
-            discoveryResponse = manager.makeDiscoveryResponse(subscriberID, clientSecret: clientSecret, clientKey: clientId, name: clientName, linksRecieved: discoveryResponseLinks)
-            manager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
+            discoveryResponse = manager.makeDiscoveryResponse(subscriberID, clientSecret: clientSecret, clientKey: clientId, linksRecieved: discoveryResponseLinks)
+            manager.getTokenInPresenterController(self, clientName: clientName, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
         } else {
-            discoveryResponse = manager.makeDiscoveryResponse(subscriberID, clientSecret: clientSecret, clientKey: clientId, name: "", linksRecieved: discoveryResponseLinks)
-            manager.getTokenInPresenterController(self, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
+            discoveryResponse = manager.makeDiscoveryResponse(subscriberID, clientSecret: clientSecret, clientKey: clientId, linksRecieved: discoveryResponseLinks)
+            manager.getTokenInPresenterController(self, clientName: clientName, withScopes: [], withCompletionHandler: launchTokenViewerWithTokenResponseModel, discoveryResponse: discoveryResponse)
         }
     }
     
@@ -119,7 +120,6 @@ class WithoutDiscoveryViewController : UIViewController, RequestParametersWithou
                 if model["message"] == nil {
                     model["message"] = "Success"
                 }
-                model["client name"] = tokenResponse.discoveryResponse?.clientName ?? ""
                 model["access token"] = tokenResponse.tokenData?.access_token
                 model["token id"] = tokenResponse.tokenData?.id_token
             }

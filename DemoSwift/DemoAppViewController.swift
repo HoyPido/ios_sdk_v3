@@ -1,7 +1,7 @@
 import UIKit
 import MobileConnectSDK
 
-
+var endpointVersion: Double = 1.1
 
 class DemoAppViewController : UIViewController, RequestParametersDeleagete, RequestOptionsDelegate {
     
@@ -13,6 +13,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     @IBOutlet weak var identityState: UISegmentedControl!
     @IBOutlet weak var requstParametersButton: UIButton!
     @IBOutlet weak var requestOptionsButton: UIButton!
+    @IBOutlet weak var endpointNameSegment: UISegmentedControl!
     
     var isCalledDiscoveryWithPhoneNumber : Bool = false
     var currentTokenResponse : TokenResponseModel?
@@ -20,6 +21,7 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     var currentError : NSError?
     var identity = false
     var scopes: [ProductType] = []
+    
     
     // MARK: Request options
     var scopesSetDemoApp = [ProductType: Bool]()
@@ -32,16 +34,22 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
     var clientSecretValue: String = ""
     var discoveryURLValue: String = ""
     var sourceIP: String = ""
+    var clientNameValue = ""
+    var bindingMessageValue = ""
+    var contextValue = ""
     
     var userInfoResponse: UserInfoResponse? = nil
     
-    func sendRequestParametersData(clientID: String, clientSecret: String, discoveryURL: String, redirectURL: String, xSourceIP: String, xRedirect: Bool) {
+    func sendRequestParametersData(clientID: String, clientSecret: String, discoveryURL: String, redirectURL: String, xSourceIP: String, xRedirect: Bool, clientName: String, bindingMessage: String, context: String) {
         clientIdValue = clientID
         clientSecretValue = clientSecret
         discoveryURLValue = discoveryURL
         redirectURLValue = redirectURL
         sourceIP = xSourceIP
         xRedirectValue = xRedirect
+        clientNameValue = clientName
+        bindingMessageValue = bindingMessage
+        contextValue = context
     }
     
     func sendRequestOptionsData(_ scopesS: [ProductType: Bool]) {
@@ -99,23 +107,31 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
             if (scopes.contains(ProductType.identitySignUp) || scopes.contains(ProductType.identityPhoneNumber) || scopes.contains(ProductType.identityNationalID)) {
                 identity = true
                 if isCalledDiscoveryWithPhoneNumber {
-                    manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
+                    manager.getAttributeServiceResponseWithPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, clientName: clientNameValue, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC", completionHandler: launchTokenViewerWithAttributeServiceResponse)
                 } else {
-                    manager.getAttributeServiceResponse(self, clientIP: sourceIP, context: "MC", scopes: scopes, bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
+                    manager.getAttributeServiceResponse(self, clientIP: sourceIP, clientName: clientNameValue, context: "MC", scopes: scopes, bindingMessage: "MC", withCompletionHandler: launchTokenViewerWithAttributeServiceResponse)
                 }
             } else {
                 if isCalledDiscoveryWithPhoneNumber  {
-                    manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC",completionHandler: launchTokenViewerWithTokenResponseModel)
+                    manager.getAuthorizationTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, clientName: clientNameValue, inPresenterController: self, withScopes: scopes, context: "MC", bindingMessage: "MC",completionHandler: launchTokenViewerWithTokenResponseModel)
                 } else {
-                    manager.getAuthorizationTokenInPresenterController(self, clientIP: sourceIP, withContext: "MC", withScopes: scopes, bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
+                    manager.getAuthorizationTokenInPresenterController(self, clientIP: sourceIP, clientName: clientNameValue, withContext: "MC", withScopes: scopes, bindingMessage: "MC", completionHandler: launchTokenViewerWithTokenResponseModel)
                 }
             }
         } else {
             if isCalledDiscoveryWithPhoneNumber {
-                manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, inPresenterController: self, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
+                manager.getTokenForPhoneNumber(phoneNumberTextField.text ?? "", clientIP: sourceIP, clientName: clientNameValue, inPresenterController: self, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
             } else {
-                manager.getTokenInPresenterController(self, clientIP: sourceIP, withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
+                manager.getTokenInPresenterController(self, clientIP: sourceIP, clientName: clientNameValue,withScopes: scopes, withCompletionHandler: launchTokenViewerWithTokenResponseModel)
             }
+        }
+    }
+    
+    @IBAction func endpointVersionTapped(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            endpointVersion = 1.1
+        } else {
+            endpointVersion = 1.2
         }
     }
     
@@ -159,6 +175,9 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
             sending.clientSecretValue = clientSecretValue
             sending.discoveryURLValue = discoveryURLValue
             sending.redirectURLValue = redirectURLValue
+            sending.clientNameValue = clientNameValue
+            sending.bindingMessageValue = bindingMessageValue
+            sending.contextValue = contextValue
         }
         
         // MARK: identity request options button
@@ -179,6 +198,8 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                 
                 if let currentResponse = currentResponse
                 {
+                    model["nickname"] = userInfoResponse?.nickname ?? nil
+                
                     model["message"] = "Success"
                     model["sub"] = currentResponse.sub ?? nil
                     model["national_identifier"] = currentResponse.national_identifier ?? nil
@@ -201,7 +222,6 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                 }
                 
                 if let tokenResponse = currentTokenResponse {
-                    model["client name"] = tokenResponse.discoveryResponse?.clientName ?? nil
                     model["id token"] = tokenResponse.tokenData?.id_token ?? nil
                     model["access token"] = tokenResponse.tokenData?.access_token ?? nil
                 }
@@ -219,7 +239,6 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
                     if model["message"] == nil {
                         model["message"] = "Success"
                     }
-                    model["client name"] = tokenResponse.discoveryResponse?.clientName ?? nil
                     model["access token"] = tokenResponse.tokenData?.access_token ?? nil
                     model["token id"] = tokenResponse.tokenData?.id_token ?? nil
                     model["email"] = userInfoResponse?.email ?? nil
@@ -315,6 +334,9 @@ class DemoAppViewController : UIViewController, RequestParametersDeleagete, Requ
         discoveryURLValue = (itemsDictionaryRoot?.value(forKey: "discoveryURL") as? String)!
         redirectURLValue = (itemsDictionaryRoot?.value(forKey: "redirectURL") as? String)!
         xRedirectValue = ((itemsDictionaryRoot?.value(forKey: "XRedirect")) != nil)
+        clientNameValue = (itemsDictionaryRoot?.value(forKey: "clientName") as? String)!
+        bindingMessageValue = (itemsDictionaryRoot?.value(forKey: "bindingMessage") as? String)!
+        contextValue = (itemsDictionaryRoot?.value(forKey: "context") as? String)!
     }
     
 }

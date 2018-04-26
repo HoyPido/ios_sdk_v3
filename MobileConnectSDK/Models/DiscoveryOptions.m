@@ -22,10 +22,6 @@
     _client_secret = clientSecretKey;
 }
 
-- (void) setClientApplicationName:(NSString *) clientApplicationName {
-    _client_name = clientApplicationName;
-}
-
 - (void) setMSISDN:(NSString *) msisdn {
     _msisdn = msisdn;
 }
@@ -56,10 +52,6 @@
 
 - (NSString*) getClientSecretKey {
     return _client_secret;
-}
-
-- (NSString*) getClientApplicationName {
-    return _client_name;
 }
 
 - (NSString*) getMSISDN {

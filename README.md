@@ -112,7 +112,7 @@ MobileConnectSDK.setApplicationEndpoint(discoveryURLValue)
 MobileConnectSDK.setRedirect(URL(string: redirectURLValue)!)
 MobileConnectSDK.setXRedirect("APP")
 ```
-
+Note: if you operate in the EU then you should use EU Discovery Service domain in discovery URL: eu.discovery.mobileconnect.io  
 And that's it!
 
 

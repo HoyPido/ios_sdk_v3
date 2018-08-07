@@ -43,7 +43,9 @@ class ProductVersion
     func versionString()->String? {
         if let version = version {
             let roundedVersion = Double(Int(10*version))/10
-            return "mc_v\(roundedVersion)"
+            // return "mc_v\(roundedVersion)"
+            print("mc_v1.2")
+            return "mc_v1.2"
         }
         return nil
     }
